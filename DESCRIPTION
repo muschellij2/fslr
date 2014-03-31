@@ -1,0 +1,11 @@
+Package: fslr
+Type: Package
+Title: Wrapper functions for FSL
+Version: 1.0
+Date: 2014-03-29
+Author: John Muschelli <muschellij2@gmail.com>
+Maintainer: John Muschelli <muschellij2@gmail.com>
+Description: Creates some small functions that link to FSL.
+Depends:
+    stringr
+License: GPL-2
