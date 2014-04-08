@@ -4,7 +4,7 @@
 #' @export
 get.fsl = function(){
   cmd = NULL
-  fsldir <- system("echo $FSLDIR", intern=TRUE)
+  fsldir = Sys.getenv("FSLDIR")
   if (fsldir == "") {
     fsldir = getOption("fsl.path")
     cmd <- paste0("FSLDIR=", fsldir, "; ", 
@@ -249,5 +249,17 @@ fslthresh = function(file, outfile = file, thresh = 0, intern=TRUE){
 fslsub2 = function(file, outfile = file, intern=TRUE){
   cmd <- get.fsl()
   cmd <- paste(cmd, sprintf('fslmaths "%s" -subsamp2 "%s"', file, outfile))
+  system(cmd, intern=intern)
+}
+
+#' @title Open image in FSLView
+#' @param file (character) filename of image to be thresholded
+#' @param intern (logical) pass to \code{\link{system}}
+#' @param opts (character) options for FSLView
+#' @return character or logical depending on intern
+#' @export
+fslview = function(file, intern=TRUE, opts =""){
+  cmd <- get.fsl()
+  cmd <- paste(cmd, sprintf('fslview "%s" %s', file, opts))
   system(cmd, intern=intern)
 }
