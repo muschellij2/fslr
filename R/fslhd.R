@@ -10,7 +10,7 @@ get.fsl = function(){
     cmd <- paste0("FSLDIR=", fsldir, "; ", 
                   "export FSLDIR; sh ${FSLDIR}/etc/fslconf/fsl.sh; ")    
   } 
-  if (fsldir == "" | is.null(fsldir)) stop("Can't find FSL")
+  if (fsldir %in% "" | is.null(fsldir)) stop("Can't find FSL")
   return(cmd)
 }
 
