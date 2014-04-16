@@ -7,5 +7,6 @@ Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Creates some small functions that link to FSL.
 Depends:
-    stringr
+    stringr,
+    oro.nifti
 License: GPL-2

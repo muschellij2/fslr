@@ -2,7 +2,7 @@
 \alias{fslthresh}
 \title{Threshold an image}
 \usage{
-fslthresh(file, outfile = file, thresh = 0, intern = TRUE)
+fslthresh(file, outfile = file, thresh = 0, intern = TRUE, opts = "")
 }
 \arguments{
   \item{file}{(character) filename of image to be
@@ -15,6 +15,9 @@ fslthresh(file, outfile = file, thresh = 0, intern = TRUE)
   0)}
 
   \item{intern}{(logical) pass to \code{\link{system}}}
+
+  \item{opts}{(character) additional options to be passed
+  to fslmaths}
 }
 \value{
 character or logical depending on intern

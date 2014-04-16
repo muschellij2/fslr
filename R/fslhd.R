@@ -64,25 +64,69 @@ fslsmooth <- function(
 #' @param mask (character) mask given for image
 #' @param outfile (character) resultant masked image name (optional)
 #' @param intern (logical) to be passed to \code{\link{system}}
+#' @param opts (character) additional options to be passed to fslmask
 #' @return Result from system command, depends if intern is TRUE or FALSE.
 #' @export
 fslmask <- function(file, mask=NULL, outfile=NULL, 
-	intern=TRUE){
+	intern=TRUE, opts=""){
 	
   cmd = get.fsl()
-	cmd <- paste(cmd, sprintf('fslmaths "%s" -mas "%s" "%s"', 
-		file, mask, outfile))
+	cmd <- paste(cmd, sprintf('fslmaths "%s" -mas "%s" %s "%s"', 
+		file, mask, opts, outfile))
 	res = system(cmd, intern=intern)
   return(res)
 }
 
+#' @name fslerode
+#' @title Erode image using FSL
+#' @param file (character) image to be eroded
+#' @param outfile (character) resultant eroded image name 
+#' @param retimg (logical) Should the result be the eroded image?
+#' @param intern (logical) to be passed to \code{\link{system}}
+#' @param opts (character) additional options to be passed to fslmaths
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @return Result from system command, depends if intern is TRUE or FALSE.  If 
+#' retimg is TRUE, then the image will be returned
+#' @import oro.nifti
+#' @export
+fslerode <- function(file, outfile=NULL, retimg = FALSE,
+                    intern=TRUE, opts="", reorient= FALSE,...){
+  
+  cmd = get.fsl()
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+      trash = TRUE
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }
+  outfile = nii.stub(outfile)
+  cmd <- paste(cmd, sprintf('fslmaths "%s" -ero %s "%s"', 
+                            file, opts, outfile))
+  res = system(cmd, intern=intern)
+  outfile = paste0(outfile, ".nii.gz")
+  stopifnot(file.exists(outfile))
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient)
+    return(img)
+  }
+  return(res)
+}
+
+
+
+
 #' @title Get NIfTI header using FSL
 #' @param file (character) image to be masked
+#' @param opts (character) additional options to be passed to fslhd
 #' @return Character of infromation from fslhd
 #' @export
-fslhd <- function(file){
+fslhd <- function(file, opts=""){
 	cmd <- get.fsl()
-	cmd <- paste(cmd, sprintf('fslhd "%s"', file))
+	cmd <- paste(cmd, sprintf('fslhd "%s" %s', file, opts))
 	system(cmd, intern=TRUE)
 }
 
@@ -192,7 +236,8 @@ check_sform_file <- function(file, value=0){
 	hd <- getForms(file)
 	check_sform(hd, value=value)
 }
-## if sign(det(res$sform)) == sign(det(res$qform)) and res$ssor[1] == res$sqor[1] then all good
+## if sign(det(res$sform)) == sign(det(res$qform)) and 
+## res$ssor[1] == res$sqor[1] then all good
 
 
 #' @title Get range of an image
@@ -231,12 +276,15 @@ fslfill = function(file, outfile = file, bin=TRUE, intern=TRUE){
 #' @param outfile (character) name of resultant thresholded file
 #' @param thresh (numeric) threshold (anything below set to 0)
 #' @param intern (logical) pass to \code{\link{system}}
+#' @param opts (character) additional options to be passed to fslmaths 
 #' @return character or logical depending on intern
 #' @export
-fslthresh = function(file, outfile = file, thresh = 0, intern=TRUE){
+fslthresh = function(file, outfile = file, 
+                     thresh = 0, intern=TRUE, 
+                     opts = ""){
   cmd <- get.fsl()
-  cmd <- paste(cmd, sprintf('fslmaths "%s" -thr %f "%s"', 
-  	file, thresh, outfile))
+  cmd <- paste(cmd, sprintf('fslmaths "%s" -thr %f %s "%s"', 
+  	file, thresh, opts, outfile))
   system(cmd, intern=intern)
 }
 
@@ -261,5 +309,24 @@ fslsub2 = function(file, outfile = file, intern=TRUE){
 fslview = function(file, intern=TRUE, opts =""){
   cmd <- get.fsl()
   cmd <- paste(cmd, sprintf('fslview "%s" %s', file, opts))
+  system(cmd, intern=intern)
+}
+
+
+#' @title Merge images using FSL
+#' @param infiles (character) input filenames
+#' @param outfile (character) output filename
+#' @param direction (character) direction to merge over, x, y, z, 
+#' t (time), a (auto)
+#' @param intern (logical) pass to \code{\link{system}}
+#' @return character or logical depending on intern
+#' @export
+fslmerge = function(infiles, outfile, 
+                   direction = c("x", "y", "z", "t", "a"), 
+                   intern=TRUE){
+  cmd <- get.fsl()
+  direction = direction[1]
+  cmd <- paste(cmd, sprintf('fslmerge "%s" -%s "%s"', 
+                            outfile, direction, infiles))
   system(cmd, intern=intern)
 }

@@ -2,7 +2,7 @@
 \alias{fslmask}
 \title{Mask image using FSL}
 \usage{
-fslmask(file, mask = NULL, outfile = NULL, intern = TRUE)
+fslmask(file, mask = NULL, outfile = NULL, intern = TRUE, opts = "")
 }
 \arguments{
   \item{file}{(character) image to be masked}
@@ -14,6 +14,9 @@ fslmask(file, mask = NULL, outfile = NULL, intern = TRUE)
 
   \item{intern}{(logical) to be passed to
   \code{\link{system}}}
+
+  \item{opts}{(character) additional options to be passed
+  to fslmask}
 }
 \value{
 Result from system command, depends if intern is TRUE or
