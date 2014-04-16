@@ -28,7 +28,7 @@ fslerode(file, outfile = NULL, retimg = FALSE, intern = TRUE, opts = "",
 }
 \value{
 Result from system command, depends if intern is TRUE or
-FALSE.  If retimg is TRUE, then the image will be returned
+FALSE.  If retimg is TRUE, then the image will be returned.
 }
 \description{
 Erode image using FSL

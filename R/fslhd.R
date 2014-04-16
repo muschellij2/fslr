@@ -88,7 +88,7 @@ fslmask <- function(file, mask=NULL, outfile=NULL,
 #' Passed to \code{\link{readNIfTI}}.
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.  If 
-#' retimg is TRUE, then the image will be returned
+#' retimg is TRUE, then the image will be returned. 
 #' @import oro.nifti
 #' @export
 fslerode <- function(file, outfile=NULL, retimg = FALSE,
