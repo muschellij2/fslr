@@ -330,3 +330,31 @@ fslmerge = function(infiles, outfile,
                             outfile, direction, infiles))
   system(cmd, intern=intern)
 }
+
+
+
+
+#' @title Register using FLIRT
+#' @param infile (character) input filename
+#' @param outfile (character) output filename
+#' @param reffile (character) reference image to be registered to
+#' @param omat (character) Output matrix name
+#' @param dof (numeric) degrees of freedom
+#' @param opts (character) additional options to FLIRT
+#' @param intern (logical) pass to \code{\link{system}}
+#' @return character or logical depending on intern
+#' @export
+flirt = function(infile, outfile, 
+                    reffile, omat,
+                    dof,
+                    opts="",
+                    intern=TRUE){
+  cmd <- get.fsl()
+  infile = path.expand(infile)
+  outfile = path.expand(outfile)
+  reffile = path.expand(reffile)
+  omat = path.expand(omat)
+  cmd <- paste(cmd, sprintf('flirt -in "%s" -ref "%s" -out "%s" -dof %d %s', 
+                            infile, reffile, outfile, dof, opts))
+  system(cmd, intern=intern)
+}

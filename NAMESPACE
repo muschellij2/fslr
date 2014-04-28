@@ -1,5 +1,6 @@
 export(check_file)
 export(checkout)
+export(flirt)
 export(fslerode)
 export(fslfill)
 export(fslhd)
