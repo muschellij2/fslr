@@ -2,8 +2,8 @@
 \alias{fslerode}
 \title{Erode image using FSL}
 \usage{
-fslerode(file, outfile = NULL, retimg = FALSE, intern = TRUE, opts = "",
-  reorient = FALSE, ...)
+fslerode(file, outfile = NULL, retimg = FALSE, intern = TRUE,
+  kopts = "", opts = "", reorient = FALSE, ...)
 }
 \arguments{
   \item{file}{(character) image to be eroded}
@@ -15,6 +15,8 @@ fslerode(file, outfile = NULL, retimg = FALSE, intern = TRUE, opts = "",
 
   \item{intern}{(logical) to be passed to
   \code{\link{system}}}
+
+  \item{kopts}{(character) options for kernel}
 
   \item{opts}{(character) additional options to be passed
   to fslmaths}

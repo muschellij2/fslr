@@ -83,6 +83,7 @@ fslmask <- function(file, mask=NULL, outfile=NULL,
 #' @param outfile (character) resultant eroded image name 
 #' @param retimg (logical) Should the result be the eroded image?
 #' @param intern (logical) to be passed to \code{\link{system}}
+#' @param kopts (character) options for kernel
 #' @param opts (character) additional options to be passed to fslmaths
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
 #' Passed to \code{\link{readNIfTI}}.
@@ -92,7 +93,7 @@ fslmask <- function(file, mask=NULL, outfile=NULL,
 #' @import oro.nifti
 #' @export
 fslerode <- function(file, outfile=NULL, retimg = FALSE,
-                    intern=TRUE, opts="", reorient= FALSE,...){
+                    intern=TRUE, kopts = "", opts="", reorient= FALSE,...){
   
   cmd = get.fsl()
   if (retimg){
@@ -104,8 +105,8 @@ fslerode <- function(file, outfile=NULL, retimg = FALSE,
     stopifnot(!is.null(outfile))
   }
   outfile = nii.stub(outfile)
-  cmd <- paste(cmd, sprintf('fslmaths "%s" -ero %s "%s"', 
-                            file, opts, outfile))
+  cmd <- paste(cmd, sprintf('fslmaths "%s" %s -ero %s "%s"', 
+                            file, kopts, outfile, opts))
   res = system(cmd, intern=intern)
   outfile = paste0(outfile, ".nii.gz")
   stopifnot(file.exists(outfile))
