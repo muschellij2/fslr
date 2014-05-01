@@ -1,0 +1,14 @@
+\name{have.fsl}
+\alias{have.fsl}
+\title{Logical check if FSL is accessible}
+\usage{
+have.fsl()
+}
+\value{
+Logical TRUE is FSL is accessible, FALSE if not
+}
+\description{
+Uses \code{get.fsl} to check if FSLDIR is accessible or the
+option \code{fsl.path} is set and returns logical
+}
+

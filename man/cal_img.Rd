@@ -11,6 +11,11 @@ cal_img(img)
 object of type nifti
 }
 \description{
-Rescales image
+Rescales image cal_max and cal_min slots to be the max and
+min, respectively, of an object of class nifti, with
+\code{na.rm=TRUE}. This is so that when images are
+rendered/written, the values correspond to those in the
+array (stored in .Data slot) are plotted on correct
+grayscale and no error is given by \code{writeNIfTI}.
 }
 

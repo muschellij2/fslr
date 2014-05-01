@@ -19,6 +19,15 @@ get.fsl = function(){
   return(cmd)
 }
 
+#' @title Logical check if FSL is accessible
+#' @description Uses \code{get.fsl} to check if FSLDIR is accessible or the option
+#' \code{fsl.path} is set and returns logical
+#' @return Logical TRUE is FSL is accessible, FALSE if not
+#' @export
+have.fsl = function(){
+  x = suppressWarnings(try(get.fsl(), silent=TRUE))
+  return(inherits(x, "try-error"))
+}
 
 #' @name get.fsloutput
 #' @title Determine FSL output type
