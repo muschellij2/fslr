@@ -46,6 +46,8 @@ get.fsloutput = function(){
 #' 
 tempimg = function(nim){
   f = tempfile()
+  nim = cal_img(nim)
+  nim = zero_trans(nim)
   writeNIfTI(nim, filename= f, onefile = TRUE, gzipped = TRUE)
   f = paste0(f, ".nii.gz")
   return(f)
