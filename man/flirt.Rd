@@ -31,6 +31,8 @@ flirt(infile, reffile, omat, dof, outfile = NULL, retimg = FALSE,
 character or logical depending on intern
 }
 \description{
-Register using FLIRT
+This function calls \code{fslirt} to register infile to
+reffile and either saves the image or returns an object of
+class nifti, along with the transformation matrix omat
 }
 

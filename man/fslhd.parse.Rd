@@ -11,6 +11,7 @@ fslhd.parse(hd)
 data.frame of information from FSL header
 }
 \description{
-Parse FSL Header
+This function takes in a FSL header and parses the
+components
 }
 

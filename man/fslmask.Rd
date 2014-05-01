@@ -29,6 +29,8 @@ Result from system command, depends if intern is TRUE or
 FALSE.
 }
 \description{
-Mask image using FSL
+This function calls \code{fslmaths -mas} to mask an image
+from an image mask and either saves the image or returns an
+object of class nifti
 }
 

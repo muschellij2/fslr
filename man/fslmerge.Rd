@@ -25,6 +25,8 @@ fslmerge(infiles, direction = c("x", "y", "z", "t", "a"), outfile = NULL,
 character or logical depending on intern
 }
 \description{
-Merge images using FSL
+This function calls \code{fslmerge} to merge files on some
+dimension and either saves the image or returns an object
+of class nifti
 }
 

@@ -11,6 +11,7 @@ fslrange(file)
 numeric vector of length 2
 }
 \description{
-Get range of an image
+This function calls \code{fslstats -R} to get the range of
+an image
 }
 

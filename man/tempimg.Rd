@@ -11,6 +11,7 @@ tempimg(nim)
 filename of output nii.gz
 }
 \description{
-Create temporary nii.gz file for FSL
+Takes in a object of class nifit, writes it to a temp file,
+appends .nii.gz as \code{\link{writeNIfTI}} adds it.
 }
 

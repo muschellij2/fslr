@@ -13,6 +13,7 @@ list with elements of sform and qform and their respective
 codes
 }
 \description{
-Get Q and S Forms of orientation matrix
+This function obtains the s and q forms of an image
+transformation matrix
 }
 

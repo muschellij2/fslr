@@ -8,6 +8,7 @@ get.imgext()
 Extension for output type
 }
 \description{
-Determine extension of image based on FSLOUTPUTTYPE
+Runs \code{get.fsloutput()} to extract FSLOUTPUTTYPE and
+then gets corresponding extension (such as .nii.gz)
 }
 

@@ -24,6 +24,8 @@ fslsub2(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
 character or logical depending on intern
 }
 \description{
-Subsample image by factor of 2
+This function calls \code{fslmaths -subsamp2} to subsample
+an image and either saves the image or returns an object of
+class nifti
 }
 

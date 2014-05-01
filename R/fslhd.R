@@ -1,5 +1,7 @@
 #' @name get.fsl
-#' @title Determine FSL Directory
+#' @title Get FSL's Location 
+#' @description Finds the FSLDIR from system environment or \code{getOption("fsl.path")}
+#' for location of FSL fuctions
 #' @return NULL if FSL in path, or bash code for setting up FSL DIR
 #' @export
 get.fsl = function(){
@@ -20,7 +22,10 @@ get.fsl = function(){
 
 #' @name get.fsloutput
 #' @title Determine FSL output type
-#' @return extension for output type
+#' @description Finds the FSLOUTPUTTYPE from system environment or 
+#' \code{getOption("fsl.outputtype")} for output type (nii.gz, nii, ANALYZE,etc) 
+#' @return FSLOUTPUTTYPE, such as NIFTI_GZ.  If none found, uses NIFTI_GZ as default
+#' 
 #' @export
 get.fsloutput = function(){
   fslout = Sys.getenv("FSLOUTPUTTYPE")
@@ -39,6 +44,8 @@ get.fsloutput = function(){
 }
 
 #' @title Determine extension of image based on FSLOUTPUTTYPE
+#' @description Runs \code{get.fsloutput()} to extract FSLOUTPUTTYPE and then 
+#' gets corresponding extension (such as .nii.gz)
 #' @return Extension for output type
 #' @export
 get.imgext = function(){
@@ -55,6 +62,8 @@ get.imgext = function(){
 
 
 #' @title Create temporary nii.gz file for FSL
+#' @description Takes in a object of class nifit, writes it to a temp file, appends
+#' .nii.gz as \code{\link{writeNIfTI}} adds it.
 #' @param nim object of class nifti
 #' @return filename of output nii.gz
 #' @export
@@ -78,6 +87,7 @@ checkimg = function(file){
     return(tempimg(file))
   }
   if (inherits(file, "character")){
+    file = path.expand(file)
     return(file)
   }
   stop("file not object of nifti or character")
@@ -88,6 +98,8 @@ checkimg = function(file){
 
 #' @name fslsmooth
 #' @title Gaussian smooth image using FSL
+#' @description This function calls \code{fslmaths -s} to smooth an image and either
+#' saves the image or returns an object of class nifti
 #' @param file (character) image to be smoothed
 #' @param sigma (numeric) sigma (in mm) of Gaussian kernel for smoothing
 #' @param mask (character) optional mask given for image
@@ -147,6 +159,8 @@ fslsmooth <- function(
 
 #' @name fslmask
 #' @title Mask image using FSL
+#' @description This function calls \code{fslmaths -mas} to mask an image from 
+#' an image mask and either saves the image or returns an object of class nifti 
 #' @param file (character) image to be masked
 #' @param mask (character) mask given for image
 #' @param outfile (character) resultant masked image name
@@ -185,6 +199,9 @@ fslmask <- function(file, mask=NULL, outfile=NULL,
 
 #' @name fslerode
 #' @title Erode image using FSL
+#' @description This function calls \code{fslmaths -ero} to erode an image with either 
+#' the default FSL kernel or the kernel specified in \code{kopts}.  The function
+#' either saves the image or returns an object of class nifti.
 #' @param file (character) image to be eroded
 #' @param outfile (character) resultant eroded image name 
 #' @param retimg (logical) return image of class nifti
@@ -231,17 +248,20 @@ fslerode <- function(file, outfile=NULL,
 
 
 #' @title Get NIfTI header using FSL
+#' @description This function calls \code{fslhd} to obtain a nifti header 
 #' @param file (character) image to be masked
 #' @param opts (character) additional options to be passed to fslhd
 #' @return Character of infromation from fslhd
 #' @export
 fslhd <- function(file, opts=""){
 	cmd <- get.fsl()
+  file = checkimg(file)
 	cmd <- paste0(cmd, sprintf('fslhd "%s" %s', file, opts))
 	system(cmd, intern=TRUE)
 }
 
 #' @title Parse FSL Header
+#' @description This function takes in a FSL header and parses the components
 #' @param hd (character) header from \code{\link{fslhd}}
 #' @return data.frame of information from FSL header
 #' @export
@@ -272,10 +292,13 @@ fslhd.parse <- function(hd){
 }
 
 #' @title Get Q and S Forms of orientation matrix
+#' @description This function obtains the s and q forms of an image transformation 
+#' matrix
 #' @param file (character) filename of image to pass to header
 #' @return list with elements of sform and qform and their respective codes
 #' @export
 getForms <- function(file){
+  file = checkimg(file)  
 	x <- fslhd(file)
 	convmat <- function(form){
 		ss <- strsplit(form, " ")
@@ -316,6 +339,8 @@ getForms <- function(file){
 }
 
 #' @title Determine of Q and S forms are consistent
+#' @description This function determines if the determinants of the sform and qform
+#' have the same sign
 #' @param hd (list) sforms from \code{\link{getForms}}
 #' @return logical indicating if sform and qform consistent
 #' @export
@@ -334,6 +359,7 @@ checkout <- function(hd){
 #' @return result of \code{\link{checkout}}
 #' @export
 check_file <- function(file){
+  file = checkimg(file)  
 	hd <- getForms(file)
 	checkout(hd)
 }
@@ -344,6 +370,7 @@ check_sform <- function(hd, value=0){
 
 
 check_sform_file <- function(file, value=0){
+  file = checkimg(file)  
 	hd <- getForms(file)
 	check_sform(hd, value=value)
 }
@@ -352,13 +379,14 @@ check_sform_file <- function(file, value=0){
 
 
 #' @title Get range of an image
+#' @description This function calls \code{fslstats -R} to get the range of an image
 #' @param file (character) filename of image to be checked
 #' @return numeric vector of length 2
 #' @import stringr
 #' @export
 fslrange <- function(file){
 	cmd <- get.fsl()
-  file = path.expand(file)
+	file = checkimg(file)
 	cmd <- paste0(cmd, sprintf('fslstats "%s" -R', file))
   x = str_trim(system(cmd, intern = TRUE))
   x = strsplit(x, " ")[[1]]
@@ -367,6 +395,8 @@ fslrange <- function(file){
 }
 
 #' @title Fill image holes
+#' @description This function calls \code{fslmaths -fillh} to fill in image holes
+#' and either saves the image or returns an object of class nifti  
 #' @param file (character) filename of image to be filled
 #' @param outfile (character) name of resultant filled file
 #' @param bin (logical) binarize the image before filling
@@ -404,6 +434,8 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
 }
 
 #' @title Threshold an image
+#' @description This function calls \code{fslmaths -thr -uthr} to threshold an image
+#' and either saves the image or returns an object of class nifti   
 #' @param file (character) filename of image to be thresholded
 #' @param outfile (character) name of resultant thresholded file
 #' @param thresh (numeric) threshold (anything below set to 0)
@@ -448,6 +480,8 @@ fslthresh = function(file, outfile = NULL,
 }
 
 #' @title Subsample image by factor of 2
+#' @description This function calls \code{fslmaths -subsamp2} to subsample an image
+#' and either saves the image or returns an object of class nifti   
 #' @param file (character) filename of image to be thresholded
 #' @param outfile (character) name of resultant subsampled file
 #' @param retimg (logical) return image of class nifti
@@ -484,6 +518,7 @@ fslsub2 = function(file,
 }
 
 #' @title Open image in FSLView
+#' @description This function calls \code{fslview} view an image in the FSL viewer
 #' @param file (character) filename of image to be thresholded
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) options for FSLView
@@ -491,6 +526,7 @@ fslsub2 = function(file,
 #' @export
 fslview = function(file, intern=TRUE, opts =""){
   cmd <- get.fsl()
+  file = checkimg(file)
   cmd <- paste(cmd, sprintf('fslview "%s" %s', file, opts))
   res = system(cmd, intern=intern)
   return(res)
@@ -498,6 +534,8 @@ fslview = function(file, intern=TRUE, opts =""){
 
 
 #' @title Merge images using FSL
+#' @description This function calls \code{fslmerge} to merge files on some dimension
+#' and either saves the image or returns an object of class nifti   
 #' @param infiles (character) input filenames
 #' @param direction (character) direction to merge over, x, y, z, 
 #' t (time), a (auto)
@@ -541,6 +579,9 @@ fslmerge = function(infiles,
 
 
 #' @title Register using FLIRT
+#' @description This function calls \code{fslirt} to register infile to reffile
+#' and either saves the image or returns an object of class nifti, along with the
+#' transformation matrix omat  
 #' @param infile (character) input filename
 #' @param reffile (character) reference image to be registered to
 #' @param omat (character) Output matrix name
@@ -569,12 +610,13 @@ flirt = function(infile,
   } else {
     stopifnot(!is.null(outfile))
   }
-  infile = path.expand(infile)
-  outfile = path.expand(outfile)
-  reffile = path.expand(reffile)
+#   infile = path.expand(infile)
+#   outfile = path.expand(outfile)
+#   reffile = path.expand(reffile)
   infile = checkimg(infile)  
   reffile = checkimg(reffile)  
-  
+  outfile = checkimg(outfile)  
+
   omat = path.expand(omat)
   cmd <- paste0(cmd, sprintf('flirt -in "%s" -ref "%s" -out "%s" -dof %d %s', 
                             infile, reffile, outfile, dof, opts))

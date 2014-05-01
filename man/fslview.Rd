@@ -16,6 +16,7 @@ fslview(file, intern = TRUE, opts = "")
 character or logical depending on intern
 }
 \description{
-Open image in FSLView
+This function calls \code{fslview} view an image in the FSL
+viewer
 }
 

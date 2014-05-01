@@ -32,6 +32,9 @@ Result from system command, depends if intern is TRUE or
 FALSE.  If retimg is TRUE, then the image will be returned.
 }
 \description{
-Erode image using FSL
+This function calls \code{fslmaths -ero} to erode an image
+with either the default FSL kernel or the kernel specified
+in \code{kopts}.  The function either saves the image or
+returns an object of class nifti.
 }
 

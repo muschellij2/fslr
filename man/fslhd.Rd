@@ -14,6 +14,6 @@ fslhd(file, opts = "")
 Character of infromation from fslhd
 }
 \description{
-Get NIfTI header using FSL
+This function calls \code{fslhd} to obtain a nifti header
 }
 

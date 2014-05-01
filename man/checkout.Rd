@@ -11,6 +11,7 @@ checkout(hd)
 logical indicating if sform and qform consistent
 }
 \description{
-Determine of Q and S forms are consistent
+This function determines if the determinants of the sform
+and qform have the same sign
 }
 

@@ -31,6 +31,8 @@ Result from system command, depends if intern is TRUE or
 FALSE.
 }
 \description{
-Gaussian smooth image using FSL
+This function calls \code{fslmaths -s} to smooth an image
+and either saves the image or returns an object of class
+nifti
 }
 

@@ -24,6 +24,8 @@ fslfill(file, outfile = NULL, bin = TRUE, retimg = FALSE,
 character or logical depending on intern
 }
 \description{
-Fill image holes
+This function calls \code{fslmaths -fillh} to fill in image
+holes and either saves the image or returns an object of
+class nifti
 }
 

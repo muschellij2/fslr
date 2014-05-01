@@ -11,11 +11,14 @@ nii.stub = function(x){
 }
 
 
-#' @title Set Max/Min for nifti object
+#' @title Set Max/Min for nifti object by range of data
 #' @return object of type nifti
 #' @param img nifti object
-#' @description Rescales image @cal_max and @cal_min to be the max and min,
-#' removing NA's, of the image
+#' @description Rescales image @cal_max and @cal_min slots to be the max and min, 
+#' respectively, of an object of class nifti, with \code{na.rm=TRUE}. This is so that 
+#' when images are rendered/written, the values correspond to those
+#' in the array (stored in img@.Data) are plotted on correct grayscale and no error is
+#' given by \code{writeNIfTI}.
 #' @name cal_img
 #' @export
 cal_img = function(img){
@@ -31,7 +34,9 @@ cal_img = function(img){
 #' @title Change intercept to 0 and slope to 1
 #' @return object of type nifti
 #' @param img nifti object (or character of filename)
-#' @description Forces image @scl_slope to 1 nad and @scl_inter to be 0
+#' @description Forces image @scl_slope to 1 and @scl_inter  to be 0 of slots of class
+#' nifti.  This is so that when images are rendered/written, the values correspond to those
+#' in the array (stored in img@.Data) and are not scaled.
 #' @name zero_trans
 #' @export
 zero_trans = function(img){

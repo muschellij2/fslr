@@ -33,6 +33,8 @@ fslthresh(file, outfile = NULL, thresh = 0, uthresh = NULL,
 character or logical depending on intern
 }
 \description{
-Threshold an image
+This function calls \code{fslmaths -thr -uthr} to threshold
+an image and either saves the image or returns an object of
+class nifti
 }
 
