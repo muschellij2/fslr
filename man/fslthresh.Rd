@@ -2,8 +2,8 @@
 \alias{fslthresh}
 \title{Threshold an image}
 \usage{
-fslthresh(file, outfile = file, thresh = 0, retimg = FALSE,
-  reorient = FALSE, intern = TRUE, opts = "")
+fslthresh(file, outfile = NULL, thresh = 0, uthresh = NULL,
+  retimg = FALSE, reorient = FALSE, intern = TRUE, opts = "")
 }
 \arguments{
   \item{file}{(character) filename of image to be
@@ -14,6 +14,9 @@ fslthresh(file, outfile = file, thresh = 0, retimg = FALSE,
 
   \item{thresh}{(numeric) threshold (anything below set to
   0)}
+
+  \item{uthresh}{(numeric) upper threshold (anything above
+  set to 0)}
 
   \item{retimg}{(logical) return image of class nifti}
 
