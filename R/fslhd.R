@@ -14,30 +14,94 @@ get.fsl = function(){
   return(cmd)
 }
 
+
+#' @name get.fsloutput
+#' @title Determine FSL output type
+#' @return extension for output type
+#' @export
+get.fsloutput = function(){
+  cmd = NULL
+  fslout = Sys.getenv("FSLOUTPUTTYPE")
+  if (fslout == "") {
+    fslout = getOption("fsl.outputtype")
+    cmd <- paste0("FSLOUTPUTTYPE=", fslout, "; ", 
+                  "export FSLOUTPUTTYPE; sh ${FSLDIR}/etc/fslconf/fsl.sh; ")    
+  } 
+  if (fslout %in% "" | is.null(fslout)) stop("Can't find FSLOUTPUTTYPE")
+  ext = switch(fslout, 
+               NIFTI_PAIR = ".hdr", 
+               NIFTI_GZ = ".nii.gz", 
+               ANALYZE = ".hdr", 
+               ANALYZE_GZ = ".hdr.gz",
+               NIFTI = ".nii",
+               NIFTI_PAIR_GZ =  ".hdr.gz"
+  )
+  return(ext)
+}
+
+#' @title Create temporary nii.gz file for FSL
+#' @param nim object of class nifti
+#' @return filename of output nii.gz
+#' @export
+#' 
+tempimg = function(nim){
+  f = tempfile()
+  writeNIfTI(nim, filename= f, onefile = TRUE, gzipped = TRUE)
+  f = paste0(f, ".nii.gz")
+  return(f)
+}
+
+#' @title Check if filename is character or nifti object
+#' @param file character or nifti object
+#' @return character filename or temporary nii
+#' @export
+#' 
+checkimg = function(file){
+  if (inherits(file, "nifti")){
+    return(tempimg(file))
+  }
+  if (inherits(file, "character")){
+    return(file)
+  }
+  stop("file not object of nifti or character")
+  return(NULL)
+}
+
+
+
 #' @name fslsmooth
 #' @title Gaussian smooth image using FSL
 #' @param file (character) image to be smoothed
+#' @param sigma (numeric) sigma (in mm) of Gaussian kernel for smoothing
 #' @param mask (character) optional mask given for image
 #' @param outfile (character) resultant smoothed image name (optional)
 #' if not give, will be the stub of the filename then _sigma
-#' @param sigma (numeric) sigma (in mm) of Gaussian kernel for smoothing
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @return Result from system command, depends if intern is TRUE or FALSE.
 #' @export
 fslsmooth <- function(
   file,
+  sigma=10, 
   mask=NULL, 
   outfile=NULL, 
-	sigma=10, intern=TRUE){
+  retimg = FALSE,
+  reorient = FALSE,
+  intern=TRUE){
 	
   cmd = get.fsl()
-
+  file = checkimg(file)
 	cmd <- paste0(cmd, sprintf('fslmaths "%s"', file))
 	if (! is.null(mask)) cmd <- paste(cmd, sprintf(' -mas "%s"', mask))
-	if (is.null(outfile)) {
-    outfile = nii.stub(file)
-		outfile <- sprintf("%s_%s", outfile, sigma)
-	}
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }
 	cmd <- paste(cmd, sprintf(' -s %s "%s";', sigma, outfile))
 
 	### tempfile for mask.stub
@@ -53,8 +117,14 @@ fslsmooth <- function(
   }
   
 	res = system(cmd, intern=intern)
-	x = file.remove(paste0(mask.blur, ".nii.gz"))
-  x = file.remove(paste0(mask.blur, ".nii"))
+  ext = get.fsloutput()
+  outfile = paste0(outfile, ext)  
+	x = file.remove(paste0(mask.blur, ext))
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient)
+    return(img)
+  }   
+#   x = file.remove(paste0(mask.blur, ".nii"))
   return(res)
 }
 
@@ -62,18 +132,37 @@ fslsmooth <- function(
 #' @title Mask image using FSL
 #' @param file (character) image to be masked
 #' @param mask (character) mask given for image
-#' @param outfile (character) resultant masked image name (optional)
+#' @param outfile (character) resultant masked image name
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) additional options to be passed to fslmask
 #' @return Result from system command, depends if intern is TRUE or FALSE.
 #' @export
 fslmask <- function(file, mask=NULL, outfile=NULL, 
-	intern=TRUE, opts=""){
+                    retimg = FALSE,
+                    reorient = FALSE,
+                    intern=TRUE, opts=""){
 	
   cmd = get.fsl()
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }
+  file = checkimg(file)  
 	cmd <- paste(cmd, sprintf('fslmaths "%s" -mas "%s" %s "%s"', 
 		file, mask, opts, outfile))
 	res = system(cmd, intern=intern)
+  ext = get.fsloutput()
+  outfile = paste0(outfile, ext)  
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient)
+    return(img)
+  }  
   return(res)
 }
 
@@ -81,34 +170,38 @@ fslmask <- function(file, mask=NULL, outfile=NULL,
 #' @title Erode image using FSL
 #' @param file (character) image to be eroded
 #' @param outfile (character) resultant eroded image name 
-#' @param retimg (logical) Should the result be the eroded image?
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param kopts (character) options for kernel
 #' @param opts (character) additional options to be passed to fslmaths
-#' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.  If 
 #' retimg is TRUE, then the image will be returned. 
 #' @import oro.nifti
 #' @export
-fslerode <- function(file, outfile=NULL, retimg = FALSE,
-                    intern=TRUE, kopts = "", opts="", reorient= FALSE,...){
+fslerode <- function(file, outfile=NULL,   
+                     retimg = FALSE,
+                     reorient = FALSE,
+                    intern=TRUE, kopts = "", opts="", 
+                    ...){
   
   cmd = get.fsl()
   if (retimg){
     if (is.null(outfile)) {
       outfile = tempfile()
-      trash = TRUE
     }
   } else {
     stopifnot(!is.null(outfile))
   }
+  file = checkimg(file)    
   outfile = nii.stub(outfile)
   cmd <- paste(cmd, sprintf('fslmaths "%s" %s -ero %s "%s"', 
-                            file, kopts, outfile, opts))
+                            file, kopts, opts, outfile))
   res = system(cmd, intern=intern)
-  outfile = paste0(outfile, ".nii.gz")
+  ext = get.fsloutput()
+  outfile = paste0(outfile, ext)
   stopifnot(file.exists(outfile))
   if (retimg){
     img = readNIfTI(outfile, reorient=reorient)
@@ -260,45 +353,112 @@ fslrange <- function(file){
 #' @param file (character) filename of image to be filled
 #' @param outfile (character) name of resultant filled file
 #' @param bin (logical) binarize the image before filling
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
 #' @param intern (logical) pass to \code{\link{system}}
 #' @return character or logical depending on intern
 #' @export
-fslfill = function(file, outfile = file, bin=TRUE, intern=TRUE){
+fslfill = function(file, outfile = NULL, bin=TRUE, 
+                   retimg = FALSE,
+                   reorient = FALSE,
+                   intern=TRUE){
   cmd <- get.fsl()
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }  
+  file = checkimg(file)    
   runbin = ""
   if (bin) runbin = "-bin"
   cmd <- paste(cmd, sprintf('fslmaths "%s" %s -fillh "%s"', file, 
                             runbin, outfile))
-  system(cmd, intern=intern)
+  res = system(cmd, intern=intern)
+  ext = get.fsloutput()
+  outfile = paste0(outfile, ext)  
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient)
+    return(img)
+  }
+  return(res)
 }
 
 #' @title Threshold an image
 #' @param file (character) filename of image to be thresholded
 #' @param outfile (character) name of resultant thresholded file
 #' @param thresh (numeric) threshold (anything below set to 0)
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) additional options to be passed to fslmaths 
 #' @return character or logical depending on intern
 #' @export
 fslthresh = function(file, outfile = file, 
-                     thresh = 0, intern=TRUE, 
+                     thresh = 0, 
+                     retimg = FALSE,
+                     reorient = FALSE,
+                     intern=TRUE, 
                      opts = ""){
   cmd <- get.fsl()
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }  
+  file = checkimg(file)  
+  
   cmd <- paste(cmd, sprintf('fslmaths "%s" -thr %f %s "%s"', 
   	file, thresh, opts, outfile))
-  system(cmd, intern=intern)
+  res = system(cmd, intern=intern)
+  ext = get.fsloutput()
+  outfile = paste0(outfile, ext)  
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient)
+    return(img)
+  }
+  return(res)
 }
 
 #' @title Subsample image by factor of 2
 #' @param file (character) filename of image to be thresholded
 #' @param outfile (character) name of resultant subsampled file
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @return character or logical depending on intern
 #' @export
-fslsub2 = function(file, outfile = file, intern=TRUE){
+fslsub2 = function(file, 
+                   outfile = NULL, 
+                   retimg = FALSE,
+                   reorient = FALSE,
+                   intern=TRUE){
   cmd <- get.fsl()
-  cmd <- paste(cmd, sprintf('fslmaths "%s" -subsamp2 "%s"', file, outfile))
-  system(cmd, intern=intern)
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }  
+  file = checkimg(file)  
+  
+  cmd <- paste(cmd, sprintf('fslmaths "%s" -subsamp2 "%s"', 
+                            file, outfile))
+  res = system(cmd, intern=intern)
+  ext = get.fsloutput()
+  outfile = paste0(outfile, ext)  
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient)
+    return(img)
+  }
+  return(res)
 }
 
 #' @title Open image in FSLView
@@ -310,26 +470,49 @@ fslsub2 = function(file, outfile = file, intern=TRUE){
 fslview = function(file, intern=TRUE, opts =""){
   cmd <- get.fsl()
   cmd <- paste(cmd, sprintf('fslview "%s" %s', file, opts))
-  system(cmd, intern=intern)
+  res = system(cmd, intern=intern)
+  return(res)
 }
 
 
 #' @title Merge images using FSL
 #' @param infiles (character) input filenames
-#' @param outfile (character) output filename
 #' @param direction (character) direction to merge over, x, y, z, 
 #' t (time), a (auto)
+#' @param outfile (character) output filename
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
 #' @param intern (logical) pass to \code{\link{system}}
 #' @return character or logical depending on intern
 #' @export
-fslmerge = function(infiles, outfile, 
+fslmerge = function(infiles, 
                    direction = c("x", "y", "z", "t", "a"), 
+                   outfile = NULL, 
+                   retimg = FALSE,
+                   reorient = FALSE,                   
                    intern=TRUE){
   cmd <- get.fsl()
   direction = direction[1]
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }   
+  file = checkimg(file)  
+  
   cmd <- paste(cmd, sprintf('fslmerge "%s" -%s "%s"', 
                             outfile, direction, infiles))
-  system(cmd, intern=intern)
+  res = system(cmd, intern=intern)
+  ext = get.fsloutput()
+  outfile = paste0(outfile, ext)  
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient)
+    return(img)
+  }
+  return(res)
 }
 
 
@@ -337,25 +520,48 @@ fslmerge = function(infiles, outfile,
 
 #' @title Register using FLIRT
 #' @param infile (character) input filename
-#' @param outfile (character) output filename
 #' @param reffile (character) reference image to be registered to
 #' @param omat (character) Output matrix name
 #' @param dof (numeric) degrees of freedom
-#' @param opts (character) additional options to FLIRT
+#' @param outfile (character) output filename
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}. 
 #' @param intern (logical) pass to \code{\link{system}}
+#' @param opts (character) additional options to FLIRT
 #' @return character or logical depending on intern
 #' @export
-flirt = function(infile, outfile, 
+flirt = function(infile, 
                     reffile, omat,
                     dof,
-                    opts="",
-                    intern=TRUE){
+                    outfile = NULL,                  
+                    retimg = FALSE,
+                    reorient = FALSE,                 
+                    intern=TRUE,
+                    opts=""){
   cmd <- get.fsl()
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }
   infile = path.expand(infile)
   outfile = path.expand(outfile)
   reffile = path.expand(reffile)
+  infile = checkimg(infile)  
+  reffile = checkimg(reffile)  
+  
   omat = path.expand(omat)
   cmd <- paste(cmd, sprintf('flirt -in "%s" -ref "%s" -out "%s" -dof %d %s', 
                             infile, reffile, outfile, dof, opts))
-  system(cmd, intern=intern)
+  res = system(cmd, intern=intern)
+  ext = get.fsloutput()
+  outfile = paste0(outfile, ext)  
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient)
+    return(img)
+  }
+  return(res)
 }

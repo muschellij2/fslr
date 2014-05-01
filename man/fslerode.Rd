@@ -2,16 +2,19 @@
 \alias{fslerode}
 \title{Erode image using FSL}
 \usage{
-fslerode(file, outfile = NULL, retimg = FALSE, intern = TRUE,
-  kopts = "", opts = "", reorient = FALSE, ...)
+fslerode(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
+  intern = TRUE, kopts = "", opts = "", ...)
 }
 \arguments{
   \item{file}{(character) image to be eroded}
 
   \item{outfile}{(character) resultant eroded image name}
 
-  \item{retimg}{(logical) Should the result be the eroded
-  image?}
+  \item{retimg}{(logical) return image of class nifti}
+
+  \item{reorient}{(logical) If retimg, should file be
+  reoriented when read in? Passed to
+  \code{\link{readNIfTI}}.}
 
   \item{intern}{(logical) to be passed to
   \code{\link{system}}}
@@ -20,10 +23,6 @@ fslerode(file, outfile = NULL, retimg = FALSE, intern = TRUE,
 
   \item{opts}{(character) additional options to be passed
   to fslmaths}
-
-  \item{reorient}{(logical) If retimg, should file be
-  reoriented when read in? Passed to
-  \code{\link{readNIfTI}}.}
 
   \item{...}{additional arguments passed to
   \code{\link{readNIfTI}}.}

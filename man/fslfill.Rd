@@ -2,7 +2,8 @@
 \alias{fslfill}
 \title{Fill image holes}
 \usage{
-fslfill(file, outfile = file, bin = TRUE, intern = TRUE)
+fslfill(file, outfile = NULL, bin = TRUE, retimg = FALSE,
+  reorient = FALSE, intern = TRUE)
 }
 \arguments{
   \item{file}{(character) filename of image to be filled}
@@ -10,6 +11,12 @@ fslfill(file, outfile = file, bin = TRUE, intern = TRUE)
   \item{outfile}{(character) name of resultant filled file}
 
   \item{bin}{(logical) binarize the image before filling}
+
+  \item{retimg}{(logical) return image of class nifti}
+
+  \item{reorient}{(logical) If retimg, should file be
+  reoriented when read in? Passed to
+  \code{\link{readNIfTI}}.}
 
   \item{intern}{(logical) pass to \code{\link{system}}}
 }

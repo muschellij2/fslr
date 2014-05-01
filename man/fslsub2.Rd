@@ -2,7 +2,8 @@
 \alias{fslsub2}
 \title{Subsample image by factor of 2}
 \usage{
-fslsub2(file, outfile = file, intern = TRUE)
+fslsub2(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
+  intern = TRUE)
 }
 \arguments{
   \item{file}{(character) filename of image to be
@@ -10,6 +11,12 @@ fslsub2(file, outfile = file, intern = TRUE)
 
   \item{outfile}{(character) name of resultant subsampled
   file}
+
+  \item{retimg}{(logical) return image of class nifti}
+
+  \item{reorient}{(logical) If retimg, should file be
+  reoriented when read in? Passed to
+  \code{\link{readNIfTI}}.}
 
   \item{intern}{(logical) pass to \code{\link{system}}}
 }

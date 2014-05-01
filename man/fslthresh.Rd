@@ -2,7 +2,8 @@
 \alias{fslthresh}
 \title{Threshold an image}
 \usage{
-fslthresh(file, outfile = file, thresh = 0, intern = TRUE, opts = "")
+fslthresh(file, outfile = file, thresh = 0, retimg = FALSE,
+  reorient = FALSE, intern = TRUE, opts = "")
 }
 \arguments{
   \item{file}{(character) filename of image to be
@@ -13,6 +14,12 @@ fslthresh(file, outfile = file, thresh = 0, intern = TRUE, opts = "")
 
   \item{thresh}{(numeric) threshold (anything below set to
   0)}
+
+  \item{retimg}{(logical) return image of class nifti}
+
+  \item{reorient}{(logical) If retimg, should file be
+  reoriented when read in? Passed to
+  \code{\link{readNIfTI}}.}
 
   \item{intern}{(logical) pass to \code{\link{system}}}
 
