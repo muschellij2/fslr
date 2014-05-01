@@ -3,7 +3,7 @@
 \title{Fill image holes}
 \usage{
 fslfill(file, outfile = NULL, bin = TRUE, retimg = FALSE,
-  reorient = FALSE, intern = TRUE)
+  reorient = FALSE, intern = TRUE, ...)
 }
 \arguments{
   \item{file}{(character) filename of image to be filled}
@@ -19,6 +19,9 @@ fslfill(file, outfile = NULL, bin = TRUE, retimg = FALSE,
   \code{\link{readNIfTI}}.}
 
   \item{intern}{(logical) pass to \code{\link{system}}}
+
+  \item{...}{additional arguments passed to
+  \code{\link{readNIfTI}}.}
 }
 \value{
 character or logical depending on intern
@@ -27,5 +30,14 @@ character or logical depending on intern
 This function calls \code{fslmaths -fillh} to fill in image
 holes and either saves the image or returns an object of
 class nifti
+}
+\examples{
+if (have.fsl()){
+system.time({
+ f = system.file("MNI152_T1_4mm_brain.nii.gz", package="brainR")
+ s.img = fslerode(f, kopts = "-kernel boxv 5", retimg=TRUE)
+ img = fslfill(s.img, retimg=TRUE)
+})
+}
 }
 

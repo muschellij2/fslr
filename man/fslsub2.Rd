@@ -3,7 +3,7 @@
 \title{Subsample image by factor of 2}
 \usage{
 fslsub2(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE)
+  intern = TRUE, ...)
 }
 \arguments{
   \item{file}{(character) filename of image to be
@@ -19,6 +19,9 @@ fslsub2(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
   \code{\link{readNIfTI}}.}
 
   \item{intern}{(logical) pass to \code{\link{system}}}
+
+  \item{...}{additional arguments passed to
+  \code{\link{readNIfTI}}.}
 }
 \value{
 character or logical depending on intern

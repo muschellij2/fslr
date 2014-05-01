@@ -3,7 +3,7 @@
 \title{Merge images using FSL}
 \usage{
 fslmerge(infiles, direction = c("x", "y", "z", "t", "a"), outfile = NULL,
-  retimg = FALSE, reorient = FALSE, intern = TRUE)
+  retimg = FALSE, reorient = FALSE, intern = TRUE, ...)
 }
 \arguments{
   \item{infiles}{(character) input filenames}
@@ -20,6 +20,9 @@ fslmerge(infiles, direction = c("x", "y", "z", "t", "a"), outfile = NULL,
   \code{\link{readNIfTI}}.}
 
   \item{intern}{(logical) pass to \code{\link{system}}}
+
+  \item{...}{additional arguments passed to
+  \code{\link{readNIfTI}}.}
 }
 \value{
 character or logical depending on intern

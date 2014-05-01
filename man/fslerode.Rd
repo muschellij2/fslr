@@ -37,4 +37,13 @@ with either the default FSL kernel or the kernel specified
 in \code{kopts}.  The function either saves the image or
 returns an object of class nifti.
 }
+\examples{
+if (have.fsl()){
+system.time({
+ f = system.file("MNI152_T1_4mm_brain.nii.gz", package="brainR")
+ s.img = fslerode(f, kopts = "-kernel boxv 5", retimg=TRUE)
+ # img = readNIfTI(f, reorient=FALSE)
+})
+}
+}
 

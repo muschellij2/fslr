@@ -3,7 +3,7 @@
 \title{Threshold an image}
 \usage{
 fslthresh(file, outfile = NULL, thresh = 0, uthresh = NULL,
-  retimg = FALSE, reorient = FALSE, intern = TRUE, opts = "")
+  retimg = FALSE, reorient = FALSE, intern = TRUE, opts = "", ...)
 }
 \arguments{
   \item{file}{(character) filename of image to be
@@ -28,6 +28,9 @@ fslthresh(file, outfile = NULL, thresh = 0, uthresh = NULL,
 
   \item{opts}{(character) additional options to be passed
   to fslmaths}
+
+  \item{...}{additional arguments passed to
+  \code{\link{readNIfTI}}.}
 }
 \value{
 character or logical depending on intern
@@ -36,5 +39,13 @@ character or logical depending on intern
 This function calls \code{fslmaths -thr -uthr} to threshold
 an image and either saves the image or returns an object of
 class nifti
+}
+\examples{
+if (have.fsl()){
+system.time({
+ f = system.file("MNI152_T1_4mm_brain.nii.gz", package="brainR")
+ t.img = fslthresh(f, thresh = 0, uthresh=100, retimg=TRUE)
+})
+}
 }
 

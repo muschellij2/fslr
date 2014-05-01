@@ -3,7 +3,7 @@
 \title{Mask image using FSL}
 \usage{
 fslmask(file, mask = NULL, outfile = NULL, retimg = FALSE,
-  reorient = FALSE, intern = TRUE, opts = "")
+  reorient = FALSE, intern = TRUE, opts = "", ...)
 }
 \arguments{
   \item{file}{(character) image to be masked}
@@ -23,6 +23,9 @@ fslmask(file, mask = NULL, outfile = NULL, retimg = FALSE,
 
   \item{opts}{(character) additional options to be passed
   to fslmask}
+
+  \item{...}{additional arguments passed to
+  \code{\link{readNIfTI}}.}
 }
 \value{
 Result from system command, depends if intern is TRUE or
