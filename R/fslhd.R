@@ -154,7 +154,8 @@ fslsmooth <- function(
     stopifnot(!is.null(outfile))
   }
 	cmd <- paste(cmd, sprintf(' -s %s "%s";', sigma, outfile))
-
+  ext = get.imgext()
+  
 	### tempfile for mask.stub
   if ( !is.null(mask) ) {
     mask = checkimg(mask)
@@ -170,7 +171,6 @@ fslsmooth <- function(
   }
   
 	res = system(cmd, intern=intern)
-  ext = get.imgext()
   outfile = paste0(outfile, ext)  
   if (retimg){
     img = readNIfTI(outfile, reorient=reorient, ...)
