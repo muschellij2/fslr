@@ -142,7 +142,10 @@ fslsmooth <- function(
   cmd = get.fsl()
   file = checkimg(file)
 	cmd <- paste0(cmd, sprintf('fslmaths "%s"', file))
-	if (! is.null(mask)) cmd <- paste(cmd, sprintf(' -mas "%s"', mask))
+	if (! is.null(mask)) {
+    mask = checkimg(mask)
+    cmd <- paste(cmd, sprintf(' -mas "%s"', mask))
+	}
   if (retimg){
     if (is.null(outfile)) {
       outfile = tempfile()
@@ -192,7 +195,7 @@ fslsmooth <- function(
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.
 #' @export
-fslmask <- function(file, mask=NULL, outfile=NULL, 
+fslmask <- function(file, mask, outfile=NULL, 
                     retimg = FALSE,
                     reorient = FALSE,
                     intern=TRUE, opts="", ...){
@@ -205,7 +208,7 @@ fslmask <- function(file, mask=NULL, outfile=NULL,
   } else {
     stopifnot(!is.null(outfile))
   }
-  file = checkimg(file)  
+  file = checkimg(file)
 	cmd <- paste0(cmd, sprintf('fslmaths "%s" -mas "%s" %s "%s"', 
 		file, mask, opts, outfile))
 	res = system(cmd, intern=intern)

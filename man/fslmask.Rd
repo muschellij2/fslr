@@ -3,8 +3,8 @@
 \alias{fslmask}
 \title{Mask image using FSL}
 \usage{
-fslmask(file, mask = NULL, outfile = NULL, retimg = FALSE,
-  reorient = FALSE, intern = TRUE, opts = "", ...)
+fslmask(file, mask, outfile = NULL, retimg = FALSE, reorient = FALSE,
+  intern = TRUE, opts = "", ...)
 }
 \arguments{
 \item{file}{(character) image to be masked}
