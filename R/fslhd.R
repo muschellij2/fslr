@@ -156,8 +156,10 @@ fslsmooth <- function(
 	cmd <- paste(cmd, sprintf(' -s %s "%s";', sigma, outfile))
   ext = get.imgext()
   
+  rm.mask.img = FALSE
 	### tempfile for mask.stub
   if ( !is.null(mask) ) {
+    rm.mask.img = TRUE
     mask = checkimg(mask)
     mask.stub <- basename(mask)
     mask.stub = nii.stub(mask.stub)
@@ -167,11 +169,14 @@ fslsmooth <- function(
    		mask, sigma, mask.blur))
    	cmd <- paste(cmd, sprintf('fslmaths "%s" -div "%s" -mas "%s" "%s";', 
    		outfile, mask.blur, mask, outfile))
-    x = file.remove(paste0(mask.blur, ext))    
   }
   
 	res = system(cmd, intern=intern)
   outfile = paste0(outfile, ext)  
+  if (rm.mask.img){
+    file.remove(paste0(mask.blur, ext))    
+  }
+  
   if (retimg){
     img = readNIfTI(outfile, reorient=reorient, ...)
     return(img)
