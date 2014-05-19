@@ -154,6 +154,7 @@ fslsmooth <- function(
 
 	### tempfile for mask.stub
   if ( !is.null(mask) ) {
+    mask = checkimg(mask)
     mask.stub <- basename(mask)
     mask.stub = nii.stub(mask.stub)
   	mask.stub <- file.path(dirname(mask), mask.stub)
