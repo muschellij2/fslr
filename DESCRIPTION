@@ -9,7 +9,8 @@ Description: Creates some small functions that link to FSL.
 Depends:
     stringr,
     oro.nifti,
-    brainR,
-    knitr
+    brainR
 License: GPL-2
 VignetteBuilder: knitr
+Suggests:
+    knitr
