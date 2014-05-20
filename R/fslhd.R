@@ -153,6 +153,7 @@ fslsmooth <- function(
   } else {
     stopifnot(!is.null(outfile))
   }
+  outfile = nii.stub(outfile)
 	cmd <- paste(cmd, sprintf(' -s %s "%s";', sigma, outfile))
   ext = get.imgext()
   
@@ -213,6 +214,7 @@ fslmask <- function(file, mask, outfile=NULL,
   } else {
     stopifnot(!is.null(outfile))
   }
+  outfile = nii.stub(outfile)
   file = checkimg(file)
 	cmd <- paste0(cmd, sprintf('fslmaths "%s" -mas "%s" %s "%s"', 
 		file, mask, opts, outfile))
@@ -266,8 +268,8 @@ fslerode <- function(file, outfile=NULL,
   } else {
     stopifnot(!is.null(outfile))
   }
-  file = checkimg(file)    
   outfile = nii.stub(outfile)
+  file = checkimg(file)    
   cmd <- paste0(cmd, sprintf('fslmaths "%s" %s -ero %s "%s"', 
                             file, kopts, opts, outfile))
   res = system(cmd, intern=intern)
@@ -464,6 +466,8 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
   } else {
     stopifnot(!is.null(outfile))
   }  
+  outfile = nii.stub(outfile)
+  
   file = checkimg(file)    
   runbin = ""
   if (bin) runbin = "-bin"
@@ -516,6 +520,8 @@ fslthresh = function(file, outfile = NULL,
   } else {
     stopifnot(!is.null(outfile))
   }  
+  outfile = nii.stub(outfile)
+  
   file = checkimg(file)  
   
   if (!is.null(uthresh)){
@@ -558,6 +564,8 @@ fslsub2 = function(file,
   } else {
     stopifnot(!is.null(outfile))
   }  
+  outfile = nii.stub(outfile)
+  
   file = checkimg(file)  
   
   cmd <- paste0(cmd, sprintf('fslmaths "%s" -subsamp2 "%s"', 
@@ -617,6 +625,7 @@ fslmerge = function(infiles,
   } else {
     stopifnot(!is.null(outfile))
   }   
+  outfile = nii.stub(outfile)  
   file = checkimg(file)  
   
   cmd <- paste0(cmd, sprintf('fslmerge "%s" -%s "%s"', 
@@ -673,6 +682,7 @@ flirt = function(infile,
   infile = checkimg(infile)  
   reffile = checkimg(reffile)  
   outfile = checkimg(outfile)  
+  outfile = nii.stub(outfile)
 
   omat = path.expand(omat)
   cmd <- paste0(cmd, sprintf('flirt -in "%s" -ref "%s" -out "%s" -dof %d %s', 
