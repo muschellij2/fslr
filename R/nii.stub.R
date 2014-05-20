@@ -3,7 +3,6 @@
 #' @return NULL
 #' @param x character vector of filenames ending in .nii or .nii.gz
 #' @export
-
 nii.stub = function(x){
   stub = gsub("\\.gz$", "", x)
   stub = gsub("\\.nii$", "", stub)
@@ -40,7 +39,19 @@ cal_img = function(img){
 #' @name zero_trans
 #' @export
 zero_trans = function(img){
+  img = check_nifti(img)  
   img@scl_slope = 1
   img@scl_inter = 0
   return(img)
+}
+
+
+
+#' @title Gets Voxel Dimensions
+#' @return Vector of length 3
+#' @param img nifti object
+#' @description Grabs the pixdim and takes the correct elements
+#' @export
+voxdim = function(img){
+  pixdim(img)[2:4]
 }

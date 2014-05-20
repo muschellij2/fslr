@@ -1,0 +1,12 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{An R Markdown Vignette with knitr}
+-->
+```{r setup, include=FALSE}
+library(knitr)
+```
+
+This is an example of how to use `fslR` in `R`. 
+
+## Reading in Data
+`fslr` implicitly is partnered with the `nifti` format from `oro.nifti`.  All functions will check to see whether the file passed in a character path to a filename.  If the object is a `nifti` object, the programs will create a temporary file using `tempfile()` and 

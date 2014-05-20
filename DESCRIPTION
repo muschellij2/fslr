@@ -11,3 +11,4 @@ Depends:
     oro.nifti,
     brainR
 License: GPL-2
+VignetteBuilder: knitr
