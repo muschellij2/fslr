@@ -127,7 +127,7 @@ checkimg = function(file){
 #' img = nifti(x, dim= c(100, 100, 100), 
 #' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
 #' cal.max = max(x), pixdim = rep(1, 4))
-#'  s.img = fslsmooth(img, retimg=TRUE)
+#' s.img = fslsmooth(img, retimg=TRUE)
 #' })
 #' }
 #' @export
