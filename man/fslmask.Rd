@@ -26,6 +26,16 @@ Passed to \code{\link{readNIfTI}}.}
 }
 \value{
 Result from system command, depends if intern is TRUE or FALSE.
+if (have.fsl()){
+system.time({
+x = array(rnorm(1e6), dim = c(100, 100, 100))
+img = nifti(x, dim= c(100, 100, 100),
+datatype = convert.datatype()$FLOAT32, cal.min = min(x),
+cal.max = max(x), pixdim = rep(1, 4))
+mask = img > .5
+masked = fslmask(img, mask = mask, retimg=TRUE)
+})
+}
 }
 \description{
 This function calls \code{fslmaths -mas} to mask an image from

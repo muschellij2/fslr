@@ -202,6 +202,16 @@ fslsmooth <- function(
 #' @param opts (character) additional options to be passed to fslmask
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.
+#' if (have.fsl()){
+#' system.time({
+#' x = array(rnorm(1e6), dim = c(100, 100, 100))
+#' img = nifti(x, dim= c(100, 100, 100), 
+#' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
+#' cal.max = max(x), pixdim = rep(1, 4))
+#' mask = img > .5
+#' masked = fslmask(img, mask = mask, retimg=TRUE)
+#' })
+#' } 
 #' @export
 fslmask <- function(file, mask, outfile=NULL, 
                     retimg = FALSE,
@@ -251,11 +261,14 @@ fslmask <- function(file, mask, outfile=NULL,
 #' @examples
 #' if (have.fsl()){
 #' system.time({
-#'  f = system.file("MNI152_T1_4mm_brain.nii.gz", package="brainR")
-#'  s.img = fslerode(f, kopts = "-kernel boxv 5", retimg=TRUE)
-#'  # img = readNIfTI(f, reorient=FALSE)
-#'})
-#' } 
+#' x = array(rnorm(1e6), dim = c(100, 100, 100))
+#' img = nifti(x, dim= c(100, 100, 100), 
+#' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
+#' cal.max = max(x), pixdim = rep(1, 4))
+#' mask = img > .5
+#' eroded = fslerode(mask, kopts = "-kernel boxv 5", retimg=TRUE)
+#' })
+#' }    
 fslerode <- function(file, outfile=NULL,   
                      retimg = FALSE,
                      reorient = FALSE,
@@ -451,10 +464,14 @@ fslrange <- function(file){
 #' @examples
 #' if (have.fsl()){
 #' system.time({
-#'  f = system.file("MNI152_T1_4mm_brain.nii.gz", package="brainR")
-#'  s.img = fslerode(f, kopts = "-kernel boxv 5", retimg=TRUE)
-#'  img = fslfill(s.img, retimg=TRUE)
-#'})
+#' x = array(rnorm(1e6), dim = c(100, 100, 100))
+#' img = nifti(x, dim= c(100, 100, 100), 
+#' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
+#' cal.max = max(x), pixdim = rep(1, 4))
+#' mask = img > .5
+#' eroded = fslerode(mask, kopts = "-kernel boxv 5", retimg=TRUE)
+#' filled = fslfill(eroded, retimg= TRUE)
+#' })
 #' }  
 fslfill = function(file, outfile = NULL, bin=TRUE, 
                    retimg = FALSE,
@@ -503,9 +520,12 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
 #' @examples
 #' if (have.fsl()){
 #' system.time({
-#'  f = system.file("MNI152_T1_4mm_brain.nii.gz", package="brainR")
-#'  t.img = fslthresh(f, thresh = 0, uthresh=100, retimg=TRUE)
-#'})
+#' x = array(rnorm(1e6), dim = c(100, 100, 100))
+#' img = nifti(x, dim= c(100, 100, 100), 
+#' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
+#' cal.max = max(x), pixdim = rep(1, 4))
+#' thresh = fslthresh(img, thresh=0, uthresh = 2, retimg=TRUE)
+#' })
 #' } 
 fslthresh = function(file, outfile = NULL, 
                      thresh = 0, 
@@ -553,6 +573,17 @@ fslthresh = function(file, outfile = NULL,
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
 #' @return character or logical depending on intern
 #' @export
+#' @examples
+#' if (have.fsl()){
+#' system.time({
+#' x = array(rnorm(1e6), dim = c(100, 100, 100))
+#' img = nifti(x, dim= c(100, 100, 100), 
+#' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
+#' cal.max = max(x), pixdim = rep(1, 4))
+#' subsamp = fslsub2(img, retimg=TRUE)
+#' print(voxdim(subsamp))
+#' })
+#' } 
 fslsub2 = function(file, 
                    outfile = NULL, 
                    retimg = FALSE,

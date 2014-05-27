@@ -32,9 +32,13 @@ and either saves the image or returns an object of class nifti
 \examples{
 if (have.fsl()){
 system.time({
- f = system.file("MNI152_T1_4mm_brain.nii.gz", package="brainR")
- s.img = fslerode(f, kopts = "-kernel boxv 5", retimg=TRUE)
- img = fslfill(s.img, retimg=TRUE)
+x = array(rnorm(1e6), dim = c(100, 100, 100))
+img = nifti(x, dim= c(100, 100, 100),
+datatype = convert.datatype()$FLOAT32, cal.min = min(x),
+cal.max = max(x), pixdim = rep(1, 4))
+mask = img > .5
+eroded = fslerode(mask, kopts = "-kernel boxv 5", retimg=TRUE)
+filled = fslfill(eroded, retimg= TRUE)
 })
 }
 }

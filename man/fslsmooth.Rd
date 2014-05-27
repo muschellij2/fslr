@@ -35,8 +35,11 @@ saves the image or returns an object of class nifti
 \examples{
 if (have.fsl()){
 system.time({
- img = system.file("MNI152_T1_4mm_brain.nii.gz", package="brainR")
- s.img = fslsmooth(img, retimg=TRUE)
+x = array(rnorm(1e6), dim = c(100, 100, 100))
+img = nifti(x, dim= c(100, 100, 100),
+datatype = convert.datatype()$FLOAT32, cal.min = min(x),
+cal.max = max(x), pixdim = rep(1, 4))
+s.img = fslsmooth(img, retimg=TRUE)
 })
 }
 }
