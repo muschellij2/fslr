@@ -75,6 +75,7 @@ datatype = function(img, datatype=NULL, bitpix=NULL, trybyte=TRUE){
   if (!is.null(datatype) & !is.null(bitpix)){
     img@datatype <- datatype
     img@bitpix <- bitpix
+    return(img)
   }
   if (!is.null(datatype) & is.null(bitpix)){
     stop("Both bitipx and datatype need to be specified if oneis")
