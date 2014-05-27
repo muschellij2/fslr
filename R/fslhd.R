@@ -119,14 +119,16 @@ checkimg = function(file){
 #' Passed to \code{\link{readNIfTI}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
-#' @import brainR
 #' @return Result from system command, depends if intern is TRUE or FALSE.
 #' @examples
 #' if (have.fsl()){
 #' system.time({
-#'  img = system.file("MNI152_T1_4mm_brain.nii.gz", package="brainR")
+#' x = array(rnorm(1e6), dim = c(100, 100, 100))
+#' img = nifti(x, dim= c(100, 100, 100), 
+#' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
+#' cal.max = max(x), pixdim = rep(1, 4))
 #'  s.img = fslsmooth(img, retimg=TRUE)
-#'})
+#' })
 #' }
 #' @export
 fslsmooth <- function(

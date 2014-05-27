@@ -8,8 +8,7 @@ Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Creates some small functions that link to FSL.
 Depends:
     stringr,
-    oro.nifti,
-    brainR
+    oro.nifti
 License: GPL-2
 VignetteBuilder: knitr
 Suggests:
