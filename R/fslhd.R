@@ -24,6 +24,8 @@ get.fsl = function(){
 #' \code{fsl.path} is set and returns logical
 #' @return Logical TRUE is FSL is accessible, FALSE if not
 #' @export
+#' @examples
+#' have.fsl()
 have.fsl = function(){
   x = suppressWarnings(try(get.fsl(), silent=TRUE))
   return(!inherits(x, "try-error"))
@@ -102,6 +104,37 @@ checkimg = function(file){
   stop("file not object of nifti or character")
   return(NULL)
 }
+
+#' @title FSL Maths Help
+#' @description This function calls \code{fslmaths}'s help
+#' @return Prints help output and returns output as character vector
+#' @aliases fslsmooth.help fslmask.help fslerode.help fslfill.help 
+#' fslsub2.help fslthresh.help
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslstats.help() 
+#' }
+fslmaths.help = function(){
+  return(fslhelp("fslmaths"))
+}
+
+
+
+#' @title FSL Stats Help
+#' @description This function calls \code{fslstats}'s help
+#' @return Prints help output and returns output as character vector
+#' @aliases fslrange.help fslmask.help fslerode.help fslfill.help 
+#' fslsub2.help fslthresh.help
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslstats.help() 
+#' }
+fslstats.help = function(){
+  return(fslhelp("fslstats"))
+}
+
 
 
 
@@ -312,6 +345,14 @@ fslhd <- function(file, opts=""){
   file = checkimg(file)
 	cmd <- paste0(cmd, sprintf('fslhd "%s" %s', file, opts))
 	system(cmd, intern=TRUE)
+}
+
+#' @title FSLhd help
+#' @description This function calls \code{fslhd}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+fslhd.help = function(){
+  return(fslhelp("fslhd", help.arg=""))
 }
 
 #' @title Parse FSL Header
@@ -564,7 +605,7 @@ fslthresh = function(file, outfile = NULL,
 #' @title Subsample image by factor of 2
 #' @description This function calls \code{fslmaths -subsamp2} to subsample an image
 #' and either saves the image or returns an object of class nifti   
-#' @param file (character) filename of image to be thresholded
+#' @param file (character) filename of image to be subsampled
 #' @param outfile (character) name of resultant subsampled file
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
@@ -614,7 +655,8 @@ fslsub2 = function(file,
 }
 
 #' @title Open image in FSLView
-#' @description This function calls \code{fslview} view an image in the FSL viewer
+#' @description This function calls \code{fslview} to view an image 
+#' in the FSL viewer
 #' @param file (character) filename of image to be thresholded
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) options for FSLView
@@ -628,6 +670,13 @@ fslview = function(file, intern=TRUE, opts =""){
   return(res)
 }
 
+#' @title FSLView help
+#' @description This function calls \code{fslview}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+fslview.help = function(){
+  return(fslhelp("fslview"))
+}
 
 #' @title Merge images using FSL
 #' @description This function calls \code{fslmerge} to merge files on some dimension
@@ -673,6 +722,14 @@ fslmerge = function(infiles,
   return(res)
 }
 
+
+#' @title FSLMerge help
+#' @description This function calls \code{fslmerge}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+fslmerge.help = function(){
+  return(fslhelp("fslmerge"))
+}
 
 
 
@@ -728,4 +785,66 @@ flirt = function(infile,
     return(img)
   }
   return(res)
+}
+
+
+#' @title FLIRT help
+#' @description This function calls \code{flirt}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+flirt.help = function(){
+  return(fslhelp("flirt"))
+}
+
+
+#' @title Run MELODIC ICA
+#' @description This function calls \code{melodic} 
+#' @param file (character) image to be run
+#' @param outdir (character) output directory. 
+#' (Default \code{dirname(file)})
+#' @param intern (logical) pass to \code{\link{system}}
+#' @param opts (character) options for melodic
+#' @return character or logical depending on intern
+#' @export
+melodic = function(file, 
+                   outdir = dirname(file), 
+                   intern=TRUE,                   
+                   opts =""){
+  cmd <- get.fsl()
+  file = path.expand(outdir)
+
+  outdir = path.expand(outdir)
+  stopifnot(file.exists(outdir))
+  file = checkimg(file)  
+
+  cmd <- paste0(cmd, sprintf('melodic --in "%s" --outdir "%s" %s', 
+                             file, outdir, opts))
+  res = system(cmd, intern=intern)
+  return(res)
+}
+
+#' @title MELODIC help
+#' @description This function calls \code{melodic}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+melodic.help = function(){
+  return(fslhelp("melodic"))
+}
+
+
+#' @title Wrapper for getting fsl help
+#' @description This function takes in the function and returns the
+#' help from FSL for that function
+#' @param func_name FSL function name
+#' @param help.arg Argument to print help, usually "--help" 
+#' @param extra.args Extra arguments to be passed other than 
+#' \code{--help}
+#' @return Prints help output and returns output as character vector
+#' @export
+fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
+    get.fsl()
+    args = paste(help.arg, extra.args, sep=" ", collapse = " ")
+    res = system2(func_name, args = args, stdout=TRUE, stderr=TRUE)  
+    cat(res, sep="\n")
+    return(invisible(res))
 }
