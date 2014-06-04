@@ -113,7 +113,7 @@ checkimg = function(file){
 #' @export
 #' @examples
 #' if (have.fsl()){
-#'  fslstats.help() 
+#'  fslmaths.help() 
 #' }
 fslmaths.help = function(){
   return(fslhelp("fslmaths"))
@@ -124,8 +124,7 @@ fslmaths.help = function(){
 #' @title FSL Stats Help
 #' @description This function calls \code{fslstats}'s help
 #' @return Prints help output and returns output as character vector
-#' @aliases fslrange.help fslmask.help fslerode.help fslfill.help 
-#' fslsub2.help fslthresh.help
+#' @aliases fslrange.help
 #' @export
 #' @examples
 #' if (have.fsl()){

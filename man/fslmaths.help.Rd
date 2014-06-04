@@ -19,7 +19,7 @@ This function calls \code{fslmaths}'s help
 }
 \examples{
 if (have.fsl()){
- fslstats.help()
+ fslmaths.help()
 }
 }
 
