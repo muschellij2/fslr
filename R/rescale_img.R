@@ -211,11 +211,11 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' truth3[,,i] = (truth3[,,i]- mean(truth3[,,i]))/sd(truth3[,,i])
 #' }
 #' try3 = zscore_img(img, margin=3)
-#' print(all.equal(try3, truth3))
+#' stopifnot(all.equal(try3, truth3))
 #' try2 = zscore_img(img, margin=2)
-#' print(all.equal(try2, truth2))
+#' stopifnot(all.equal(try2, truth2))
 #' try1 = zscore_img(img, margin=1)
-#' print(all.equal(try1, truth1))
+#' stopifnot(all.equal(try1, truth1))
 #'   
 #' 
 zscore_img <- function(img, margin=3){
@@ -242,9 +242,10 @@ zscore_img <- function(img, margin=3){
   vecc = (t(vec) - m)/s
   vecc = t(vecc)
   imgc = array(vecc, 
-               dim = dimg)
+               dim = dim(img))
   imgc = aperm(imgc, revperm)
   
+  stopifnot(all.equal(dim(imgc), dim(orig.img)))
   if (inherits(orig.img, "nifti")){
     nim = orig.img
     nim@.Data = imgc

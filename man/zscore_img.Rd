@@ -39,11 +39,11 @@ for (i in 1:dim(img)[3]) {
 truth3[,,i] = (truth3[,,i]- mean(truth3[,,i]))/sd(truth3[,,i])
 }
 try3 = zscore_img(img, margin=3)
-print(all.equal(try3, truth3))
+stopifnot(all.equal(try3, truth3))
 try2 = zscore_img(img, margin=2)
-print(all.equal(try2, truth2))
+stopifnot(all.equal(try2, truth2))
 try1 = zscore_img(img, margin=1)
-print(all.equal(try1, truth1))
+stopifnot(all.equal(try1, truth1))
 }
 \seealso{
 \link{aperm}
