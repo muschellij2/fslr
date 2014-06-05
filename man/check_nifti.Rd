@@ -3,17 +3,21 @@
 \alias{check_nifti}
 \title{Check if nifti image or read in}
 \usage{
-check_nifti(x, reorient = FALSE)
+check_nifti(x, reorient = FALSE, allow.array = FALSE)
 }
 \arguments{
 \item{x}{character path of image or
-an object of class nifti}
+an object of class nifti, or array}
 
 \item{reorient}{(logical) passed to \code{\link{readNIfTI}} if the image
 is to be re-oriented}
+
+\item{allow.array}{(logical) Are array types allowed (TRUE) or
+should there be an error if the object is not character or class
+nifti.}
 }
 \value{
-nifti object
+nifti object or array if allow.array=TRUE and x is an array
 }
 \description{
 Simple check to see if input is character or of class nifti

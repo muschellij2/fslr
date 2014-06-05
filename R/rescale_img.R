@@ -153,22 +153,103 @@ newnii = function(img, ...){
 #' @title Check if nifti image or read in
 #' @import oro.nifti
 #' @description Simple check to see if input is character or of class nifti
-#' @return nifti object
+#' @return nifti object or array if allow.array=TRUE and x is an array
 #' @seealso \link{readNIfTI}
 #' @param x character path of image or 
-#' an object of class nifti
+#' an object of class nifti, or array
 #' @param reorient (logical) passed to \code{\link{readNIfTI}} if the image
 #' is to be re-oriented
+#' @param allow.array (logical) Are array types allowed (TRUE) or
+#' should there be an error if the object is not character or class
+#' nifti.
 #' @export
-check_nifti = function(x, reorient=FALSE){
+check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
   if (inherits(x, "character")) {
     img = readNIfTI(x, reorient=reorient)
   } else {
     if (inherits(x, "nifti")){
       img = x
     } else {
+      if (inherits(x, "array") & allow.array){
+        return(img)
+      }
       stop("x has unknown class - not char or nifti")
     }
   }
   return(img)
+}
+
+#' @title Get Z-score over a margin of an img
+#' @import oro.nifti
+#' @description Standardizes an image either by the axial, sagittal, or
+#' coronal slice
+#' @importFrom matrixStats colSds
+#' @return Array of object of class nifti
+#' @seealso \link{aperm}
+#' @param img character path of image or 
+#' an object of class nifti
+#' @param margin Margin of image to z-score over (3-Axial, 2-Sagittal, 
+#' 1-Coronal)
+#' @export
+#' @examples
+#' dim = c(100, 30, 5)
+#' img = array(rnorm(prod(dim), mean=4, sd=4), 
+#' dim=dim)
+#' 
+#' truth2 = img
+#' for (i in 1:dim(img)[2]) {
+#' truth2[,i,] = (truth2[,i,]- mean(truth2[,i,]))/sd(truth2[,i,])
+#' }
+#' 
+#' truth1 = img
+#' for (i in 1:dim(img)[1]) {
+#' truth1[i,,] = (truth1[i,,]- mean(truth1[i,,]))/sd(truth1[i,,])
+#' }
+#' 
+#' truth3 = img
+#' for (i in 1:dim(img)[3]) {
+#' truth3[,,i] = (truth3[,,i]- mean(truth3[,,i]))/sd(truth3[,,i])
+#' }
+#' try3 = zscore_img(img, margin=3)
+#' print(all.equal(try3, truth3))
+#' try2 = zscore_img(img, margin=2)
+#' print(all.equal(try2, truth2))
+#' try1 = zscore_img(img, margin=1)
+#' print(all.equal(try1, truth1))
+#'   
+#' 
+zscore_img <- function(img, margin=3){
+  img = check_nifti(img, allow.array=TRUE)
+  orig.img = img
+  dimg = dim(orig.img)
+  stopifnot(length(dimg) == 3)  
+  if (margin == 3){
+    perm = 1:3
+  }
+  if (margin == 2){
+    perm = c(1, 3, 2)
+  }  
+  if (margin == 1){
+    perm = c(2, 3, 1)
+  }
+  revperm = match(1:3, perm)
+  img = aperm(img, perm)
+  
+  vec = matrix(img, ncol=dimg[margin])
+  m = colMeans(vec)
+  s = colSds(vec)
+  
+  vecc = (t(vec) - m)/s
+  vecc = t(vecc)
+  imgc = array(vecc, 
+               dim = dimg)
+  imgc = aperm(imgc, revperm)
+  
+  if (inherits(orig.img, "nifti")){
+    nim = orig.img
+    nim@.Data = imgc
+    imgc = nim
+  }
+  imgc
+  
 }
