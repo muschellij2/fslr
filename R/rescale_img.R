@@ -190,6 +190,10 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' an object of class nifti
 #' @param margin Margin of image to z-score over (3-Axial, 2-Sagittal, 
 #' 1-Coronal)
+#' @param remove.na (logical) change NAs to remove.val
+#' @param remove.nan (logical) change NaN to remove.val
+#' @param remove.inf (logical) change Inf to remove.val
+#' @param remove.val (logical) value to put the NA/NaN/Inf
 #' @export
 #' @examples
 #' dim = c(100, 30, 5)
@@ -218,7 +222,9 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' stopifnot(all.equal(try1, truth1))
 #'   
 #' 
-zscore_img <- function(img, margin=3){
+zscore_img <- function(img, margin=3, remove.na = TRUE,
+                       remove.nan = TRUE, remove.inf = TRUE,
+                       remove.val = 0){
   img = check_nifti(img, allow.array=TRUE)
   orig.img = img
   dimg = dim(orig.img)
@@ -251,6 +257,15 @@ zscore_img <- function(img, margin=3){
     nim@.Data = imgc
     imgc = nim
   }
+  if (remove.na){
+    imgc[is.na(imgc)] = remove.val
+  }
+  if (remove.nan){
+    imgc[is.nan(imgc)] = remove.val
+  } 
+  if (remove.inf){
+    imgc[is.infinite(imgc)] = remove.val
+  }   
   imgc
   
 }
