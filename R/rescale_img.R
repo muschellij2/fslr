@@ -171,7 +171,7 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
       img = x
     } else {
       if (inherits(x, "array") & allow.array){
-        return(img)
+        return(x)
       }
       stop("x has unknown class - not char or nifti")
     }
