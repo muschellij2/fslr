@@ -3,14 +3,26 @@
 \alias{zscore_img}
 \title{Get Z-score over a margin of an img}
 \usage{
-zscore_img(img, margin = 3)
+zscore_img(img, mask = NULL, margin = 3, remove.na = TRUE,
+  remove.nan = TRUE, remove.inf = TRUE, remove.val = 0)
 }
 \arguments{
 \item{img}{character path of image or
 an object of class nifti}
 
+\item{mask}{character path of mask or
+an object of class nifti}
+
 \item{margin}{Margin of image to z-score over (3-Axial, 2-Sagittal,
 1-Coronal)}
+
+\item{remove.na}{(logical) change NAs to remove.val}
+
+\item{remove.nan}{(logical) change NaN to remove.val}
+
+\item{remove.inf}{(logical) change Inf to remove.val}
+
+\item{remove.val}{(logical) value to put the NA/NaN/Inf}
 }
 \value{
 Array of object of class nifti

@@ -188,6 +188,8 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' @seealso \link{aperm}
 #' @param img character path of image or 
 #' an object of class nifti
+#' @param mask character path of mask or 
+#' an object of class nifti 
 #' @param margin Margin of image to z-score over (3-Axial, 2-Sagittal, 
 #' 1-Coronal)
 #' @param remove.na (logical) change NAs to remove.val
@@ -222,12 +224,18 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' stopifnot(all.equal(try1, truth1))
 #'   
 #' 
-zscore_img <- function(img, margin=3, remove.na = TRUE,
+zscore_img <- function(img, mask = NULL, margin=3, remove.na = TRUE,
                        remove.nan = TRUE, remove.inf = TRUE,
                        remove.val = 0){
   img = check_nifti(img, allow.array=TRUE)
   orig.img = img
   dimg = dim(orig.img)
+  if (is.null(mask)){
+    mask = array(1, dim = dimg)  
+  }
+  mask = check_nifti(mask, allow.array=TRUE)
+  img[mask == 0] = NA
+
   stopifnot(length(dimg) == 3)  
   if (margin == 3){
     perm = 1:3
@@ -242,8 +250,8 @@ zscore_img <- function(img, margin=3, remove.na = TRUE,
   img = aperm(img, perm)
   
   vec = matrix(img, ncol=dimg[margin])
-  m = colMeans(vec)
-  s = colSds(vec)
+  m = colMeans(vec, na.rm=TRUE)
+  s = colSds(vec, na.rm=TRUE)
   
   vecc = (t(vec) - m)/s
   vecc = t(vecc)
