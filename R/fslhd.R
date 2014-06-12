@@ -137,6 +137,82 @@ fslstats.help = function(){
 
 
 
+#' @title FSL Maths 
+#' @description This function calls \code{fslmaths}
+#' @param file (character) image to be smoothed
+#' @param outfile (character) resultant image name (optional)
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
+#' @param intern (logical) to be passed to \code{\link{system}}
+#' @param opts (character) operations to be passed to \code{fslmaths}
+#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @return If \code{retimg} then object of class nifit.  Otherwise,
+#' Result from system command, depends if intern is TRUE or FALSE.
+#' @export
+fslmaths = function(
+  file,
+  outfile=NULL, 
+  retimg = FALSE,
+  reorient = FALSE,
+  intern=TRUE, 
+  opts = "", 
+  ...){
+  
+  cmd = get.fsl()
+  file = checkimg(file)
+  cmd <- paste0(cmd, sprintf('fslmaths "%s"', file))
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }
+  outfile = nii.stub(outfile)
+  cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
+  ext = get.imgext()
+  
+  res = system(cmd, intern=intern)
+  outfile = paste0(outfile, ext)  
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient, ...)
+    return(img)
+  } 
+  
+  return(res)  
+}
+
+
+
+#' @title FSL Stats 
+#' @description This function calls \code{fslstats}
+#' @param file (character) filename of image to be checked
+#' @param opts (character) operation passed to \code{fslstats}
+#' @return Result of fslstats command
+#' @import stringr
+#' @export
+#' @examples
+#' if (have.fsl()){
+#' system.time({
+#' x = array(rnorm(1e6), dim = c(100, 100, 100))
+#' img = nifti(x, dim= c(100, 100, 100), 
+#' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
+#' cal.max = max(x), pixdim = rep(1, 4))
+#' entropy = fslstats(img, opts='-E')
+#' })
+#' }  
+fslstats <- function(file, opts=""){
+  cmd <- get.fsl()
+  file = checkimg(file)
+  cmd <- paste0(cmd, sprintf('fslstats "%s" %s', file, opts))
+  x = str_trim(system(cmd, intern = TRUE))
+  return(x)
+}
+
+
+
+
 #' @name fslsmooth
 #' @title Gaussian smooth image using FSL
 #' @description This function calls \code{fslmaths -s} to smooth an image and either
