@@ -917,14 +917,12 @@ melodic.help = function(){
 #' @return Prints help output and returns output as character vector
 #' @export
 fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
-    get.fsl()
-    fsldir = Sys.getenv("FSLDIR")
-    if (fsldir == "") {
-      fsldir = getOption("fsl.path")
-    }
-    func_name = file.path(fsldir, func_name)
-    args = paste(help.arg, extra.args, sep=" ", collapse = " ")
-    res = system2(func_name, args = args, stdout=TRUE, stderr=TRUE)
+    cmd = get.fsl()
+    cmd <- paste0(cmd, sprintf('%s %s %s', func_name, 
+                               help.arg, extra.args))
+#     args = paste(help.arg, extra.args, sep=" ", collapse = " ")
+    res = system(cmd, intern=TRUE)    
+#     res = system2(func_name, args = args, stdout=TRUE, stderr=TRUE)
     cat(res, sep="\n")
     return(invisible(res))
 }
