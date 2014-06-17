@@ -922,9 +922,9 @@ fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
     if (fsldir == "") {
       fsldir = getOption("fsl.path")
     }
+    func_name = file.path(fsldir, func_name)
     args = paste(help.arg, extra.args, sep=" ", collapse = " ")
-    res = system2(func_name, args = args, stdout=TRUE, stderr=TRUE, 
-                  c(FSLDIR=fsldir))
+    res = system2(func_name, args = args, stdout=TRUE, stderr=TRUE)
     cat(res, sep="\n")
     return(invisible(res))
 }
