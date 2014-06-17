@@ -968,3 +968,11 @@ fslbet = function(infile,
   }
   return(res)
 }
+
+#' @title Help for FSL BET
+#' @description This function calls \code{bet}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+fslbet.help = function(){
+  return(fslhelp("bet", help.arg=""))
+}
