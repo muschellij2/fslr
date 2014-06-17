@@ -918,8 +918,13 @@ melodic.help = function(){
 #' @export
 fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
     get.fsl()
+    fsldir = Sys.getenv("FSLDIR")
+    if (fsldir == "") {
+      fsldir = getOption("fsl.path")
+    }
     args = paste(help.arg, extra.args, sep=" ", collapse = " ")
-    res = system2(func_name, args = args, stdout=TRUE, stderr=TRUE)  
+    res = system2(func_name, args = args, stdout=TRUE, stderr=TRUE, 
+                  c(FSLDIR=fsldir))
     cat(res, sep="\n")
     return(invisible(res))
 }
