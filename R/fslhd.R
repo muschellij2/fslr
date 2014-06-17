@@ -923,3 +923,48 @@ fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
     cat(res, sep="\n")
     return(invisible(res))
 }
+
+
+
+#' @title Use FSL's Brain Extraction Tool (BET)
+#' @description This function calls \code{bet} to extract a brain 
+#' from an image, usually for skull stripping.
+#' @param infile (character) input filename
+#' @param outfile (character) output filename
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}. 
+#' @param intern (logical) pass to \code{\link{system}}
+#' @param opts (character) additional options to FLIRT
+#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @return character or logical depending on intern
+#' @export
+fslbet = function(infile, 
+                 outfile = NULL,                  
+                 retimg = FALSE,
+                 reorient = FALSE,                 
+                 intern=TRUE,
+                 opts="", ...){
+  cmd <- get.fsl()
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }
+  infile = checkimg(infile)  
+  outfile = checkimg(outfile)  
+  outfile = nii.stub(outfile)
+  
+  cmd <- paste0(cmd, sprintf('bet2 "%s" "%s" %s', 
+                             infile, outfile, opts))
+  res = system(cmd, intern=intern)
+  ext = get.imgext()
+  outfile = paste0(outfile, ext)  
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient, ...)
+    return(img)
+  }
+  return(res)
+}
