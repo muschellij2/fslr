@@ -19,6 +19,21 @@ get.fsl = function(){
   return(cmd)
 }
 
+
+#' @name Get FSLDir
+#' @title Get FSL's Directory 
+#' @description Finds the FSLDIR from system environment or \code{getOption("fsl.path")}
+#' for location of FSL fuctions and returns it
+#' @return Character path
+#' @export
+fsldir = function(){
+  fsldir = Sys.getenv("FSLDIR")
+  if (fsldir == "") {
+    fsldir = getOption("fsl.path")
+  }
+  return(fsldir)
+}
+
 #' @title Logical check if FSL is accessible
 #' @description Uses \code{get.fsl} to check if FSLDIR is accessible or the option
 #' \code{fsl.path} is set and returns logical
