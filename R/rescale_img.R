@@ -274,6 +274,8 @@ zscore_img <- function(img, mask = NULL, margin=3, remove.na = TRUE,
   if (remove.inf){
     imgc[is.infinite(imgc)] = remove.val
   }   
+  imgc = cal_img(imgc)
+  imgc = zero_trans(imgc)
   imgc
   
 }
