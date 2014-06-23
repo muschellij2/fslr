@@ -979,8 +979,8 @@ fslbet = function(infile,
   outfile = checkimg(outfile)  
   outfile = nii.stub(outfile)
   
-  cmd <- paste0(cmd, sprintf('bet2 "%s" "%s" %s', 
-                             infile, outfile, opts))
+  cmd <- paste0(cmd, sprintf('%s "%s" "%s" %s', 
+                             betcmd, infile, outfile, opts))
   res = system(cmd, intern=intern)
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
