@@ -12,7 +12,7 @@ tempimg(nim)
 filename of output nii.gz
 }
 \description{
-Takes in a object of class nifit, writes it to a temp file, appends
+Takes in a object of class nifti, writes it to a temp file, appends
 .nii.gz as \code{\link{writeNIfTI}} adds it.
 }
 

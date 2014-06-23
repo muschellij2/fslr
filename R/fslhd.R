@@ -88,7 +88,7 @@ get.imgext = function(){
 
 
 #' @title Create temporary nii.gz file for FSL
-#' @description Takes in a object of class nifit, writes it to a temp file, appends
+#' @description Takes in a object of class nifti, writes it to a temp file, appends
 #' .nii.gz as \code{\link{writeNIfTI}} adds it.
 #' @param nim object of class nifti
 #' @return filename of output nii.gz
@@ -162,7 +162,7 @@ fslstats.help = function(){
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fslmaths}
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
-#' @return If \code{retimg} then object of class nifit.  Otherwise,
+#' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
 fslmaths = function(

@@ -23,7 +23,7 @@ Passed to \code{\link{readNIfTI}}.}
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }
 \value{
-If \code{retimg} then object of class nifit.  Otherwise,
+If \code{retimg} then object of class nifti.  Otherwise,
 Result from system command, depends if intern is TRUE or FALSE.
 }
 \description{
