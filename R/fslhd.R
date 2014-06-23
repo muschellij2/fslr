@@ -954,6 +954,7 @@ fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
 #' Passed to \code{\link{readNIfTI}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) additional options to FLIRT
+#' @param betcmd (character) Use \code{bet} or \code{bet2} function
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
 #' @return character or logical depending on intern
 #' @export
@@ -962,7 +963,10 @@ fslbet = function(infile,
                  retimg = FALSE,
                  reorient = FALSE,                 
                  intern=TRUE,
-                 opts="", ...){
+                 opts="", 
+                 betcmd = c("bet2", "bet"),
+                 ...){
+  betcmd = match.arg( betcmd )
   cmd <- get.fsl()
   if (retimg){
     if (is.null(outfile)) {
