@@ -6,7 +6,7 @@
 fslhd(file, opts = "")
 }
 \arguments{
-\item{file}{(character) image to be masked}
+\item{file}{(character) image filename or character of class nifti}
 
 \item{opts}{(character) additional options to be passed to fslhd}
 }

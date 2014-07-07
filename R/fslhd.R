@@ -423,10 +423,32 @@ fslerode <- function(file, outfile=NULL,
 
 
 
+#' @title Get value from FSL header
+#' @description This function calls \code{fslval} to obtain a nifti header 
+#' @param file (character) image filename or character of class nifti
+#' @param keyword (character) keyword to be taken from fslhd
+#' @return Character of infromation from fslhd field specified in keyword
+#' @export
+#' @import stringr
+fslval <- function(file, keyword = ""){
+  cmd <- get.fsl()
+  file = checkimg(file)
+  cmd <- paste0(cmd, sprintf('fslval "%s" %s', file, keyword))
+  return(str_trim(system(cmd, intern=TRUE)))
+}
+
+#' @title fslval help
+#' @description This function calls \code{fslval}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+fslval.help = function(){
+  return(fslhelp("fslval", help.arg=""))
+}
+
 
 #' @title Get NIfTI header using FSL
 #' @description This function calls \code{fslhd} to obtain a nifti header 
-#' @param file (character) image to be masked
+#' @param file (character) image filename or character of class nifti
 #' @param opts (character) additional options to be passed to fslhd
 #' @return Character of infromation from fslhd
 #' @export
