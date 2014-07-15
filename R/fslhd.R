@@ -124,7 +124,7 @@ checkimg = function(file){
 #' @description This function calls \code{fslmaths}'s help
 #' @return Prints help output and returns output as character vector
 #' @aliases fslsmooth.help fslmask.help fslerode.help fslfill.help 
-#' fslsub2.help fslthresh.help
+#' fslsub2.help fslthresh.help fslbin.help
 #' @export
 #' @examples
 #' if (have.fsl()){
@@ -154,7 +154,7 @@ fslstats.help = function(){
 
 #' @title FSL Maths 
 #' @description This function calls \code{fslmaths}
-#' @param file (character) image to be smoothed
+#' @param file (character) image to be manipulated
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
@@ -197,6 +197,39 @@ fslmaths = function(
   
   return(res)  
 }
+
+
+#' @title Binarize Image using FSL 
+#' @description This function calls \code{fslmaths -bin}.  The R functions wraps
+#' \code{fslmaths}
+#' @param file (character) image to be binarized
+#' @param outfile (character) resultant image name (optional)
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
+#' @param intern (logical) to be passed to \code{\link{system}}
+#' @param opts (character) operations to be passed to \code{fslmaths}
+#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @return If \code{retimg} then object of class nifti.  Otherwise,
+#' Result from system command, depends if intern is TRUE or FALSE.
+#' @export
+fslbin = function(
+  file,
+  outfile=NULL, 
+  retimg = FALSE,
+  reorient = FALSE,
+  intern=TRUE, 
+  opts = "", 
+  ...){
+  
+  all.opts = paste("-bin ", opts, collapse=" " )
+  res = fslmaths(file=file, outfile=outfile, 
+           retimg=retimg, reorient=reorient,
+           intern=intern, opts = all.opts, ...)
+  
+  return(res)  
+}
+
 
 
 
