@@ -15,7 +15,8 @@ get.fsl = function(){
                   "FSLOUTPUTTYPE=", fslout, "; export FSLOUTPUTTYPE; ", 
                   "$FSLDIR/bin/")
   } 
-  if (fsldir %in% "" | is.null(fsldir)) stop("Can't find FSL")
+  if (is.null(fsldir)) stop("Can't find FSL")
+  if (fsldir %in% "") stop("Can't find FSL")
   return(cmd)
 }
 
