@@ -811,7 +811,7 @@ fslsub2 = function(file,
 fslview = function(file, intern=TRUE, opts =""){
   cmd <- get.fsl()
   file = checkimg(file)
-  cmd <- paste(cmd, sprintf('fslview "%s" %s', file, opts))
+  cmd <- paste0(cmd, sprintf('fslview "%s" %s', file, opts))
   res = system(cmd, intern=intern)
   return(res)
 }
