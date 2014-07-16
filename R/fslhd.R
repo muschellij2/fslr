@@ -60,12 +60,14 @@ get.fsloutput = function(){
     fslout = getOption("fsl.outputtype")
   } 
   if (is.null(fslout)) {
-    warning("Can't find FSLOUTPUTTYPE, going with NIFTI_GZ")
+    warning("Can't find FSLOUTPUTTYPE, setting to NIFTI_GZ")
     fslout = "NIFTI_GZ"
+    options(fsl.outputtype = "NIFTI_GZ")
   }
   if (fslout == "") {
-    warning("Can't find FSLOUTPUTTYPE, going with NIFTI_GZ")
+    warning("Can't find FSLOUTPUTTYPE, setting to NIFTI_GZ")
     fslout = "NIFTI_GZ"
+    options(fsl.outputtype = "NIFTI_GZ")
   } 
   return(fslout)
 }
