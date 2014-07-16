@@ -385,7 +385,8 @@ fslmask <- function(file, mask, outfile=NULL,
   }
   outfile = nii.stub(outfile)
   file = checkimg(file)
-	cmd <- paste0(cmd, sprintf('fslmaths "%s" -mas "%s" %s "%s"', 
+  mask = checkimg(mask)
+  cmd <- paste0(cmd, sprintf('fslmaths "%s" -mas "%s" %s "%s"', 
 		file, mask, opts, outfile))
 	res = system(cmd, intern=intern)
   ext = get.imgext()
