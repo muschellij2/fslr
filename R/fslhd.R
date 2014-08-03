@@ -1057,3 +1057,50 @@ fslbet = function(infile,
 fslbet.help = function(){
   return(fslhelp("bet", help.arg=""))
 }
+
+
+#' @title Image Center of Gravity
+#' @description Find Center of Gravity of Image, after thresholding
+#' @param img Object of class nifti
+#' @param thresh threshold for image, will find \code{img > 0}
+#' @return Vector of length 3
+#' @export
+#' @examples
+#' if (have.fsl()){
+#' x = array(rnorm(1e6), dim = c(100, 100, 100))
+#' img = nifti(x, dim= c(100, 100, 100), 
+#' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
+#' cal.max = max(x), pixdim = rep(1, 4))
+#' cog(img)
+#' } 
+cog = function(img, thresh = 0){
+#   stopifnot(inherits(img, "nifti"))
+  xyz = colMeans(which(img > thresh, arr.ind = TRUE))
+  return(xyz)
+}
+
+
+#' @title Image Center of Gravity (FSL)
+#' @description Find Center of Gravity of Image from FSL
+#' @param img Object of class nifti, or path of file
+#' @param mm Logical if the center of gravity (COG) would be in mm (default \code{TRUE})
+#' or voxels (\code{FALSE})
+#' @return Vector of length 3
+#' @note FSL uses a 0-based indexing system, which will give you a different 
+#' answer compared to \code{cog}, but \code{fslcog(img, mm = FALSE) +1} 
+#' should be relatively close to \code{cog(img)}
+#' @export
+#' @examples
+#' if (have.fsl()){
+#' x = array(rnorm(1e6), dim = c(100, 100, 100))
+#' img = nifti(x, dim= c(100, 100, 100), 
+#' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
+#' cal.max = max(x), pixdim = rep(1, 4))
+#' fslcog(img)
+#' }
+fslcog = function(img, mm = TRUE){
+  opts = ifelse(mm, "-c", "-C")
+  cog = fslstats(img, opts = opts)
+  cog = as.numeric(strsplit(cog, " ")[[1]])
+  cog
+}
