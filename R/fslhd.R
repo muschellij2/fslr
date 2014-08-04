@@ -1222,8 +1222,7 @@ fslswapdim = function(
                intern = intern,
                opts = opts,
                ... = ..., 
-               samefile = TRUE
-               )
+               samefile = FALSE)
   
   return(res)  
 }
