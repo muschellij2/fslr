@@ -1194,3 +1194,55 @@ fslreorient2std = function(
 fslreorient2std.help = function(){
   return(fslhelp("fslreorient2std", help.arg=""))
 }
+
+
+
+#' @title FSL Swap Dimensions 
+#' @description This function calls \code{fslswapdim}
+#' @param file (character) image to be manipulated
+#' @param outfile (character) resultant image name (optional)
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
+#' @param intern (logical) to be passed to \code{\link{system}}
+#' @param a (character) Option for x domain in \code{fslswapdim}
+#' @param b (character) Option for y domain in \code{fslswapdim}
+#' @param c (character) Option for z domain in \code{fslswapdim}
+#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @return If \code{retimg} then object of class nifti.  Otherwise,
+#' Result from system command, depends if intern is TRUE or FALSE.
+#' @export
+fslswapdim = function(
+  file,
+  outfile=NULL, 
+  retimg = FALSE,
+  reorient = FALSE,
+  intern=TRUE, 
+  a = "x",
+  b = "y",
+  c = "z",
+  ...){
+  
+  cmd = get.fsl()
+  file = checkimg(file)
+  cmd <- paste0(cmd, sprintf('fslswapdim "%s"', file))
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }
+  outfile = nii.stub(outfile)
+  cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
+  ext = get.imgext()
+  
+  res = system(cmd, intern=intern)
+  outfile = paste0(outfile, ext)  
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient, ...)
+    return(img)
+  } 
+  
+  return(res)  
+}
