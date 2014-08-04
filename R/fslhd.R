@@ -1212,7 +1212,7 @@ fslswapdim = function(
   c = "z",
   ...){
   
-  opts = paste0(a, b, c, sep=" ")
+  opts = paste(a, b, c)
   
   res = fslcmd(func="fslswapdim", 
                file= file,
