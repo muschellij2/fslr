@@ -227,6 +227,7 @@ fslbin = function(
 #' @description This function calls \code{fslstats}
 #' @param file (character) filename of image to be checked
 #' @param opts (character) operation passed to \code{fslstats}
+#' @param verbose (logical) print out command before running
 #' @return Result of fslstats command
 #' @import stringr
 #' @export
@@ -245,7 +246,7 @@ fslstats <- function(file, opts="", verbose = TRUE){
   file = checkimg(file)
   cmd <- paste0(cmd, sprintf('fslstats "%s" %s', file, opts))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   x = str_trim(system(cmd, intern = TRUE))
   return(x)
@@ -325,7 +326,7 @@ fslsmooth <- function(
    		outfile, mask.blur, mask, outfile))
   }
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }  
 	res = system(cmd, intern=intern)
   outfile = paste0(outfile, ext)  
@@ -387,7 +388,7 @@ fslmask <- function(file, mask, outfile=NULL,
   cmd <- paste0(cmd, sprintf('fslmaths "%s" -mas "%s" %s "%s"', 
 		file, mask, opts, outfile))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
 	res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -449,7 +450,7 @@ fslerode <- function(file, outfile=NULL,
   cmd <- paste0(cmd, sprintf('fslmaths "%s" %s -ero %s "%s"', 
                             file, kopts, opts, outfile))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -477,7 +478,7 @@ fslval <- function(file, keyword = "", verbose = TRUE){
   file = checkimg(file)
   cmd <- paste0(cmd, sprintf('fslval "%s" %s', file, keyword))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   return(str_trim(system(cmd, intern=TRUE)))
 }
@@ -503,7 +504,7 @@ fslhd <- function(file, opts="", verbose = TRUE){
   file = checkimg(file)
 	cmd <- paste0(cmd, sprintf('fslhd "%s" %s', file, opts))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
 	system(cmd, intern=TRUE)
 }
@@ -646,7 +647,7 @@ fslrange <- function(file, verbose =TRUE){
 	file = checkimg(file)
 	cmd <- paste0(cmd, sprintf('fslstats "%s" -R', file))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   x = str_trim(system(cmd, intern = TRUE))
   x = strsplit(x, " ")[[1]]
@@ -701,7 +702,7 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
   cmd <- paste0(cmd, sprintf('fslmaths "%s" %s -fillh "%s"', file, 
                             runbin, outfile))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -764,7 +765,7 @@ fslthresh = function(file, outfile = NULL,
   cmd <- paste0(cmd, sprintf('fslmaths "%s" -thr %f %s "%s"', 
   	file, thresh, opts, outfile))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -849,7 +850,7 @@ fslview = function(file, intern=TRUE, opts ="", verbose = TRUE){
   file = checkimg(file)
   cmd <- paste0(cmd, sprintf('fslview "%s" %s', file, opts))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   return(res)
@@ -899,7 +900,7 @@ fslmerge = function(infiles,
   cmd <- paste0(cmd, sprintf('fslmerge "%s" -%s "%s"', 
                             outfile, direction, infiles))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -968,7 +969,7 @@ flirt = function(infile,
   cmd <- paste0(cmd, sprintf('flirt -in "%s" -ref "%s" -out "%s" -dof %d %s', 
                             infile, reffile, outfile, dof, opts))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -1014,7 +1015,7 @@ melodic = function(file,
   cmd <- paste0(cmd, sprintf('melodic --in "%s" --outdir "%s" %s', 
                              file, outdir, opts))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   return(res)
@@ -1090,7 +1091,7 @@ fslbet = function(infile,
   cmd <- paste0(cmd, sprintf('%s "%s" "%s" %s', 
                              betcmd, infile, outfile, opts))
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -1343,7 +1344,7 @@ fslcmd = function(
   cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
   ext = get.imgext()
   if (verbose){
-    cat(cmd)
+    cat(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   outfile = paste0(outfile, ext)  

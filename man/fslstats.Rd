@@ -9,6 +9,8 @@ fslstats(file, opts = "", verbose = TRUE)
 \item{file}{(character) filename of image to be checked}
 
 \item{opts}{(character) operation passed to \code{fslstats}}
+
+\item{verbose}{(logical) print out command before running}
 }
 \value{
 Result of fslstats command
