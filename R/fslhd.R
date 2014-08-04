@@ -1104,3 +1104,52 @@ fslcog = function(img, mm = TRUE){
   cog = as.numeric(strsplit(cog, " ")[[1]])
   cog
 }
+
+
+
+#' @title FSL Orient 
+#' @description This function calls \code{fslorient}
+#' @param file (character) image to be manipulated
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If \code{retimg}, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
+#' @param intern (logical) to be passed to \code{\link{system}}
+#' @param opts (character) operations to be passed to \code{fslorient}
+#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @return If \code{retimg} then object of class nifti.  Otherwise,
+#' Result from system command, depends if intern is TRUE or FALSE.
+#' @export
+fslorient = function(
+  file,
+  retimg = FALSE,
+  reorient = FALSE,
+  intern=TRUE, 
+  opts = "", 
+  ...){
+  
+  cmd = get.fsl()
+  file = checkimg(file)
+  cmd <- paste0(cmd, sprintf('fslorient "%s"', file))
+  cmd <- paste(cmd, sprintf(' %s ;', opts))
+  ext = get.imgext()
+  
+  res = system(cmd, intern=intern)
+  if (grepl("-get", opts) & retimg){
+    warning(paste0("fslorient option was a -get, ",
+                   "image was not changed - output not returned"))
+  }
+  if (retimg){
+    img = readNIfTI(file, reorient=reorient, ...)
+    return(img)
+  } 
+  
+  return(res)  
+}
+
+#' @title fslorient help
+#' @description This function calls \code{fslorient}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+fslorient.help = function(){
+  return(fslhelp("fslorient", help.arg=""))
+}
