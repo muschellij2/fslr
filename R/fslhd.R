@@ -1152,3 +1152,45 @@ fslorient = function(
 fslorient.help = function(){
   return(fslhelp("fslorient", help.arg=""))
 }
+
+
+
+#' @title FSL Orient to MNI
+#' @description This function calls \code{fslreorient2std}
+#' @param file (character) image to be manipulated
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If \code{retimg}, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
+#' @param intern (logical) to be passed to \code{\link{system}}
+#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @return If \code{retimg} then object of class nifti.  Otherwise,
+#' Result from system command, depends if intern is TRUE or FALSE.
+#' @export
+fslreorient2std = function(
+  file,
+  retimg = FALSE,
+  reorient = FALSE,
+  intern=TRUE, 
+  ...){
+  
+  cmd = get.fsl()
+  file = checkimg(file)
+  cmd <- paste0(cmd, sprintf('fslreorient2std "%s"', file))
+  ext = get.imgext()
+  
+  res = system(cmd, intern=intern)
+  if (retimg){
+    img = readNIfTI(file, reorient=reorient, ...)
+    return(img)
+  } 
+  
+  return(res)  
+}
+
+#' @title fslreorient2std help
+#' @description This function calls \code{fslreorient2std}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+fslreorient2std = function(){
+  return(fslhelp("fslreorient2std", help.arg=""))
+}
