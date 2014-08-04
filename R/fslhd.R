@@ -1129,8 +1129,7 @@ fslorient = function(
   
   cmd = get.fsl()
   file = checkimg(file)
-  cmd <- paste0(cmd, sprintf('fslorient "%s"', file))
-  cmd <- paste(cmd, sprintf(' %s ;', opts))
+  cmd <- paste0(cmd, sprintf('fslorient %s "%s"', opts,  file))
   ext = get.imgext()
   
   res = system(cmd, intern=intern)
