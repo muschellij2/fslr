@@ -240,10 +240,13 @@ fslbin = function(
 #' entropy = fslstats(img, opts='-E')
 #' })
 #' }  
-fslstats <- function(file, opts=""){
+fslstats <- function(file, opts="", verbose = TRUE){
   cmd <- get.fsl()
   file = checkimg(file)
   cmd <- paste0(cmd, sprintf('fslstats "%s" %s', file, opts))
+  if (verbose){
+    cat(cmd)
+  }
   x = str_trim(system(cmd, intern = TRUE))
   return(x)
 }

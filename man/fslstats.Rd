@@ -3,7 +3,7 @@
 \alias{fslstats}
 \title{FSL Stats}
 \usage{
-fslstats(file, opts = "")
+fslstats(file, opts = "", verbose = TRUE)
 }
 \arguments{
 \item{file}{(character) filename of image to be checked}
