@@ -4,7 +4,7 @@
 \title{FSL Swap Dimensions}
 \usage{
 fslswapdim(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, a = "x", b = "y", c = "z", ...)
+  intern = TRUE, a = "x", b = "y", c = "z", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}
@@ -23,6 +23,8 @@ Passed to \code{\link{readNIfTI}}.}
 \item{b}{(character) Option for y domain in \code{fslswapdim}}
 
 \item{c}{(character) Option for z domain in \code{fslswapdim}}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }

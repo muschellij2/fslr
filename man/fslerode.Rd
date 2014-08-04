@@ -4,7 +4,7 @@
 \title{Erode image using FSL}
 \usage{
 fslerode(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, kopts = "", opts = "", ...)
+  intern = TRUE, kopts = "", opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be eroded}
@@ -21,6 +21,8 @@ Passed to \code{\link{readNIfTI}}.}
 \item{kopts}{(character) options for kernel}
 
 \item{opts}{(character) additional options to be passed to fslmaths}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }

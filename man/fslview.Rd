@@ -3,7 +3,7 @@
 \alias{fslview}
 \title{Open image in FSLView}
 \usage{
-fslview(file, intern = TRUE, opts = "")
+fslview(file, intern = TRUE, opts = "", verbose = TRUE)
 }
 \arguments{
 \item{file}{(character) filename of image to be thresholded}
@@ -11,6 +11,8 @@ fslview(file, intern = TRUE, opts = "")
 \item{intern}{(logical) pass to \code{\link{system}}}
 
 \item{opts}{(character) options for FSLView}
+
+\item{verbose}{(logical) print out command before running}
 }
 \value{
 character or logical depending on intern

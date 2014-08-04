@@ -4,7 +4,7 @@
 \title{Subsample image by factor of 2}
 \usage{
 fslsub2(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, ...)
+  intern = TRUE, verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be subsampled}
@@ -17,6 +17,8 @@ fslsub2(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
 Passed to \code{\link{readNIfTI}}.}
 
 \item{intern}{(logical) pass to \code{\link{system}}}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }

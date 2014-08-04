@@ -4,7 +4,7 @@
 \title{FSL Orient}
 \usage{
 fslorient(file, retimg = FALSE, reorient = FALSE, intern = TRUE,
-  opts = "", ...)
+  opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}
@@ -17,6 +17,8 @@ Passed to \code{\link{readNIfTI}}.}
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 
 \item{opts}{(character) operations to be passed to \code{fslorient}}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }

@@ -3,12 +3,14 @@
 \alias{fslval}
 \title{Get value from FSL header}
 \usage{
-fslval(file, keyword = "")
+fslval(file, keyword = "", verbose = TRUE)
 }
 \arguments{
 \item{file}{(character) image filename or character of class nifti}
 
 \item{keyword}{(character) keyword to be taken from fslhd}
+
+\item{verbose}{(logical) print out command before running}
 }
 \value{
 Character of infromation from fslhd field specified in keyword

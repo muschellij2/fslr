@@ -4,7 +4,7 @@
 \title{FSL Command Wrapper}
 \usage{
 fslcmd(func, file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, opts = "", samefile = FALSE, ...)
+  intern = TRUE, opts = "", verbose = TRUE, samefile = FALSE, ...)
 }
 \arguments{
 \item{func}{(character) FSL function}
@@ -21,6 +21,8 @@ Passed to \code{\link{readNIfTI}}.}
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 
 \item{opts}{(character) operations to be passed to \code{func}}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{samefile}{(logical) is the output the same file?}
 

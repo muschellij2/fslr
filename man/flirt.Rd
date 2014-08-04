@@ -4,7 +4,7 @@
 \title{Register using FLIRT}
 \usage{
 flirt(infile, reffile, omat, dof, outfile = NULL, retimg = FALSE,
-  reorient = FALSE, intern = TRUE, opts = "", ...)
+  reorient = FALSE, intern = TRUE, opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{infile}{(character) input filename}
@@ -25,6 +25,8 @@ Passed to \code{\link{readNIfTI}}.}
 \item{intern}{(logical) pass to \code{\link{system}}}
 
 \item{opts}{(character) additional options to FLIRT}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }

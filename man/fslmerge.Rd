@@ -4,7 +4,7 @@
 \title{Merge images using FSL}
 \usage{
 fslmerge(infiles, direction = c("x", "y", "z", "t", "a"), outfile = NULL,
-  retimg = FALSE, reorient = FALSE, intern = TRUE, ...)
+  retimg = FALSE, reorient = FALSE, intern = TRUE, verbose = TRUE, ...)
 }
 \arguments{
 \item{infiles}{(character) input filenames}
@@ -20,6 +20,8 @@ t (time), a (auto)}
 Passed to \code{\link{readNIfTI}}.}
 
 \item{intern}{(logical) pass to \code{\link{system}}}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }

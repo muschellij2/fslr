@@ -3,13 +3,15 @@
 \alias{fslcog}
 \title{Image Center of Gravity (FSL)}
 \usage{
-fslcog(img, mm = TRUE)
+fslcog(img, mm = TRUE, verbose = TRUE)
 }
 \arguments{
 \item{img}{Object of class nifti, or path of file}
 
 \item{mm}{Logical if the center of gravity (COG) would be in mm (default \code{TRUE})
 or voxels (\code{FALSE})}
+
+\item{verbose}{(logical) print out command before running}
 }
 \value{
 Vector of length 3

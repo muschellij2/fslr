@@ -3,10 +3,12 @@
 \alias{fslrange}
 \title{Get range of an image}
 \usage{
-fslrange(file)
+fslrange(file, verbose = TRUE)
 }
 \arguments{
 \item{file}{(character) filename of image to be checked}
+
+\item{verbose}{(logical) print out command before running}
 }
 \value{
 numeric vector of length 2

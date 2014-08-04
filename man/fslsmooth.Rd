@@ -4,7 +4,7 @@
 \title{Gaussian smooth image using FSL}
 \usage{
 fslsmooth(file, sigma = 10, mask = NULL, outfile = NULL, retimg = FALSE,
-  reorient = FALSE, intern = TRUE, ...)
+  reorient = FALSE, intern = TRUE, verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be smoothed}
@@ -22,6 +22,8 @@ if not give, will be the stub of the filename then _sigma}
 Passed to \code{\link{readNIfTI}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }

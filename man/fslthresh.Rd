@@ -4,7 +4,8 @@
 \title{Threshold an image}
 \usage{
 fslthresh(file, outfile = NULL, thresh = 0, uthresh = NULL,
-  retimg = FALSE, reorient = FALSE, intern = TRUE, opts = "", ...)
+  retimg = FALSE, reorient = FALSE, intern = TRUE, opts = "",
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be thresholded}
@@ -23,6 +24,8 @@ Passed to \code{\link{readNIfTI}}.}
 \item{intern}{(logical) pass to \code{\link{system}}}
 
 \item{opts}{(character) additional options to be passed to fslmaths}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }

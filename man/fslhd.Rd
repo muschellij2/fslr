@@ -3,12 +3,14 @@
 \alias{fslhd}
 \title{Get NIfTI header using FSL}
 \usage{
-fslhd(file, opts = "")
+fslhd(file, opts = "", verbose = TRUE)
 }
 \arguments{
 \item{file}{(character) image filename or character of class nifti}
 
 \item{opts}{(character) additional options to be passed to fslhd}
+
+\item{verbose}{(logical) print out command before running}
 }
 \value{
 Character of infromation from fslhd

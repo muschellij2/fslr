@@ -4,7 +4,8 @@
 \title{Use FSL's Brain Extraction Tool (BET)}
 \usage{
 fslbet(infile, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, opts = "", betcmd = c("bet2", "bet"), ...)
+  intern = TRUE, opts = "", betcmd = c("bet2", "bet"), verbose = TRUE,
+  ...)
 }
 \arguments{
 \item{infile}{(character) input filename}
@@ -21,6 +22,8 @@ Passed to \code{\link{readNIfTI}}.}
 \item{opts}{(character) additional options to FLIRT}
 
 \item{betcmd}{(character) Use \code{bet} or \code{bet2} function}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }

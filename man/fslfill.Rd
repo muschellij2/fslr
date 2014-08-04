@@ -4,7 +4,7 @@
 \title{Fill image holes}
 \usage{
 fslfill(file, outfile = NULL, bin = TRUE, retimg = FALSE,
-  reorient = FALSE, intern = TRUE, ...)
+  reorient = FALSE, intern = TRUE, verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be filled}
@@ -19,6 +19,8 @@ fslfill(file, outfile = NULL, bin = TRUE, retimg = FALSE,
 Passed to \code{\link{readNIfTI}}.}
 
 \item{intern}{(logical) pass to \code{\link{system}}}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }
