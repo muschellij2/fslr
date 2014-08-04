@@ -1191,6 +1191,6 @@ fslreorient2std = function(
 #' @description This function calls \code{fslreorient2std}'s help
 #' @return Prints help output and returns output as character vector
 #' @export
-fslreorient2std = function(){
+fslreorient2std.help = function(){
   return(fslhelp("fslreorient2std", help.arg=""))
 }

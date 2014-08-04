@@ -3,9 +3,8 @@
 \alias{fslreorient2std}
 \title{FSL Orient to MNI}
 \usage{
-fslreorient2std()
-
-fslreorient2std()
+fslreorient2std(file, retimg = FALSE, reorient = FALSE, intern = TRUE,
+  ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}
@@ -22,12 +21,8 @@ Passed to \code{\link{readNIfTI}}.}
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,
 Result from system command, depends if intern is TRUE or FALSE.
-
-Prints help output and returns output as character vector
 }
 \description{
 This function calls \code{fslreorient2std}
-
-This function calls \code{fslreorient2std}'s help
 }
 
