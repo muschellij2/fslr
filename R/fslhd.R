@@ -181,7 +181,7 @@ fslmaths = function(
                     file=file, 
                     outfile = outfile, retimg= retimg,
                     reorient=reorient, intern=intern, opts=opts, 
-                    ... = ...)
+                    ... = ..., samefile = FALSE)
   
   return(res)  
 }
@@ -1124,12 +1124,13 @@ fslorient = function(
   }  
   res = fslcmd(func="fslorient", 
          file= file,
-         outfile = file,
+         outfile = NULL,
          retimg = retimg,
          reorient = reorient,
          intern = intern,
          opts = opts,
-         ... = ... )
+         ... = ...,
+         samefile = TRUE)
   
   return(res)  
 }
@@ -1164,12 +1165,13 @@ fslreorient2std = function(
   
   res = fslcmd(func="fslreorient2std", 
                file= file,
-               outfile = file,
+               outfile = NULL,
                retimg = retimg,
                reorient = reorient,
                intern = intern,
                opts = "",
-               ... = ... )
+               ... = ..., 
+               samefile = TRUE)
     
   return(res)  
 }
@@ -1214,12 +1216,14 @@ fslswapdim = function(
   
   res = fslcmd(func="fslswapdim", 
                file= file,
-               outfile = outfile,
+               outfile = NULL,
                retimg = retimg,
                reorient = reorient,
                intern = intern,
                opts = opts,
-               ... = ... )
+               ... = ..., 
+               samefile = TRUE
+               )
   
   return(res)  
 }
@@ -1235,6 +1239,7 @@ fslswapdim = function(
 #' Passed to \code{\link{readNIfTI}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{func} 
+#' @param samefile (logical) is the output the same file?
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
@@ -1247,11 +1252,13 @@ fslcmd = function(
   reorient = FALSE,
   intern=TRUE, 
   opts = "", 
+  samefile = FALSE,
   ...){
   
   cmd = get.fsl()
   file = checkimg(file)
   cmd <- paste0(cmd, sprintf('%s "%s"', func, file))
+  no.outfile = is.null(outfile)
   if (retimg){
     if (is.null(outfile)) {
       outfile = tempfile()
@@ -1260,12 +1267,14 @@ fslcmd = function(
     stopifnot(!is.null(outfile))
   }
   outfile = nii.stub(outfile)
+  if (no.outfile & samefile) outfile = ""
   cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
   ext = get.imgext()
   
   res = system(cmd, intern=intern)
   outfile = paste0(outfile, ext)  
   if (retimg){
+    if (samefile) outfile = file
     img = readNIfTI(outfile, reorient=reorient, ...)
     return(img)
   } 
