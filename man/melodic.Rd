@@ -3,7 +3,8 @@
 \alias{melodic}
 \title{Run MELODIC ICA}
 \usage{
-melodic(file, outdir = dirname(file), intern = TRUE, opts = "")
+melodic(file, outdir = dirname(file), intern = TRUE, opts = "",
+  verbose = TRUE)
 }
 \arguments{
 \item{file}{(character) image to be run}
@@ -14,6 +15,8 @@ melodic(file, outdir = dirname(file), intern = TRUE, opts = "")
 \item{intern}{(logical) pass to \code{\link{system}}}
 
 \item{opts}{(character) options for melodic}
+
+\item{verbose}{(logical) print out command before running}
 }
 \value{
 character or logical depending on intern
