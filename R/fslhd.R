@@ -177,26 +177,11 @@ fslmaths = function(
   opts = "", 
   ...){
   
-  cmd = get.fsl()
-  file = checkimg(file)
-  cmd <- paste0(cmd, sprintf('fslmaths "%s"', file))
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }
-  outfile = nii.stub(outfile)
-  cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
-  ext = get.imgext()
-  
-  res = system(cmd, intern=intern)
-  outfile = paste0(outfile, ext)  
-  if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
-    return(img)
-  } 
+  res = fslcmd("fslmaths", 
+                    file=file, 
+                    outfile = outfile, retimg= retimg,
+                    reorient=reorient, intern=intern, opts=opts, 
+                    ... = ...)
   
   return(res)  
 }
@@ -779,27 +764,33 @@ fslsub2 = function(file,
                    retimg = FALSE,
                    reorient = FALSE,
                    intern=TRUE, ...){
-  cmd <- get.fsl()
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }  
-  outfile = nii.stub(outfile)
-  
-  file = checkimg(file)  
-  
-  cmd <- paste0(cmd, sprintf('fslmaths "%s" -subsamp2 "%s"', 
-                            file, outfile))
-  res = system(cmd, intern=intern)
-  ext = get.imgext()
-  outfile = paste0(outfile, ext)  
-  if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
-    return(img)
-  }
+  res = fslmaths(file=file, 
+           outfile = outfile, 
+           retimg = retimg,
+           reorient = reorient,
+           opts="-subsamp2",
+           intern=intern, ... = ...)
+#   cmd <- get.fsl()
+#   if (retimg){
+#     if (is.null(outfile)) {
+#       outfile = tempfile()
+#     }
+#   } else {
+#     stopifnot(!is.null(outfile))
+#   }  
+#   outfile = nii.stub(outfile)
+#   
+#   file = checkimg(file)  
+#   
+#   cmd <- paste0(cmd, sprintf('fslmaths "%s" -subsamp2 "%s"', 
+#                             file, outfile))
+#   res = system(cmd, intern=intern)
+#   ext = get.imgext()
+#   outfile = paste0(outfile, ext)  
+#   if (retimg){
+#     img = readNIfTI(outfile, reorient=reorient, ...)
+#     return(img)
+#   }
   return(res)
 }
 
@@ -1127,20 +1118,18 @@ fslorient = function(
   opts = "", 
   ...){
   
-  cmd = get.fsl()
-  file = checkimg(file)
-  cmd <- paste0(cmd, sprintf('fslorient %s "%s"', opts,  file))
-  ext = get.imgext()
-  
-  res = system(cmd, intern=intern)
   if (grepl("-get", opts) & retimg){
     warning(paste0("fslorient option was a -get, ",
                    "image was not changed - output not returned"))
-  }
-  if (retimg){
-    img = readNIfTI(file, reorient=reorient, ...)
-    return(img)
-  } 
+  }  
+  res = fslcmd(func="fslorient", 
+         file= file,
+         outfile = file,
+         retimg = retimg,
+         reorient = reorient,
+         intern = intern,
+         opts = opts,
+         ... = ... )
   
   return(res)  
 }
@@ -1173,17 +1162,15 @@ fslreorient2std = function(
   intern=TRUE, 
   ...){
   
-  cmd = get.fsl()
-  file = checkimg(file)
-  cmd <- paste0(cmd, sprintf('fslreorient2std "%s"', file))
-  ext = get.imgext()
-  
-  res = system(cmd, intern=intern)
-  if (retimg){
-    img = readNIfTI(file, reorient=reorient, ...)
-    return(img)
-  } 
-  
+  res = fslcmd(func="fslreorient2std", 
+               file= file,
+               outfile = file,
+               retimg = retimg,
+               reorient = reorient,
+               intern = intern,
+               opts = "",
+               ... = ... )
+    
   return(res)  
 }
 
@@ -1223,26 +1210,16 @@ fslswapdim = function(
   c = "z",
   ...){
   
-  cmd = get.fsl()
-  file = checkimg(file)
-  cmd <- paste0(cmd, sprintf('fslswapdim "%s"', file))
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }
-  outfile = nii.stub(outfile)
-  cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
-  ext = get.imgext()
+  opts = paste0(a, b, c, sep=" ")
   
-  res = system(cmd, intern=intern)
-  outfile = paste0(outfile, ext)  
-  if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
-    return(img)
-  } 
+  res = fslcmd(func="fslswapdim", 
+               file= file,
+               outfile = outfile,
+               retimg = retimg,
+               reorient = reorient,
+               intern = intern,
+               opts = opts,
+               ... = ... )
   
   return(res)  
 }
