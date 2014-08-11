@@ -967,8 +967,10 @@ flirt = function(infile,
   outfile = nii.stub(outfile)
 
   omat = path.expand(omat)
-  cmd <- paste0(cmd, sprintf('flirt -in "%s" -ref "%s" -out "%s" -dof %d %s', 
-                            infile, reffile, outfile, dof, opts))
+  cmd <- paste0(cmd, sprintf(
+    'flirt -in "%s" -ref "%s" -out "%s" -dof %d -omat "%s" %s', 
+    infile, reffile, outfile, dof, omat, opts))
+
   if (verbose){
     cat(cmd, "\n")
   }
