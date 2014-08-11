@@ -898,8 +898,8 @@ fslmerge = function(infiles,
   infiles = sapply(infiles, checkimg)
   infiles = paste(infiles, sep="", collapse = " ")
   
-  cmd <- paste0(cmd, sprintf('fslmerge "%s" -%s "%s"', 
-                            outfile, direction, infiles))
+  cmd <- paste0(cmd, sprintf('fslmerge -%s "%s" "%s"', 
+                             direction, outfile, infiles))
   if (verbose){
     cat(cmd, "\n")
   }
