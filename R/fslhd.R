@@ -896,6 +896,7 @@ fslmerge = function(infiles,
   }   
   outfile = nii.stub(outfile)  
   infiles = sapply(infiles, checkimg)
+  infiles = paste(infiles, sep="", collapse = " ")
   
   cmd <- paste0(cmd, sprintf('fslmerge "%s" -%s "%s"', 
                             outfile, direction, infiles))
