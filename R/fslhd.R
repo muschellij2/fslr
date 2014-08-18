@@ -21,7 +21,6 @@ get.fsl = function(){
 }
 
 
-#' @name Get FSLDir
 #' @title Get FSL's Directory 
 #' @description Finds the FSLDIR from system environment or \code{getOption("fsl.path")}
 #' for location of FSL fuctions and returns it
