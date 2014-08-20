@@ -3,10 +3,12 @@
 \alias{checkimg}
 \title{Check if filename is character or nifti object}
 \usage{
-checkimg(file)
+checkimg(file, ...)
 }
 \arguments{
 \item{file}{character or nifti object}
+
+\item{...}{options passed to \code{\link{tempimg}}}
 }
 \value{
 character filename or temporary nii

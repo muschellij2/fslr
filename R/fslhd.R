@@ -110,12 +110,13 @@ tempimg = function(nim, gzipped= TRUE){
 
 #' @title Check if filename is character or nifti object
 #' @param file character or nifti object
+#' @param ... options passed to \code{\link{tempimg}}
 #' @return character filename or temporary nii
 #' @export
 #' 
-checkimg = function(file){
+checkimg = function(file, ...){
   if (inherits(file, "nifti")){
-    return(tempimg(file))
+    return(tempimg(file, ...))
   }
   if (inherits(file, "character")){
     file = path.expand(file)
