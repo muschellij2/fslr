@@ -93,15 +93,18 @@ get.imgext = function(){
 #' @description Takes in a object of class nifti, writes it to a temp file, appends
 #' .nii.gz as \code{\link{writeNIfTI}} adds it.
 #' @param nim object of class nifti
+#' @param gzipped Should file be gzipped? Passed to \code{\link{writeNIfTI}}
 #' @return filename of output nii.gz
 #' @export
 #' 
-tempimg = function(nim){
+tempimg = function(nim, gzipped= TRUE){
   f = tempfile()
   nim = cal_img(nim)
   nim = zero_trans(nim)
-  writeNIfTI(nim, filename= f, onefile = TRUE, gzipped = TRUE)
-  f = paste0(f, ".nii.gz")
+  writeNIfTI(nim, filename= f, onefile = TRUE, gzipped = gzipped)
+  ext = ".nii"
+  if (gzipped) ext = paste0(ext, '.gz')
+  f = paste0(f, ext)
   return(f)
 }
 
