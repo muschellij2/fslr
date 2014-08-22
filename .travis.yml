@@ -11,7 +11,7 @@ before_install:
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
   - bash <(wget -q -O- http://neuro.debian.net/_files/neurodebian-travis.sh)
-  - sudo apt-get install fsl-complete --no-install-recommends  
+  - sudo apt-get install fsl-complete
 install:
   - ./travis-tool.sh install_deps
 script: ./travis-tool.sh run_tests
