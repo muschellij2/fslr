@@ -17,7 +17,7 @@ install:
   - ./travis-tool.sh install_deps
 script: 
   - ./travis-tool.sh run_tests
-  - Rscript -e 'library(fslr); have.fsl()'
+  - Rscript -e 'library(devtools); install_github("muschellij2/fslr"); library(fslr); have.fsl()'
 
 
 after_failure:
