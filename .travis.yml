@@ -14,6 +14,7 @@ before_install:
   - sudo apt-get install fsl-complete
 install:
   - ./travis-tool.sh install_deps
+  - Rscript -e 'library(fslr); have.fsl()'
 script: ./travis-tool.sh run_tests
 
 after_failure:
