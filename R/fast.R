@@ -22,11 +22,30 @@ fast = function(
   verbose = TRUE,
   ...){
     
-  res = fslcmd("fast", 
-               file=file, 
-               outfile = outfile, retimg= retimg,
-               reorient=reorient, intern=intern, opts=opts, 
-               ... = ..., verbose = verbose, samefile = FALSE)
+  cmd = get.fsl()
+  file = checkimg(file)
+  cmd <- paste0(cmd, 'fast ')
+  no.outfile = is.null(outfile)
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }
+  outfile = nii.stub(outfile)
+  cmd <- paste(cmd, sprintf(' %s --out "%s" "%s";', opts, outfile, file))
+  ext = get.imgext()
+  if (verbose){
+    cat(cmd, "\n")
+  }
+  res = system(cmd, intern=intern)
+  outfile = paste0(outfile, ext)  
+  if (retimg){
+    if (samefile) outfile = file
+    img = readNIfTI(outfile, reorient=reorient, ...)
+    return(img)
+  } 
   
   return(res)  
 }
