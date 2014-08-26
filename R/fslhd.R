@@ -928,7 +928,7 @@ fslmerge.help = function(){
 
 
 #' @title Register using FLIRT
-#' @description This function calls \code{fslirt} to register infile to reffile
+#' @description This function calls \code{flirt} to register infile to reffile
 #' and either saves the image or returns an object of class nifti, along with the
 #' transformation matrix omat  
 #' @param infile (character) input filename

@@ -49,3 +49,10 @@ fast = function(
   return(res)  
 }
 
+#' @title FAST help
+#' @description This function calls \code{fast}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+fast.help = function(){
+  return(fslhelp("fast"))
+}
