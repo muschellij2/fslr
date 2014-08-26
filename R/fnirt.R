@@ -39,7 +39,7 @@ fnirt = function(infile,
   
   omat = path.expand(omat)
   cmd <- paste0(cmd, sprintf(
-    'flirt --in="%s" --ref="%s" --iout="%s" %s', 
+    'fnirt --in="%s" --ref="%s" --iout="%s" %s', 
     infile, reffile, outfile, opts))
   
   if (verbose){
