@@ -991,6 +991,7 @@ flirt = function(infile,
 #' @title FLIRT help
 #' @description This function calls \code{flirt}'s help
 #' @return Prints help output and returns output as character vector
+#' @aliases flirt_apply.help
 #' @export
 flirt.help = function(){
   return(fslhelp("flirt"))
