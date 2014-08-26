@@ -43,7 +43,6 @@ flirt_apply = function(infile,
     'flirt -in "%s" -ref "%s" -out "%s" -init "%s" -applyxfm %s', 
     infile, reffile, outfile, initmat, opts))
   
-  
   if (verbose){
     cat(cmd, "\n")
   }
