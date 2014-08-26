@@ -34,7 +34,7 @@ fast = function(
     stopifnot(!is.null(outfile))
   }
   outfile = nii.stub(outfile)
-  cmd <- paste(cmd, sprintf(' %s --out "%s" "%s";', opts, outfile, file))
+  cmd <- paste(cmd, sprintf(' %s --out="%s" "%s";', opts, outfile, file))
   ext = get.imgext()
   if (verbose){
     cat(cmd, "\n")
@@ -42,10 +42,9 @@ fast = function(
   res = system(cmd, intern=intern)
   outfile = paste0(outfile, ext)  
   if (retimg){
-    if (samefile) outfile = file
     img = readNIfTI(outfile, reorient=reorient, ...)
     return(img)
-  } 
+  }
   
   return(res)  
 }
