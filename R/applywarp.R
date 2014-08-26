@@ -57,8 +57,8 @@ fsl_applywarp = function(infile,
 }
 
 
-#' @title FNIRT help
-#' @description This function calls \code{fnirt}'s help
+#' @title FSL applywarp help
+#' @description This function calls \code{applywarp}'s help
 #' @return Prints help output and returns output as character vector
 #' @export
 fsl_applywarp.help = function(){
