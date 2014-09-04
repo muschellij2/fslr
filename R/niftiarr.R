@@ -13,6 +13,7 @@ niftiarr <- function(img, # object of class nifti
     arr = array(arr, dim=dim(img))
   }
   class(arr) = "numeric"
+  stopifnot(all(dim(arr) == dim(img)))
   x@.Data = arr
   x = cal_img(x)
 }
