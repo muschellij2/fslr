@@ -11,4 +11,9 @@ Prints help output and returns output as character vector
 \description{
 This function calls \code{bet}'s help
 }
+\examples{
+if (have.fsl()){
+ fslbet.help()
+}
+}
 

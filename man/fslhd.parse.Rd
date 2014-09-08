@@ -14,4 +14,12 @@ data.frame of information from FSL header
 \description{
 This function takes in a FSL header and parses the components
 }
+\examples{
+if (have.fsl()){
+ mnifile = file.path(fsldir(), "data", "standard",
+   "MNI152_T1_2mm.nii.gz")
+ hd = fslhd(mnifile)
+ fslhd.parse(hd)
+}
+}
 

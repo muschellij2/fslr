@@ -3,12 +3,14 @@
 \alias{cog}
 \title{Image Center of Gravity}
 \usage{
-cog(img, thresh = 0)
+cog(img, thresh = 0, ceil = FALSE)
 }
 \arguments{
 \item{img}{Object of class nifti}
 
 \item{thresh}{threshold for image, will find \code{img > 0}}
+
+\item{ceil}{Run \code{\link{ceiling}} to force integers (usu for plotting)}
 }
 \value{
 Vector of length 3

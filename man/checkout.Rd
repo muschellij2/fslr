@@ -15,4 +15,12 @@ logical indicating if sform and qform consistent
 This function determines if the determinants of the sform and qform
 have the same sign
 }
+\examples{
+if (have.fsl()){
+ mnifile = file.path(fsldir(), "data", "standard",
+   "MNI152_T1_2mm.nii.gz")
+ hd = fslhd(mnifile)
+ checkout(hd)
+}
+}
 

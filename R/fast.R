@@ -53,6 +53,10 @@ fast = function(
 #' @description This function calls \code{fast}'s help
 #' @return Prints help output and returns output as character vector
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  fast.help()
+#' }
 fast.help = function(){
-  return(fslhelp("fast"))
+  return(fslhelp("fast", help.arg=""))
 }

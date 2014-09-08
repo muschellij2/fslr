@@ -11,4 +11,9 @@ Prints help output and returns output as character vector
 \description{
 This function calls \code{fslhd}'s help
 }
+\examples{
+if (have.fsl()){
+ fslhd.help()
+}
+}
 

@@ -14,4 +14,11 @@ result of \code{\link{checkout}}
 \description{
 Wrapper for getForms with filename
 }
+\examples{
+if (have.fsl()){
+ mnifile = file.path(fsldir(), "data", "standard",
+   "MNI152_T1_2mm.nii.gz")
+ check_file(mnifile)
+}
+}
 

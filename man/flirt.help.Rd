@@ -12,4 +12,9 @@ Prints help output and returns output as character vector
 \description{
 This function calls \code{flirt}'s help
 }
+\examples{
+if (have.fsl()){
+ flirt.help()
+}
+}
 

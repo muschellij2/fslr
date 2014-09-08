@@ -11,4 +11,9 @@ Prints help output and returns output as character vector
 \description{
 This function calls \code{fslreorient2std}'s help
 }
+\examples{
+if (have.fsl()){
+ fslreorient2std.help()
+}
+}
 

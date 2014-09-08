@@ -16,4 +16,11 @@ numeric vector of length 2
 \description{
 This function calls \code{fslstats -R} to get the range of an image
 }
+\examples{
+if (have.fsl()){
+ mnifile = file.path(fsldir(), "data", "standard",
+   "MNI152_T1_2mm.nii.gz")
+ fslrange(mnifile)
+}
+}
 

@@ -476,6 +476,12 @@ fslerode <- function(file, outfile=NULL,
 #' @return Character of infromation from fslhd field specified in keyword
 #' @export
 #' @import stringr
+#' @examples
+#' if (have.fsl()){
+#'  mnifile = file.path(fsldir(), "data", "standard", 
+#'    "MNI152_T1_2mm.nii.gz")
+#'  fslval(mnifile, keyword = "dim1")
+#' }  
 fslval <- function(file, keyword = "", verbose = TRUE){
   cmd <- get.fsl()
   file = checkimg(file)
@@ -490,6 +496,10 @@ fslval <- function(file, keyword = "", verbose = TRUE){
 #' @description This function calls \code{fslval}'s help
 #' @return Prints help output and returns output as character vector
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslval.help()
+#' } 
 fslval.help = function(){
   return(fslhelp("fslval", help.arg=""))
 }
@@ -502,6 +512,12 @@ fslval.help = function(){
 #' @param verbose (logical) print out command before running 
 #' @return Character of infromation from fslhd
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  mnifile = file.path(fsldir(), "data", "standard", 
+#'    "MNI152_T1_2mm.nii.gz")
+#'  fslhd(mnifile)
+#' }   
 fslhd <- function(file, opts="", verbose = TRUE){
 	cmd <- get.fsl()
   file = checkimg(file)
@@ -516,6 +532,10 @@ fslhd <- function(file, opts="", verbose = TRUE){
 #' @description This function calls \code{fslhd}'s help
 #' @return Prints help output and returns output as character vector
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslhd.help()
+#' }   
 fslhd.help = function(){
   return(fslhelp("fslhd", help.arg=""))
 }
@@ -525,6 +545,13 @@ fslhd.help = function(){
 #' @param hd (character) header from \code{\link{fslhd}}
 #' @return data.frame of information from FSL header
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  mnifile = file.path(fsldir(), "data", "standard", 
+#'    "MNI152_T1_2mm.nii.gz")
+#'  hd = fslhd(mnifile)
+#'  fslhd.parse(hd)
+#' }  
 fslhd.parse <- function(hd){
   ss <- strsplit(hd, split=" ")
   ss <- lapply(ss, function(x) x[!x %in% ""])
@@ -557,6 +584,12 @@ fslhd.parse <- function(hd){
 #' @param file (character) filename of image to pass to header
 #' @return list with elements of sform and qform and their respective codes
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  mnifile = file.path(fsldir(), "data", "standard", 
+#'    "MNI152_T1_2mm.nii.gz")
+#'  getForms(mnifile)
+#' }   
 getForms <- function(file){
   file = checkimg(file)  
 	x <- fslhd(file)
@@ -604,6 +637,13 @@ getForms <- function(file){
 #' @param hd (list) sforms from \code{\link{getForms}}
 #' @return logical indicating if sform and qform consistent
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  mnifile = file.path(fsldir(), "data", "standard", 
+#'    "MNI152_T1_2mm.nii.gz")
+#'  hd = fslhd(mnifile)
+#'  checkout(hd)
+#' } 
 checkout <- function(hd){
 	det.equal <- sign(det(hd$sform)) == sign(det(hd$qform))
 	lr.equal <- hd$ssor[1] == hd$sqor[1]
@@ -618,6 +658,12 @@ checkout <- function(hd){
 #' @param file (character) filename of image to be checked
 #' @return result of \code{\link{checkout}}
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  mnifile = file.path(fsldir(), "data", "standard", 
+#'    "MNI152_T1_2mm.nii.gz")
+#'  check_file(mnifile)
+#' } 
 check_file <- function(file){
   file = checkimg(file)  
 	hd <- getForms(file)
@@ -645,6 +691,12 @@ check_sform_file <- function(file, value=0){
 #' @return numeric vector of length 2
 #' @import stringr
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  mnifile = file.path(fsldir(), "data", "standard", 
+#'    "MNI152_T1_2mm.nii.gz")
+#'  fslrange(mnifile)
+#' }  
 fslrange <- function(file, verbose =TRUE){
 	cmd <- get.fsl()
 	file = checkimg(file)
@@ -863,6 +915,10 @@ fslview = function(file, intern=TRUE, opts ="", verbose = TRUE){
 #' @description This function calls \code{fslview}'s help
 #' @return Prints help output and returns output as character vector
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslview.help()
+#' }   
 fslview.help = function(){
   return(fslhelp("fslview"))
 }
@@ -921,6 +977,10 @@ fslmerge = function(infiles,
 #' @description This function calls \code{fslmerge}'s help
 #' @return Prints help output and returns output as character vector
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslmerge.help()
+#' }  
 fslmerge.help = function(){
   return(fslhelp("fslmerge"))
 }
@@ -993,6 +1053,10 @@ flirt = function(infile,
 #' @return Prints help output and returns output as character vector
 #' @aliases flirt_apply.help
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  flirt.help()
+#' } 
 flirt.help = function(){
   return(fslhelp("flirt"))
 }
@@ -1032,6 +1096,10 @@ melodic = function(file,
 #' @description This function calls \code{melodic}'s help
 #' @return Prints help output and returns output as character vector
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  melodic.help()
+#' } 
 melodic.help = function(){
   return(fslhelp("melodic"))
 }
@@ -1114,6 +1182,10 @@ fslbet = function(infile,
 #' @description This function calls \code{bet}'s help
 #' @return Prints help output and returns output as character vector
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslbet.help()
+#' }  
 fslbet.help = function(){
   return(fslhelp("bet", help.arg=""))
 }
@@ -1123,6 +1195,7 @@ fslbet.help = function(){
 #' @description Find Center of Gravity of Image, after thresholding
 #' @param img Object of class nifti
 #' @param thresh threshold for image, will find \code{img > 0}
+#' @param ceil Run \code{\link{ceiling}} to force integers (usu for plotting)
 #' @return Vector of length 3
 #' @export
 #' @examples
@@ -1133,9 +1206,10 @@ fslbet.help = function(){
 #' cal.max = max(x), pixdim = rep(1, 4))
 #' cog(img)
 #' } 
-cog = function(img, thresh = 0){
+cog = function(img, thresh = 0, ceil = FALSE){
 #   stopifnot(inherits(img, "nifti"))
   xyz = colMeans(which(img > thresh, arr.ind = TRUE))
+  if (ceil) xyz = ceiling(xyz)
   return(xyz)
 }
 
@@ -1212,6 +1286,10 @@ fslorient = function(
 #' @description This function calls \code{fslorient}'s help
 #' @return Prints help output and returns output as character vector
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslorient.help()
+#' } 
 fslorient.help = function(){
   return(fslhelp("fslorient", help.arg=""))
 }
@@ -1256,6 +1334,10 @@ fslreorient2std = function(
 #' @description This function calls \code{fslreorient2std}'s help
 #' @return Prints help output and returns output as character vector
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslreorient2std.help()
+#' }  
 fslreorient2std.help = function(){
   return(fslhelp("fslreorient2std", help.arg=""))
 }
@@ -1304,6 +1386,18 @@ fslswapdim = function(
                samefile = FALSE)
   
   return(res)  
+}
+
+#' @title fslswapdim help
+#' @description This function calls \code{fslswapdim}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslswapdim()
+#' }  
+fslswapdim.help = function(){
+  return(fslhelp("fslswapdim"))
 }
 
 
