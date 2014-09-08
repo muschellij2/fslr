@@ -11,4 +11,9 @@ Prints help output and returns output as character vector
 \description{
 This function calls \code{melodic}'s help
 }
+\examples{
+if (have.fsl()){
+ melodic.help()
+}
+}
 

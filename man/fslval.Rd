@@ -18,4 +18,11 @@ Character of infromation from fslhd field specified in keyword
 \description{
 This function calls \code{fslval} to obtain a nifti header
 }
+\examples{
+if (have.fsl()){
+ mnifile = file.path(fsldir(), "data", "standard",
+   "MNI152_T1_2mm.nii.gz")
+ fslval(mnifile, keyword = "dim1")
+}
+}
 

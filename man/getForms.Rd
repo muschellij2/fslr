@@ -15,4 +15,11 @@ list with elements of sform and qform and their respective codes
 This function obtains the s and q forms of an image transformation
 matrix
 }
+\examples{
+if (have.fsl()){
+ mnifile = file.path(fsldir(), "data", "standard",
+   "MNI152_T1_2mm.nii.gz")
+ getForms(mnifile)
+}
+}
 
