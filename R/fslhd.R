@@ -1086,12 +1086,13 @@ flirt.help = function(){
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) options for melodic
 #' @param verbose (logical) print out command before running
+#' @param ... arguments passed to \code{\link{checkimg}}
 #' @return character or logical depending on intern
 #' @export
 melodic = function(file, 
                    outdir = dirname(file), 
                    intern=TRUE,                   
-                   opts ="", verbose = TRUE){
+                   opts ="", verbose = TRUE, ...){
   cmd <- get.fsl()
   file = path.expand(outdir)
 
