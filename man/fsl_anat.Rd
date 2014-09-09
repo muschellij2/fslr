@@ -4,7 +4,7 @@
 \title{FSL FAST}
 \usage{
 fsl_anat(file, modality = c("T1", "T2", "PD"), outdir = NULL,
-  intern = TRUE, opts = "", verbose = TRUE)
+  intern = TRUE, opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated, should be full path}
@@ -19,6 +19,8 @@ default to \code{dirname(file)}}
 \item{opts}{(character) operations to be passed to \code{fsl_anat}}
 
 \item{verbose}{(logical) print out command before running}
+
+\item{...}{options passed to \code{\link{checkimg}}}
 }
 \value{
 Result from system command, depends if intern is TRUE or FALSE.

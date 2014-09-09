@@ -94,13 +94,22 @@ get.imgext = function(){
 #' .nii.gz as \code{\link{writeNIfTI}} adds it.
 #' @param nim object of class nifti
 #' @param gzipped Should file be gzipped? Passed to \code{\link{writeNIfTI}}
+#' @param checknan Check for NAs or NaNs
+#' @param ... Not used
 #' @return filename of output nii.gz
 #' @export
 #' 
-tempimg = function(nim, gzipped= TRUE){
+tempimg = function(nim, gzipped= TRUE, checknan = TRUE, ...){
   f = tempfile()
   nim = cal_img(nim)
   nim = zero_trans(nim)
+  if (checknan){
+    cnim = c(nim)
+    if (any(is.na(cnim) | is.nan(cnim))){
+    warning("NAs and NaNs in image file, replacing with zeros")
+    nim[is.na(nim)| is.nan(cnim)] = 0
+    }
+  }
   writeNIfTI(nim, filename= f, onefile = TRUE, gzipped = gzipped)
   ext = ".nii"
   if (gzipped) ext = paste0(ext, '.gz')
@@ -231,6 +240,7 @@ fslbin = function(
 #' @param file (character) filename of image to be checked
 #' @param opts (character) operation passed to \code{fslstats}
 #' @param verbose (logical) print out command before running
+#' @param ... options passed to \code{\link{checkimg}}
 #' @return Result of fslstats command
 #' @import stringr
 #' @export
@@ -244,9 +254,9 @@ fslbin = function(
 #' entropy = fslstats(img, opts='-E')
 #' })
 #' }  
-fslstats <- function(file, opts="", verbose = TRUE){
+fslstats <- function(file, opts="", verbose = TRUE, ...){
   cmd <- get.fsl()
-  file = checkimg(file)
+  file = checkimg(file, ...)
   cmd <- paste0(cmd, sprintf('fslstats "%s" %s', file, opts))
   if (verbose){
     cat(cmd, "\n")
@@ -297,10 +307,10 @@ fslsmooth <- function(
   ...){
 	
   cmd = get.fsl()
-  file = checkimg(file)
+  file = checkimg(file, ...)
 	cmd <- paste0(cmd, sprintf('fslmaths "%s"', file))
 	if (! is.null(mask)) {
-    mask = checkimg(mask)
+    mask = checkimg(mask, ...)
     cmd <- paste(cmd, sprintf(' -mas "%s"', mask))
 	}
   if (retimg){
@@ -318,7 +328,7 @@ fslsmooth <- function(
 	### tempfile for mask.stub
   if ( !is.null(mask) ) {
     rm.mask.img = TRUE
-    mask = checkimg(mask)
+    mask = checkimg(mask, ...)
     mask.stub <- basename(mask)
     mask.stub = nii.stub(mask.stub)
   	mask.stub <- file.path(dirname(mask), mask.stub)
@@ -386,8 +396,8 @@ fslmask <- function(file, mask, outfile=NULL,
     stopifnot(!is.null(outfile))
   }
   outfile = nii.stub(outfile)
-  file = checkimg(file)
-  mask = checkimg(mask)
+  file = checkimg(file, ...)
+  mask = checkimg(mask, ...)
   cmd <- paste0(cmd, sprintf('fslmaths "%s" -mas "%s" %s "%s"', 
 		file, mask, opts, outfile))
   if (verbose){
@@ -449,7 +459,7 @@ fslerode <- function(file, outfile=NULL,
     stopifnot(!is.null(outfile))
   }
   outfile = nii.stub(outfile)
-  file = checkimg(file)    
+  file = checkimg(file, ...)    
   cmd <- paste0(cmd, sprintf('fslmaths "%s" %s -ero %s "%s"', 
                             file, kopts, opts, outfile))
   if (verbose){
@@ -473,6 +483,7 @@ fslerode <- function(file, outfile=NULL,
 #' @param file (character) image filename or character of class nifti
 #' @param keyword (character) keyword to be taken from fslhd
 #' @param verbose (logical) print out command before running 
+#' @param ... options passed to \code{\link{checkimg}}
 #' @return Character of infromation from fslhd field specified in keyword
 #' @export
 #' @import stringr
@@ -482,9 +493,9 @@ fslerode <- function(file, outfile=NULL,
 #'    "MNI152_T1_2mm.nii.gz")
 #'  fslval(mnifile, keyword = "dim1")
 #' }  
-fslval <- function(file, keyword = "", verbose = TRUE){
+fslval <- function(file, keyword = "", verbose = TRUE, ...){
   cmd <- get.fsl()
-  file = checkimg(file)
+  file = checkimg(file, ...)
   cmd <- paste0(cmd, sprintf('fslval "%s" %s', file, keyword))
   if (verbose){
     cat(cmd, "\n")
@@ -510,6 +521,7 @@ fslval.help = function(){
 #' @param file (character) image filename or character of class nifti
 #' @param opts (character) additional options to be passed to fslhd
 #' @param verbose (logical) print out command before running 
+#' @param ... options passed to \code{\link{checkimg}}
 #' @return Character of infromation from fslhd
 #' @export
 #' @examples
@@ -518,9 +530,9 @@ fslval.help = function(){
 #'    "MNI152_T1_2mm.nii.gz")
 #'  fslhd(mnifile)
 #' }   
-fslhd <- function(file, opts="", verbose = TRUE){
+fslhd <- function(file, opts="", verbose = TRUE, ...){
 	cmd <- get.fsl()
-  file = checkimg(file)
+  file = checkimg(file, ...)
 	cmd <- paste0(cmd, sprintf('fslhd "%s" %s', file, opts))
   if (verbose){
     cat(cmd, "\n")
@@ -582,6 +594,7 @@ fslhd.parse <- function(hd){
 #' @description This function obtains the s and q forms of an image transformation 
 #' matrix
 #' @param file (character) filename of image to pass to header
+#' @param ... options passed to \code{\link{checkimg}}
 #' @return list with elements of sform and qform and their respective codes
 #' @export
 #' @examples
@@ -590,8 +603,8 @@ fslhd.parse <- function(hd){
 #'    "MNI152_T1_2mm.nii.gz")
 #'  getForms(mnifile)
 #' }   
-getForms <- function(file){
-  file = checkimg(file)  
+getForms <- function(file, ...){
+  file = checkimg(file, ...)  
 	x <- fslhd(file)
 	convmat <- function(form){
 		ss <- strsplit(form, " ")
@@ -656,6 +669,7 @@ checkout <- function(hd){
 
 #' @title Wrapper for getForms with filename
 #' @param file (character) filename of image to be checked
+#' @param ... options passed to \code{\link{checkimg}}
 #' @return result of \code{\link{checkout}}
 #' @export
 #' @examples
@@ -664,9 +678,9 @@ checkout <- function(hd){
 #'    "MNI152_T1_2mm.nii.gz")
 #'  check_file(mnifile)
 #' } 
-check_file <- function(file){
-  file = checkimg(file)  
-	hd <- getForms(file)
+check_file <- function(file, ...){
+  file = checkimg(file, ...)  
+	hd <- getForms(file, ...)
 	checkout(hd)
 }
 
@@ -675,9 +689,9 @@ check_sform <- function(hd, value=0){
 }
 
 
-check_sform_file <- function(file, value=0){
-  file = checkimg(file)  
-	hd <- getForms(file)
+check_sform_file <- function(file, value=0, ...){
+  file = checkimg(file, ...)  
+	hd <- getForms(file, ...)
 	check_sform(hd, value=value)
 }
 ## if sign(det(res$sform)) == sign(det(res$qform)) and 
@@ -688,6 +702,7 @@ check_sform_file <- function(file, value=0){
 #' @description This function calls \code{fslstats -R} to get the range of an image
 #' @param file (character) filename of image to be checked
 #' @param verbose (logical) print out command before running
+#' @param ... options passed to \code{\link{checkimg}}
 #' @return numeric vector of length 2
 #' @import stringr
 #' @export
@@ -697,9 +712,9 @@ check_sform_file <- function(file, value=0){
 #'    "MNI152_T1_2mm.nii.gz")
 #'  fslrange(mnifile)
 #' }  
-fslrange <- function(file, verbose =TRUE){
+fslrange <- function(file, verbose =TRUE, ...){
 	cmd <- get.fsl()
-	file = checkimg(file)
+	file = checkimg(file, ...)
 	cmd <- paste0(cmd, sprintf('fslstats "%s" -R', file))
   if (verbose){
     cat(cmd, "\n")
@@ -751,7 +766,7 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
   }  
   outfile = nii.stub(outfile)
   
-  file = checkimg(file)    
+  file = checkimg(file, ...)    
   runbin = ""
   if (bin) runbin = "-bin"
   cmd <- paste0(cmd, sprintf('fslmaths "%s" %s -fillh "%s"', file, 
@@ -812,7 +827,7 @@ fslthresh = function(file, outfile = NULL,
   }  
   outfile = nii.stub(outfile)
   
-  file = checkimg(file)  
+  file = checkimg(file, ...)  
   
   if (!is.null(uthresh)){
     opts = paste(sprintf("-uthr %f", uthresh), opts)
@@ -877,7 +892,7 @@ fslsub2 = function(file,
 #   }  
 #   outfile = nii.stub(outfile)
 #   
-#   file = checkimg(file)  
+#   file = checkimg(file, ...)  
 #   
 #   cmd <- paste0(cmd, sprintf('fslmaths "%s" -subsamp2 "%s"', 
 #                             file, outfile))
@@ -898,11 +913,12 @@ fslsub2 = function(file,
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) options for FSLView
 #' @param verbose (logical) print out command before running
+#' @param ... options passed to \code{\link{checkimg}}
 #' @return character or logical depending on intern
 #' @export
-fslview = function(file, intern=TRUE, opts ="", verbose = TRUE){
+fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
   cmd <- get.fsl()
-  file = checkimg(file)
+  file = checkimg(file, ...)
   cmd <- paste0(cmd, sprintf('fslview "%s" %s', file, opts))
   if (verbose){
     cat(cmd, "\n")
@@ -1024,10 +1040,10 @@ flirt = function(infile,
 #   infile = path.expand(infile)
 #   outfile = path.expand(outfile)
 #   reffile = path.expand(reffile)
-  infile = checkimg(infile)  
-  reffile = checkimg(reffile)  
-  outfile = checkimg(outfile)  
-  outfile = nii.stub(outfile)
+  infile = checkimg(infile, ...)  
+  reffile = checkimg(reffile, ...)  
+  outfile = checkimg(outfile, ...)  
+  outfile = nii.stub(outfile, ...)
 
   omat = path.expand(omat)
   cmd <- paste0(cmd, sprintf(
@@ -1081,7 +1097,7 @@ melodic = function(file,
 
   outdir = path.expand(outdir)
   stopifnot(file.exists(outdir))
-  file = checkimg(file)  
+  file = checkimg(file, ...)  
 
   cmd <- paste0(cmd, sprintf('melodic --in "%s" --outdir "%s" %s', 
                              file, outdir, opts))
@@ -1160,9 +1176,9 @@ fslbet = function(infile,
   } else {
     stopifnot(!is.null(outfile))
   }
-  infile = checkimg(infile)  
-  outfile = checkimg(outfile)  
-  outfile = nii.stub(outfile)
+  infile = checkimg(infile, ...)  
+  outfile = checkimg(outfile, ...)  
+  outfile = nii.stub(outfile, ...)
   cmd <- paste0(cmd, sprintf('%s "%s" "%s" %s', 
                              betcmd, infile, outfile, opts))
   if (verbose){
@@ -1430,7 +1446,7 @@ fslcmd = function(
   ...){
   
   cmd = get.fsl()
-  file = checkimg(file)
+  file = checkimg(file, ...)
   cmd <- paste0(cmd, sprintf('%s "%s"', func, file))
   no.outfile = is.null(outfile)
   if (retimg){

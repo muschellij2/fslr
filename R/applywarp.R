@@ -1,4 +1,4 @@
-#' @title Apply Warp from FNIRT
+ #' @title Apply Warp from FNIRT
 #' @description This function applies a coefficient map from \code{\link{fnirt}}
 #' to other images
 #' @param infile (character) input filename
@@ -33,9 +33,9 @@ fsl_applywarp = function(infile,
   #   infile = path.expand(infile)
   #   outfile = path.expand(outfile)
   #   reffile = path.expand(reffile)
-  infile = checkimg(infile)  
-  reffile = checkimg(reffile)  
-  outfile = checkimg(outfile)  
+  infile = checkimg(infile, ...)  
+  reffile = checkimg(reffile, ...)  
+  outfile = checkimg(outfile, ...)  
   outfile = nii.stub(outfile)
   
   omat = path.expand(omat)

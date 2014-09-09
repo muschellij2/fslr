@@ -33,9 +33,9 @@ flirt_apply = function(infile,
   #   infile = path.expand(infile)
   #   outfile = path.expand(outfile)
   #   reffile = path.expand(reffile)
-  infile = checkimg(infile)  
-  reffile = checkimg(reffile)  
-  outfile = checkimg(outfile)  
+  infile = checkimg(infile, ...)  
+  reffile = checkimg(reffile, ...)  
+  outfile = checkimg(outfile, ...)  
   outfile = nii.stub(outfile)
   
   omat = path.expand(omat)

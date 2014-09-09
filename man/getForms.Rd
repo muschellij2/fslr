@@ -3,10 +3,12 @@
 \alias{getForms}
 \title{Get Q and S Forms of orientation matrix}
 \usage{
-getForms(file)
+getForms(file, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to pass to header}
+
+\item{...}{options passed to \code{\link{checkimg}}}
 }
 \value{
 list with elements of sform and qform and their respective codes

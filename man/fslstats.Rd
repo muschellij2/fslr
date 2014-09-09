@@ -3,7 +3,7 @@
 \alias{fslstats}
 \title{FSL Stats}
 \usage{
-fslstats(file, opts = "", verbose = TRUE)
+fslstats(file, opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be checked}
@@ -11,6 +11,8 @@ fslstats(file, opts = "", verbose = TRUE)
 \item{opts}{(character) operation passed to \code{fslstats}}
 
 \item{verbose}{(logical) print out command before running}
+
+\item{...}{options passed to \code{\link{checkimg}}}
 }
 \value{
 Result of fslstats command

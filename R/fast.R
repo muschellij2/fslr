@@ -23,7 +23,7 @@ fast = function(
   ...){
     
   cmd = get.fsl()
-  file = checkimg(file)
+  file = checkimg(file, ...)
   cmd <- paste0(cmd, 'fast ')
   no.outfile = is.null(outfile)
   if (retimg){

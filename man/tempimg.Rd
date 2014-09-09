@@ -3,12 +3,16 @@
 \alias{tempimg}
 \title{Create temporary nii.gz file for FSL}
 \usage{
-tempimg(nim, gzipped = TRUE)
+tempimg(nim, gzipped = TRUE, checknan = TRUE, ...)
 }
 \arguments{
 \item{nim}{object of class nifti}
 
 \item{gzipped}{Should file be gzipped? Passed to \code{\link{writeNIfTI}}}
+
+\item{checknan}{Check for NAs or NaNs}
+
+\item{...}{Not used}
 }
 \value{
 filename of output nii.gz

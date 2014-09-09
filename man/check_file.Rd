@@ -3,10 +3,12 @@
 \alias{check_file}
 \title{Wrapper for getForms with filename}
 \usage{
-check_file(file)
+check_file(file, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be checked}
+
+\item{...}{options passed to \code{\link{checkimg}}}
 }
 \value{
 result of \code{\link{checkout}}

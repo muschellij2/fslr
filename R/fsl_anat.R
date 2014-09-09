@@ -7,6 +7,7 @@
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fsl_anat}
 #' @param verbose (logical) print out command before running
+#' @param ... options passed to \code{\link{checkimg}}
 #' @return Result from system command, depends if intern is TRUE or FALSE.
 #' @export
 fsl_anat = function(
@@ -15,13 +16,13 @@ fsl_anat = function(
   outdir = NULL, 
   intern=TRUE, 
   opts = "", 
-  verbose = TRUE){
+  verbose = TRUE, ...){
   
   ## check modality - should match fsl_anat
   modality = match.arg(modality)
   cmd = get.fsl()
   
-  file = checkimg(file)
+  file = checkimg(file, ...)
   cmd <- paste0(cmd, 'fsl_ant ')
   if (is.null(outdir)){
     outdir = dirname(file)
