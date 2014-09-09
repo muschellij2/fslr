@@ -20,3 +20,4 @@ VignetteBuilder: knitr
 Suggests:
     knitr
 BugReports: https://github.com/muschellij2/fslr/issues
+SystemRequirements: FSL (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/)
