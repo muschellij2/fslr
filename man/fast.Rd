@@ -18,7 +18,7 @@ Passed to \code{\link{readNIfTI}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 
-\item{opts}{(character) operations to be passed to \code{fslmaths}}
+\item{opts}{(character) operations to be passed to \code{fast}}
 
 \item{verbose}{(logical) print out command before running}
 

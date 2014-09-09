@@ -6,7 +6,7 @@
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
 #' Passed to \code{\link{readNIfTI}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
-#' @param opts (character) operations to be passed to \code{fslmaths}
+#' @param opts (character) operations to be passed to \code{fast}
 #' @param verbose (logical) print out command before running
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
