@@ -68,6 +68,7 @@ fast.help = function(){
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param opts (character) operations to be passed to \code{fast}
+#' @param remove.seg (logical) Should segmentation from FAST be removed?
 #' @param ... additional arguments passed to \code{\link{fast}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
@@ -77,6 +78,7 @@ fsl_biascorrect = function(
   outfile=NULL, 
   retimg = FALSE,
   opts = "", 
+  remove.seg = TRUE,
   ...){
   
   have.outfile = !is.null(outfile)
@@ -92,7 +94,7 @@ fsl_biascorrect = function(
     stub = nii.stub(outfile)
     ### remove extra files from fast
     seg_file = paste0(stub, "_seg", ext)
-    file.remove(seg_file)
+    if (remove.seg) file.remove(seg_file)
     
     output = paste0(stub, "_restore", ext)
     outfile = paste0(stub, ext)

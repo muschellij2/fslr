@@ -3,7 +3,8 @@
 \alias{fsl_biascorrect}
 \title{FSL Bias Correct}
 \usage{
-fsl_biascorrect(file, outfile = NULL, retimg = FALSE, opts = "", ...)
+fsl_biascorrect(file, outfile = NULL, retimg = FALSE, opts = "",
+  remove.seg = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}
@@ -13,6 +14,8 @@ fsl_biascorrect(file, outfile = NULL, retimg = FALSE, opts = "", ...)
 \item{retimg}{(logical) return image of class nifti}
 
 \item{opts}{(character) operations to be passed to \code{fast}}
+
+\item{remove.seg}{(logical) Should segmentation from FAST be removed?}
 
 \item{...}{additional arguments passed to \code{\link{fast}}.}
 }
