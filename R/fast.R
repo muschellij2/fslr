@@ -60,3 +60,46 @@ fast = function(
 fast.help = function(){
   return(fslhelp("fast", help.arg=""))
 }
+
+#' @title FSL Bias Correct
+#' @description This function wraps a call to \code{fast} that performs bias
+#' corretion
+#' @param file (character) image to be manipulated
+#' @param outfile (character) resultant image name (optional)
+#' @param retimg (logical) return image of class nifti
+#' @param opts (character) operations to be passed to \code{fast}
+#' @param verbose (logical) print out command before running
+#' @param ... additional arguments passed to \code{\link{fast}}.
+#' @return If \code{retimg} then object of class nifti.  Otherwise,
+#' Result from system command, depends if intern is TRUE or FALSE.
+#' @export
+fsl_biascorrect = function(
+  file,
+  outfile=NULL, 
+  retimg = FALSE,
+  opts = "", 
+  ...){
+  
+  have.outfile = !is.null(outfile)
+  opts = paste( c("-B --nopve ", opts), sep= "", collapse= " ")
+  
+  res = fast(file, opts = opts, 
+       outfile = outfile, 
+       retimg = retimg, ...)
+  
+  if (have.outfile){
+    ext = get.imgext()
+    
+    stub = nii.stub(outfile)
+    ### remove extra files from fast
+    seg_file = paste0(stub, "_seg", ext)
+    file.remove(seg_file)
+    
+    output = paste0(stub, "_restore", ext)
+    outfile = paste0(stub, ext)
+    file.rename(output, outfile)
+  }
+  
+  return(res)  
+}
+
