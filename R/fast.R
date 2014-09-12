@@ -68,7 +68,6 @@ fast.help = function(){
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param opts (character) operations to be passed to \code{fast}
-#' @param verbose (logical) print out command before running
 #' @param ... additional arguments passed to \code{\link{fast}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.

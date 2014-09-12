@@ -15,8 +15,6 @@ fsl_biascorrect(file, outfile = NULL, retimg = FALSE, opts = "", ...)
 \item{opts}{(character) operations to be passed to \code{fast}}
 
 \item{...}{additional arguments passed to \code{\link{fast}}.}
-
-\item{verbose}{(logical) print out command before running}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,
