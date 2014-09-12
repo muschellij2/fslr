@@ -12,7 +12,8 @@ before_install:
   - ./travis-tool.sh bootstrap
   - bash <(wget -q -O- http://neuro.debian.net/_files/neurodebian-travis.sh)
   - sudo apt-get update
-  - sudo apt-get install fsl-complete
+  - sudo apt-get install fsl-core
+  # - sudo apt-get install fsl-complete
 install:
   - ./travis-tool.sh install_deps
 script: 
