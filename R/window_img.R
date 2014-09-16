@@ -9,7 +9,7 @@
 #' set to the min or max or "missing" for these to be set to NA
 #' @export
 window_img = function(x, window=c(0, 100), 
-                      replace = c("window", "missing")) {
+                      replace = c("window", "missing", "zero")) {
   if (inherits(x, "character")) {
     x= readNIfTI(x, reorient=FALSE)
   }
@@ -19,11 +19,18 @@ window_img = function(x, window=c(0, 100),
   stopifnot(length(window) == 2)
   x@cal_min = window[1]
   x@cal_max = window[2]
-  repper = replace[1]
-  
-  x[ x < window[1] ] = 
-    ifelse(repper == "window", window[1], NA)
-  x[ x > window[2] ] = 
-    ifelse(repper == "window", window[2], NA)    
+  repper = match.arg(replace)
+  low = which(x < window[1])
+  high = which(x > window[2])
+  if (repper == "window"){
+    x[low] = window[1]
+    x[high] = window[2]
+  }
+  if (repper == "missing"){
+    x[c(low, high)] = NA
+  }
+  if (repper == "zero"){
+    x[c(low, high)] = 0
+  }  
   return(x)
 }
