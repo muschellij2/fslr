@@ -3,7 +3,10 @@
 \alias{fslbet.help}
 \title{Help for FSL BET}
 \usage{
-fslbet.help()
+fslbet.help(betcmd = c("bet2", "bet"))
+}
+\arguments{
+\item{betcmd}{(character) Get help for \code{bet} or \code{bet2} function}
 }
 \value{
 Prints help output and returns output as character vector
@@ -14,6 +17,7 @@ This function calls \code{bet}'s help
 \examples{
 if (have.fsl()){
  fslbet.help()
+ fslbet.help("bet")
 }
 }
 

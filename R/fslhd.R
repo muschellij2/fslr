@@ -1197,14 +1197,17 @@ fslbet = function(infile,
 
 #' @title Help for FSL BET
 #' @description This function calls \code{bet}'s help
+#' @param betcmd (character) Get help for \code{bet} or \code{bet2} function
 #' @return Prints help output and returns output as character vector
 #' @export
 #' @examples
 #' if (have.fsl()){
 #'  fslbet.help()
+#'  fslbet.help("bet")
 #' }  
-fslbet.help = function(){
-  return(fslhelp("bet", help.arg=""))
+fslbet.help = function(betcmd = c("bet2", "bet")){
+  betcmd = match.arg( betcmd )
+  return(fslhelp(betcmd, help.arg=""))
 }
 
 
