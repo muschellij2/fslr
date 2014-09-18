@@ -81,11 +81,14 @@ fnirt.help = function(){
 #' @return character or logical depending on intern
 #' @export
 fnirt_with_affine = function(infile, 
-                 reffile, omat = NULL,
+                 reffile, 
+                 flirt.omat = NULL,
+                 flirt.outfile = NULL,
                  outfile = NULL,                  
                  retimg = FALSE,
                  reorient = FALSE,                 
                  intern=TRUE,
+                 flirt.opts = "",
                  opts="", verbose = TRUE, ...){
   cmd <- get.fsl()
   if (retimg){
@@ -95,10 +98,25 @@ fnirt_with_affine = function(infile,
   } else {
     stopifnot(!is.null(outfile))
   }
-  if (is.null(omat)) {
-    omat = tempfile()
+  
+  ##################################
+  # FLIRT output matrix
+  ##################################  
+  if (is.null(flirt.omat)) {
+    flirt.omat = tempfile()
   }
-  omat = path.expand(omat)
+  flirt.omat = path.expand(flirt.omat)
+  
+  ##################################
+  # FLIRT output file
+  ##################################    
+  if (is.null(flirt.outfile)) {
+    flirt.outfile = tempfile()
+  }
+  flirt.outfile = path.expand(flirt.outfile)  
+  
+  flirt.outfile = checkimg(flirt.outfile, ...) 
+  flirt.outfile = nii.stub(flirt.outfile)
   
   infile = checkimg(infile, ...)  
   reffile = checkimg(reffile, ...)  
@@ -106,12 +124,16 @@ fnirt_with_affine = function(infile,
   outfile = nii.stub(outfile)
   
   affine.file = tempfile()
-  res_flirt = flirt(infile = infile, reffile = reffile, 
-        omat = omat, dof = 12,
-        outfile = affine.file,                  
-        retimg = FALSE,
-        intern=TRUE, opts="", verbose = TRUE)
-  res_fnirt = fnirt(infile = affine.file, 
+  res_flirt = flirt(infile = infile, 
+                    reffile = reffile, 
+                    omat = flirt.omat, 
+                    dof = 12,
+                    outfile = flirt.outfile,                  
+                    retimg = FALSE,
+                    intern=TRUE, 
+                    opts=flirt.opts, 
+                    verbose = verbose)
+  res_fnirt = fnirt(infile = flirt.outfile, 
                     reffile = reffile, 
                     outfile = outfile,                  
                     retimg = retimg,
@@ -119,5 +141,5 @@ fnirt_with_affine = function(infile,
                     intern=intern,
                     opts=opts, verbose = verbose, ...)
 
-  return(res)
+  return(res_fnirt)
 }

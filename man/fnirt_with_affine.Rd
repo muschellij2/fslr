@@ -3,16 +3,14 @@
 \alias{fnirt_with_affine}
 \title{Register using FNIRT, but doing Affine Registration as well}
 \usage{
-fnirt_with_affine(infile, reffile, omat = NULL, outfile = NULL,
-  retimg = FALSE, reorient = FALSE, intern = TRUE, opts = "",
-  verbose = TRUE, ...)
+fnirt_with_affine(infile, reffile, flirt.omat = NULL, flirt.outfile = NULL,
+  outfile = NULL, retimg = FALSE, reorient = FALSE, intern = TRUE,
+  flirt.opts = "", opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{infile}{(character) input filename}
 
 \item{reffile}{(character) reference image to be registered to}
-
-\item{omat}{(character) Filename of output affine matrix}
 
 \item{outfile}{(character) output filename}
 
@@ -28,6 +26,8 @@ Passed to \code{\link{readNIfTI}}.}
 \item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
+
+\item{omat}{(character) Filename of output affine matrix}
 }
 \value{
 character or logical depending on intern
