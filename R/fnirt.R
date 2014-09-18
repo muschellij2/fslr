@@ -69,13 +69,15 @@ fnirt.help = function(){
 #' the affine registration first
 #' @param infile (character) input filename
 #' @param reffile (character) reference image to be registered to
-#' @param omat (character) Filename of output affine matrix
+#' @param flirt.omat (character) Filename of output affine matrix
+#' @param flirt.outfile (character) Filename of output affine-registered image
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
 #' Passed to \code{\link{readNIfTI}}. 
 #' @param intern (logical) pass to \code{\link{system}}
-#' @param opts (character) additional options to FLIRT
+#' @param flirt.opts (character) additional options to FLIRT
+#' @param opts (character) additional options to FNIRT
 #' @param verbose (logical) print out command before running
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
 #' @return character or logical depending on intern

@@ -12,6 +12,10 @@ fnirt_with_affine(infile, reffile, flirt.omat = NULL, flirt.outfile = NULL,
 
 \item{reffile}{(character) reference image to be registered to}
 
+\item{flirt.omat}{(character) Filename of output affine matrix}
+
+\item{flirt.outfile}{(character) Filename of output affine-registered image}
+
 \item{outfile}{(character) output filename}
 
 \item{retimg}{(logical) return image of class nifti}
@@ -21,13 +25,13 @@ Passed to \code{\link{readNIfTI}}.}
 
 \item{intern}{(logical) pass to \code{\link{system}}}
 
-\item{opts}{(character) additional options to FLIRT}
+\item{flirt.opts}{(character) additional options to FLIRT}
+
+\item{opts}{(character) additional options to FNIRT}
 
 \item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
-
-\item{omat}{(character) Filename of output affine matrix}
 }
 \value{
 character or logical depending on intern
