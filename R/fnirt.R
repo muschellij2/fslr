@@ -1,7 +1,6 @@
 #' @title Register using FNIRT
 #' @description This function calls \code{fnirt} to register infile to reffile
-#' and either saves the image or returns an object of class nifti, along with the
-#' transformation matrix omat  
+#' and either saves the image or returns an object of class nifti
 #' @param infile (character) input filename
 #' @param reffile (character) reference image to be registered to
 #' @param outfile (character) output filename
@@ -37,7 +36,6 @@ fnirt = function(infile,
   outfile = checkimg(outfile, ...)  
   outfile = nii.stub(outfile)
   
-  omat = path.expand(omat)
   cmd <- paste0(cmd, sprintf(
     'fnirt --in="%s" --ref="%s" --iout="%s" %s', 
     infile, reffile, outfile, opts))
@@ -62,4 +60,64 @@ fnirt = function(infile,
 #' @export
 fnirt.help = function(){
   return(fslhelp("fnirt"))
+}
+
+
+#' @title Register using FNIRT, but doing Affine Registration as well
+#' @description This function calls \code{fnirt} to register infile to reffile
+#' and either saves the image or returns an object of class nifti, but does
+#' the affine registration first
+#' @param infile (character) input filename
+#' @param reffile (character) reference image to be registered to
+#' @param omat (character) Filename of output affine matrix
+#' @param outfile (character) output filename
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}. 
+#' @param intern (logical) pass to \code{\link{system}}
+#' @param opts (character) additional options to FLIRT
+#' @param verbose (logical) print out command before running
+#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @return character or logical depending on intern
+#' @export
+fnirt_with_affine = function(infile, 
+                 reffile, omat = NULL,
+                 outfile = NULL,                  
+                 retimg = FALSE,
+                 reorient = FALSE,                 
+                 intern=TRUE,
+                 opts="", verbose = TRUE, ...){
+  cmd <- get.fsl()
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }
+  if (is.null(omat)) {
+    omat = tempfile()
+  }
+  omat = path.expand(omat)
+  
+  infile = checkimg(infile, ...)  
+  reffile = checkimg(reffile, ...)  
+  outfile = checkimg(outfile, ...)  
+  outfile = nii.stub(outfile)
+  
+  affine.file = tempfile()
+  res_flirt = flirt(infile = infile, reffile = reffile, 
+        omat = omat, dof = 12,
+        outfile = affine.file,                  
+        retimg = FALSE,
+        intern=TRUE, opts="", verbose = TRUE)
+  res_fnirt = fnirt(infile = affine.file, 
+                    reffile = reffile, 
+                    outfile = outfile,                  
+                    retimg = retimg,
+                    reorient = reorient,                 
+                    intern=intern,
+                    opts=opts, verbose = verbose, ...)
+
+  return(res)
 }
