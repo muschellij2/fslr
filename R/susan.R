@@ -66,3 +66,15 @@ susan <- function(file,
   
 }
 
+
+#' @title FSL SUSAN Help
+#' @description This function calls \code{susan}'s help
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  susan.help() 
+#' }
+susan.help = function(){
+  return(fslhelp("susan"))
+}
