@@ -306,7 +306,7 @@ fslsmooth <- function(
   verbose = TRUE,
   ...){
 	
-  cmd = get.fsl()
+  leader = cmd = get.fsl()
   file = checkimg(file, ...)
 	cmd <- paste0(cmd, sprintf('fslmaths "%s"', file))
 	if (! is.null(mask)) {
@@ -333,10 +333,12 @@ fslsmooth <- function(
     mask.stub = nii.stub(mask.stub)
   	mask.stub <- file.path(dirname(mask), mask.stub)
   	mask.blur <- sprintf("%s_%s", mask.stub, sigma)
-   	cmd <- paste(cmd, sprintf('fslmaths "%s" -s %s "%s";', 
-   		mask, sigma, mask.blur))
-   	cmd <- paste(cmd, sprintf('fslmaths "%s" -div "%s" -mas "%s" "%s";', 
-   		outfile, mask.blur, mask, outfile))
+   	cmd <- paste(cmd, paste0(leader, 
+                              sprintf('fslmaths "%s" -s %s "%s";', 
+   		mask, sigma, mask.blur)))
+   	cmd <- paste(cmd, paste0(leader, 
+                              sprintf('fslmaths "%s" -div "%s" -mas "%s" "%s";', 
+   		outfile, mask.blur, mask, outfile)))
   }
   if (verbose){
     cat(cmd, "\n")
