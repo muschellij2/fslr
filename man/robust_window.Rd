@@ -8,18 +8,18 @@ robust_window(img, probs = c(0, 0.999), ...)
 \arguments{
 \item{img}{object of class nifti}
 
-\item{probs}{quantiles to constrain the image these define the window sent to \link{\code{window_img}}}
+\item{probs}{quantiles to constrain the image these define the window sent to \code{\link{window_img}}}
 
-\item{...}{additional arguments sent to \link{\code{window_img}}}
+\item{...}{additional arguments sent to \code{\link{window_img}}}
 }
 \value{
 Object of class nifti with values outside quantiles replaced
-by values depending on replace argument passed to \link{\code{window_img}}
+by values depending on replace argument passed to \code{\link{window_img}}
 }
 \description{
 Takes an image, finds the quantiles given by
 \code{probs}, then sets values outside these values to other
 values, as determined by \code{replace} argument passed to
-to \link{\code{window_img}}
+to \code{\link{window_img}}
 }
 
