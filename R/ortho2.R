@@ -33,7 +33,7 @@
 #' @param legend (character) legend text
 #' @param leg.col (character) Colors for legend 
 #' @param leg.title (character) title for legend 
-#' @param leg.cex (numeric) \code{cex} for \code{\link[graphics]{legend}}
+#' @param leg.cex (numeric) \code{cex} for \code{\link{legend}}
 #' @param window (vector) Length-2 vector to limit image to certain range
 #' @param ... other arguments to the image function may be provided here.
 #' @export

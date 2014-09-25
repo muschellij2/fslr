@@ -73,7 +73,7 @@ ortho2(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 
 \item{leg.title}{(character) title for legend}
 
-\item{leg.cex}{(numeric) \code{cex} for \code{\link[graphics]{legend}}}
+\item{leg.cex}{(numeric) \code{cex} for \code{\link{legend}}}
 
 \item{window}{(vector) Length-2 vector to limit image to certain range}
 
