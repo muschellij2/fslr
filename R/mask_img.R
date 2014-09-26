@@ -15,7 +15,7 @@ mask_img <- function(img, # object of class \code{nifti}
   stopifnot(inherits(img, "nifti"))
   allowable = c(0, 1, NA)
   if (allow.NA) allowable = c(allowable, NA)
-  mask = as.array(mask)
+  mask = as(mask, "array")
   class(mask) = "numeric"
   umask = unique(mask)
   stopifnot(umask %in% allowable)

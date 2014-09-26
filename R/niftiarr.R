@@ -12,7 +12,7 @@ niftiarr <- function(img, # object of class nifti
   if (!is(arr, "array")){
     arr = array(arr, dim=dim(img))
   }
-  arr = as.array(arr)
+  arr = as(arr, "array")
   class(arr) = "numeric"
   stopifnot(all(dim(arr) == dim(img)))
   x@.Data = arr
