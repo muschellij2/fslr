@@ -145,3 +145,57 @@ fnirt_with_affine = function(infile,
 
   return(res_fnirt)
 }
+
+#' @title <brief desc>
+#'
+#' @description <full description>
+#' @param infile (character) input filename
+#' @param reffile (character) reference image to be registered to
+#' @param flirt.omat (character) Filename of output affine matrix
+#' @param flirt.outfile (character) Filename of output affine-registered image
+#' @param fnirt.warpfile (character) Filename of warp image from 
+#' \code{\link{fnirt}}
+#' @param outfile (character) output filename
+#' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}. 
+#' @param intern (logical) pass to \code{\link{system}}
+#' @param flirt.opts (character) additional options to FLIRT
+#' @param opts (character) additional options to FNIRT
+#' @param verbose (logical) print out command before running
+#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @return character or logical depending on intern
+#' @export
+#' @seealso fnirt_with_affine
+fnirt_with_affine_apply <- function(infile, 
+                               reffile, 
+                               flirt.omat = NULL,
+                               flirt.outfile = NULL,
+                               fnirt.warpfile = NULL,
+                               outfile = NULL,                  
+                               retimg = FALSE,
+                               reorient = FALSE,                 
+                               intern=TRUE,
+                               flirt.opts = "",
+                               opts="", verbose = TRUE, ...){
+flirt_apply(infile = infile,
+            reffile = reffile,
+            initmat = flirt.omat,
+            outfile = outfile,
+            opts = flirt.opts, 
+            intern = intern,
+            verbose = verbose,
+            retimg = FALSE,
+            ...)
+res = fsl_applywarp(infile = outfile,
+              reffile = reffile,          
+              warpfile = fnirt.warpfile,
+              outfile = outfile, 
+              opts = opts, 
+              intern = intern,
+              retimg = retimg,
+              reorient = reorient,
+              verbose = verbose,
+              ...)
+return(res)
+}
