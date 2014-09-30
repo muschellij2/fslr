@@ -264,6 +264,9 @@ zscore_img <- function(img, mask = NULL, margin=3, remove.na = TRUE,
     nim = orig.img
     nim@.Data = imgc
     imgc = nim
+    imgc = datatype(imgc, 
+                    datatype = convert.datatype()$FLOAT32, 
+                    bitpix = convert.bitpix()$FLOAT32) 
   }
   if (remove.na){
     imgc[is.na(imgc)] = remove.val
