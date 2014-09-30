@@ -67,12 +67,13 @@ voxdim = function(img){
 #' @export
 drop_img_dim = function(img){
   dim_  = img@dim_
-  dims = dim_[2:length(dim_)]
   pdim = pixdim(img)
-  no.data = dims <= 1
+  no.data = dim_ <= 1
+  no.data[1] = FALSE
   pdim[no.data] = 0
   pixdim(img) = pdim
-  ndim = sum(!no.data)
+  ### subtract 1 for first observation
+  ndim = sum(!no.data) - 1
   dim_[1] = ndim
   dim_[no.data] = 1
   img@dim_ = dim_
