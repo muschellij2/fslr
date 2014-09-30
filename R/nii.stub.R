@@ -57,3 +57,26 @@ zero_trans = function(img){
 voxdim = function(img){
   pixdim(img)[2:4]
 }
+
+
+#' @title Drop Image Dimension
+#' @return Object of class nifti
+#' @param img nifti object
+#' @description Drops a dimension of an image that has one-dimension and 
+#' sets respective values to 0 in pixdim or 1 in dim
+#' @export
+drop_img_dim = function(img){
+  dim_  = img@dim_
+  dims = dim_[2:length(dim_)]
+  pdim = pixdim(img)
+  no.data = dims <= 1
+  pdim[no.data] = 0
+  pixdim(img) = pdim
+  ndim = sum(!no.data)
+  dim_[1] = ndim
+  dim_[no.data] = 1
+  img@dim_ = dim_
+  img@.Data = drop(img@.Data)
+  img
+}
+
