@@ -27,8 +27,8 @@ cal_img = function(img){
   cmax = ifelse(is.finite(cmax), cmax, 0)
   cmin = min(img, na.rm=TRUE) 
   cmin = ifelse(is.finite(cmin), cmin, 0)  
-  img@cal_max = cmax
-  img@cal_min = cmin
+  cal.max(img) = cmax
+  cal.min(img) = cmin
   img
 }
 
