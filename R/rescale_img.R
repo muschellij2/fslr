@@ -82,7 +82,7 @@ datatype = function(img, type_string = NULL,
     type_string = toupper(type_string)
     stopifnot(type_string %in% accepted)
     datatype = convert.datatype()[[type_string]]
-    bitpix = convert.datatype()[[type_string]]
+    bitpix = convert.bitpix()[[type_string]]
   }  
   if (!is.null(datatype) & !is.null(bitpix)){
     img@datatype <- datatype
