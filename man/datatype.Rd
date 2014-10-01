@@ -3,10 +3,16 @@
 \alias{datatype}
 \title{Change Data type for img}
 \usage{
-datatype(img, datatype = NULL, bitpix = NULL, trybyte = TRUE)
+datatype(img, type_string = NULL, datatype = NULL, bitpix = NULL,
+  trybyte = TRUE)
 }
 \arguments{
 \item{img}{nifti object (or character of filename)}
+
+\item{type_string}{(NULL) character of datatype and bitpix.  Supercedes
+both datatype and bitpix.  If specified
+\code{convert.datatype[[type_string]]} and
+\code{convert.bitpix[[type_string]]} will be used.}
 
 \item{datatype}{(NULL) character of datatype see
 \code{\link{convert.datatype}}}

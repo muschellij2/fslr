@@ -60,6 +60,10 @@ rescale_img = function(filename,
 #' @title Change Data type for img
 #' @return object of type nifti
 #' @param img nifti object (or character of filename)
+#' @param type_string (NULL) character of datatype and bitpix.  Supercedes
+#' both datatype and bitpix.  If specified 
+#' \code{convert.datatype[[type_string]]} and 
+#' \code{convert.bitpix[[type_string]]} will be used.
 #' @param datatype (NULL) character of datatype see 
 #' \code{\link{convert.datatype}}
 #' @param bitpix (NULL) character of bitpix see 
@@ -70,8 +74,16 @@ rescale_img = function(filename,
 #' for image masks - makes them binary if
 #' @name datatype
 #' @export
-datatype = function(img, datatype=NULL, bitpix=NULL, trybyte=TRUE){
+datatype = function(img, type_string = NULL,
+                    datatype=NULL, bitpix=NULL, trybyte=TRUE){
   img = check_nifti(img)
+  if (!is.null(type_string)){
+    accepted = names(convert.datatype())
+    type_string = toupper(type_string)
+    stopifnot(type_string %in% accepted)
+    datatype = convert.datatype()[[type_string]]
+    bitpix = convert.datatype()[[type_string]]
+  }  
   if (!is.null(datatype) & !is.null(bitpix)){
     img@datatype <- datatype
     img@bitpix <- bitpix
