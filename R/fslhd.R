@@ -1455,6 +1455,7 @@ fslcmd = function(
   file = checkimg(file, ...)
   cmd <- paste0(cmd, sprintf('%s "%s"', func, file))
   no.outfile = is.null(outfile)
+  if (no.outfile & samefile) outfile = ""  
   if (retimg){
     if (is.null(outfile)) {
       outfile = tempfile()
@@ -1463,7 +1464,6 @@ fslcmd = function(
     stopifnot(!is.null(outfile))
   }
   outfile = nii.stub(outfile)
-  if (no.outfile & samefile) outfile = ""
   cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
   ext = get.imgext()
   if (verbose){
