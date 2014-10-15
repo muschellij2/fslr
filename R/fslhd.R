@@ -1290,17 +1290,20 @@ fslorient = function(
     warning(paste0("fslorient option was a -get, ",
                    "image was not changed - output not returned"))
   }  
-  res = fslcmd(func="fslorient", 
-         file= file,
-         outfile = NULL,
-         retimg = retimg,
-         reorient = reorient,
-         intern = intern,
-         opts = opts,
-         verbose = verbose,
-         ... = ...,
-         samefile = TRUE)
-  
+  cmd = get.fsl()
+  file = checkimg(file, ...)
+  cmd <- paste0(cmd, sprintf('fslorient %s "%s"', opts, file))
+  outfile = nii.stub(file)
+  ext = get.imgext()  
+  outfile = paste0(outfile, ext)
+  if (verbose){
+    cat(cmd, "\n")
+  }
+  res = system(cmd, intern=intern)
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient, ...)
+    return(img)
+  } 
   return(res)  
 }
 
