@@ -17,4 +17,5 @@ niftiarr <- function(img, # object of class nifti
   stopifnot(all(dim(arr) == dim(img)))
   x@.Data = arr
   x = cal_img(x)
+  x = zero_trans(x)
 }
