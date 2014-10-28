@@ -3,8 +3,9 @@
 \alias{zscore_img}
 \title{Get Z-score over a margin of an img}
 \usage{
-zscore_img(img, mask = NULL, margin = 3, remove.na = TRUE,
-  remove.nan = TRUE, remove.inf = TRUE, remove.val = 0)
+zscore_img(img, mask = NULL, margin = 3, centrality = c("mean", "median"),
+  remove.na = TRUE, remove.nan = TRUE, remove.inf = TRUE,
+  remove.val = 0)
 }
 \arguments{
 \item{img}{character path of image or
@@ -15,6 +16,9 @@ an object of class nifti}
 
 \item{margin}{Margin of image to z-score over (3-Axial, 2-Sagittal,
 1-Coronal)}
+
+\item{centrality}{(character) Measure to center the data,
+either mean or median}
 
 \item{remove.na}{(logical) change NAs to remove.val}
 

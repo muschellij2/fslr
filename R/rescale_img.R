@@ -204,6 +204,8 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' an object of class nifti 
 #' @param margin Margin of image to z-score over (3-Axial, 2-Sagittal, 
 #' 1-Coronal)
+#' @param centrality (character) Measure to center the data, 
+#' either mean or median
 #' @param remove.na (logical) change NAs to remove.val
 #' @param remove.nan (logical) change NaN to remove.val
 #' @param remove.inf (logical) change Inf to remove.val
@@ -236,9 +238,12 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' stopifnot(all.equal(try1, truth1))
 #'   
 #' 
-zscore_img <- function(img, mask = NULL, margin=3, remove.na = TRUE,
+zscore_img <- function(img, mask = NULL, margin=3, 
+                       centrality = c("mean", "median"),
+                       remove.na = TRUE,
                        remove.nan = TRUE, remove.inf = TRUE,
                        remove.val = 0){
+  centrality = match.arg(centrality, c("mean", "median"))
   img = check_nifti(img, allow.array=TRUE)
   orig.img = img
   dimg = dim(orig.img)
@@ -262,7 +267,12 @@ zscore_img <- function(img, mask = NULL, margin=3, remove.na = TRUE,
   img = aperm(img, perm)
   
   vec = matrix(img, ncol=dimg[margin])
-  m = colMeans(vec, na.rm=TRUE)
+  if (centrality == "mean") {
+    m = colMeans(vec, na.rm=TRUE)
+  }
+  if (centrality == "median") {
+    m = colMedians(vec, na.rm=TRUE)
+  }  
   s = colSds(vec, na.rm=TRUE)
   
   vecc = (t(vec) - m)/s
