@@ -13,7 +13,7 @@ This function calls \code{fslswapdim}'s help
 }
 \examples{
 if (have.fsl()){
- fslswapdim()
+ fslswapdim.help()
 }
 }
 

@@ -1419,7 +1419,7 @@ fslswapdim = function(
 #' @export
 #' @examples
 #' if (have.fsl()){
-#'  fslswapdim()
+#'  fslswapdim.help()
 #' }  
 fslswapdim.help = function(){
   return(fslhelp("fslswapdim"))
