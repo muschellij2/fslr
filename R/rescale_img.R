@@ -211,6 +211,7 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' @param remove.inf (logical) change Inf to remove.val
 #' @param remove.val (logical) value to put the NA/NaN/Inf
 #' @export
+#' @importFrom matrixStats colMedians
 #' @examples
 #' dim = c(100, 30, 5)
 #' img = array(rnorm(prod(dim), mean=4, sd=4), 

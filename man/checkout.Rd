@@ -19,8 +19,8 @@ have the same sign
 if (have.fsl()){
  mnifile = file.path(fsldir(), "data", "standard",
    "MNI152_T1_2mm.nii.gz")
- hd = fslhd(mnifile)
- checkout(hd)
+ forms = getForms(mnifile)
+ checkout(forms)
 }
 }
 

@@ -656,8 +656,8 @@ getForms <- function(file, ...){
 #' if (have.fsl()){
 #'  mnifile = file.path(fsldir(), "data", "standard", 
 #'    "MNI152_T1_2mm.nii.gz")
-#'  hd = fslhd(mnifile)
-#'  checkout(hd)
+#'  forms = getForms(mnifile)
+#'  checkout(forms)
 #' } 
 checkout <- function(hd){
 	det.equal <- sign(det(hd$sform)) == sign(det(hd$qform))
