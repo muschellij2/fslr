@@ -15,7 +15,7 @@ robust_window <- function(img, # object of class nifti
            ... # additional arguments sent to \code{\link{window_img}}
            ){
   cc = c(img)
-  quant = quantile(cc, probs = probs)
+  quant = quantile(cc, probs = probs, ...)
   img = window_img(img, window = quant, ...)
   img = cal_img(img)
 }

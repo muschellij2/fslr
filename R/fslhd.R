@@ -275,6 +275,8 @@ fslstats <- function(file, opts="", verbose = TRUE, ...){
 #' @param file (character) image to be smoothed
 #' @param sigma (numeric) sigma (in mm) of Gaussian kernel for smoothing
 #' @param mask (character) optional mask given for image
+#' @param smooth_mask (logical) Smooth mask?  If TRUE, the masked image 
+#' will be divided by the smoothed mask.
 #' @param outfile (character) resultant smoothed image name (optional)
 #' if not give, will be the stub of the filename then _sigma
 #' @param retimg (logical) return image of class nifti
@@ -299,6 +301,7 @@ fslsmooth <- function(
   file,
   sigma=10, 
   mask=NULL, 
+  smooth_mask = TRUE,
   outfile=NULL, 
   retimg = FALSE,
   reorient = FALSE,
@@ -326,7 +329,7 @@ fslsmooth <- function(
   
   rm.mask.img = FALSE
 	### tempfile for mask.stub
-  if ( !is.null(mask) ) {
+  if ( !is.null(mask) & smooth_mask ) {
     rm.mask.img = TRUE
     mask = checkimg(mask, ...)
     mask.stub <- basename(mask)

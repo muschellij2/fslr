@@ -3,7 +3,8 @@
 \alias{window_img}
 \title{nifti image windower}
 \usage{
-window_img(x, window = c(0, 100), replace = c("window", "missing", "zero"))
+window_img(x, window = c(0, 100), replace = c("window", "missing", "zero"),
+  ...)
 }
 \arguments{
 \item{x}{is either a character name for the image or an object of class nifti}
@@ -12,6 +13,8 @@ window_img(x, window = c(0, 100), replace = c("window", "missing", "zero"))
 
 \item{replace}{either "window" if the any values outside of c(min, max) are
 set to the min or max or "missing" for these to be set to NA}
+
+\item{...}{not used}
 }
 \value{
 object of class nifti

@@ -7,9 +7,11 @@
 #' @param window numeric of length 2 that gives min and max for window
 #' @param replace either "window" if the any values outside of c(min, max) are
 #' set to the min or max or "missing" for these to be set to NA
+#' @param ... not used
 #' @export
 window_img = function(x, window=c(0, 100), 
-                      replace = c("window", "missing", "zero")) {
+                      replace = c("window", "missing", "zero"), 
+                      ...) {
   if (inherits(x, "character")) {
     x= readNIfTI(x, reorient=FALSE)
   }

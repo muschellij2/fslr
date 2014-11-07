@@ -3,8 +3,9 @@
 \alias{fslsmooth}
 \title{Gaussian smooth image using FSL}
 \usage{
-fslsmooth(file, sigma = 10, mask = NULL, outfile = NULL, retimg = FALSE,
-  reorient = FALSE, intern = TRUE, verbose = TRUE, ...)
+fslsmooth(file, sigma = 10, mask = NULL, smooth_mask = TRUE,
+  outfile = NULL, retimg = FALSE, reorient = FALSE, intern = TRUE,
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be smoothed}
@@ -12,6 +13,9 @@ fslsmooth(file, sigma = 10, mask = NULL, outfile = NULL, retimg = FALSE,
 \item{sigma}{(numeric) sigma (in mm) of Gaussian kernel for smoothing}
 
 \item{mask}{(character) optional mask given for image}
+
+\item{smooth_mask}{(logical) Smooth mask?  If TRUE, the masked image
+will be divided by the smoothed mask.}
 
 \item{outfile}{(character) resultant smoothed image name (optional)
 if not give, will be the stub of the filename then _sigma}
