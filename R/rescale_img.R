@@ -29,6 +29,10 @@ rescale_img = function(filename,
     # inter = as.numeric(img@scl_inter)
   # slope = as.numeric(img@scl_slope)
   # img = (img * slope + inter)
+  r = range(c(img))
+  if (r[1] >= min.val & r[2] <= max.val){
+    return(img)
+  }
   img[img < min.val] = min.val
   img[img > max.val] = max.val
   img = zero_trans(img)
@@ -36,6 +40,7 @@ rescale_img = function(filename,
   img = cal_img(img)
   img@descrip = paste0("written by ", writer, " - ", img@descrip)
   
+  img = drop_img_dim(img)
   #### create histograms
   if (!is.null(pngname)){
     options(bitmapType = 'cairo') 

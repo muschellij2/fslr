@@ -13,7 +13,7 @@ mask_img <- function(img, # object of class \code{nifti}
                     allow.NA = TRUE # allow NAs in the mask
 ){
   stopifnot(inherits(img, "nifti"))
-  allowable = c(0, 1, NA)
+  allowable = c(0, 1)
   if (allow.NA) allowable = c(allowable, NA)
   mask = as(mask, "array")
   class(mask) = "numeric"
