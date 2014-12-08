@@ -17,7 +17,7 @@ mask_img <- function(img, # object of class \code{nifti}
   if (allow.NA) allowable = c(allowable, NA)
   mask = as(mask, "array")
   class(mask) = "numeric"
-  umask = unique(mask)
+  umask = unique(c(mask))
   stopifnot(umask %in% allowable)
   niftiarr(img, img * mask)
 }
