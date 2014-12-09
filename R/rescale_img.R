@@ -288,9 +288,9 @@ zscore_img <- function(img, mask = NULL, margin=3,
                  dim = dim(img))
     imgc = aperm(imgc, revperm)
   } else {
-    mn = do.call(centrality, c(img), na.rm=TRUE)
+    mn = do.call(centrality, list(x=c(img), na.rm=TRUE))
     s = sd(c(img), na.rm=TRUE)
-    img = (img - mn) / s
+    imgc = (img - mn) / s
   }
   stopifnot(all.equal(dim(imgc), dim(orig.img)))
   if (inherits(orig.img, "nifti")){
