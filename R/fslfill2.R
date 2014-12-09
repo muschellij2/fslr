@@ -40,8 +40,11 @@ fslfill2 = function(file,
   bin = fslbin(file=file, outfile = temp.img, retimg=TRUE, 
                intern=intern, verbose = verbose)
   dimg = dim(bin)
+  ##### should make for all max
   ind = which(bin >0, arr.ind=TRUE)
-  ind = ind[ ind[, "dim3"] %in% c(1, dimg[3]),]
+  ind = ind[ (ind[, "dim3"] %in% c(1, dimg[3])) |
+             (ind[, "dim1"] %in% c(1, dimg[1])) |
+             (ind[, "dim2"] %in% c(1, dimg[2])) ,]
   nind = nrow(ind)
   
   #### inverting, eroding (equivalent to dilation), then invert back
@@ -57,8 +60,16 @@ fslfill2 = function(file,
                    retimg=TRUE, 
                  intern=intern, verbose = verbose)
   if (remove.ends) {
-    dil@.Data[,,1] = array(0, dim=dimg[1:2])
-    dil@.Data[,,dimg[3]] = array(0, dim=dimg[1:2])
+    #### making the ends correct - boundary problem
+    dil@.Data[,,1] = array(0, dim=dimg[c(1,2)])
+    dil@.Data[,,dimg[3]] = array(0, dim=dimg[c(1,2)])
+    
+    dil@.Data[,1,] = array(0, dim=dimg[c(1,3)])
+    dil@.Data[,dimg[2],] = array(0, dim=dimg[c(1,3)])
+    
+    dil@.Data[1,,] = array(0, dim=dimg[c(2,3)])
+    dil@.Data[dimg[1],,] = array(0, dim=dimg[c(2,3)])    
+    
     if (nind >0 ){
       dil@.Data[ ind ] = 1  
     }
