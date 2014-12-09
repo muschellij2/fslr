@@ -5,6 +5,7 @@
 #' @param outfile (character) name of resultant filled file
 #' @param kopts (character) Options passed for kernel before erosion/dilation
 #' @param remove.ends (logical) Remove top and bottom dilation.  
+#' @param refill (logical) Run \code{\link{fslfill}} after dilation/erosion.
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
 #' Passed to \code{\link{readNIfTI}}.
@@ -18,6 +19,7 @@ fslfill2 = function(file,
                    outfile = NULL, 
                    kopts= "",
                    remove.ends = TRUE,
+                   refill = TRUE,
                    retimg = FALSE,
                    reorient = FALSE,
                    intern=TRUE, verbose = TRUE,
@@ -32,6 +34,8 @@ fslfill2 = function(file,
   } else {
     stopifnot(!is.null(outfile))
   }  
+  outfile = nii.stub(outfile)
+  
   temp.img = tempfile()
   bin = fslbin(file=file, outfile = temp.img, retimg=TRUE)
   dimg = dim(bin)
@@ -57,8 +61,11 @@ fslfill2 = function(file,
     }
   }
   dil = cal_img(dil)
+  if (refill) {
+    dil = fslfill(file = dil, 
+                    retimg=TRUE)  
+  }
   if (have.outfile){
-    outfile = nii.stub(outfile)
     gzipped = grepl("gz$", get.imgext())    
     writeNIfTI(dil, filename = outfile, gzipped = gzipped)
   }

@@ -4,7 +4,8 @@
 \title{Fill image holes with dilation then erosion}
 \usage{
 fslfill2(file, outfile = NULL, kopts = "", remove.ends = TRUE,
-  retimg = FALSE, reorient = FALSE, intern = TRUE, verbose = TRUE, ...)
+  refill = TRUE, retimg = FALSE, reorient = FALSE, intern = TRUE,
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be filled}
@@ -14,6 +15,8 @@ fslfill2(file, outfile = NULL, kopts = "", remove.ends = TRUE,
 \item{kopts}{(character) Options passed for kernel before erosion/dilation}
 
 \item{remove.ends}{(logical) Remove top and bottom dilation.}
+
+\item{refill}{(logical) Run \code{\link{fslfill}} after dilation/erosion.}
 
 \item{retimg}{(logical) return image of class nifti}
 
