@@ -44,13 +44,12 @@ fslfill2 = function(file,
   fslmaths(file = temp.img,
                  outfile = outfile,
                  opts = opts, 
-                 retimg=TRUE)
-  opts = paste0(kopts, " -ero")
-  dil = fslmaths(file = outfile,
+                 retimg=FALSE)
+  dil = fslerode(file = outfile,
                    outfile = outfile,
-                   opts = opts, 
+                   kopts = kopts, 
                    retimg=TRUE)
-  if (remove.top) {
+  if (remove.ends) {
     dil@.Data[,,1] = array(0, dim=dimg[1:2])
     dil@.Data[,,dimg[3]] = array(0, dim=dimg[1:2])
     if (nind >0 ){
