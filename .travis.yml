@@ -10,9 +10,9 @@ before_install:
   - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
-  - bash <(wget -q -O- http://neuro.debian.net/_files/neurodebian-travis.sh)
-  - sudo apt-get update
-  - sudo apt-get install fsl-core
+  # - bash <(wget -q -O- http://neuro.debian.net/_files/neurodebian-travis.sh)
+  # - sudo apt-get update
+  # - sudo apt-get install fsl-core
   # - sudo apt-get install fsl-complete
 install:
   - ./travis-tool.sh install_deps
