@@ -260,33 +260,38 @@ zscore_img <- function(img, mask = NULL, margin=3,
   img[mask == 0] = NA
 
   stopifnot(length(dimg) == 3)  
-  if (margin == 3){
-    perm = 1:3
+  if (!is.null(margin)){
+    if (margin == 3){
+      perm = 1:3
+    }
+    if (margin == 2){
+      perm = c(1, 3, 2)
+    }  
+    if (margin == 1){
+      perm = c(2, 3, 1)
+    }
+    revperm = match(1:3, perm)
+    img = aperm(img, perm)
+    
+    vec = matrix(img, ncol=dimg[margin])
+    if (centrality == "mean") {
+      m = colMeans(vec, na.rm=TRUE)
+    }
+    if (centrality == "median") {
+      m = colMedians(vec, na.rm=TRUE)
+    }  
+    s = colSds(vec, na.rm=TRUE)
+    
+    vecc = (t(vec) - m)/s
+    vecc = t(vecc)
+    imgc = array(vecc, 
+                 dim = dim(img))
+    imgc = aperm(imgc, revperm)
+  } else {
+    mn = do.call(centrality, c(img), na.rm=TRUE)
+    s = sd(c(img), na.rm=TRUE)
+    img = (img - mn) / s
   }
-  if (margin == 2){
-    perm = c(1, 3, 2)
-  }  
-  if (margin == 1){
-    perm = c(2, 3, 1)
-  }
-  revperm = match(1:3, perm)
-  img = aperm(img, perm)
-  
-  vec = matrix(img, ncol=dimg[margin])
-  if (centrality == "mean") {
-    m = colMeans(vec, na.rm=TRUE)
-  }
-  if (centrality == "median") {
-    m = colMedians(vec, na.rm=TRUE)
-  }  
-  s = colSds(vec, na.rm=TRUE)
-  
-  vecc = (t(vec) - m)/s
-  vecc = t(vecc)
-  imgc = array(vecc, 
-               dim = dim(img))
-  imgc = aperm(imgc, revperm)
-  
   stopifnot(all.equal(dim(imgc), dim(orig.img)))
   if (inherits(orig.img, "nifti")){
     nim = orig.img
