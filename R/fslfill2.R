@@ -37,7 +37,8 @@ fslfill2 = function(file,
   outfile = nii.stub(outfile)
   
   temp.img = tempfile()
-  bin = fslbin(file=file, outfile = temp.img, retimg=TRUE)
+  bin = fslbin(file=file, outfile = temp.img, retimg=TRUE, 
+               intern=intern, verbose = verbose)
   dimg = dim(bin)
   ind = which(bin >0, arr.ind=TRUE)
   ind = ind[ ind[, "dim3"] %in% c(1, dimg[3]),]
@@ -48,11 +49,13 @@ fslfill2 = function(file,
   fslmaths(file = temp.img,
                  outfile = outfile,
                  opts = opts, 
-                 retimg=FALSE)
+                 retimg=FALSE, 
+           intern=intern, verbose = verbose)
   dil = fslerode(file = outfile,
                    outfile = outfile,
                    kopts = kopts, 
-                   retimg=TRUE)
+                   retimg=TRUE, 
+                 intern=intern, verbose = verbose)
   if (remove.ends) {
     dil@.Data[,,1] = array(0, dim=dimg[1:2])
     dil@.Data[,,dimg[3]] = array(0, dim=dimg[1:2])
@@ -60,11 +63,12 @@ fslfill2 = function(file,
       dil@.Data[ ind ] = 1  
     }
   }
-  dil = cal_img(dil)
   if (refill) {
     dil = fslfill(file = dil, 
-                    retimg=TRUE)  
+                    retimg=TRUE, 
+                  intern=intern, verbose = verbose)  
   }
+  dil = cal_img(dil)
   if (have.outfile){
     gzipped = grepl("gz$", get.imgext())    
     writeNIfTI(dil, filename = outfile, gzipped = gzipped)
