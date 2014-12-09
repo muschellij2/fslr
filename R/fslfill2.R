@@ -24,12 +24,12 @@ fslfill2 = function(file,
                    reorient = FALSE,
                    intern=TRUE, verbose = TRUE,
                    ...){
-  have.outfile = FALSE
+  have.outfile = TRUE
   
   if (retimg){
     if (is.null(outfile)) {
       outfile = tempfile()
-      have.outfile = TRUE
+      have.outfile = FALSE
     }
   } else {
     stopifnot(!is.null(outfile))
