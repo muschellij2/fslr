@@ -47,7 +47,7 @@ fsldilate <- function(file, outfile=NULL,
   outfile = nii.stub(outfile)
   file = checkimg(file, ...)    
   opts = paste0("-bin -mul -1 -add 1 ", kopts, " -ero -mul -1 -add 1 ", opts)
-  cmd <- paste0(cmd, sprintf('fslmaths "%s" %s %s "%s"', 
+  cmd <- paste0(cmd, sprintf('fslmaths "%s" %s "%s"', 
                              file, opts, outfile))
   if (verbose){
     cat(cmd, "\n")
