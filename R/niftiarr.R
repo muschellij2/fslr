@@ -14,7 +14,11 @@ niftiarr <- function(img, # object of class nifti
   }
   arr = as(arr, "array")
   class(arr) = "numeric"
-  stopifnot(all(dim(arr) == dim(img)))
+  if (!all(dim(arr) == dim(img))){
+    stop(
+      paste("Dimensions of Array and Dimensions of Image do not match. Arr:", 
+             dim(arr), ". Img:", dim(img), collapse=" "))
+  }
   x@.Data = arr
   x = cal_img(x)
   x = zero_trans(x)
