@@ -134,7 +134,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
     text("I", x = X/2-.5, y = ud.shift, las = 1, col="white")
   }
   graphics::image(1:Y, 1:Z, x[xyz[1], , ], col = col, breaks = breaks, 
-                  asp = pdim/pdim[3], xlab = xlab, ylab = ylab, 
+                  asp = pdim[4]/pdim[3], xlab = xlab, ylab = ylab, 
                   axes = axes, ...)
   if (!is.null(y)) {
     if (is.null(ybreaks)){
