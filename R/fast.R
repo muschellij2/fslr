@@ -68,9 +68,13 @@ fast.help = function(){
 #' @param file (character) image to be manipulated
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
+#' @param reorient (logical) If retimg, should file be reoriented when read in?
+#' Passed to \code{\link{readNIfTI}}.
+#' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fast}
-#' @param remove.seg (logical) Should segmentation from FAST be removed?
-#' @param ... additional arguments passed to \code{\link{fast}}.
+#' @param verbose (logical) print out command before running
+#' @param remove.seg (logical) Should segmentation from FAST be removed? 
+#' @param ... additional arguments passed to \code{\link{readNIfTI}}. 
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -78,7 +82,10 @@ fsl_biascorrect = function(
   file,
   outfile=NULL, 
   retimg = FALSE,
+  reorient = FALSE,
+  intern=TRUE, 
   opts = "", 
+  verbose = TRUE,
   remove.seg = TRUE,
   ...){
   

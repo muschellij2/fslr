@@ -4,8 +4,8 @@
 \alias{fsl_biascorrect}
 \title{FSL Bias Correct}
 \usage{
-fsl_biascorrect(file, outfile = NULL, retimg = FALSE, opts = "",
-  remove.seg = TRUE, ...)
+fsl_biascorrect(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
+  intern = TRUE, opts = "", verbose = TRUE, remove.seg = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}
@@ -14,11 +14,18 @@ fsl_biascorrect(file, outfile = NULL, retimg = FALSE, opts = "",
 
 \item{retimg}{(logical) return image of class nifti}
 
+\item{reorient}{(logical) If retimg, should file be reoriented when read in?
+Passed to \code{\link{readNIfTI}}.}
+
+\item{intern}{(logical) to be passed to \code{\link{system}}}
+
 \item{opts}{(character) operations to be passed to \code{fast}}
+
+\item{verbose}{(logical) print out command before running}
 
 \item{remove.seg}{(logical) Should segmentation from FAST be removed?}
 
-\item{...}{additional arguments passed to \code{\link{fast}}.}
+\item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,
