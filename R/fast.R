@@ -34,7 +34,8 @@ fast = function(
     stopifnot(!is.null(outfile))
   }
   outfile = nii.stub(outfile)
-  cmd <- paste(cmd, sprintf(' %s --out="%s" "%s";', opts, outfile, file))
+  cmd <- paste(cmd, sprintf(' %s --out="%s" "%s";', opts, 
+    outfile, file))
   ext = get.imgext()
   if (verbose){
     cat(cmd, "\n")
@@ -81,24 +82,43 @@ fsl_biascorrect = function(
   remove.seg = TRUE,
   ...){
   
-  have.outfile = !is.null(outfile)
-  opts = paste( c("-B --nopve ", opts), sep= "", collapse= " ")
+  cmd = get.fsl()
+  file = checkimg(file, ...)
+  cmd <- paste0(cmd, 'fast ')
+  no.outfile = is.null(outfile)
+  if (retimg){
+    if (is.null(outfile)) {
+      outfile = tempfile()
+    }
+  } else {
+    stopifnot(!is.null(outfile))
+  }
+  outfile = nii.stub(outfile)
+
+  cmd <- paste(cmd, sprintf(' %s -B --nopve --out="%s" "%s";', 
+    opts, outfile, file))
+  ext = get.imgext()
+  if (verbose){
+    cat(cmd, "\n")
+  }
+  res = system(cmd, intern=intern)
+
+  # if (have.outfile){
+  ext = get.imgext()
   
-  res = fast(file, opts = opts, 
-       outfile = outfile, 
-       retimg = retimg, ...)
+  stub = nii.stub(outfile)
+  ### remove extra files from fast
+  seg_file = paste0(stub, "_seg", ext)
+  if (remove.seg) file.remove(seg_file)
   
-  if (have.outfile){
-    ext = get.imgext()
-    
-    stub = nii.stub(outfile)
-    ### remove extra files from fast
-    seg_file = paste0(stub, "_seg", ext)
-    if (remove.seg) file.remove(seg_file)
-    
-    output = paste0(stub, "_restore", ext)
-    outfile = paste0(stub, ext)
-    file.rename(output, outfile)
+  output = paste0(stub, "_restore", ext)
+  outfile = paste0(stub, ext)
+  file.rename(output, outfile)
+  # }
+
+  if (retimg){
+    img = readNIfTI(outfile, reorient=reorient, ...)
+    return(img)
   }
   
   return(res)  
