@@ -18,6 +18,8 @@ mask_img <- function(img, # object of class \code{nifti}
   mask = as(mask, "array")
   class(mask) = "numeric"
   umask = unique(c(mask))
-  stopifnot(umask %in% allowable)
+  if (!all(umask %in% allowable)){
+    stop("Mask must be binary 0/1.  If it has NAs, allow.NA must be TRUE")
+  }
   niftiarr(img, img * mask)
 }
