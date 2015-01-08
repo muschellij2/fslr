@@ -2,7 +2,7 @@
 % Please edit documentation in R/fnirt.R
 \name{fnirt_with_affine_apply}
 \alias{fnirt_with_affine_apply}
-\title{<brief desc>}
+\title{Applies FLIRT then FNIRT transformations}
 \usage{
 fnirt_with_affine_apply(infile, reffile, flirt.omat = NULL,
   flirt.outfile = NULL, fnirt.warpfile = NULL, outfile = NULL,
@@ -42,7 +42,7 @@ Passed to \code{\link{readNIfTI}}.}
 character or logical depending on intern
 }
 \description{
-<full description>
+Applies an affine transformation with FLIRT then the warp image with FNIRT
 }
 \seealso{
 fnirt_with_affine

@@ -146,9 +146,9 @@ fnirt_with_affine = function(infile,
   return(res_fnirt)
 }
 
-#' @title <brief desc>
+#' @title Applies FLIRT then FNIRT transformations
 #'
-#' @description <full description>
+#' @description Applies an affine transformation with FLIRT then the warp image with FNIRT
 #' @param infile (character) input filename
 #' @param reffile (character) reference image to be registered to
 #' @param flirt.omat (character) Filename of output affine matrix
