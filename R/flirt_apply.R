@@ -38,7 +38,7 @@ flirt_apply = function(infile,
   outfile = checkimg(outfile, ...)  
   outfile = nii.stub(outfile)
   
-  omat = path.expand(omat)
+  initmat = path.expand(initmat)
   cmd <- paste0(cmd, sprintf(
     'flirt -in "%s" -ref "%s" -out "%s" -init "%s" -applyxfm %s', 
     infile, reffile, outfile, initmat, opts))
