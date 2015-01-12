@@ -120,7 +120,7 @@ tempimg = function(nim, gzipped= TRUE, checknan = TRUE, ...){
 #' @title Check if filename is character or nifti object
 #' @param file character or nifti object
 #' @param ... options passed to \code{\link{tempimg}}
-#' @return character filename or temporary nii
+#' @return character filename of image or temporary nii
 #' @export
 #' 
 checkimg = function(file, ...){
@@ -1212,7 +1212,7 @@ fslbet = function(infile,
 #' }  
 fslbet.help = function(betcmd = c("bet2", "bet")){
   betcmd = match.arg( betcmd )
-  return(fslhelp(betcmd, help.arg=""))
+  return(fslhelp(betcmd, help.arg="-h"))
 }
 
 

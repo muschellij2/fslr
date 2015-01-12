@@ -12,7 +12,7 @@ checkimg(file, ...)
 \item{...}{options passed to \code{\link{tempimg}}}
 }
 \value{
-character filename or temporary nii
+character filename of image or temporary nii
 }
 \description{
 Check if filename is character or nifti object
