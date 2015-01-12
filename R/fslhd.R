@@ -110,6 +110,8 @@ tempimg = function(nim, gzipped= TRUE, checknan = TRUE, ...){
     nim[is.na(nim)| is.nan(cnim)] = 0
     }
   }
+  ########### added for weird stuff of NIfTI
+  nim = drop_img_dim(nim)
   writeNIfTI(nim, filename= f, onefile = TRUE, gzipped = gzipped)
   ext = ".nii"
   if (gzipped) ext = paste0(ext, '.gz')
