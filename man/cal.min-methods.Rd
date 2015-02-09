@@ -8,6 +8,9 @@
 \usage{
 \S4method{cal.min}{character}(object)
 }
+\arguments{
+\item{object}{is an object of class \code{nifti}}
+}
 \description{
 Extract or Replace NIfTI/Analyze Min or Max Values
 }

@@ -2,15 +2,18 @@
 % Please edit documentation in R/qform.R, R/sform.R
 \docType{methods}
 \name{qform,character-method}
-\alias{qform,character,character-method}
+\alias{qform,character}
 \alias{qform,character-method}
-\alias{sform,character,character-method}
+\alias{sform,character}
 \alias{sform,character-method}
 \title{Extract NIfTI 3D Image Orientation}
 \usage{
 \S4method{qform}{character}(object)
 
 \S4method{sform}{character}(object)
+}
+\arguments{
+\item{object}{is a \code{nifti} object}
 }
 \description{
 Extract NIfTI 3D Image Orientation

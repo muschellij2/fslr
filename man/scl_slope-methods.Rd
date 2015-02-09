@@ -3,17 +3,22 @@
 \docType{methods}
 \name{scl_slope}
 \alias{scl_slope}
-\title{Extract NIfTI 3D Image slope attribute}
+\alias{scl_slope,character-method}
+\alias{scl_slope,nifti-method}
+\alias{scl_slope-methods}
+\alias{scl_slope<-}
+\alias{scl_slope<-,nifti-method}
+\title{Extract NIfTI 3D Image scl_slope attribute}
 \usage{
 scl_slope(object)
 
 \S4method{scl_slope}{nifti}(object)
 
+\S4method{scl_slope}{character}(object)
+
 scl_slope(object) <- value
 
-\S4method{scl_slope}{nifti,numeric}(object) <- value
-
-\S4method{scl_slope}{character}(object)
+\S4method{scl_slope}{nifti}(object) <- value
 }
 \arguments{
 \item{object}{is an object of class \code{nifti}}
@@ -21,6 +26,6 @@ scl_slope(object) <- value
 \item{value}{Value to assign to scl_slope}
 }
 \description{
-Methods that act on the ``scl_slope'' numeric in the NIfTI header.
+Methods that act on the ``scl_slope'' in the NIfTI header.
 }
 

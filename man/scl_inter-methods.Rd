@@ -3,17 +3,22 @@
 \docType{methods}
 \name{scl_inter}
 \alias{scl_inter}
+\alias{scl_inter,character-method}
+\alias{scl_inter,nifti-method}
+\alias{scl_inter-methods}
+\alias{scl_inter<-}
+\alias{scl_inter<-,nifti-method}
 \title{Extract NIfTI 3D Image scl_inter attribute}
 \usage{
 scl_inter(object)
 
 \S4method{scl_inter}{nifti}(object)
 
+\S4method{scl_inter}{character}(object)
+
 scl_inter(object) <- value
 
 \S4method{scl_inter}{nifti}(object) <- value
-
-\S4method{scl_inter}{character}(object)
 }
 \arguments{
 \item{object}{is an object of class \code{nifti}}

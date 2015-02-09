@@ -3,17 +3,22 @@
 \docType{methods}
 \name{sform_code}
 \alias{sform_code}
+\alias{sform_code,character-method}
+\alias{sform_code,nifti-method}
+\alias{sform_code-methods}
+\alias{sform_code<-}
+\alias{sform_code<-,nifti-method}
 \title{Extract NIfTI 3D Image sform_code attribute}
 \usage{
 sform_code(object)
 
 \S4method{sform_code}{nifti}(object)
 
+\S4method{sform_code}{character}(object)
+
 sform_code(object) <- value
 
 \S4method{sform_code}{nifti}(object) <- value
-
-\S4method{sform_code}{character}(object)
 }
 \arguments{
 \item{object}{is an object of class \code{nifti}}

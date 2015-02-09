@@ -1,4 +1,5 @@
 #' @rdname cal.max-methods
+#' @param object is an object of class \code{nifti} 
 #' @title Extract or Replace NIfTI/Analyze Min or Max Values
 #' @aliases cal.max,character,character-method
 setMethod("cal.max", "character", function(object){
@@ -10,6 +11,7 @@ setMethod("cal.max", "character", function(object){
 
 
 #' @rdname cal.min-methods
+#' @param object is an object of class \code{nifti} 
 #' @title Extract or Replace NIfTI/Analyze Min or Max Values
 #' @aliases cal.min,character,character-method
 setMethod("cal.min", "character", function(object){
@@ -21,6 +23,7 @@ setMethod("cal.min", "character", function(object){
 
 
 #' @rdname pixdim-methods
+#' @param object is an object of class \code{nifti}
 #' @title Extract or Replace NIfTI/Analyze Pixel Dimensions
 #' @aliases pixdim,character,character-method
 setMethod("pixdim", "character", function(object){
@@ -36,6 +39,7 @@ setMethod("pixdim", "character", function(object){
 
 
 #' @rdname descrip-methods
+#' @param object is an object of class \code{nifti} 
 #' @title Extract or Replace NIfTI/Analyze Description
 #' @aliases descrip,character,character-method
 setMethod("descrip", "character", function(object){

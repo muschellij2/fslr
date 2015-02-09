@@ -1,6 +1,7 @@
 #' @rdname orientation-methods
 #' @title Extract NIfTI 3D Image Orientation
-#' @aliases qform,character,character-method
+#' @param object is a \code{nifti} object
+#' @aliases qform,character
 setMethod("qform", "character", function(object){
   object = path.expand(object)
   stopifnot(file.exists(object))

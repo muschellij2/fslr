@@ -3,17 +3,22 @@
 \docType{methods}
 \name{slope}
 \alias{slope}
+\alias{slope,character-method}
+\alias{slope,nifti-method}
+\alias{slope-methods}
+\alias{slope<-}
+\alias{slope<-,nifti-method}
 \title{Extract NIfTI 3D Image slope attribute}
 \usage{
 slope(object)
 
 \S4method{slope}{nifti}(object)
 
+\S4method{slope}{character}(object)
+
 slope(object) <- value
 
 \S4method{slope}{nifti}(object) <- value
-
-\S4method{slope}{character}(object)
 }
 \arguments{
 \item{object}{is an object of class \code{nifti}}

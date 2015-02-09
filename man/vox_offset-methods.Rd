@@ -3,17 +3,22 @@
 \docType{methods}
 \name{vox_offset}
 \alias{vox_offset}
+\alias{vox_offset,character-method}
+\alias{vox_offset,nifti-method}
+\alias{vox_offset-methods}
+\alias{vox_offset<-}
+\alias{vox_offset<-,nifti-method}
 \title{Extract NIfTI 3D Image vox_offset attribute}
 \usage{
 vox_offset(object)
 
 \S4method{vox_offset}{nifti}(object)
 
+\S4method{vox_offset}{character}(object)
+
 vox_offset(object) <- value
 
 \S4method{vox_offset}{nifti}(object) <- value
-
-\S4method{vox_offset}{character}(object)
 }
 \arguments{
 \item{object}{is an object of class \code{nifti}}

@@ -1,7 +1,6 @@
-
 #' @rdname orientation-methods
 #' @title Extract NIfTI 3D Image Orientation
-#' @aliases sform,character,character-method
+#' @aliases sform,character
 setMethod("sform", "character", function(object){
   object = path.expand(object)
   stopifnot(file.exists(object))

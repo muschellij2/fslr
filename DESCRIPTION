@@ -11,10 +11,12 @@ Description: Wrapper functions that interface with FSL
     neuroimaging software, using system commands. The goal is to be able to
     interface with FSL completely in R, where you pass R nifti objects and the
     function executes an FSL command and returns an R nifti object if desired.
+Imports: 
+    methods,
+    matrixStats
 Depends:
     stringr,
-    oro.nifti,
-    matrixStats
+    oro.nifti
 License: GPL-2
 VignetteBuilder: knitr
 Suggests:

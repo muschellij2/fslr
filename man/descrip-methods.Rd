@@ -8,6 +8,9 @@
 \usage{
 \S4method{descrip}{character}(object)
 }
+\arguments{
+\item{object}{is an object of class \code{nifti}}
+}
 \description{
 Extract or Replace NIfTI/Analyze Description
 }

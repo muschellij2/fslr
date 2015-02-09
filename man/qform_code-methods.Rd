@@ -3,17 +3,22 @@
 \docType{methods}
 \name{qform_code}
 \alias{qform_code}
+\alias{qform_code,character-method}
+\alias{qform_code,nifti-method}
+\alias{qform_code-methods}
+\alias{qform_code<-}
+\alias{qform_code<-,nifti-method}
 \title{Extract NIfTI 3D Image qform_code attribute}
 \usage{
 qform_code(object)
 
 \S4method{qform_code}{nifti}(object)
 
+\S4method{qform_code}{character}(object)
+
 qform_code(object) <- value
 
 \S4method{qform_code}{nifti}(object) <- value
-
-\S4method{qform_code}{character}(object)
 }
 \arguments{
 \item{object}{is an object of class \code{nifti}}
