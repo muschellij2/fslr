@@ -4,3 +4,5 @@
 ^\.DS_Store$
 .*/\.DS_Store$
 .DS_Store$
+Generic_Maker.R
+Generic_Function.R
