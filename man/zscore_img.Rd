@@ -21,6 +21,9 @@ an object of class nifti}
 \item{centrality}{(character) Measure to center the data,
 either mean or median}
 
+\item{variability}{(character) Measure to scale the data,
+either sd or iqrdiff}
+
 \item{remove.na}{(logical) change NAs to remove.val}
 
 \item{remove.nan}{(logical) change NaN to remove.val}

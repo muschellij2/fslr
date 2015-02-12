@@ -211,6 +211,8 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' 1-Coronal)
 #' @param centrality (character) Measure to center the data, 
 #' either mean or median
+#' @param variability (character) Measure to scale the data, 
+#' either sd or iqrdiff 
 #' @param remove.na (logical) change NAs to remove.val
 #' @param remove.nan (logical) change NaN to remove.val
 #' @param remove.inf (logical) change Inf to remove.val
