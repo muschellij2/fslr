@@ -221,6 +221,7 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' @importFrom matrixStats colMedians
 #' @importFrom matrixStats colSds
 #' @importFrom matrixStats colIQRDiffs
+#' @importFrom matrixStats iqrDiff
 #' @examples
 #' dim = c(100, 30, 5)
 #' img = array(rnorm(prod(dim), mean=4, sd=4), 
