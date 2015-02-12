@@ -217,6 +217,8 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' @param remove.val (logical) value to put the NA/NaN/Inf
 #' @export
 #' @importFrom matrixStats colMedians
+#' @importFrom matrixStats colSds
+#' @importFrom matrixStats colIQRDiffs
 #' @examples
 #' dim = c(100, 30, 5)
 #' img = array(rnorm(prod(dim), mean=4, sd=4), 
@@ -246,10 +248,12 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' 
 zscore_img <- function(img, mask = NULL, margin=3, 
                        centrality = c("mean", "median"),
+                       variability = c("sd", "iqrdiff"),
                        remove.na = TRUE,
                        remove.nan = TRUE, remove.inf = TRUE,
                        remove.val = 0){
   centrality = match.arg(centrality, c("mean", "median"))
+  variability = match.arg(variability, c("sd", "iqrdiff"))
   img = check_nifti(img, allow.array=TRUE)
   orig.img = img
   dimg = dim(orig.img)
@@ -279,8 +283,13 @@ zscore_img <- function(img, mask = NULL, margin=3,
     }
     if (centrality == "median") {
       m = colMedians(vec, na.rm=TRUE)
-    }  
-    s = colSds(vec, na.rm=TRUE)
+    } 
+    if (variability == "iqrdiff") {
+      s = colIQRDiffs(vec, na.rm=TRUE)
+    }
+    if (variability == "sd") {
+      s = colSds(vec, na.rm=TRUE)
+    }     
     
     vecc = (t(vec) - m)/s
     vecc = t(vecc)
@@ -289,7 +298,13 @@ zscore_img <- function(img, mask = NULL, margin=3,
     imgc = aperm(imgc, revperm)
   } else {
     mn = do.call(centrality, list(x=c(img), na.rm=TRUE))
-    s = sd(c(img), na.rm=TRUE)
+    if (variability == "iqrdiff") {
+      s = iqrDiff(c(img), na.rm=TRUE)
+    }
+    if (variability == "sd") {
+      s = sd(c(img), na.rm=TRUE)
+    }    
+    
     imgc = (img - mn) / s
   }
   stopifnot(all.equal(dim(imgc), dim(orig.img)))
