@@ -26,6 +26,7 @@
 #' @param text.y y coordinate for text
 #' @param add.orient (logical) Add left/right, A/P, etc. orientation
 #' @param mfrow (numeric) layout of the 3 slices
+#' @param breaks (numeric) breaks for x to passed to \code{\link[graphics]{image}}
 #' @param ybreaks (numeric) breaks for y to passed to \code{\link[graphics]{image}}
 #' @param addlegend (logical) add legend?
 #' @param leg.x (numeric) x coord for legend
@@ -46,7 +47,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                    text.x=32,
                    text.y=32,
                    add.orient=TRUE,
-                   mfrow=c(2,2), ybreaks = NULL, 
+                   mfrow=c(2,2), ybreaks = NULL, breaks=NULL,
                    addlegend = FALSE,
                    leg.x=32,
                    leg.y=32,
@@ -93,9 +94,14 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
       zlim <- range(x, na.rm = TRUE)
     }
   }
-  breaks <- c(min(x, zlim, na.rm = TRUE), seq(min(zlim, na.rm = TRUE), 
-                                              max(zlim, na.rm = TRUE), length = length(col) - 1), max(x, 
-                                                                                                      zlim, na.rm = TRUE))
+  if (is.null(breaks)){
+    breaks <- c(min(x, zlim, na.rm = TRUE), 
+                seq(min(zlim, na.rm = TRUE),
+                    max(zlim, na.rm = TRUE), 
+                    length = length(col) - 1),
+                max(x, zlim, na.rm = TRUE))
+  }
+
   if (!is.null(y) && is.null(zlim.y)) {
     zlim.y <- c(y@cal_min, y@cal_max)
     if (max(zlim.y) == 0) {

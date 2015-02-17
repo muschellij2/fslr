@@ -9,9 +9,9 @@ ortho2(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   col.crosshairs = "red", xlab = "", ylab = "", axes = FALSE,
   oma = rep(0, 4), mar = rep(0, 4), bg = "black", text = NULL,
   text.color = "white", text.cex = 2, text.x = 32, text.y = 32,
-  add.orient = TRUE, mfrow = c(2, 2), ybreaks = NULL, addlegend = FALSE,
-  leg.x = 32, leg.y = 32, legend, leg.col, leg.title = NULL, leg.cex,
-  window = NULL, ...)
+  add.orient = TRUE, mfrow = c(2, 2), ybreaks = NULL, breaks = NULL,
+  addlegend = FALSE, leg.x = 32, leg.y = 32, legend, leg.col,
+  leg.title = NULL, leg.cex, window = NULL, ...)
 }
 \arguments{
 \item{x}{is an object of class nifti or similar.}
@@ -61,6 +61,8 @@ ortho2(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 \item{mfrow}{(numeric) layout of the 3 slices}
 
 \item{ybreaks}{(numeric) breaks for y to passed to \code{\link[graphics]{image}}}
+
+\item{breaks}{(numeric) breaks for x to passed to \code{\link[graphics]{image}}}
 
 \item{addlegend}{(logical) add legend?}
 
