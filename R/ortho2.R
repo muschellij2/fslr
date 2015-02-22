@@ -36,6 +36,7 @@
 #' @param leg.title (character) title for legend 
 #' @param leg.cex (numeric) \code{cex} for \code{\link{legend}}
 #' @param window (vector) Length-2 vector to limit image to certain range
+#' @param ycolorbar (logical) Should a colorbar for \code{y} be plotted
 #' @param ... other arguments to the image function may be provided here.
 #' @export
 
@@ -56,6 +57,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                    leg.title = NULL,
                    leg.cex,
                    window=NULL,
+                   ycolorbar = TRUE,
                    ...) 
 {
   if (!is.null(y)) {
@@ -171,10 +173,25 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   if (!is.null(y)) {
     if (is.null(ybreaks)){
       graphics::image(1:X, 1:Y, y[, , xyz[3]], col = col.y, 
-                    zlim = zlim.y, add = TRUE)
+                      zlim = zlim.y, add = TRUE)
+      if (ycolorbar){
+        warning("colorbar not supported if ybreaks unspecified")
+        #         nc <- length(col.y)
+        #         if (diff(zlim.y) == 0) {
+        #           zlim.y <- ifelse(zlim.y[1L] == 0, c(-1, 1), 
+        #                            zlim.y[1L] + c(-0.4, 0.4) * abs(zlim.y[1L]))
+        #         }
+        #         zi = floor((nc - 1e-05) * y[, , xyz[3]] + 1e-07)
+        #         breaks = unique(zi[zi >= 0 & zi < nc])
+        #         
+        #         colorbar(breaks=ybreaks, col=col.y, text.col="white")
+      }
     } else {
       graphics::image(1:X, 1:Y, y[, , xyz[3]], col = col.y, 
                       zlim = zlim.y, add = TRUE, breaks = ybreaks)      
+      if (ycolorbar){
+        colorbar(breaks=ybreaks, col=col.y, text.col="white")
+      }
     }
   }
   if (crosshairs) {
@@ -208,6 +225,48 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
       text(labels = text, x=text.x, y=text.y, col = text.color, cex = text.cex)
     }    
   }
+
   par(oldpar)
   invisible()
+}
+
+
+#' @title Add a colorbar to an ortho2 object
+#'
+#' @description Adds a series of colors mapped to a value
+#' @param breaks a set of finite numeric breakpoints for the colours(see \code{\link{image}}
+#' @param col a list of colors (see \code{\link{image}}
+#' @param text.col axis and text label color
+#' @note Much of this was taken from \code{vertical.image.legend} from
+#' the \code{aqfig} package
+#' @export
+#' @return A plot
+colorbar <- function (breaks, #the minimum and maximum z values for which colors should be plotted (see \code{\link{image}})
+                     col, # a list of colors (see \code{\link{image}})
+                     text.col = "white" # axis and text label color
+                     ) {
+  # taken from vertical.image.legend from package aqfig
+  starting.par.settings <- par(no.readonly = TRUE)
+  mai <- par("mai")
+  fin <- par("fin")
+  x.legend.fig <- c(1 - (mai[4]/fin[1]), 1)
+  y.legend.fig <- c(mai[1]/fin[2], 1 - (mai[3]/fin[2]))
+  x.legend.plt <- c(x.legend.fig[1] + (0.08 * (x.legend.fig[2] - 
+                                                 x.legend.fig[1])), 
+                    x.legend.fig[2] - (0.6 * (x.legend.fig[2] - 
+                                                x.legend.fig[1])))
+  y.legend.plt <- y.legend.fig
+  cut.pts <- breaks
+  z <- (cut.pts[1:length(col)] + cut.pts[2:(length(col) + 1)])/2
+  par(new = TRUE, pty = "m", plt = c(x.legend.plt, y.legend.plt))
+  image(x = 1, y = z, z = matrix(z, nrow = 1, ncol = length(col)), 
+        col = col, xlab = "", ylab = "", xaxt = "n", yaxt = "n")
+  axis(4, mgp = c(3, 0.2, 0), las = 2, cex.axis = 0.5, 
+       tcl = -0.1, 
+       col.axis = text.col,
+       col = text.col)
+  box()
+  mfg.settings <- par()$mfg
+  par(starting.par.settings)
+  par(mfg = mfg.settings, new = FALSE)
 }
