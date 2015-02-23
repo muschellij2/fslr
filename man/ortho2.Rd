@@ -5,10 +5,10 @@
 \title{Orthographic Display, added options}
 \usage{
 ortho2(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
-  col.y = hotmetal(), zlim = NULL, zlim.y = NULL, crosshairs = TRUE,
-  col.crosshairs = "red", xlab = "", ylab = "", axes = FALSE,
-  oma = c(0, 0, 0, ifelse(ycolorbar, 4, 0)), mar = rep(0, 4),
-  bg = "black", text = NULL, text.color = "white", text.cex = 2,
+  col.y = hotmetal(), zlim = NULL, zlim.y = NULL, NA.y = TRUE,
+  crosshairs = TRUE, col.crosshairs = "red", xlab = "", ylab = "",
+  axes = FALSE, oma = c(0, 0, 0, ifelse(ycolorbar, 4, 0)), mar = rep(0,
+  4), bg = "black", text = NULL, text.color = "white", text.cex = 2,
   text.x = 32, text.y = 32, add.orient = TRUE, mfrow = c(2, 2),
   ybreaks = NULL, breaks = NULL, addlegend = FALSE, leg.x = 32,
   leg.y = 32, legend, leg.col, leg.title = NULL, leg.cex, window = NULL,
@@ -30,6 +30,8 @@ ortho2(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 \item{zlim}{is the minimum and maximum `z' values passed into image.}
 
 \item{zlim.y}{is the minimum and maximum `z' values passed into image for the overlay.}
+
+\item{NA.y}{Set any values of 0 in \code{y} to \code{NA}}
 
 \item{crosshairs}{is a logical value for the presence of crosshairs
 in all three orthogonal planes (default = TRUE).}

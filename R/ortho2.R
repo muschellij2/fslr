@@ -13,6 +13,7 @@
 #' @param zlim.y is the minimum and maximum `z' values passed into image for the overlay.
 #' @param crosshairs is a logical value for the presence of crosshairs 
 #' in all three orthogonal planes (default = TRUE).
+#' @param NA.y Set any values of 0 in \code{y} to \code{NA}
 #' @param col.crosshairs is the color of the crosshairs (default = red).
 #' @param xlab is set to "" since all margins are set to zero.
 #' @param ylab is set to "" since all margins are set to zero.
@@ -42,7 +43,9 @@
 #' @export
 
 ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64), 
-                   col.y = hotmetal(), zlim = NULL, zlim.y = NULL, crosshairs = TRUE, 
+                   col.y = hotmetal(), zlim = NULL, zlim.y = NULL, 
+                   NA.y = TRUE,
+                   crosshairs = TRUE, 
                    col.crosshairs = "red", xlab = "", ylab = "", axes = FALSE, 
                    oma = c(0, 0, 0, ifelse(ycolorbar, 4, 0)), 
                    mar = rep(0, 4), bg = "black", text = NULL, 
@@ -83,6 +86,12 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   mXY = max(X, Y)
   lr.shift = 4
   ud.shift = 6
+  if (!is.null(y)){
+    if (NA.y){
+      y[ y == 0 ] = NA
+      y = cal_img(y)
+    }
+  }
   if (is.null(xyz)) {
     xyz <- ceiling(c(X, Y, Z)/2)
   }
