@@ -288,7 +288,7 @@ colorbar <- function (breaks, #the minimum and maximum z values for which
   par(new = TRUE, pty = "m", plt = c(x.legend.plt, y.legend.plt))
   image(x = 1, y = z, z = matrix(z, nrow = 1, ncol = length(col)), 
         col = col, xlab = "", ylab = "", xaxt = "n", yaxt = "n")
-  if (isTRUE(label)){
+  if (isTRUE(labels)){
     at = NULL
   } else {
     at = z
