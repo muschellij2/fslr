@@ -29,7 +29,8 @@ ortho2(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 
 \item{zlim}{is the minimum and maximum `z' values passed into image.}
 
-\item{zlim.y}{is the minimum and maximum `z' values passed into image for the overlay.}
+\item{zlim.y}{is the minimum and maximum `z' values passed into image
+for the overlay.}
 
 \item{NA.x}{Set any values of 0 in \code{x} to \code{NA}}
 
@@ -52,9 +53,11 @@ in all three orthogonal planes (default = TRUE).}
 
 \item{bg}{is the background color in the par function.}
 
-\item{text}{allows the user to specify text to appear in the fourth (unused) pane.}
+\item{text}{allows the user to specify text to appear in
+the fourth (unused) pane.}
 
-\item{text.color}{is the color of the user-specified text (default = ``white").}
+\item{text.color}{is the color of the user-specified text
+(default = ``white").}
 
 \item{text.cex}{is the size of the user-specified text (default = 2).}
 
@@ -66,9 +69,11 @@ in all three orthogonal planes (default = TRUE).}
 
 \item{mfrow}{(numeric) layout of the 3 slices}
 
-\item{ybreaks}{(numeric) breaks for y to passed to \code{\link[graphics]{image}}}
+\item{ybreaks}{(numeric) breaks for y to passed to
+\code{\link[graphics]{image}}}
 
-\item{breaks}{(numeric) breaks for x to passed to \code{\link[graphics]{image}}}
+\item{breaks}{(numeric) breaks for x to passed to
+\code{\link[graphics]{image}}}
 
 \item{addlegend}{(logical) add legend?}
 
@@ -93,8 +98,8 @@ in all three orthogonal planes (default = TRUE).}
 \item{...}{other arguments to the image function may be provided here.}
 }
 \description{
-Copy of \code{oro.nifti}'s \code{\link{orthographic}} function with some
-tweaks such as adding L/R designations for left and right
+Copy of \code{oro.nifti}'s \code{\link{orthographic}} function
+with some tweaks such as adding L/R designations for left and right
 }
 \seealso{
 \link{orthographic}

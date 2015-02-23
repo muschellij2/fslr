@@ -7,7 +7,8 @@
 colorbar(breaks, col, text.col = "white", labels = TRUE, maxleft = 0.95)
 }
 \arguments{
-\item{breaks}{a set of finite numeric breakpoints for the colours(see \code{\link{image}}}
+\item{breaks}{a set of finite numeric breakpoints for the
+colours (see \code{\link{image}}}
 
 \item{col}{a list of colors (see \code{\link{image}}}
 

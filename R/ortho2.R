@@ -1,6 +1,6 @@
 #' @title Orthographic Display, added options
-#' @description Copy of \code{oro.nifti}'s \code{\link{orthographic}} function with some 
-#' tweaks such as adding L/R designations for left and right
+#' @description Copy of \code{oro.nifti}'s \code{\link{orthographic}} function 
+#' with some tweaks such as adding L/R designations for left and right
 #' @return NULL
 #' @seealso \link{orthographic}
 #' @param x is an object of class nifti or similar.
@@ -10,7 +10,8 @@
 #' @param col is grayscale (by default).
 #' @param col.y is hotmetal (by default).
 #' @param zlim is the minimum and maximum `z' values passed into image.
-#' @param zlim.y is the minimum and maximum `z' values passed into image for the overlay.
+#' @param zlim.y is the minimum and maximum `z' values passed into image 
+#' for the overlay.
 #' @param crosshairs is a logical value for the presence of crosshairs 
 #' in all three orthogonal planes (default = TRUE).
 #' @param NA.x Set any values of 0 in \code{x} to \code{NA}
@@ -22,15 +23,19 @@
 #' @param oma is the size of the outer margins in the par function.
 #' @param mar is the number of lines of margin in the par function.
 #' @param bg is the background color in the par function.
-#' @param text allows the user to specify text to appear in the fourth (unused) pane.
-#' @param text.color is the color of the user-specified text (default = ``white").
+#' @param text allows the user to specify text to appear in 
+#' the fourth (unused) pane.
+#' @param text.color is the color of the user-specified text 
+#' (default = ``white").
 #' @param text.cex is the size of the user-specified text (default = 2).
 #' @param text.x x coordinate for text 
 #' @param text.y y coordinate for text
 #' @param add.orient (logical) Add left/right, A/P, etc. orientation
 #' @param mfrow (numeric) layout of the 3 slices
-#' @param breaks (numeric) breaks for x to passed to \code{\link[graphics]{image}}
-#' @param ybreaks (numeric) breaks for y to passed to \code{\link[graphics]{image}}
+#' @param breaks (numeric) breaks for x to passed to 
+#' \code{\link[graphics]{image}}
+#' @param ybreaks (numeric) breaks for y to passed to 
+#' \code{\link[graphics]{image}}
 #' @param addlegend (logical) add legend?
 #' @param leg.x (numeric) x coord for legend
 #' @param leg.y (numeric) y coord for legend
@@ -226,7 +231,8 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
            title = leg.title)    
     }
     if (!is.null(text)){
-      text(labels = text, x=text.x, y=text.y, col = text.color, cex = text.cex)
+      text(labels = text, x=text.x, y=text.y, col = 
+             text.color, cex = text.cex)
     }    
   }
 
@@ -238,7 +244,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
         #         nc <- length(col.y)
         #         if (diff(zlim.y) == 0) {
         #           zlim.y <- ifelse(zlim.y[1L] == 0, c(-1, 1), 
-        #                            zlim.y[1L] + c(-0.4, 0.4) * abs(zlim.y[1L]))
+        #                 zlim.y[1L] + c(-0.4, 0.4) * abs(zlim.y[1L]))
         #         }
         #         zi = floor((nc - 1e-05) * y[, , xyz[3]] + 1e-07)
         #         breaks = unique(zi[zi >= 0 & zi < nc])
@@ -247,7 +253,9 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
       }
     } else {
       if (ycolorbar){
-        colorbar(breaks=ybreaks, col=col.y, text.col="white", labels = clabels)
+        colorbar(breaks=ybreaks, col=col.y, 
+                 text.col="white", 
+                 labels = clabels)
       }
     }
   }
@@ -258,7 +266,8 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 #' @title Add a colorbar to an ortho2 object
 #'
 #' @description Adds a series of colors mapped to a value
-#' @param breaks a set of finite numeric breakpoints for the colours(see \code{\link{image}}
+#' @param breaks a set of finite numeric breakpoints for the 
+#' colours (see \code{\link{image}}
 #' @param col a list of colors (see \code{\link{image}}
 #' @param text.col axis and text label color
 #' @param labels labels for tick marks - see \code{\link{axis}}
