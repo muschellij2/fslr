@@ -4,7 +4,7 @@
 \alias{colorbar}
 \title{Add a colorbar to an ortho2 object}
 \usage{
-colorbar(breaks, col, text.col = "white")
+colorbar(breaks, col, text.col = "white", labels = TRUE)
 }
 \arguments{
 \item{breaks}{a set of finite numeric breakpoints for the colours(see \code{\link{image}}}
@@ -12,6 +12,8 @@ colorbar(breaks, col, text.col = "white")
 \item{col}{a list of colors (see \code{\link{image}}}
 
 \item{text.col}{axis and text label color}
+
+\item{labels}{labels for tick marks - see \code{\link{axis}}}
 }
 \value{
 A plot

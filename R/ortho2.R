@@ -40,6 +40,7 @@
 #' @param leg.cex (numeric) \code{cex} for \code{\link{legend}}
 #' @param window (vector) Length-2 vector to limit image to certain range
 #' @param ycolorbar (logical) Should a colorbar for \code{y} be plotted
+#' @param clabels Label for colorbar (see \code{\link{colorbar}})
 #' @param ... other arguments to the image function may be provided here.
 #' @export
 
@@ -65,6 +66,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                    leg.cex,
                    window=NULL,
                    ycolorbar = FALSE,
+                   clabels = TRUE,
                    ...) 
 {
   if (!is.null(y)) {
@@ -245,7 +247,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
       }
     } else {
       if (ycolorbar){
-        colorbar(breaks=ybreaks, col=col.y, text.col="white")
+        colorbar(breaks=ybreaks, col=col.y, text.col="white", labels = clabels)
       }
     }
   }
@@ -259,6 +261,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 #' @param breaks a set of finite numeric breakpoints for the colours(see \code{\link{image}}
 #' @param col a list of colors (see \code{\link{image}}
 #' @param text.col axis and text label color
+#' @param labels labels for tick marks - see \code{\link{axis}}
 #' @note Much of this was taken from \code{vertical.image.legend} from
 #' the \code{aqfig} package
 #' @export
@@ -266,7 +269,8 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 colorbar <- function (breaks, #the minimum and maximum z values for which 
                       # colors should be plotted (see \code{\link{image}})
                      col, # a list of colors (see \code{\link{image}})
-                     text.col = "white" # axis and text label color
+                     text.col = "white", # axis and text label color
+                     labels = TRUE
                      ) {
   # taken from vertical.image.legend from package aqfig
   starting.par.settings <- par(no.readonly = TRUE)
@@ -286,6 +290,7 @@ colorbar <- function (breaks, #the minimum and maximum z values for which
         col = col, xlab = "", ylab = "", xaxt = "n", yaxt = "n")
   axis(4, mgp = c(3, 0.2, 0), las = 2, cex.axis = 0.5, 
        tcl = -0.1, 
+       labels = labels,
        col.axis = text.col,
        col = text.col)
   box()
