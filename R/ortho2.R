@@ -50,7 +50,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                    NA.y = TRUE,
                    crosshairs = TRUE, 
                    col.crosshairs = "red", xlab = "", ylab = "", axes = FALSE, 
-                   oma = c(0, 0, 0, ifelse(ycolorbar, 4, 0)), 
+                   oma = c(0, 0, 0, ifelse(ycolorbar, 5, 0)), 
                    mar = rep(0, 4), bg = "black", text = NULL, 
                    text.color = "white", text.cex = 2, 
                    text.x=32,
@@ -262,6 +262,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 #' @param col a list of colors (see \code{\link{image}}
 #' @param text.col axis and text label color
 #' @param labels labels for tick marks - see \code{\link{axis}}
+#' @param maxleft Extent the lefthand for colorbar
 #' @note Much of this was taken from \code{vertical.image.legend} from
 #' the \code{aqfig} package
 #' @export
@@ -270,13 +271,16 @@ colorbar <- function (breaks, #the minimum and maximum z values for which
                       # colors should be plotted (see \code{\link{image}})
                      col, # a list of colors (see \code{\link{image}})
                      text.col = "white", # axis and text label color
-                     labels = TRUE
+                     labels = TRUE,
+                     maxleft = 0.95
                      ) {
   # taken from vertical.image.legend from package aqfig
   starting.par.settings <- par(no.readonly = TRUE)
   mai <- par("mai")
   fin <- par("fin")
-  x.legend.fig <- c(1 - (mai[4]/fin[1]), 1)
+  rat = mai[4]/fin[1]
+  rat = max(rat, 1-maxleft)
+  x.legend.fig <- c(1 - rat, 1)
   y.legend.fig <- c(mai[1]/fin[2], 1 - (mai[3]/fin[2]))
   x.legend.plt <- c(x.legend.fig[1] + (0.08 * (x.legend.fig[2] - 
                                                  x.legend.fig[1])), 

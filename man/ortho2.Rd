@@ -7,7 +7,7 @@
 ortho2(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   col.y = hotmetal(), zlim = NULL, zlim.y = NULL, NA.x = FALSE,
   NA.y = TRUE, crosshairs = TRUE, col.crosshairs = "red", xlab = "",
-  ylab = "", axes = FALSE, oma = c(0, 0, 0, ifelse(ycolorbar, 4, 0)),
+  ylab = "", axes = FALSE, oma = c(0, 0, 0, ifelse(ycolorbar, 5, 0)),
   mar = rep(0, 4), bg = "black", text = NULL, text.color = "white",
   text.cex = 2, text.x = 32, text.y = 32, add.orient = TRUE,
   mfrow = c(2, 2), ybreaks = NULL, breaks = NULL, addlegend = FALSE,
