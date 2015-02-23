@@ -7,11 +7,12 @@
 ortho2(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   col.y = hotmetal(), zlim = NULL, zlim.y = NULL, crosshairs = TRUE,
   col.crosshairs = "red", xlab = "", ylab = "", axes = FALSE,
-  oma = rep(0, 4), mar = rep(0, 4), bg = "black", text = NULL,
-  text.color = "white", text.cex = 2, text.x = 32, text.y = 32,
-  add.orient = TRUE, mfrow = c(2, 2), ybreaks = NULL, breaks = NULL,
-  addlegend = FALSE, leg.x = 32, leg.y = 32, legend, leg.col,
-  leg.title = NULL, leg.cex, window = NULL, ycolorbar = TRUE, ...)
+  oma = c(0, 0, 0, ifelse(ycolorbar, 4, 0)), mar = rep(0, 4),
+  bg = "black", text = NULL, text.color = "white", text.cex = 2,
+  text.x = 32, text.y = 32, add.orient = TRUE, mfrow = c(2, 2),
+  ybreaks = NULL, breaks = NULL, addlegend = FALSE, leg.x = 32,
+  leg.y = 32, legend, leg.col, leg.title = NULL, leg.cex, window = NULL,
+  ycolorbar = FALSE, ...)
 }
 \arguments{
 \item{x}{is an object of class nifti or similar.}
@@ -30,7 +31,8 @@ ortho2(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 
 \item{zlim.y}{is the minimum and maximum `z' values passed into image for the overlay.}
 
-\item{crosshairs}{is a logical value for the presence of crosshairs in all three orthogonal planes (default = TRUE).}
+\item{crosshairs}{is a logical value for the presence of crosshairs
+in all three orthogonal planes (default = TRUE).}
 
 \item{col.crosshairs}{is the color of the crosshairs (default = red).}
 

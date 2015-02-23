@@ -11,7 +11,8 @@
 #' @param col.y is hotmetal (by default).
 #' @param zlim is the minimum and maximum `z' values passed into image.
 #' @param zlim.y is the minimum and maximum `z' values passed into image for the overlay.
-#' @param crosshairs is a logical value for the presence of crosshairs in all three orthogonal planes (default = TRUE).
+#' @param crosshairs is a logical value for the presence of crosshairs 
+#' in all three orthogonal planes (default = TRUE).
 #' @param col.crosshairs is the color of the crosshairs (default = red).
 #' @param xlab is set to "" since all margins are set to zero.
 #' @param ylab is set to "" since all margins are set to zero.
@@ -43,7 +44,8 @@
 ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64), 
                    col.y = hotmetal(), zlim = NULL, zlim.y = NULL, crosshairs = TRUE, 
                    col.crosshairs = "red", xlab = "", ylab = "", axes = FALSE, 
-                   oma = rep(0, 4), mar = rep(0, 4), bg = "black", text = NULL, 
+                   oma = c(0, 0, 0, ifelse(ycolorbar, 4, 0)), 
+                   mar = rep(0, 4), bg = "black", text = NULL, 
                    text.color = "white", text.cex = 2, 
                    text.x=32,
                    text.y=32,
@@ -57,7 +59,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                    leg.title = NULL,
                    leg.cex,
                    window=NULL,
-                   ycolorbar = TRUE,
+                   ycolorbar = FALSE,
                    ...) 
 {
   if (!is.null(y)) {
@@ -174,24 +176,9 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
     if (is.null(ybreaks)){
       graphics::image(1:X, 1:Y, y[, , xyz[3]], col = col.y, 
                       zlim = zlim.y, add = TRUE)
-      if (ycolorbar){
-        warning("colorbar not supported if ybreaks unspecified")
-        #         nc <- length(col.y)
-        #         if (diff(zlim.y) == 0) {
-        #           zlim.y <- ifelse(zlim.y[1L] == 0, c(-1, 1), 
-        #                            zlim.y[1L] + c(-0.4, 0.4) * abs(zlim.y[1L]))
-        #         }
-        #         zi = floor((nc - 1e-05) * y[, , xyz[3]] + 1e-07)
-        #         breaks = unique(zi[zi >= 0 & zi < nc])
-        #         
-        #         colorbar(breaks=ybreaks, col=col.y, text.col="white")
-      }
     } else {
       graphics::image(1:X, 1:Y, y[, , xyz[3]], col = col.y, 
-                      zlim = zlim.y, add = TRUE, breaks = ybreaks)      
-      if (ycolorbar){
-        colorbar(breaks=ybreaks, col=col.y, text.col="white")
-      }
+                      zlim = zlim.y, add = TRUE, breaks = ybreaks)
     }
   }
   if (crosshairs) {
@@ -227,6 +214,26 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   }
 
   par(oldpar)
+  if (!is.null(y)) {
+    if (is.null(ybreaks)){
+      if (ycolorbar){
+        warning("colorbar not supported if ybreaks unspecified")
+        #         nc <- length(col.y)
+        #         if (diff(zlim.y) == 0) {
+        #           zlim.y <- ifelse(zlim.y[1L] == 0, c(-1, 1), 
+        #                            zlim.y[1L] + c(-0.4, 0.4) * abs(zlim.y[1L]))
+        #         }
+        #         zi = floor((nc - 1e-05) * y[, , xyz[3]] + 1e-07)
+        #         breaks = unique(zi[zi >= 0 & zi < nc])
+        #         
+        #         colorbar(breaks=ybreaks, col=col.y, text.col="white")
+      }
+    } else {
+      if (ycolorbar){
+        colorbar(breaks=ybreaks, col=col.y, text.col="white")
+      }
+    }
+  }
   invisible()
 }
 
@@ -241,7 +248,8 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 #' the \code{aqfig} package
 #' @export
 #' @return A plot
-colorbar <- function (breaks, #the minimum and maximum z values for which colors should be plotted (see \code{\link{image}})
+colorbar <- function (breaks, #the minimum and maximum z values for which 
+                      # colors should be plotted (see \code{\link{image}})
                      col, # a list of colors (see \code{\link{image}})
                      text.col = "white" # axis and text label color
                      ) {
