@@ -211,8 +211,7 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' 1-Coronal)
 #' @param centrality (character) Measure to center the data, 
 #' either mean or median
-#' @param variability (character) Measure to scale the data, 
-#' either sd or iqrdiff 
+#' @param variability (character) Measure to scale the data
 #' @param remove.na (logical) change NAs to remove.val
 #' @param remove.nan (logical) change NaN to remove.val
 #' @param remove.inf (logical) change Inf to remove.val
@@ -251,12 +250,14 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' 
 zscore_img <- function(img, mask = NULL, margin=3, 
                        centrality = c("mean", "median"),
-                       variability = c("sd", "iqrdiff"),
+                       variability = c("sd", "iqrdiff", "mad", 
+                                       "maddiff", "iqr"),
                        remove.na = TRUE,
                        remove.nan = TRUE, remove.inf = TRUE,
                        remove.val = 0){
   centrality = match.arg(centrality, c("mean", "median"))
-  variability = match.arg(variability, c("sd", "iqrdiff"))
+  variability = match.arg(variability, c("sd", "iqrdiff", "mad", 
+                                         "maddiff", "iqr"))
   img = check_nifti(img, allow.array=TRUE)
   orig.img = img
   dimg = dim(orig.img)
@@ -290,6 +291,15 @@ zscore_img <- function(img, mask = NULL, margin=3,
     if (variability == "iqrdiff") {
       s = colIQRDiffs(vec, na.rm=TRUE)
     }
+    if (variability == "maddiff") {
+      s = colMadDiffs(vec, na.rm=TRUE)
+    }   
+    if (variability == "mad") {
+      s = colMads(vec, na.rm=TRUE)
+    }       
+    if (variability == "iqr") {
+      s = colIQRs(vec, na.rm=TRUE)
+    }       
     if (variability == "sd") {
       s = colSds(vec, na.rm=TRUE)
     }     
@@ -306,7 +316,16 @@ zscore_img <- function(img, mask = NULL, margin=3,
     }
     if (variability == "sd") {
       s = sd(c(img), na.rm=TRUE)
-    }    
+    }
+    if (variability == "maddiff") {
+      s = madDiff(c(img), na.rm=TRUE)
+    }   
+    if (variability == "mad") {
+      s = mad(c(img), na.rm=TRUE)
+    }       
+    if (variability == "iqr") {
+      s = iqr(c(img), na.rm=TRUE)
+    }       
     
     imgc = (img - mn) / s
   }

@@ -5,8 +5,9 @@
 \title{Get Z-score over a margin of an img}
 \usage{
 zscore_img(img, mask = NULL, margin = 3, centrality = c("mean", "median"),
-  variability = c("sd", "iqrdiff"), remove.na = TRUE, remove.nan = TRUE,
-  remove.inf = TRUE, remove.val = 0)
+  variability = c("sd", "iqrdiff", "mad", "maddiff", "iqr"),
+  remove.na = TRUE, remove.nan = TRUE, remove.inf = TRUE,
+  remove.val = 0)
 }
 \arguments{
 \item{img}{character path of image or
@@ -21,8 +22,7 @@ an object of class nifti}
 \item{centrality}{(character) Measure to center the data,
 either mean or median}
 
-\item{variability}{(character) Measure to scale the data,
-either sd or iqrdiff}
+\item{variability}{(character) Measure to scale the data}
 
 \item{remove.na}{(logical) change NAs to remove.val}
 
