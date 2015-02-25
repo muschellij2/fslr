@@ -3,7 +3,7 @@
 #' @description Get the image file extension, either .nii, .hdr, .nii.gz, 
 #' or .hdr.gz
 #' @param file Vector of character filenames
-#' @param withdot
+#' @param withdot Should the extension begin with \code{"."}?
 #' @export
 #' @return Vector of extensions.  If \code{withdot = FALSE}, then will
 #' return \code{nii} instead of \code{.nii}

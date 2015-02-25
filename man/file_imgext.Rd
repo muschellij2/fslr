@@ -9,7 +9,7 @@ file_imgext(file, withdot = TRUE)
 \arguments{
 \item{file}{Vector of character filenames}
 
-\item{withdot}{}
+\item{withdot}{Should the extension begin with \code{"."}?}
 }
 \value{
 Vector of extensions.  If \code{withdot = FALSE}, then will
