@@ -217,10 +217,10 @@ check_nifti = function(x, reorient=FALSE, allow.array=FALSE){
 #' @param remove.inf (logical) change Inf to remove.val
 #' @param remove.val (logical) value to put the NA/NaN/Inf
 #' @export
-#' @importFrom matrixStats colMedians
-#' @importFrom matrixStats colSds
-#' @importFrom matrixStats colIQRDiffs
-#' @importFrom matrixStats iqrDiff
+#' @importFrom matrixStats colMedians 
+#' @importFrom matrixStats colSds 
+#' @importFrom matrixStats colIQRDiffs colIQRs iqrDiff iqr
+#' @importFrom matrixStats colMadDiffs colMads madDiff
 #' @examples
 #' dim = c(100, 30, 5)
 #' img = array(rnorm(prod(dim), mean=4, sd=4), 
