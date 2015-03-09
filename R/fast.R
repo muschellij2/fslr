@@ -26,13 +26,7 @@ fast = function(
   file = checkimg(file, ...)
   cmd <- paste0(cmd, 'fast ')
   no.outfile = is.null(outfile)
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }
+  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
   outfile = nii.stub(outfile)
   cmd <- paste(cmd, sprintf(' %s --out="%s" "%s";', opts, 
     outfile, file))

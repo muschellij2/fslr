@@ -318,13 +318,7 @@ fslsmooth <- function(
     mask = checkimg(mask, ...)
     cmd <- paste(cmd, sprintf(' -mas "%s"', mask))
 	}
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }
+  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
   outfile = nii.stub(outfile)
 	cmd <- paste(cmd, sprintf(' -s %s "%s";', sigma, outfile))
   ext = get.imgext()
@@ -395,13 +389,7 @@ fslmask <- function(file, mask, outfile=NULL,
                     ...){
 	
   cmd = get.fsl()
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }
+  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
   outfile = nii.stub(outfile)
   file = checkimg(file, ...)
   mask = checkimg(mask, ...)
@@ -458,13 +446,8 @@ fslerode <- function(file, outfile=NULL,
                     ...){
   
   cmd = get.fsl()
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }
+  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
+  
   outfile = nii.stub(outfile)
   file = checkimg(file, ...)    
   cmd <- paste0(cmd, sprintf('fslmaths "%s" %s -ero %s "%s"', 
@@ -764,13 +747,8 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
                    intern=TRUE, verbose = TRUE,
                    ...){
   cmd <- get.fsl()
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }  
+  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
+  
   outfile = nii.stub(outfile)
   
   file = checkimg(file, ...)    
@@ -825,13 +803,8 @@ fslthresh = function(file, outfile = NULL,
                      intern=TRUE, 
                      opts = "", verbose = TRUE, ...){
   cmd <- get.fsl()
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }  
+  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
+  
   outfile = nii.stub(outfile)
   
   file = checkimg(file, ...)  
@@ -890,13 +863,7 @@ fslsub2 = function(file,
            opts="-subsamp2",
            intern=intern, verbose = verbose, ... = ...)
 #   cmd <- get.fsl()
-#   if (retimg){
-#     if (is.null(outfile)) {
-#       outfile = tempfile()
-#     }
-#   } else {
-#     stopifnot(!is.null(outfile))
-#   }  
+#  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
 #   outfile = nii.stub(outfile)
 #   
 #   file = checkimg(file, ...)  
@@ -969,13 +936,7 @@ fslmerge = function(infiles,
                    intern=TRUE, verbose = TRUE, ...){
   cmd <- get.fsl()
   direction = direction[1]
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }   
+  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = ".nii.gz")
   outfile = nii.stub(outfile)  
   infiles = sapply(infiles, checkimg)
   infiles = paste(infiles, sep="", collapse = " ")
@@ -1037,13 +998,7 @@ flirt = function(infile,
                     intern=TRUE,
                     opts="", verbose = TRUE, ...){
   cmd <- get.fsl()
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }
+  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
 #   infile = path.expand(infile)
 #   outfile = path.expand(outfile)
 #   reffile = path.expand(reffile)
@@ -1177,13 +1132,7 @@ fslbet = function(infile,
                  ...){
   betcmd = match.arg( betcmd )
   cmd <- get.fsl()
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }
+  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
   infile = checkimg(infile, ...)  
   outfile = checkimg(outfile, ...)  
   outfile = nii.stub(outfile, ...)
@@ -1464,13 +1413,7 @@ fslcmd = function(
   cmd <- paste0(cmd, sprintf('%s "%s"', func, file))
   no.outfile = is.null(outfile)
   if (no.outfile & samefile) outfile = ""  
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }
+  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
   outfile = nii.stub(outfile)
   cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
   ext = get.imgext()

@@ -4,15 +4,17 @@
 #' whether the user would like to return an iamge
 #' @param outfile output filename or NULL
 #' @param retimg Should an image be returned
+#' @param fileext a non-empty character vector giving the file extension
 #' @export
 #' @return Filename of output file or a temporary filename
 check_outfile <- function(
   outfile, # output filename or NULL 
-  retimg # Should an image be returned
+  retimg, # Should an image be returned
+  fileext = ".nii.gz"
   ){
   if (retimg){
     if (is.null(outfile)) {
-      outfile = paste0(tempfile(), ".nii.gz")
+      outfile = tempfile(fileext = fileext)
     } 
   } else {
     stopifnot(!is.null(outfile))

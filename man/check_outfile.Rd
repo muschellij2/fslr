@@ -4,12 +4,14 @@
 \alias{check_outfile}
 \title{Check output filename}
 \usage{
-check_outfile(outfile, retimg)
+check_outfile(outfile, retimg, fileext = ".nii.gz")
 }
 \arguments{
 \item{outfile}{output filename or NULL}
 
 \item{retimg}{Should an image be returned}
+
+\item{fileext}{a non-empty character vector giving the file extension}
 }
 \value{
 Filename of output file or a temporary filename
