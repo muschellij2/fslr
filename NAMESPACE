@@ -3,6 +3,7 @@
 export(cal_img)
 export(check_file)
 export(check_nifti)
+export(check_outfile)
 export(checkimg)
 export(checkout)
 export(cog)
