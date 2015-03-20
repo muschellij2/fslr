@@ -13,8 +13,10 @@ zero_trans(img)
 object of type nifti
 }
 \description{
-Forces image scl_slope to 1 and scl_inter  to be 0 of slots of class
-nifti.  This is so that when images are rendered/written, the values correspond to those
+Forces image \code{scl_slope} to 1 and \code{scl_inter}
+to be 0 of slots of class
+nifti.  This is so that when images are rendered/written,
+ the values correspond to those
 in the array (stored in Data slot) and are not scaled.
 }
 

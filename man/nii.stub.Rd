@@ -12,6 +12,7 @@ nii.stub(x, bn = FALSE)
 \item{bn}{Take \code{\link{basename}} of file?}
 }
 \description{
-Quick helper function to strip of .nii or .nii.gz from filename
+Quick helper function to strip of .nii or .nii.gz
+from filename
 }
 

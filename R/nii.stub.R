@@ -1,5 +1,6 @@
 #' @title Grab nii file stubname
-#' @description Quick helper function to strip of .nii or .nii.gz from filename
+#' @description Quick helper function to strip of .nii or .nii.gz 
+#' from filename
 #' @return NULL
 #' @param x character vector of filenames ending in .nii or .nii.gz
 #' @param bn Take \code{\link{basename}} of file?
@@ -16,18 +17,29 @@ nii.stub = function(x, bn=FALSE){
 #' @title Set Max/Min for nifti object by range of data
 #' @return object of type nifti
 #' @param img nifti object
-#' @description Rescales image cal_max and cal_min slots to be the max and min, 
-#' respectively, of an object of class nifti, with \code{na.rm=TRUE}. This is so that 
+#' @param infok Indicator if \code{Inf} and \code{-Inf} are OK.  Default is 
+#' \code{TRUE}.  If \code{FALSE} and max or min is infinity, then 
+#' \code{cal_min}
+#' or \code{cal_max} is set to infinity (neg or pos), respectively.
+#' @description Rescales image cal_max and cal_min slots to be the 
+#' max and min, 
+#' respectively, of an object of class nifti, with \code{na.rm=TRUE}. 
+#' This is so that 
 #' when images are rendered/written, the values correspond to those
-#' in the array (stored in .Data slot) are plotted on correct grayscale and no error is
+#' in the array (stored in .Data slot) are plotted on correct grayscale 
+#' and no error is
 #' given by \code{writeNIfTI}.
 #' @name cal_img
 #' @export
-cal_img = function(img){
+cal_img = function(img, infok = TRUE){
   cmax = max(img, na.rm=TRUE) 
-  cmax = ifelse(is.finite(cmax), cmax, 0)
+  if (!infok){
+    cmax = ifelse(is.finite(cmax), cmax, 0)
+  }
   cmin = min(img, na.rm=TRUE) 
-  cmin = ifelse(is.finite(cmin), cmin, 0)  
+  if (!infok){
+    cmin = ifelse(is.finite(cmin), cmin, 0)
+  }  
   cal.max(img) = cmax
   cal.min(img) = cmin
   img
@@ -36,8 +48,10 @@ cal_img = function(img){
 #' @title Change intercept to 0 and slope to 1
 #' @return object of type nifti
 #' @param img nifti object (or character of filename)
-#' @description Forces image scl_slope to 1 and scl_inter  to be 0 of slots of class
-#' nifti.  This is so that when images are rendered/written, the values correspond to those
+#' @description Forces image \code{scl_slope} to 1 and \code{scl_inter}
+#' to be 0 of slots of class
+#' nifti.  This is so that when images are rendered/written,
+#'  the values correspond to those
 #' in the array (stored in Data slot) and are not scaled.
 #' @name zero_trans
 #' @export
@@ -68,6 +82,12 @@ voxdim = function(img){
 #' @export
 drop_img_dim = function(img){
   dim_  = img@dim_
+  imgdim = dim(img)
+  ####
+  ndim = length(imgdim) + 1
+  if (ndim +1 <= length(dim_)){
+    dim_[seq(ndim+1, length(dim_))] = 1
+  }
   pdim = pixdim(img)
   no.data = dim_ <= 1
   no.data[1] = FALSE
