@@ -79,7 +79,7 @@ rescale_img = function(filename,
 #' for image masks - makes them binary if
 #' @name datatype
 #' @export
-datatype = function(img, type_string = NULL,
+datatyper = function(img, type_string = NULL,
                     datatype=NULL, bitpix=NULL, trybyte=TRUE){
   img = check_nifti(img)
   if (!is.null(type_string)){
@@ -162,7 +162,7 @@ newnii = function(img, ...){
   img = check_nifti(img)
   img = zero_trans(img)
   img = cal_img(img)
-  img = datatype(img, ...)
+  img = datatyper(img, ...)
   return(img)
 }
 
@@ -334,7 +334,7 @@ zscore_img <- function(img, mask = NULL, margin=3,
     nim = orig.img
     nim@.Data = imgc
     imgc = nim
-    imgc = datatype(imgc, 
+    imgc = datatyper(imgc, 
                     datatype = convert.datatype()$FLOAT32, 
                     bitpix = convert.bitpix()$FLOAT32) 
   }
