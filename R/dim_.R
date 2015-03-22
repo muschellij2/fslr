@@ -1,12 +1,10 @@
+#' @docType methods
+#' @rdname dim_-methods
+#' @title Extract Image dim_ attribute 
 #' @name dim_-methods
-#' @title Extract Image dim_ attribute
-#' @description Methods that extract the ``dim_'' slot from the 
-#' NIfTI/ANALYZE header.
-#' @docType methods 
-#' @param object is an object of class \code{character} 
-#' @aliases dim_-methods 
-#' @aliases dim_,character,character-method
-#' @aliases dim_
+#' @aliases dim_,character-method
+#' @param object is a filename to pass to \link{fslval}
+#' @import oro.nifti
 #' @export
 setMethod("dim_", "character", function(object){
   object = path.expand(object)

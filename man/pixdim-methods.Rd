@@ -2,16 +2,16 @@
 % Please edit documentation in R/pixdim.R
 \docType{methods}
 \name{pixdim-methods}
+\alias{pixdim,character-method}
 \alias{pixdim-methods}
 \title{Extract Image pixdim attribute}
 \usage{
 \S4method{pixdim}{character}(object)
 }
 \arguments{
-\item{object}{is an object of class \code{character}}
+\item{object}{is a filename to pass to \link{fslval}}
 }
 \description{
-Methods that extract the ``pixdim'' slot from the
-NIfTI/ANALYZE header.
+Extract Image pixdim attribute
 }
 

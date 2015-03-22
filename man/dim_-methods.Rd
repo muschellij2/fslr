@@ -2,16 +2,16 @@
 % Please edit documentation in R/dim_.R
 \docType{methods}
 \name{dim_-methods}
+\alias{dim_,character-method}
 \alias{dim_-methods}
 \title{Extract Image dim_ attribute}
 \usage{
 \S4method{dim_}{character}(object)
 }
 \arguments{
-\item{object}{is an object of class \code{character}}
+\item{object}{is a filename to pass to \link{fslval}}
 }
 \description{
-Methods that extract the ``dim_'' slot from the
-NIfTI/ANALYZE header.
+Extract Image dim_ attribute
 }
 

@@ -1,12 +1,9 @@
+#' @docType methods
+#' @rdname pixdim-methods
+#' @title Extract Image pixdim attribute 
 #' @name pixdim-methods
-#' @title Extract Image pixdim attribute
-#' @description Methods that extract the ``pixdim'' slot from the 
-#' NIfTI/ANALYZE header.
-#' @docType methods 
-#' @param object is an object of class \code{character} 
-#' @aliases pixdim-methods 
-#' @aliases pixdim,character,character-method
-#' @aliases pixdim
+#' @aliases pixdim,character-method
+#' @param object is a filename to pass to \link{fslval} 
 #' @import oro.nifti
 #' @export
 setMethod("pixdim", "character", function(object){
