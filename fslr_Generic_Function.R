@@ -1,14 +1,5 @@
-#' @name %%-methods
-#' @title Extract Image %% attribute
-#' @description Methods that extract the ``%ff%'' slot from the 
-#' NIfTI/ANALYZE header.
-#' @docType methods 
-#' @param object is an object of class \code{character} 
-#' @aliases %%-methods 
-#' @aliases %%,character,character-method
-#' @aliases %%
+#' @import oro.nifti
 #' @export
-%example% 
 setMethod("%%", "character", function(object) { 
   object = path.expand(object)
   stopifnot(file.exists(object))

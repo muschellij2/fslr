@@ -8,6 +8,7 @@
 #' @return Vector of extensions.  If \code{withdot = FALSE}, then will
 #' return \code{nii} instead of \code{.nii}
 file_imgext <- function(file, withdot = TRUE){
+  file = tolower(file)
   hdrgz = grepl("[.]hdr[.]gz$", file)
   niigz = grepl("[.]nii[.]gz$", file)
   nii = grepl("[.]nii$", file)
