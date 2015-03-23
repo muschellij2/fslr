@@ -1,6 +1,7 @@
 #' @title Check output filename
 #'
-#' @description This function checks if an output filename is not NULL in conjunction
+#' @description This function checks if an output filename is not NULL 
+#' in conjunction
 #' whether the user would like to return an iamge
 #' @param outfile output filename or NULL
 #' @param retimg Should an image be returned
@@ -17,7 +18,9 @@ check_outfile <- function(
       outfile = tempfile(fileext = fileext)
     } 
   } else {
-    stopifnot(!is.null(outfile))
+    if (is.null(outfile)){
+      stop("Outfile is NULL, and retimg=FALSE, one of these must be changed")
+    }
   }  
   return(path.expand(outfile))
 }
