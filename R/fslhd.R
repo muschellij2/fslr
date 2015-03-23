@@ -10,8 +10,8 @@ get.fsl = function(){
   if (fsldir == "") {
     fsldir = getOption("fsl.path")
     fslout = get.fsloutput()
-    cmd <- paste0("FSLDIR=", fsldir, "; ", 
-                  "export FSLDIR; sh ${FSLDIR}/etc/fslconf/fsl.sh; ", 
+    cmd <- paste0("FSLDIR=", shQuote(fsldir), "; ", 
+                  'export FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; ',
                   "FSLOUTPUTTYPE=", fslout, "; export FSLOUTPUTTYPE; ", 
                   "$FSLDIR/bin/")
   } 
@@ -1355,7 +1355,7 @@ fslswapdim = function(
   
   res = fslcmd(func="fslswapdim", 
                file= file,
-               outfile = NULL,
+               outfile = outfile,
                retimg = retimg,
                reorient = reorient,
                intern = intern,
