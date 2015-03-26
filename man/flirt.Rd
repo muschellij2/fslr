@@ -4,8 +4,9 @@
 \alias{flirt}
 \title{Register using FLIRT}
 \usage{
-flirt(infile, reffile, omat, dof, outfile = NULL, retimg = FALSE,
-  reorient = FALSE, intern = TRUE, opts = "", verbose = TRUE, ...)
+flirt(infile, reffile, omat = NULL, dof = 6, outfile = NULL,
+  retimg = FALSE, reorient = FALSE, intern = TRUE, opts = "",
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{infile}{(character) input filename}
@@ -14,7 +15,7 @@ flirt(infile, reffile, omat, dof, outfile = NULL, retimg = FALSE,
 
 \item{omat}{(character) Output matrix name}
 
-\item{dof}{(numeric) degrees of freedom}
+\item{dof}{(numeric) degrees of freedom (default 6 - rigid body)}
 
 \item{outfile}{(character) output filename}
 

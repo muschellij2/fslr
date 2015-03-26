@@ -93,13 +93,7 @@ fnirt_with_affine = function(infile,
                  flirt.opts = "",
                  opts="", verbose = TRUE, ...){
   cmd <- get.fsl()
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }
+  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
   
   ##################################
   # FLIRT output matrix

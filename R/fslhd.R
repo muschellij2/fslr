@@ -978,7 +978,7 @@ fslmerge.help = function(){
 #' @param infile (character) input filename
 #' @param reffile (character) reference image to be registered to
 #' @param omat (character) Output matrix name
-#' @param dof (numeric) degrees of freedom
+#' @param dof (numeric) degrees of freedom (default 6 - rigid body)
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
@@ -990,8 +990,8 @@ fslmerge.help = function(){
 #' @return character or logical depending on intern
 #' @export
 flirt = function(infile, 
-                    reffile, omat,
-                    dof,
+                    reffile, omat = NULL,
+                    dof = 6,
                     outfile = NULL,                  
                     retimg = FALSE,
                     reorient = FALSE,                 
@@ -1006,8 +1006,12 @@ flirt = function(infile,
   reffile = checkimg(reffile, ...)  
   outfile = checkimg(outfile, ...)  
   outfile = nii.stub(outfile, ...)
-
-  omat = path.expand(omat)
+  
+  print.omat = FALSE
+  if (is.null(omat)){
+    omat = tempfile(fileext = ".mat")
+    print.omat = TRUE
+  }
   cmd <- paste0(cmd, sprintf(
     'flirt -in "%s" -ref "%s" -out "%s" -dof %d -omat "%s" %s', 
     infile, reffile, outfile, dof, omat, opts))
@@ -1021,6 +1025,10 @@ flirt = function(infile,
   if (retimg){
     img = readNIfTI(outfile, reorient=reorient, ...)
     return(img)
+  }
+  if (verbose & print.omat){
+    cat(paste0("Output matrix not specified, but stored ", 
+               "temporarily at ", omat, "\n"))
   }
   return(res)
 }
