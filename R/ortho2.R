@@ -148,6 +148,10 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                   breaks = breaks, asp = pdim[4]/pdim[2], xlab = ylab, 
                   ylab = xlab, axes = axes, ...)
   if (!is.null(y)) {
+    if (inherits(y, "nifti") | inherits(y, "anlz")){
+      class(y@.Data) == "numeric"
+    }
+    
     if (is.null(ybreaks)){
       graphics::image(1:X, 1:Z, y[, xyz[2], ], col = col.y, 
                     zlim = zlim.y, add = TRUE)
