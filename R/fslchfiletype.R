@@ -26,13 +26,13 @@ fslchfiletype = function(
                                    "NIFTI", "NIFTI_PAIR",
                                    "ANALYZE_GZ", "NIFTI_PAIR_GZ"))
   
-  res = fslcmd(func="fslchfiletype", 
+  res = fslcmd(func=paste0("fslchfiletype ", filetype), 
                file= file,
                outfile = outfile,
                retimg = retimg,
                reorient = reorient,
                intern = intern,
-               opts = filetype,
+               opts = "",
                verbose = verbose,
                ... = ..., 
                samefile = TRUE)
