@@ -1,4 +1,4 @@
-#' @title FSL ANAT
+#' @title FSL Anatomical Processing Script
 #' @description This function calls \code{fsl_anat} from FSL
 #' @param file (character) image to be manipulated, should be full path
 #' @param modality (character) Modality of Image to be run

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fsl_anat.R
 \name{fsl_anat}
 \alias{fsl_anat}
-\title{FSL ANAT}
+\title{FSL Anatomical Processing Script}
 \usage{
 fsl_anat(file, modality = c("T1", "T2", "PD"), outdir = NULL,
   intern = FALSE, opts = "", verbose = TRUE, ...)
