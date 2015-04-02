@@ -5,7 +5,7 @@
 \title{Fill image holes with dilation then erosion}
 \usage{
 fslfill2(file, outfile = NULL, kopts = "", remove.ends = TRUE,
-  refill = TRUE, retimg = FALSE, reorient = FALSE, intern = TRUE,
+  refill = TRUE, retimg = TRUE, reorient = FALSE, intern = FALSE,
   verbose = TRUE, ...)
 }
 \arguments{

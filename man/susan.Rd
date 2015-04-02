@@ -4,8 +4,8 @@
 \alias{susan}
 \title{FSL SUSAN noise reduction}
 \usage{
-susan(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, bthresh = 0.1, sigma = 3, dimg = c(3, 2),
+susan(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, bthresh = 0.1, sigma = 3, dimg = c(3, 2),
   use_median = FALSE, n_usans = c(0, 1, 2), extra.scans = list(),
   opts = "", verbose = TRUE, ...)
 }

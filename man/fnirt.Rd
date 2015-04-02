@@ -4,8 +4,8 @@
 \alias{fnirt}
 \title{Register using FNIRT}
 \usage{
-fnirt(infile, reffile, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, opts = "", verbose = TRUE, ...)
+fnirt(infile, reffile, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{infile}{(character) input filename}

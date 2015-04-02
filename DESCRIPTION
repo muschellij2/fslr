@@ -16,7 +16,7 @@ Imports:
     matrixStats
 Depends:
     stringr,
-    oro.nifti
+    oro.nifti (>= 0.5.0)
 License: GPL-2
 VignetteBuilder: knitr
 Suggests:

@@ -18,9 +18,9 @@ flirt_apply = function(infile,
                          reffile, 
                          initmat,                  
                          outfile = NULL,                  
-                         retimg = FALSE,
+                         retimg = TRUE,
                          reorient = FALSE,                 
-                         intern=TRUE,
+                         intern=FALSE,
                          opts="", verbose = TRUE, ...){
   cmd <- get.fsl()
   if (retimg){

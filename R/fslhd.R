@@ -186,9 +186,9 @@ fslstats.help = function(){
 fslmaths = function(
   file,
   outfile=NULL, 
-  retimg = FALSE,
+  retimg = TRUE,
   reorient = FALSE,
-  intern=TRUE, 
+  intern = FALSE, 
   opts = "", 
   verbose = TRUE,
   ...){
@@ -220,9 +220,9 @@ fslmaths = function(
 fslbin = function(
   file,
   outfile=NULL, 
-  retimg = FALSE,
+  retimg = TRUE,
   reorient = FALSE,
-  intern=TRUE, 
+  intern = FALSE, 
   opts = "", 
   ...){
   
@@ -305,9 +305,9 @@ fslsmooth <- function(
   mask=NULL, 
   smooth_mask = TRUE,
   outfile=NULL, 
-  retimg = FALSE,
+  retimg = TRUE,
   reorient = FALSE,
-  intern=TRUE, 
+  intern = FALSE, 
   verbose = TRUE,
   ...){
 	
@@ -383,9 +383,9 @@ fslsmooth <- function(
 #' } 
 #' @export
 fslmask <- function(file, mask, outfile=NULL, 
-                    retimg = FALSE,
+                    retimg = TRUE,
                     reorient = FALSE,
-                    intern=TRUE, opts="", verbose = TRUE,
+                    intern=FALSE, opts="", verbose = TRUE,
                     ...){
 	
   cmd = get.fsl()
@@ -439,9 +439,9 @@ fslmask <- function(file, mask, outfile=NULL,
 #' })
 #' }    
 fslerode <- function(file, outfile=NULL,   
-                     retimg = FALSE,
+                     retimg = TRUE,
                      reorient = FALSE,
-                    intern=TRUE, kopts = "", opts="", 
+                    intern=FALSE, kopts = "", opts="", 
                     verbose = TRUE,
                     ...){
   
@@ -742,9 +742,9 @@ fslrange <- function(file, verbose =TRUE, ...){
 #' })
 #' }  
 fslfill = function(file, outfile = NULL, bin=TRUE, 
-                   retimg = FALSE,
+                   retimg = TRUE,
                    reorient = FALSE,
-                   intern=TRUE, verbose = TRUE,
+                   intern=FALSE, verbose = TRUE,
                    ...){
   cmd <- get.fsl()
   outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
@@ -798,9 +798,9 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
 fslthresh = function(file, outfile = NULL, 
                      thresh = 0, 
                      uthresh = NULL,
-                     retimg = FALSE,
+                     retimg = TRUE,
                      reorient = FALSE,
-                     intern=TRUE, 
+                     intern=FALSE, 
                      opts = "", verbose = TRUE, ...){
   cmd <- get.fsl()
   outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
@@ -853,9 +853,9 @@ fslthresh = function(file, outfile = NULL,
 #' } 
 fslsub2 = function(file, 
                    outfile = NULL, 
-                   retimg = FALSE,
+                   retimg = TRUE,
                    reorient = FALSE,
-                   intern=TRUE, verbose = TRUE, ...){
+                   intern=FALSE, verbose = TRUE, ...){
   res = fslmaths(file=file, 
            outfile = outfile, 
            retimg = retimg,
@@ -931,9 +931,9 @@ fslview.help = function(){
 fslmerge = function(infiles, 
                    direction = c("x", "y", "z", "t", "a"), 
                    outfile = NULL, 
-                   retimg = FALSE,
+                   retimg = TRUE,
                    reorient = FALSE,                   
-                   intern=TRUE, verbose = TRUE, ...){
+                   intern=FALSE, verbose = TRUE, ...){
   cmd <- get.fsl()
   direction = direction[1]
   outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = ".nii.gz")
@@ -993,9 +993,9 @@ flirt = function(infile,
                     reffile, omat = NULL,
                     dof = 6,
                     outfile = NULL,                  
-                    retimg = FALSE,
+                    retimg = TRUE,
                     reorient = FALSE,                 
-                    intern=TRUE,
+                    intern=FALSE,
                     opts="", verbose = TRUE, ...){
   cmd <- get.fsl()
   outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
@@ -1044,7 +1044,7 @@ flirt = function(infile,
 #'  flirt.help()
 #' } 
 flirt.help = function(){
-  return(fslhelp("flirt"))
+  return(fslhelp("flirt", help.arg = "-help"))
 }
 
 
@@ -1061,7 +1061,7 @@ flirt.help = function(){
 #' @export
 melodic = function(file, 
                    outdir = dirname(file), 
-                   intern=TRUE,                   
+                   intern=FALSE,                   
                    opts ="", verbose = TRUE, ...){
   cmd <- get.fsl()
   file = path.expand(outdir)
@@ -1106,7 +1106,7 @@ fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
     cmd <- paste0(cmd, sprintf('%s %s %s', func_name, 
                                help.arg, extra.args))
 #     args = paste(help.arg, extra.args, sep=" ", collapse = " ")
-    res = system(cmd, intern=TRUE)    
+    suppressWarnings({res = system(cmd, intern=TRUE)})
 #     res = system2(func_name, args = args, stdout=TRUE, stderr=TRUE)
     cat(res, sep="\n")
     return(invisible(res))
@@ -1131,9 +1131,9 @@ fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
 #' @export
 fslbet = function(infile, 
                  outfile = NULL,                  
-                 retimg = FALSE,
+                 retimg = TRUE,
                  reorient = FALSE,                 
-                 intern=TRUE,
+                 intern = FALSE,
                  opts="", 
                  betcmd = c("bet2", "bet"),
                  verbose = TRUE,
@@ -1241,9 +1241,9 @@ fslcog = function(img, mm = TRUE, verbose = TRUE){
 #' @export
 fslorient = function(
   file,
-  retimg = FALSE,
+  retimg = TRUE,
   reorient = FALSE,
-  intern=TRUE, 
+  intern = FALSE, 
   opts = "", 
   verbose = TRUE,
   ...){
@@ -1297,9 +1297,9 @@ fslorient.help = function(){
 #' @export
 fslreorient2std = function(
   file,
-  retimg = FALSE,
+  retimg = TRUE,
   reorient = FALSE,
-  intern=TRUE, 
+  intern = FALSE, 
   verbose = TRUE,
   ...){
   
@@ -1350,9 +1350,9 @@ fslreorient2std.help = function(){
 fslswapdim = function(
   file,
   outfile=NULL, 
-  retimg = FALSE,
+  retimg = TRUE,
   reorient = FALSE,
-  intern=TRUE, 
+  intern = FALSE, 
   a = "x",
   b = "y",
   c = "z",
@@ -1408,9 +1408,9 @@ fslcmd = function(
   func,
   file,
   outfile=NULL, 
-  retimg = FALSE,
+  retimg = TRUE,
   reorient = FALSE,
-  intern=TRUE, 
+  intern = FALSE, 
   opts = "", 
   verbose = TRUE,
   samefile = FALSE,

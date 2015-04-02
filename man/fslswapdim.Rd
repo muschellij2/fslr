@@ -4,8 +4,8 @@
 \alias{fslswapdim}
 \title{FSL Swap Dimensions}
 \usage{
-fslswapdim(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, a = "x", b = "y", c = "z", verbose = TRUE, ...)
+fslswapdim(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, a = "x", b = "y", c = "z", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

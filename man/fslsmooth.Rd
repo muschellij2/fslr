@@ -5,7 +5,7 @@
 \title{Gaussian smooth image using FSL}
 \usage{
 fslsmooth(file, sigma = 10, mask = NULL, smooth_mask = TRUE,
-  outfile = NULL, retimg = FALSE, reorient = FALSE, intern = TRUE,
+  outfile = NULL, retimg = TRUE, reorient = FALSE, intern = FALSE,
   verbose = TRUE, ...)
 }
 \arguments{

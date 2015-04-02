@@ -4,8 +4,8 @@
 \alias{fslsub2}
 \title{Subsample image by factor of 2}
 \usage{
-fslsub2(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, verbose = TRUE, ...)
+fslsub2(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be subsampled}

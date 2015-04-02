@@ -5,7 +5,7 @@
 \title{Merge images using FSL}
 \usage{
 fslmerge(infiles, direction = c("x", "y", "z", "t", "a"), outfile = NULL,
-  retimg = FALSE, reorient = FALSE, intern = TRUE, verbose = TRUE, ...)
+  retimg = TRUE, reorient = FALSE, intern = FALSE, verbose = TRUE, ...)
 }
 \arguments{
 \item{infiles}{(character) input filenames}

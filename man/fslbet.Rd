@@ -4,8 +4,8 @@
 \alias{fslbet}
 \title{Use FSL's Brain Extraction Tool (BET)}
 \usage{
-fslbet(infile, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, opts = "", betcmd = c("bet2", "bet"), verbose = TRUE,
+fslbet(infile, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, opts = "", betcmd = c("bet2", "bet"), verbose = TRUE,
   ...)
 }
 \arguments{

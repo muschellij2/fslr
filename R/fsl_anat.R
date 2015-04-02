@@ -1,5 +1,5 @@
-#' @title FSL FAST
-#' @description This function calls \code{fast} from FSL
+#' @title FSL ANAT
+#' @description This function calls \code{fsl_anat} from FSL
 #' @param file (character) image to be manipulated, should be full path
 #' @param modality (character) Modality of Image to be run
 #' @param outdir (character) output directory, if none specified, will 
@@ -14,7 +14,7 @@ fsl_anat = function(
   file,
   modality = c("T1", "T2", "PD"),
   outdir = NULL, 
-  intern=TRUE, 
+  intern = FALSE, 
   opts = "", 
   verbose = TRUE, ...){
   

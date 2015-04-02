@@ -4,8 +4,8 @@
 \alias{fsldilate}
 \title{Dilate image using FSL}
 \usage{
-fsldilate(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, kopts = "", opts = "", verbose = TRUE, ...)
+fsldilate(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, kopts = "", opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be dilated}

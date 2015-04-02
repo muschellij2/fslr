@@ -4,8 +4,8 @@
 \alias{fslbin}
 \title{Binarize Image using FSL}
 \usage{
-fslbin(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, opts = "", ...)
+fslbin(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, opts = "", ...)
 }
 \arguments{
 \item{file}{(character) image to be binarized}

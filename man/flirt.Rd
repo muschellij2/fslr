@@ -5,7 +5,7 @@
 \title{Register using FLIRT}
 \usage{
 flirt(infile, reffile, omat = NULL, dof = 6, outfile = NULL,
-  retimg = FALSE, reorient = FALSE, intern = TRUE, opts = "",
+  retimg = TRUE, reorient = FALSE, intern = FALSE, opts = "",
   verbose = TRUE, ...)
 }
 \arguments{

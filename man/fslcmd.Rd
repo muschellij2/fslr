@@ -4,8 +4,8 @@
 \alias{fslcmd}
 \title{FSL Command Wrapper}
 \usage{
-fslcmd(func, file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, opts = "", verbose = TRUE, samefile = FALSE, ...)
+fslcmd(func, file, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, opts = "", verbose = TRUE, samefile = FALSE, ...)
 }
 \arguments{
 \item{func}{(character) FSL function}

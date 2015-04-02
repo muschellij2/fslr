@@ -4,8 +4,8 @@
 \alias{fslmaths}
 \title{FSL Maths}
 \usage{
-fslmaths(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, opts = "", verbose = TRUE, ...)
+fslmaths(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

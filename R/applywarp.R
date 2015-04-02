@@ -18,7 +18,7 @@ fsl_applywarp = function(infile,
                  reffile, 
                  warpfile,                  
                  outfile = NULL,                  
-                 retimg = FALSE,
+                 retimg = TRUE,
                  reorient = FALSE,                 
                  intern=TRUE,
                  opts="", verbose = TRUE, ...){

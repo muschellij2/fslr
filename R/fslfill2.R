@@ -20,9 +20,9 @@ fslfill2 = function(file,
                    kopts= "",
                    remove.ends = TRUE,
                    refill = TRUE,
-                   retimg = FALSE,
+                   retimg = TRUE,
                    reorient = FALSE,
-                   intern=TRUE, verbose = TRUE,
+                   intern=FALSE, verbose = TRUE,
                    ...){
   have.outfile = TRUE
   
@@ -52,11 +52,13 @@ fslfill2 = function(file,
   fslmaths(file = temp.img,
                  outfile = outfile,
                  opts = opts, 
+           # Keep retimg=FALSE
                  retimg=FALSE, 
            intern=intern, verbose = verbose)
   dil = fslerode(file = outfile,
                    outfile = outfile,
                    kopts = kopts, 
+                 # Keep retimg=TRUE
                    retimg=TRUE, 
                  intern=intern, verbose = verbose)
   if (remove.ends) {

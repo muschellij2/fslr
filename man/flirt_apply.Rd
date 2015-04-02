@@ -4,8 +4,8 @@
 \alias{flirt_apply}
 \title{Apply Warp from FLIRT}
 \usage{
-flirt_apply(infile, reffile, initmat, outfile = NULL, retimg = FALSE,
-  reorient = FALSE, intern = TRUE, opts = "", verbose = TRUE, ...)
+flirt_apply(infile, reffile, initmat, outfile = NULL, retimg = TRUE,
+  reorient = FALSE, intern = FALSE, opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{infile}{(character) input filename}

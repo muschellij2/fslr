@@ -4,7 +4,7 @@
 \alias{fslorient}
 \title{FSL Orient}
 \usage{
-fslorient(file, retimg = FALSE, reorient = FALSE, intern = TRUE,
+fslorient(file, retimg = TRUE, reorient = FALSE, intern = FALSE,
   opts = "", verbose = TRUE, ...)
 }
 \arguments{

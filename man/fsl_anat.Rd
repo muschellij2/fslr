@@ -2,10 +2,10 @@
 % Please edit documentation in R/fsl_anat.R
 \name{fsl_anat}
 \alias{fsl_anat}
-\title{FSL FAST}
+\title{FSL ANAT}
 \usage{
 fsl_anat(file, modality = c("T1", "T2", "PD"), outdir = NULL,
-  intern = TRUE, opts = "", verbose = TRUE, ...)
+  intern = FALSE, opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated, should be full path}
@@ -27,6 +27,6 @@ default to \code{dirname(file)}}
 Result from system command, depends if intern is TRUE or FALSE.
 }
 \description{
-This function calls \code{fast} from FSL
+This function calls \code{fsl_anat} from FSL
 }
 

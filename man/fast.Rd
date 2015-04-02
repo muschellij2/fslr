@@ -4,8 +4,8 @@
 \alias{fast}
 \title{FSL FAST}
 \usage{
-fast(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, opts = "", verbose = TRUE, ...)
+fast(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

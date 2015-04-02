@@ -4,8 +4,8 @@
 \alias{fslerode}
 \title{Erode image using FSL}
 \usage{
-fslerode(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
-  intern = TRUE, kopts = "", opts = "", verbose = TRUE, ...)
+fslerode(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, kopts = "", opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be eroded}

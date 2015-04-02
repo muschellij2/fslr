@@ -4,7 +4,7 @@
 \alias{fsl_biascorrect}
 \title{FSL Bias Correct}
 \usage{
-fsl_biascorrect(file, outfile = NULL, retimg = FALSE, reorient = FALSE,
+fsl_biascorrect(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = TRUE, opts = "", verbose = TRUE, remove.seg = TRUE, ...)
 }
 \arguments{

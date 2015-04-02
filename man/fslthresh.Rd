@@ -5,7 +5,7 @@
 \title{Threshold an image}
 \usage{
 fslthresh(file, outfile = NULL, thresh = 0, uthresh = NULL,
-  retimg = FALSE, reorient = FALSE, intern = TRUE, opts = "",
+  retimg = TRUE, reorient = FALSE, intern = FALSE, opts = "",
   verbose = TRUE, ...)
 }
 \arguments{

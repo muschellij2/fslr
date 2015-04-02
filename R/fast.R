@@ -15,9 +15,9 @@
 fast = function(
   file,
   outfile=NULL, 
-  retimg = FALSE,
+  retimg = TRUE,
   reorient = FALSE,
-  intern=TRUE, 
+  intern=FALSE, 
   opts = "", 
   verbose = TRUE,
   ...){
@@ -75,7 +75,7 @@ fast.help = function(){
 fsl_biascorrect = function(
   file,
   outfile=NULL, 
-  retimg = FALSE,
+  retimg = TRUE,
   reorient = FALSE,
   intern=TRUE, 
   opts = "", 

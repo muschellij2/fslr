@@ -4,8 +4,8 @@
 \alias{fslfill}
 \title{Fill image holes}
 \usage{
-fslfill(file, outfile = NULL, bin = TRUE, retimg = FALSE,
-  reorient = FALSE, intern = TRUE, verbose = TRUE, ...)
+fslfill(file, outfile = NULL, bin = TRUE, retimg = TRUE,
+  reorient = FALSE, intern = FALSE, verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be filled}

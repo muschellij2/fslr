@@ -4,7 +4,7 @@
 \alias{melodic}
 \title{Run MELODIC ICA}
 \usage{
-melodic(file, outdir = dirname(file), intern = TRUE, opts = "",
+melodic(file, outdir = dirname(file), intern = FALSE, opts = "",
   verbose = TRUE, ...)
 }
 \arguments{

@@ -6,7 +6,7 @@
 \usage{
 fnirt_with_affine_apply(infile, reffile, flirt.omat = NULL,
   flirt.outfile = NULL, fnirt.warpfile = NULL, outfile = NULL,
-  retimg = FALSE, reorient = FALSE, intern = TRUE, flirt.opts = "",
+  retimg = TRUE, reorient = FALSE, intern = FALSE, flirt.opts = "",
   opts = "", verbose = TRUE, ...)
 }
 \arguments{

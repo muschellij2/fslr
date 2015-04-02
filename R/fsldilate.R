@@ -30,20 +30,14 @@
 #' })
 #' }    
 fsldilate <- function(file, outfile=NULL,   
-                     retimg = FALSE,
+                     retimg = TRUE,
                      reorient = FALSE,
-                     intern=TRUE, kopts = "", opts="", 
+                     intern=FALSE, kopts = "", opts="", 
                      verbose = TRUE,
                      ...){
   
   cmd = get.fsl()
-  if (retimg){
-    if (is.null(outfile)) {
-      outfile = tempfile()
-    }
-  } else {
-    stopifnot(!is.null(outfile))
-  }
+  outfile = check_outfile(outfile = outfile, retimg = retimg, fileext = "")
   outfile = nii.stub(outfile)
   file = checkimg(file, ...)    
   opts = paste0("-bin -mul -1 -add 1 ", kopts, " -ero -mul -1 -add 1 ", opts)

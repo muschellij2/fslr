@@ -4,7 +4,7 @@
 \alias{fslreorient2std}
 \title{FSL Orient to MNI}
 \usage{
-fslreorient2std(file, retimg = FALSE, reorient = FALSE, intern = TRUE,
+fslreorient2std(file, retimg = TRUE, reorient = FALSE, intern = FALSE,
   verbose = TRUE, ...)
 }
 \arguments{

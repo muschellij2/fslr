@@ -27,9 +27,9 @@
 #' Result from system command, depends if intern is TRUE or FALSE.
 susan <- function(file,
                  outfile = NULL,
-                 retimg = FALSE,
+                 retimg = TRUE,
                  reorient = FALSE,
-                 intern=TRUE,                  
+                 intern = FALSE,                  
                  bthresh = 0.1, # brightness threshold and should be greater than noise level and less than contrast of edges to be preserved.
                  sigma = 3, # spatial size (sigma, i.e., half-width) of smoothing, in mm.
                  dimg = c(3, 2), # dimensionality (2 or 3), depending on whether smoothing is to be within-plane (2) or fully 3D (3).

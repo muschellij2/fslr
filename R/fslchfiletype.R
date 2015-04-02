@@ -16,9 +16,9 @@ fslchfiletype = function(
   file,
   filetype = "NIFTI_GZ",
   outfile=NULL, 
-  retimg = FALSE,
+  retimg = TRUE,
   reorient = FALSE,
-  intern=TRUE, 
+  intern = FALSE, 
   verbose = TRUE,
   ...){
 
