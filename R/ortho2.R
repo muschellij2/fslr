@@ -48,7 +48,6 @@
 #' @param clabels Label for colorbar (see \code{\link{colorbar}})
 #' @param ... other arguments to the image function may be provided here.
 #' @export
-
 ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64), 
                    col.y = hotmetal(), zlim = NULL, zlim.y = NULL, 
                    NA.x = FALSE,
@@ -223,8 +222,10 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   }    
   
   if (!is.null(text) | addlegend) {
-    graphics::image(1:64, 1:64, matrix(NA, 64, 64), xlab = "", 
+    suppressWarnings({
+      graphics::image(1:64, 1:64, matrix(NA, 64, 64), xlab = "", 
                     ylab = "", axes = FALSE, ...)
+    })
     if (addlegend) {
       legend(x = leg.x, y= leg.y, 
            legend=legend, 
