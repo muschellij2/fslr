@@ -7,6 +7,8 @@
 #' Passed to \code{\link{readNIfTI}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fast}
+#' @param out_type (character) Suffix to grab from outfile.  For 
+#' example, output filename is \code{paste0(outfile, "_", out_type)}
 #' @param verbose (logical) print out command before running
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
@@ -19,6 +21,8 @@ fast = function(
   reorient = FALSE,
   intern=FALSE, 
   opts = "", 
+  out_type = c("seg", "mixeltype", "pve_0", 
+               "pve_1", "pve_2", "pveseg"),  
   verbose = TRUE,
   ...){
     
@@ -34,9 +38,11 @@ fast = function(
   if (verbose){
     cat(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
-  outfile = paste0(outfile, ext)  
+  res = system(cmd, intern=intern)  
   if (retimg){
+    out_type = match.arg(out_type, c("seg", "mixeltype", "pve_0", 
+                 "pve_1", "pve_2", "pveseg"))
+    outfile = paste0(outfile, "_", out_type, ext)  
     img = readNIfTI(outfile, reorient=reorient, ...)
     return(img)
   }

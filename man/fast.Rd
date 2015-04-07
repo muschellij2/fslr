@@ -5,7 +5,8 @@
 \title{FSL FAST}
 \usage{
 fast(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", verbose = TRUE, ...)
+  intern = FALSE, opts = "", out_type = c("seg", "mixeltype", "pve_0",
+  "pve_1", "pve_2", "pveseg"), verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}
@@ -20,6 +21,9 @@ Passed to \code{\link{readNIfTI}}.}
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 
 \item{opts}{(character) operations to be passed to \code{fast}}
+
+\item{out_type}{(character) Suffix to grab from outfile.  For
+example, output filename is \code{paste0(outfile, "_", out_type)}}
 
 \item{verbose}{(logical) print out command before running}
 
