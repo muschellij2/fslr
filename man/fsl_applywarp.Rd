@@ -5,7 +5,7 @@
 \title{Apply Warp from FNIRT}
 \usage{
 fsl_applywarp(infile, reffile, warpfile, outfile = NULL, retimg = TRUE,
-  reorient = FALSE, intern = TRUE, opts = "", verbose = TRUE, ...)
+  reorient = FALSE, intern = FALSE, opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{infile}{(character) input filename}

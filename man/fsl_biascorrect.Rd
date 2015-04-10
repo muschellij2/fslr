@@ -5,7 +5,7 @@
 \title{FSL Bias Correct}
 \usage{
 fsl_biascorrect(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = TRUE, opts = "", verbose = TRUE, remove.seg = TRUE, ...)
+  intern = FALSE, opts = "", verbose = TRUE, remove.seg = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

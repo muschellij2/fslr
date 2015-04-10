@@ -20,7 +20,7 @@ fsl_applywarp = function(infile,
                  outfile = NULL,                  
                  retimg = TRUE,
                  reorient = FALSE,                 
-                 intern=TRUE,
+                 intern = FALSE,
                  opts="", verbose = TRUE, ...){
   cmd <- get.fsl()
   if (retimg){
@@ -38,7 +38,6 @@ fsl_applywarp = function(infile,
   outfile = checkimg(outfile, ...)  
   outfile = nii.stub(outfile)
   
-  omat = path.expand(omat)
   cmd <- paste0(cmd, sprintf(
     'applywarp --in="%s" --ref="%s" --out="%s" --warp="%s" %s', 
     infile, reffile, outfile, warpfile, opts))
