@@ -24,6 +24,8 @@ fslcpgeom = function(
   
   file_with_header = checkimg(file_with_header, ...)
   all.opts = paste(shQuote(file), opts, collapse = " ")
+  ### need to switch up file and file_with_header
+  ### first file is the one copying information from 
   res = fslcmd(func="fslcpgeom", 
                file= file_with_header,
                outfile = NULL,
