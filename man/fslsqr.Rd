@@ -8,7 +8,7 @@ fslsqr(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", ...)
 }
 \arguments{
-\item{file}{(character) input image to be squared}
+\item{file}{(character) input image to square}
 
 \item{outfile}{(character) resultant image name (optional)}
 

@@ -2,7 +2,7 @@
 #' @title Arc Tangent Transform Image using FSL 
 #' @description This function calls \code{fslmaths -atan}.  
 #' The R functions wraps \code{fslmaths}
-#' @param file (character) input image to be arc tangent transformed
+#' @param file (character) input image to arc tangent transform
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -30,4 +30,17 @@ fslatan = function(
                  intern=intern, opts = all.opts, ...)
   
   return(res)  
+}
+
+#' @title fslatan Help
+#' @description This function calls \code{fslmaths}'s help, as 
+#' \code{fslatan}is a wrapper for \code{fslmaths}
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslatan.help() 
+#' }
+fslatan.help = function(...){
+  fslmaths.help(...)
 }

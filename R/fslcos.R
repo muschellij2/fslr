@@ -2,7 +2,7 @@
 #' @title Cosine Transform Image using FSL 
 #' @description This function calls \code{fslmaths -cos}.  
 #' The R functions wraps \code{fslmaths}
-#' @param file (character) input image to be cosine transformed
+#' @param file (character) input image to cosine transform
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -30,4 +30,17 @@ fslcos = function(
                  intern=intern, opts = all.opts, ...)
   
   return(res)  
+}
+
+#' @title fslcos Help
+#' @description This function calls \code{fslmaths}'s help, as 
+#' \code{fslcos}is a wrapper for \code{fslmaths}
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslcos.help() 
+#' }
+fslcos.help = function(...){
+  fslmaths.help(...)
 }

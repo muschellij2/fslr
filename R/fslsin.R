@@ -2,7 +2,7 @@
 #' @title Sine Transform Image using FSL 
 #' @description This function calls \code{fslmaths -sin}.  
 #' The R functions wraps \code{fslmaths}
-#' @param file (character) input image to be sine transformed
+#' @param file (character) input image to sine transform
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -30,4 +30,17 @@ fslsin = function(
                  intern=intern, opts = all.opts, ...)
   
   return(res)  
+}
+
+#' @title fslsin Help
+#' @description This function calls \code{fslmaths}'s help, as 
+#' \code{fslsin}is a wrapper for \code{fslmaths}
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslsin.help() 
+#' }
+fslsin.help = function(...){
+  fslmaths.help(...)
 }

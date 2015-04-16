@@ -140,8 +140,6 @@ checkimg = function(file, ...){
 #' @title FSL Maths Help
 #' @description This function calls \code{fslmaths}'s help
 #' @return Prints help output and returns output as character vector
-#' @aliases fslsmooth.help fslmask.help fslerode.help fslfill.help 
-#' fslsub2.help fslthresh.help fslbin.help
 #' @export
 #' @examples
 #' if (have.fsl()){

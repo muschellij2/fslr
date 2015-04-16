@@ -2,7 +2,7 @@
 #' @title Square Image using FSL 
 #' @description This function calls \code{fslmaths -sqr}.  
 #' The R functions wraps \code{fslmaths}
-#' @param file (character) input image to be squared
+#' @param file (character) input image to square
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -30,4 +30,17 @@ fslsqr = function(
                  intern=intern, opts = all.opts, ...)
   
   return(res)  
+}
+
+#' @title fslsqr Help
+#' @description This function calls \code{fslmaths}'s help, as 
+#' \code{fslsqr}is a wrapper for \code{fslmaths}
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslsqr.help() 
+#' }
+fslsqr.help = function(...){
+  fslmaths.help(...)
 }

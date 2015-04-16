@@ -2,6 +2,10 @@
 proper = function(x){
   paste0(toupper(substr(x, 1,1)), substr(x, 2, nchar(x)))
 }
+
+#############################################
+# Function maker that involves 2 files
+#############################################
 makefunc2 = function(opt, longname, propername = NULL,
                      remove = TRUE){
   if (is.null(propername)){
@@ -18,6 +22,9 @@ makefunc2 = function(opt, longname, propername = NULL,
   return(TRUE)
 }
 
+#############################################
+# Function maker that involves 1 file
+#############################################
 makefunc = function(opt, longname, propername = NULL,
                     remove = TRUE){
   if (is.null(propername)){
@@ -28,6 +35,20 @@ makefunc = function(opt, longname, propername = NULL,
   x = gsub("%propername%", propername, x)
   x = gsub("%longname%", longname, x)
   funcname = paste0("fsl", opt)
+  
+  writeLines(text=x, con = paste0("R/", funcname, ".R"))
+  if (remove) file.remove(paste0("R/", funcname, ".R"))
+  return(TRUE)
+}
+
+
+#############################################
+# Function maker that just makes a help file that calls fslmaths.help
+#############################################
+makehelp = function(opt, remove = TRUE){
+  x = readLines('fslr_maths_helpfile.R')
+  x = gsub("%opt%", opt, x)
+  funcname = paste0("fsl", opt, ".help")
   
   writeLines(text=x, con = paste0("R/", funcname, ".R"))
   if (remove) file.remove(paste0("R/", funcname, ".R"))
@@ -117,5 +138,13 @@ makefunc("randn", longname = paste0("add random standard to",
          propername = "Add Random Standard Guassian Noise",
          remove = remove)
 
+makehelp("smooth", remove = remove)
+makehelp("mask", remove = remove)
+makehelp("erode", remove = remove)
+makehelp("fill", remove = remove)
+makehelp("sub2", remove = remove)
+makehelp("thresh", remove = remove)
+makehelp("bin", remove = remove)
 
-         
+
+     

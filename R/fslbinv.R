@@ -2,7 +2,7 @@
 #' @title Binarized Inverse Image using FSL 
 #' @description This function calls \code{fslmaths -binv}.  
 #' The R functions wraps \code{fslmaths}
-#' @param file (character) input image to be inverse binarized
+#' @param file (character) input image to take the binarized inverse
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -30,4 +30,17 @@ fslbinv = function(
                  intern=intern, opts = all.opts, ...)
   
   return(res)  
+}
+
+#' @title fslbinv Help
+#' @description This function calls \code{fslmaths}'s help, as 
+#' \code{fslbinv}is a wrapper for \code{fslmaths}
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslbinv.help() 
+#' }
+fslbinv.help = function(...){
+  fslmaths.help(...)
 }

@@ -2,7 +2,7 @@
 #' @title Square Root Image using FSL 
 #' @description This function calls \code{fslmaths -sqrt}.  
 #' The R functions wraps \code{fslmaths}
-#' @param file (character) input image to be square rooted
+#' @param file (character) input image to square root
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -30,4 +30,17 @@ fslsqrt = function(
                  intern=intern, opts = all.opts, ...)
   
   return(res)  
+}
+
+#' @title fslsqrt Help
+#' @description This function calls \code{fslmaths}'s help, as 
+#' \code{fslsqrt}is a wrapper for \code{fslmaths}
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslsqrt.help() 
+#' }
+fslsqrt.help = function(...){
+  fslmaths.help(...)
 }

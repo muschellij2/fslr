@@ -8,7 +8,7 @@ fslabs(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", ...)
 }
 \arguments{
-\item{file}{(character) input image to be absolute valued}
+\item{file}{(character) input image to absolute value}
 
 \item{outfile}{(character) resultant image name (optional)}
 

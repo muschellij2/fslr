@@ -2,7 +2,7 @@
 #' @title Exponentiate Image using FSL 
 #' @description This function calls \code{fslmaths -exp}.  
 #' The R functions wraps \code{fslmaths}
-#' @param file (character) input image to be exponentiated
+#' @param file (character) input image to exponentiated
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -30,4 +30,17 @@ fslexp = function(
                  intern=intern, opts = all.opts, ...)
   
   return(res)  
+}
+
+#' @title fslexp Help
+#' @description This function calls \code{fslmaths}'s help, as 
+#' \code{fslexp}is a wrapper for \code{fslmaths}
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslexp.help() 
+#' }
+fslexp.help = function(...){
+  fslmaths.help(...)
 }

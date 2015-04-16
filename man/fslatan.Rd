@@ -8,7 +8,7 @@ fslatan(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", ...)
 }
 \arguments{
-\item{file}{(character) input image to be arc tangent transformed}
+\item{file}{(character) input image to arc tangent transform}
 
 \item{outfile}{(character) resultant image name (optional)}
 

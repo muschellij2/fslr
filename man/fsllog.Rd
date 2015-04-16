@@ -8,7 +8,7 @@ fsllog(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", ...)
 }
 \arguments{
-\item{file}{(character) input image to be log transformed}
+\item{file}{(character) input image to log transform}
 
 \item{outfile}{(character) resultant image name (optional)}
 

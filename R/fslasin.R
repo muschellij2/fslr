@@ -2,7 +2,7 @@
 #' @title Arc Sine Transform Image using FSL 
 #' @description This function calls \code{fslmaths -asin}.  
 #' The R functions wraps \code{fslmaths}
-#' @param file (character) input image to be arc sine transformed
+#' @param file (character) input image to arc sine transform
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -30,4 +30,17 @@ fslasin = function(
                  intern=intern, opts = all.opts, ...)
   
   return(res)  
+}
+
+#' @title fslasin Help
+#' @description This function calls \code{fslmaths}'s help, as 
+#' \code{fslasin}is a wrapper for \code{fslmaths}
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslasin.help() 
+#' }
+fslasin.help = function(...){
+  fslmaths.help(...)
 }

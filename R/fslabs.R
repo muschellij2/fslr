@@ -2,7 +2,7 @@
 #' @title Absolute Value Image using FSL 
 #' @description This function calls \code{fslmaths -abs}.  
 #' The R functions wraps \code{fslmaths}
-#' @param file (character) input image to be absolute valued
+#' @param file (character) input image to absolute value
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -30,4 +30,17 @@ fslabs = function(
                  intern=intern, opts = all.opts, ...)
   
   return(res)  
+}
+
+#' @title fslabs Help
+#' @description This function calls \code{fslmaths}'s help, as 
+#' \code{fslabs}is a wrapper for \code{fslmaths}
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslabs.help() 
+#' }
+fslabs.help = function(...){
+  fslmaths.help(...)
 }

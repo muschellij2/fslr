@@ -8,7 +8,7 @@ fslexp(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", ...)
 }
 \arguments{
-\item{file}{(character) input image to be exponentiated}
+\item{file}{(character) input image to exponentiated}
 
 \item{outfile}{(character) resultant image name (optional)}
 

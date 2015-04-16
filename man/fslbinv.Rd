@@ -8,7 +8,7 @@ fslbinv(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", ...)
 }
 \arguments{
-\item{file}{(character) input image to be inverse binarized}
+\item{file}{(character) input image to take the binarized inverse}
 
 \item{outfile}{(character) resultant image name (optional)}
 

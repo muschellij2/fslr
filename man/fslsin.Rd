@@ -8,7 +8,7 @@ fslsin(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", ...)
 }
 \arguments{
-\item{file}{(character) input image to be sine transformed}
+\item{file}{(character) input image to sine transform}
 
 \item{outfile}{(character) resultant image name (optional)}
 

@@ -2,7 +2,7 @@
 #' @title Tangent Transform Image using FSL 
 #' @description This function calls \code{fslmaths -tan}.  
 #' The R functions wraps \code{fslmaths}
-#' @param file (character) input image to be tangent transformed
+#' @param file (character) input image to tangent transform
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -30,4 +30,17 @@ fsltan = function(
                  intern=intern, opts = all.opts, ...)
   
   return(res)  
+}
+
+#' @title fsltan Help
+#' @description This function calls \code{fslmaths}'s help, as 
+#' \code{fsltan}is a wrapper for \code{fslmaths}
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fsltan.help() 
+#' }
+fsltan.help = function(...){
+  fslmaths.help(...)
 }

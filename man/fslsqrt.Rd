@@ -8,7 +8,7 @@ fslsqrt(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", ...)
 }
 \arguments{
-\item{file}{(character) input image to be square rooted}
+\item{file}{(character) input image to square root}
 
 \item{outfile}{(character) resultant image name (optional)}
 

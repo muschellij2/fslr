@@ -8,7 +8,7 @@ fsltan(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", ...)
 }
 \arguments{
-\item{file}{(character) input image to be tangent transformed}
+\item{file}{(character) input image to tangent transform}
 
 \item{outfile}{(character) resultant image name (optional)}
 

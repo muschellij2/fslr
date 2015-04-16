@@ -2,7 +2,7 @@
 #' @title Arc Cosine Transform Image using FSL 
 #' @description This function calls \code{fslmaths -acos}.  
 #' The R functions wraps \code{fslmaths}
-#' @param file (character) input image to be arc cosine transformed
+#' @param file (character) input image to arc cosine transform
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -30,4 +30,17 @@ fslacos = function(
                  intern=intern, opts = all.opts, ...)
   
   return(res)  
+}
+
+#' @title fslacos Help
+#' @description This function calls \code{fslmaths}'s help, as 
+#' \code{fslacos}is a wrapper for \code{fslmaths}
+#' @return Prints help output and returns output as character vector
+#' @export
+#' @examples
+#' if (have.fsl()){
+#'  fslacos.help() 
+#' }
+fslacos.help = function(...){
+  fslmaths.help(...)
 }
