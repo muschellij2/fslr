@@ -1,13 +1,13 @@
-#' @title fslthresh Help
+#' @title fslsub Help
 #' @description This function calls \code{fslmaths}'s help, as 
-#' \code{fslthresh} is a wrapper for \code{fslmaths}
+#' \code{fslsub} is a wrapper for \code{fslmaths}
 #' @param ... passed to \code{\link{fslmaths.help}}
 #' @return Prints help output and returns output as character vector
 #' @export
 #' @examples
 #' if (have.fsl()){
-#'  fslthresh.help() 
+#'  fslsub.help() 
 #' }
-fslthresh.help = function(...){
+fslsub.help = function(...){
   fslmaths.help(...)
 }

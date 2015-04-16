@@ -6,6 +6,9 @@
 \usage{
 fslerode.help(...)
 }
+\arguments{
+\item{...}{passed to \code{\link{fslmaths.help}}}
+}
 \value{
 Prints help output and returns output as character vector
 }

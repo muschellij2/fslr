@@ -10,6 +10,8 @@ fslmul(file, file2, outfile = NULL, retimg = TRUE, reorient = FALSE,
 \arguments{
 \item{file}{(character) input image}
 
+\item{file2}{(character) image to be multiplied}
+
 \item{outfile}{(character) resultant image name (optional)}
 
 \item{retimg}{(logical) return image of class nifti}
@@ -23,8 +25,6 @@ Passed to \code{\link{readNIfTI}}.}
 \item{opts}{(character) operations to be passed to \code{fslmaths}}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
-
-\item{file}{(character) image to be multiplied}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,

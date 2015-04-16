@@ -31,16 +31,3 @@ fslsqrt = function(
   
   return(res)  
 }
-
-#' @title fslsqrt Help
-#' @description This function calls \code{fslmaths}'s help, as 
-#' \code{fslsqrt}is a wrapper for \code{fslmaths}
-#' @return Prints help output and returns output as character vector
-#' @export
-#' @examples
-#' if (have.fsl()){
-#'  fslsqrt.help() 
-#' }
-fslsqrt.help = function(...){
-  fslmaths.help(...)
-}

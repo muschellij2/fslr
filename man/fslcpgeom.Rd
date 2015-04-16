@@ -10,6 +10,8 @@ fslcpgeom(file, file_with_header, retimg = TRUE, reorient = FALSE,
 \arguments{
 \item{file}{(character) image to be manipulated}
 
+\item{file_with_header}{image with header to be copied over}
+
 \item{retimg}{(logical) return image of class nifti}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
@@ -22,8 +24,6 @@ Passed to \code{\link{readNIfTI}}.}
 \item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
-
-\item{outfile}{(character) resultant image name (optional)}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,
