@@ -31,16 +31,3 @@ fslatan = function(
   
   return(res)  
 }
-
-#' @title fslatan Help
-#' @description This function calls \code{fslmaths}'s help, as 
-#' \code{fslatan}is a wrapper for \code{fslmaths}
-#' @return Prints help output and returns output as character vector
-#' @export
-#' @examples
-#' if (have.fsl()){
-#'  fslatan.help() 
-#' }
-fslatan.help = function(...){
-  fslmaths.help(...)
-}

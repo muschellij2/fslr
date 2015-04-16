@@ -3,7 +3,7 @@
 #' @description This function calls \code{fslmaths -rem}.  
 #' The R functions wraps \code{fslmaths}
 #' @param file (character) input image 
-#' @param file (character) image to divide the current image by and take remainder
+#' @param file2 (character) image to divide the current image by and take remainder
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -35,17 +35,3 @@ fslrem = function(
   
   return(res)  
 }
-
-#' @title fslrem Help
-#' @description This function calls \code{fslmaths}'s help, as 
-#' \code{fslrem}is a wrapper for \code{fslmaths}
-#' @return Prints help output and returns output as character vector
-#' @export
-#' @examples
-#' if (have.fsl()){
-#'  fslrem.help() 
-#' }
-fslrem.help = function(...){
-  fslmaths.help(...)
-}
- 

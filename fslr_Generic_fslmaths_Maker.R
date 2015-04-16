@@ -4,45 +4,6 @@ proper = function(x){
 }
 
 #############################################
-# Function maker that involves 2 files
-#############################################
-makefunc2 = function(opt, longname, propername = NULL,
-                     remove = TRUE){
-  if (is.null(propername)){
-    propername = proper(longname)
-  }
-  x = readLines('fslr_Generic_fslmaths.R')
-  x = gsub("%opt%", opt, x)
-  x = gsub("%propername%", propername, x)
-  x = gsub("%longname%", longname, x)
-  funcname = paste0("fsl", opt)
-  
-  writeLines(text=x, con = paste0("R/", funcname, ".R"))
-  if (remove) file.remove(paste0("R/", funcname, ".R"))
-  return(TRUE)
-}
-
-#############################################
-# Function maker that involves 1 file
-#############################################
-makefunc = function(opt, longname, propername = NULL,
-                    remove = TRUE){
-  if (is.null(propername)){
-    propername = proper(longname)
-  }
-  x = readLines('fslr_Generic_fslmaths_onefile.R')
-  x = gsub("%opt%", opt, x)
-  x = gsub("%propername%", propername, x)
-  x = gsub("%longname%", longname, x)
-  funcname = paste0("fsl", opt)
-  
-  writeLines(text=x, con = paste0("R/", funcname, ".R"))
-  if (remove) file.remove(paste0("R/", funcname, ".R"))
-  return(TRUE)
-}
-
-
-#############################################
 # Function maker that just makes a help file that calls fslmaths.help
 #############################################
 makehelp = function(opt, remove = TRUE){
@@ -54,6 +15,48 @@ makehelp = function(opt, remove = TRUE){
   if (remove) file.remove(paste0("R/", funcname, ".R"))
   return(TRUE)
 }
+
+
+#############################################
+# Function maker that involves 2 files
+#############################################
+makefunc2 = function(opt, longname, propername = NULL,
+                     remove = TRUE, makehelp = TRUE){
+  if (is.null(propername)){
+    propername = proper(longname)
+  }
+  x = readLines('fslr_Generic_fslmaths.R')
+  x = gsub("%opt%", opt, x)
+  x = gsub("%propername%", propername, x)
+  x = gsub("%longname%", longname, x)
+  funcname = paste0("fsl", opt)
+  
+  writeLines(text=x, con = paste0("R/", funcname, ".R"))
+  if (remove) file.remove(paste0("R/", funcname, ".R"))
+  makehelp(opt, remove = remove)    
+  return(TRUE)
+}
+
+#############################################
+# Function maker that involves 1 file
+#############################################
+makefunc = function(opt, longname, propername = NULL,
+                    remove = TRUE, makehelp = TRUE){
+  if (is.null(propername)){
+    propername = proper(longname)
+  }
+  x = readLines('fslr_Generic_fslmaths_onefile.R')
+  x = gsub("%opt%", opt, x)
+  x = gsub("%propername%", propername, x)
+  x = gsub("%longname%", longname, x)
+  funcname = paste0("fsl", opt)
+  
+  writeLines(text=x, con = paste0("R/", funcname, ".R"))
+  if (remove) file.remove(paste0("R/", funcname, ".R"))
+  makehelp(opt, remove = remove)  
+  return(TRUE)
+}
+
 
 remove = FALSE
 ################################################################

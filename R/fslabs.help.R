@@ -1,13 +1,13 @@
-#' @title fslerode Help
+#' @title fslabs Help
 #' @description This function calls \code{fslmaths}'s help, as 
-#' \code{fslerode} is a wrapper for \code{fslmaths}
+#' \code{fslabs} is a wrapper for \code{fslmaths}
 #' @param ... passed to \code{\link{fslmaths.help}}
 #' @return Prints help output and returns output as character vector
 #' @export
 #' @examples
 #' if (have.fsl()){
-#'  fslerode.help() 
+#'  fslabs.help() 
 #' }
-fslerode.help = function(...){
+fslabs.help = function(...){
   fslmaths.help(...)
 }

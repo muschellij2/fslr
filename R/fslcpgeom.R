@@ -1,7 +1,7 @@
 #' @title FSL Copy Geometry 
 #' @description This function calls \code{fslcpgeom}
 #' @param file (character) image to be manipulated
-#' @param outfile (character) resultant image name (optional)
+#' @param file_with_header image with header to be copied over
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
 #' Passed to \code{\link{readNIfTI}}.
@@ -23,10 +23,10 @@ fslcpgeom = function(
   ...){
   
   file_with_header = checkimg(file_with_header, ...)
-  all.opts = paste(file_with_header, opts, collapse=" ")
+  all.opts = paste(file_with_header, opts, collapse = " ")
   res = fslcmd(func="fslcpgeom", 
-               file= file,
-               outfile = NULL,
+               file= file_with_header,
+               outfile = file,
                retimg = retimg,
                reorient = reorient,
                intern = intern,

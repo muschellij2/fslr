@@ -3,7 +3,7 @@
 #' @description This function calls \code{fslmaths -add}.  
 #' The R functions wraps \code{fslmaths}
 #' @param file (character) input image 
-#' @param file (character) image to be added
+#' @param file2 (character) image to be added
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -35,17 +35,3 @@ fsladd = function(
   
   return(res)  
 }
-
-#' @title fsladd Help
-#' @description This function calls \code{fslmaths}'s help, as 
-#' \code{fsladd}is a wrapper for \code{fslmaths}
-#' @return Prints help output and returns output as character vector
-#' @export
-#' @examples
-#' if (have.fsl()){
-#'  fsladd.help() 
-#' }
-fsladd.help = function(...){
-  fslmaths.help(...)
-}
- 

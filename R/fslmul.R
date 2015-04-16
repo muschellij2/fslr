@@ -3,7 +3,7 @@
 #' @description This function calls \code{fslmaths -mul}.  
 #' The R functions wraps \code{fslmaths}
 #' @param file (character) input image 
-#' @param file (character) image to be multiplied
+#' @param file2 (character) image to be multiplied
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
@@ -35,17 +35,3 @@ fslmul = function(
   
   return(res)  
 }
-
-#' @title fslmul Help
-#' @description This function calls \code{fslmaths}'s help, as 
-#' \code{fslmul}is a wrapper for \code{fslmaths}
-#' @return Prints help output and returns output as character vector
-#' @export
-#' @examples
-#' if (have.fsl()){
-#'  fslmul.help() 
-#' }
-fslmul.help = function(...){
-  fslmaths.help(...)
-}
- 

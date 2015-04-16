@@ -31,16 +31,3 @@ fslasin = function(
   
   return(res)  
 }
-
-#' @title fslasin Help
-#' @description This function calls \code{fslmaths}'s help, as 
-#' \code{fslasin}is a wrapper for \code{fslmaths}
-#' @return Prints help output and returns output as character vector
-#' @export
-#' @examples
-#' if (have.fsl()){
-#'  fslasin.help() 
-#' }
-fslasin.help = function(...){
-  fslmaths.help(...)
-}
