@@ -23,10 +23,10 @@ fslcpgeom = function(
   ...){
   
   file_with_header = checkimg(file_with_header, ...)
-  all.opts = paste(file_with_header, opts, collapse = " ")
+  all.opts = paste(shQuote(file), opts, collapse = " ")
   res = fslcmd(func="fslcpgeom", 
                file= file_with_header,
-               outfile = file,
+               outfile = NULL,
                retimg = retimg,
                reorient = reorient,
                intern = intern,
