@@ -4,10 +4,12 @@
 \alias{fslsum}
 \title{FSL Sum}
 \usage{
-fslsum(file, ...)
+fslsum(file, opts = "", ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be checked}
+
+\item{opts}{Additional options to pass to \code{\link{fslstats}}}
 
 \item{...}{options passed to \code{\link{fslstats}}}
 }
