@@ -212,8 +212,8 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   if (add.orient){
     text("L", x = X + lr.shift, y = Y/2, las = 1, col="white")
     text("R", x = -lr.shift, y = Y/2, las = 1, col="white")
-    text("P", x = X/2-.5, y = Y-ud.shift, las = 1, col="white")
-    text("A", x = X/2-.5, y = ud.shift, las = 1, col="white")
+    text("A", x = X/2-.5, y = Y-ud.shift, las = 1, col="white")
+    text("P", x = X/2-.5, y = ud.shift, las = 1, col="white")
     
     #     mtext("L", side=4, las = 1, outer=FALSE, adj=0)
     #     mtext("R", side=2, las = 1, outer=FALSE, adj= 0, padj=0)
