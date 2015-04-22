@@ -1196,6 +1196,21 @@ cog = function(img, thresh = 0, ceil = FALSE){
 }
 
 
+
+#' @title Image Center of Gravity Wrapper
+#' @description Find Center of Gravity of Image, after thresholding and
+#' take ceiling (wrapper for \code{\link{cog}})
+#' @param ... Arguments ppssed to \code{\link{cog}}
+#' @return Vector of length 3
+#' @note Just a convenience wrapper for \code{cog(ceil=TRUE)}
+#' @export
+xyz = function(...){
+  xyz = cog(..., ceil=TRUE)
+  return(xyz)
+}
+
+
+
 #' @title Image Center of Gravity (FSL)
 #' @description Find Center of Gravity of Image from FSL
 #' @param img Object of class nifti, or path of file
