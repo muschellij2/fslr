@@ -126,14 +126,18 @@ tempimg = function(nim, gzipped= TRUE, checknan = TRUE, ...){
 #' @export
 #' 
 checkimg = function(file, ...){
-  if (inherits(file, "nifti")){
-    return(tempimg(file, ...))
+  if (length(file) > 0){
+    file = sapply(file, checkimg, ...)
+  } else {  
+    if (inherits(file, "nifti")){
+      return(tempimg(file, ...))
+    }
+    if (inherits(file, "character")){
+      file = path.expand(file)
+      return(file)
+    }
+    stop("file not object of nifti or character")
   }
-  if (inherits(file, "character")){
-    file = path.expand(file)
-    return(file)
-  }
-  stop("file not object of nifti or character")
   return(NULL)
 }
 
