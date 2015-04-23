@@ -126,7 +126,7 @@ tempimg = function(nim, gzipped= TRUE, checknan = TRUE, ...){
 #' @export
 #' 
 checkimg = function(file, ...){
-  if (length(file) > 0){
+  if (length(file) > 1){
     file = sapply(file, checkimg, ...)
   } else {  
     if (inherits(file, "nifti")){

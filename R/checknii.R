@@ -7,7 +7,7 @@
 #' @export
 checknii <- function(file, ...){
   ### add vector capability
-  if (length(file) > 0){
+  if (length(file) > 1){
     file = sapply(file, checknii, ...)
   } else {
     file = checkimg(file, gzipped = FALSE, ...)
