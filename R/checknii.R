@@ -3,6 +3,7 @@
 #' @param ... options passed to \code{\link{tempimg}}
 #' @return character filename of image or temporary nii, 
 #' with .nii extension
+#' @importFrom R.utils gunzip
 #' @export
 checknii <- function(file, ...){
   ### add vector capability

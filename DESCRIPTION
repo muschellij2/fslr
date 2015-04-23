@@ -13,7 +13,8 @@ Description: Wrapper functions that interface with FSL
     function executes an FSL command and returns an R nifti object if desired.
 Imports: 
     methods,
-    matrixStats
+    matrixStats,
+    R.utils
 Depends:
     stringr,
     oro.nifti (>= 0.5.0)
