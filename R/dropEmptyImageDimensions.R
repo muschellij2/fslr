@@ -17,8 +17,9 @@ dropEmptyImageDimensions <- function(img,
                                      reorient = FALSE) {
   
   img = check_nifti(img, reorient = reorient)
-  if (nsli(img) > 3){
-    stop("Only images with 3 dimensions supported")
+  if (dim_(img)[1] > 3){
+    stop(paste0("Only images with 3 dimensions supported, ", 
+                "as checked by dim_"))
   }
   ############################
   # Get indices for slices with all zeros (or of certain value)
