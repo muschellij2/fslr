@@ -49,6 +49,7 @@ dropEmptyImageDimensions <- function(img,
                  cal.max = max(i2, na.rm=TRUE), 
                  pixdim = pixdim(img))
   if (!is.null(other.imgs)){
+    other.imgs = list(other.imgs)
     other.imgs = lapply(other.imgs, 
                         check_nifti, reorient = reorient)
     other.imgs = lapply(other.imgs, function(oimg){
