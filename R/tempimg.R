@@ -1,8 +1,10 @@
 #' @title Create temporary nii.gz file for FSL
-#' @description Takes in a object of class nifti, writes it to a temp file, appends
+#' @description Takes in a object of class nifti, writes it 
+#' to a temp file, appends
 #' .nii.gz as \code{\link{writeNIfTI}} adds it.
 #' @param nim object of class nifti
-#' @param gzipped Should file be gzipped? Passed to \code{\link{writeNIfTI}}
+#' @param gzipped Should file be gzipped? Passed to 
+#' \code{\link{writeNIfTI}}
 #' @param checknan Check for NAs or NaNs
 #' @param ... Not used
 #' @return filename of output nii.gz
