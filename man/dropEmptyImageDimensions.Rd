@@ -4,7 +4,7 @@
 \alias{dropEmptyImageDimensions}
 \title{Drop Empty Image Dimensions}
 \usage{
-dropEmptyImageDimensions(img, value = 0, other.imgs = NULL,
+dropEmptyImageDimensions(img, value = 0, threshold = 0, other.imgs = NULL,
   reorient = FALSE)
 }
 \arguments{
@@ -13,6 +13,9 @@ dropEmptyImageDimensions(img, value = 0, other.imgs = NULL,
 \item{value}{Value to check against.  If zero, then
 \code{dropEmptyImageDimensions} will drop any dimension that has
 all zeroes}
+
+\item{threshold}{Drop dimension if fewer than \code{threshold} voxels
+are in the slice}
 
 \item{other.imgs}{List of other nifti objects or filenames
 to apply the same dropping as \code{img}.}

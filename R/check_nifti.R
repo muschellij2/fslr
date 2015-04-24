@@ -32,7 +32,6 @@ setMethod("check_nifti", "nifti", function(x,
 
 #' @rdname check_nifti-methods
 #' @aliases check_nifti,character-method
-#' @importFrom R.utils gunzip
 #'  
 #' @export
 setMethod("check_nifti", "character", function(x, 
@@ -62,6 +61,19 @@ setMethod("check_nifti", "list", function(x,
                 reorient = reorient, 
                 allow.array = allow.array)
   return(file)
+})
+
+
+#' @rdname check_nifti-methods
+#' @aliases check_nifti,array-method
+#' @export
+setMethod("check_nifti", "array", function(x,  
+                                          reorient=FALSE, 
+                                          allow.array=FALSE) { 
+  if (!allow.array){
+    stop("x is array but allow.array = FALSE")
+  }
+  return(x)
 })
 
 

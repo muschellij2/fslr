@@ -5,6 +5,8 @@
 #' @param value Value to check against.  If zero, then 
 #' \code{dropEmptyImageDimensions} will drop any dimension that has 
 #' all zeroes
+#' @param threshold Drop dimension if fewer than \code{threshold} voxels
+#' are in the slice
 #' @param other.imgs List of other nifti objects or filenames 
 #' to apply the same dropping as \code{img}.
 #' @param reorient Should image be reoriented if a filename?
@@ -13,6 +15,7 @@
 #' @export
 dropEmptyImageDimensions <- function(img, 
                                      value = 0, 
+                                     threshold = 0,
                                      other.imgs = NULL, 
                                      reorient = FALSE) {
   
@@ -28,8 +31,8 @@ dropEmptyImageDimensions <- function(img,
   for (i in 1:3){
     zero_x = apply(img, i, function(x) sum(x != value))
     dzero_x = !(
-      cumsum(zero_x) == 0 | 
-        rev( cumsum(rev(zero_x)) == 0 )
+      cumsum(zero_x) <= threshold | 
+        rev( cumsum(rev(zero_x)) <= threshold )
     )
     inds[[i]] = which(dzero_x)
     #     print(i)
