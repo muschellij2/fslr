@@ -9,7 +9,6 @@
 #' @param ... Not used
 #' @return filename of output nii.gz
 #' @export
-#' 
 tempimg = function(nim, gzipped= TRUE, checknan = TRUE, ...){
   f = tempfile()
   nim = cal_img(nim)
@@ -27,5 +26,6 @@ tempimg = function(nim, gzipped= TRUE, checknan = TRUE, ...){
   ext = ".nii"
   if (gzipped) ext = paste0(ext, '.gz')
   f = paste0(f, ext)
+  f = normalizePath(f)
   return(f)
 }

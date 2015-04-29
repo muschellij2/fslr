@@ -9,7 +9,8 @@ tempimg(nim, gzipped = TRUE, checknan = TRUE, ...)
 \arguments{
 \item{nim}{object of class nifti}
 
-\item{gzipped}{Should file be gzipped? Passed to \code{\link{writeNIfTI}}}
+\item{gzipped}{Should file be gzipped? Passed to
+\code{\link{writeNIfTI}}}
 
 \item{checknan}{Check for NAs or NaNs}
 
@@ -19,7 +20,8 @@ tempimg(nim, gzipped = TRUE, checknan = TRUE, ...)
 filename of output nii.gz
 }
 \description{
-Takes in a object of class nifti, writes it to a temp file, appends
+Takes in a object of class nifti, writes it
+to a temp file, appends
 .nii.gz as \code{\link{writeNIfTI}} adds it.
 }
 

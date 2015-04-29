@@ -32,6 +32,7 @@ setMethod("checkimg", "character", function(file, ...) {
     return(file)
   } else {
     file = path.expand(file)
+    file = normalizePath(file)
     return(file)
   }
 })
