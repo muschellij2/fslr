@@ -47,21 +47,15 @@ dropEmptyImageDimensions <- function(img,
   ############################
   i2 = img[inds[[1]], inds[[2]], inds[[3]]]
   
-  outimg = nifti(img = i2, dim = dim(i2),
-                 datatype = datatype(img), cal.min = min(i2, na.rm=TRUE),
-                 cal.max = max(i2, na.rm=TRUE), 
-                 pixdim = pixdim(img))
+  outimg = copyNIfTIHeader(img = img, arr = i2, drop = TRUE)
+  
   if (!is.null(other.imgs)){
     other.imgs = list(other.imgs)
     other.imgs = lapply(other.imgs, 
                         check_nifti, reorient = reorient)
     other.imgs = lapply(other.imgs, function(oimg){
       i2 = oimg[inds[[1]], inds[[2]], inds[[3]]]
-      newimg = nifti(img = i2, dim = dim(i2),
-                     datatype = datatype(oimg), 
-                     cal.min = min(i2, na.rm=TRUE),
-                     cal.max = max(i2, na.rm=TRUE), 
-                     pixdim = pixdim(oimg))
+      newimg = copyNIfTIHeader(img = img, arr = i2, drop = TRUE)
       return(newimg)
     })
     return(list(outimg = outimg, other.imgs = other.imgs))
