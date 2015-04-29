@@ -33,7 +33,9 @@ setMethod("checkimg", "character", function(file, ...) {
   } else {
     file = path.expand(file)
     file = file.path(dirname(file), basename(file))
-    file = normalizePath(file)
+    suppressWarnings({
+      file = normalizePath(file)
+    })
     return(file)
   }
 })
