@@ -962,6 +962,7 @@ flirt = function(infile,
     omat = tempfile(fileext = ".mat")
     print.omat = TRUE
   }
+  omat = path.expand(omat)
   cmd <- paste0(cmd, sprintf(
     'flirt -in "%s" -ref "%s" -out "%s" -dof %d -omat "%s" %s', 
     infile, reffile, outfile, dof, omat, opts))
