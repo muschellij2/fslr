@@ -12,7 +12,7 @@ ortho2(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   text.cex = 2, text.x = 32, text.y = 32, add.orient = TRUE,
   mfrow = c(2, 2), ybreaks = NULL, breaks = NULL, addlegend = FALSE,
   leg.x = 32, leg.y = 32, legend, leg.col, leg.title = NULL, leg.cex,
-  window = NULL, ycolorbar = FALSE, clabels = TRUE, ...)
+  window = NULL, ycolorbar = FALSE, clabels = TRUE, add = TRUE, ...)
 }
 \arguments{
 \item{x}{is an object of class nifti or similar.}
@@ -94,6 +94,9 @@ the fourth (unused) pane.}
 \item{ycolorbar}{(logical) Should a colorbar for \code{y} be plotted}
 
 \item{clabels}{Label for colorbar (see \code{\link{colorbar}})}
+
+\item{add}{Should the y-plot be added or its own plot?  Used
+in \code{double_ortho}}
 
 \item{...}{other arguments to the image function may be provided here.}
 }

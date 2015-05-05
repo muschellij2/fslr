@@ -46,6 +46,8 @@
 #' @param window (vector) Length-2 vector to limit image to certain range
 #' @param ycolorbar (logical) Should a colorbar for \code{y} be plotted
 #' @param clabels Label for colorbar (see \code{\link{colorbar}})
+#' @param add Should the y-plot be added or its own plot?  Used
+#' in \code{double_ortho}
 #' @param ... other arguments to the image function may be provided here.
 #' @export
 ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64), 
@@ -71,6 +73,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                    window=NULL,
                    ycolorbar = FALSE,
                    clabels = TRUE,
+                   add = TRUE,
                    ...) 
 {
   if (!is.null(y)) {
@@ -146,6 +149,9 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   graphics::image(1:X, 1:Z, x[, xyz[2], ], col = col, zlim = zlim, 
                   breaks = breaks, asp = pdim[4]/pdim[2], xlab = ylab, 
                   ylab = xlab, axes = axes, ...)
+  if (!add & crosshairs) {
+    abline(h = xyz[3], v = xyz[1], col = col.crosshairs)
+  }
   if (!is.null(y)) {
     if (inherits(y, "nifti") | inherits(y, "anlz")){
       class(y@.Data) == "numeric"
@@ -153,10 +159,10 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
     
     if (is.null(ybreaks)){
       graphics::image(1:X, 1:Z, y[, xyz[2], ], col = col.y, 
-                    zlim = zlim.y, add = TRUE)
+                    zlim = zlim.y, add = add)
     } else {
       graphics::image(1:X, 1:Z, y[, xyz[2], ], col = col.y, 
-                      zlim = zlim.y, add = TRUE, breaks = ybreaks)      
+                      zlim = zlim.y, add = add, breaks = ybreaks)      
     }
   }
   if (crosshairs) {
@@ -171,13 +177,16 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   graphics::image(1:Y, 1:Z, x[xyz[1], , ], col = col, breaks = breaks, 
                   asp = pdim[4]/pdim[3], xlab = xlab, ylab = ylab, 
                   axes = axes, ...)
+  if (!add & crosshairs) {
+    abline(h = xyz[3], v = xyz[1], col = col.crosshairs)
+  }
   if (!is.null(y)) {
     if (is.null(ybreaks)){
       graphics::image(1:Y, 1:Z, y[xyz[1], , ], col = col.y, 
-                    zlim = zlim.y, add = TRUE)
+                    zlim = zlim.y, add = add)
     } else {
       graphics::image(1:Y, 1:Z, y[xyz[1], , ], col = col.y, 
-                      zlim = zlim.y, add = TRUE, breaks=ybreaks)
+                      zlim = zlim.y, add = add, breaks=ybreaks)
     }
   }
   if (crosshairs) {
@@ -197,13 +206,16 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   graphics::image(1:X, 1:Y, x[, , xyz[3]], col = col, breaks = breaks, 
                   asp = pdim[3]/pdim[2], xlab = xlab, ylab = ylab, 
                   axes = axes, ...)
+  if (!add & crosshairs) {
+    abline(h = xyz[3], v = xyz[1], col = col.crosshairs)
+  }
   if (!is.null(y)) {
     if (is.null(ybreaks)){
       graphics::image(1:X, 1:Y, y[, , xyz[3]], col = col.y, 
-                      zlim = zlim.y, add = TRUE)
+                      zlim = zlim.y, add = add)
     } else {
       graphics::image(1:X, 1:Y, y[, , xyz[3]], col = col.y, 
-                      zlim = zlim.y, add = TRUE, breaks = ybreaks)
+                      zlim = zlim.y, add = add, breaks = ybreaks)
     }
   }
   if (crosshairs) {

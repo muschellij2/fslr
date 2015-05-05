@@ -4,98 +4,22 @@
 \alias{double_ortho}
 \title{Double Orthographic Display}
 \usage{
-double_ortho(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
-  col.y = gray(0:64/64), zlim = NULL, zlim.y = NULL, NA.x = FALSE,
-  NA.y = TRUE, crosshairs = TRUE, col.crosshairs = "red", xlab = "",
-  ylab = "", axes = FALSE, oma = c(0, 0, 0, ifelse(ycolorbar, 5, 0)),
-  mar = rep(0, 4), bg = "black", text = NULL, text.color = "white",
-  text.cex = 2, text.x = 32, text.y = 32, add.orient = TRUE,
-  mfrow = c(2, 4), ybreaks = NULL, breaks = NULL, addlegend = FALSE,
-  leg.x = 32, leg.y = 32, legend, leg.col, leg.title = NULL, leg.cex,
-  window = NULL, ycolorbar = FALSE, clabels = TRUE, ...)
+double_ortho(x, y = NULL, col.y = gray(0:64/64), mfrow = c(4, 2),
+  add = FALSE, ...)
 }
 \arguments{
 \item{x}{is an object of class nifti or similar.}
 
-\item{y}{is an object of class nifti or similar for the overlay.}
+\item{y}{is an object of class nifti or similar to be set aside x.}
 
-\item{xyz}{is the coordinate for the center of the crosshairs.}
-
-\item{w}{is the time point to be displayed (4D arrays only).}
-
-\item{col}{is grayscale (by default).}
-
-\item{col.y}{is hotmetal (by default).}
-
-\item{zlim}{is the minimum and maximum `z' values passed into image.}
-
-\item{zlim.y}{is the minimum and maximum `z' values passed into image
-for the overlay.}
-
-\item{NA.x}{Set any values of 0 in \code{x} to \code{NA}}
-
-\item{NA.y}{Set any values of 0 in \code{y} to \code{NA}}
-
-\item{crosshairs}{is a logical value for the presence of crosshairs
-in all three orthogonal planes (default = TRUE).}
-
-\item{col.crosshairs}{is the color of the crosshairs (default = red).}
-
-\item{xlab}{is set to "" since all margins are set to zero.}
-
-\item{ylab}{is set to "" since all margins are set to zero.}
-
-\item{axes}{is set to FALSE since all margins are set to zero.}
-
-\item{oma}{is the size of the outer margins in the par function.}
-
-\item{mar}{is the number of lines of margin in the par function.}
-
-\item{bg}{is the background color in the par function.}
-
-\item{text}{allows the user to specify text to appear in
-the fourth (unused) pane.}
-
-\item{text.color}{is the color of the user-specified text
-(default = ``white").}
-
-\item{text.cex}{is the size of the user-specified text (default = 2).}
-
-\item{text.x}{x coordinate for text}
-
-\item{text.y}{y coordinate for text}
-
-\item{add.orient}{(logical) Add left/right, A/P, etc. orientation}
+\item{col.y}{is grayscale (by default).}
 
 \item{mfrow}{(numeric) layout of the 3 slices}
 
-\item{ybreaks}{(numeric) breaks for y to passed to
-\code{\link[graphics]{image}}}
+\item{add}{Should the y-plot be added or its own plot?  Used
+in \code{double_ortho}}
 
-\item{breaks}{(numeric) breaks for x to passed to
-\code{\link[graphics]{image}}}
-
-\item{addlegend}{(logical) add legend?}
-
-\item{leg.x}{(numeric) x coord for legend}
-
-\item{leg.y}{(numeric) y coord for legend}
-
-\item{legend}{(character) legend text}
-
-\item{leg.col}{(character) Colors for legend}
-
-\item{leg.title}{(character) title for legend}
-
-\item{leg.cex}{(numeric) \code{cex} for \code{\link{legend}}}
-
-\item{window}{(vector) Length-2 vector to limit image to certain range}
-
-\item{ycolorbar}{(logical) Should a colorbar for \code{y} be plotted}
-
-\item{clabels}{Label for colorbar (see \code{\link{colorbar}})}
-
-\item{...}{other arguments to the image function may be provided here.}
+\item{...}{other arguments to \code{\link{ortho2}}}
 }
 \description{
 Copy of \code{oro.nifti}'s \code{\link{orthographic}} function
