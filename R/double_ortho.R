@@ -49,7 +49,7 @@
 #' @param ... other arguments to the image function may be provided here.
 #' @export
 double_ortho = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64), 
-                   col.y = hotmetal(), zlim = NULL, zlim.y = NULL, 
+                   col.y = gray(0:64/64), zlim = NULL, zlim.y = NULL, 
                    NA.x = FALSE,
                    NA.y = TRUE,
                    crosshairs = TRUE, 
@@ -146,6 +146,9 @@ double_ortho = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   graphics::image(1:X, 1:Z, x[, xyz[2], ], col = col, zlim = zlim, 
                   breaks = breaks, asp = pdim[4]/pdim[2], xlab = ylab, 
                   ylab = xlab, axes = axes, ...)
+  if (crosshairs) {
+    abline(h = xyz[3], v = xyz[1], col = col.crosshairs)
+  }  
   if (!is.null(y)) {
     if (inherits(y, "nifti") | inherits(y, "anlz")){
       class(y@.Data) == "numeric"
@@ -175,6 +178,9 @@ double_ortho = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   graphics::image(1:Y, 1:Z, x[xyz[1], , ], col = col, breaks = breaks, 
                   asp = pdim[4]/pdim[3], xlab = xlab, ylab = ylab, 
                   axes = axes, ...)
+  if (crosshairs) {
+    abline(h = xyz[3], v = xyz[1], col = col.crosshairs)
+  }  
   if (!is.null(y)) {
     if (is.null(ybreaks)){
       graphics::image(1:Y, 1:Z, y[xyz[1], , ], col = col.y, 
@@ -207,6 +213,9 @@ double_ortho = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   graphics::image(1:X, 1:Y, x[, , xyz[3]], col = col, breaks = breaks, 
                   asp = pdim[3]/pdim[2], xlab = xlab, ylab = ylab, 
                   axes = axes, ...)
+  if (crosshairs) {
+    abline(h = xyz[3], v = xyz[1], col = col.crosshairs)
+  }  
   if (!is.null(y)) {
     if (is.null(ybreaks)){
       graphics::image(1:X, 1:Y, y[, , xyz[3]], col = col.y, 

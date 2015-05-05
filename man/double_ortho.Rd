@@ -5,7 +5,7 @@
 \title{Double Orthographic Display}
 \usage{
 double_ortho(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
-  col.y = hotmetal(), zlim = NULL, zlim.y = NULL, NA.x = FALSE,
+  col.y = gray(0:64/64), zlim = NULL, zlim.y = NULL, NA.x = FALSE,
   NA.y = TRUE, crosshairs = TRUE, col.crosshairs = "red", xlab = "",
   ylab = "", axes = FALSE, oma = c(0, 0, 0, ifelse(ycolorbar, 5, 0)),
   mar = rep(0, 4), bg = "black", text = NULL, text.color = "white",
