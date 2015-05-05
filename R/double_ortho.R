@@ -12,7 +12,7 @@
 #' @param ... other arguments to \code{\link{ortho2}}
 #' @export
 double_ortho = function (x, y = NULL, col.y = gray(0:64/64), 
-                         mfrow=c(4,2), add = FALSE, 
+                         mfrow=c(2,4), add = FALSE, 
                    ...) 
 {
   ortho2(x=x,  y=y, col.y = col.y, 

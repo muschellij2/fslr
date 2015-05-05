@@ -4,7 +4,7 @@
 \alias{double_ortho}
 \title{Double Orthographic Display}
 \usage{
-double_ortho(x, y = NULL, col.y = gray(0:64/64), mfrow = c(4, 2),
+double_ortho(x, y = NULL, col.y = gray(0:64/64), mfrow = c(2, 4),
   add = FALSE, ...)
 }
 \arguments{
