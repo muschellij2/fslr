@@ -49,6 +49,7 @@
 #' @param add Should the y-plot be added or its own plot?  Used
 #' in \code{double_ortho}
 #' @param ... other arguments to the image function may be provided here.
+#' @import scales
 #' @export
 ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64), 
                    col.y = hotmetal(), zlim = NULL, zlim.y = NULL, 
@@ -282,7 +283,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
       }
     } else {
       if (ycolorbar){
-        colorbar(breaks=ybreaks, col=col.y, 
+        colorbar(breaks=ybreaks, col=alpha(col.y, 1), 
                  text.col="white", 
                  labels = clabels)
       }

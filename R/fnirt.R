@@ -83,15 +83,15 @@ fnirt.help = function(){
 #' @return character or logical depending on intern
 #' @export
 fnirt_with_affine = function(infile, 
-                 reffile, 
-                 flirt.omat = NULL,
-                 flirt.outfile = NULL,
-                 outfile = NULL,                  
-                 retimg = TRUE,
-                 reorient = FALSE,                 
-                 intern=FALSE,
-                 flirt.opts = "",
-                 opts="", verbose = TRUE, ...){
+                             reffile, 
+                             flirt.omat = NULL,
+                             flirt.outfile = NULL,
+                             outfile = NULL,                  
+                             retimg = TRUE,
+                             reorient = FALSE,                 
+                             intern=FALSE,
+                             flirt.opts = "",
+                             opts="", verbose = TRUE, ...){
   cmd <- get.fsl()
   outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
   
@@ -137,7 +137,7 @@ fnirt_with_affine = function(infile,
                     reorient = reorient,                 
                     intern = intern,
                     opts=opts, verbose = verbose, ...)
-
+  
   return(res_fnirt)
 }
 
@@ -163,35 +163,35 @@ fnirt_with_affine = function(infile,
 #' @export
 #' @seealso fnirt_with_affine
 fnirt_with_affine_apply <- function(infile, 
-                               reffile, 
-                               flirt.omat = NULL,
-                               flirt.outfile = NULL,
-                               fnirt.warpfile = NULL,
-                               outfile = NULL,                  
-                               retimg = TRUE,
-                               reorient = FALSE,                 
-                               intern = FALSE,
-                               flirt.opts = "",
-                               opts="", verbose = TRUE, ...){
-flirt_apply(infile = infile,
-            reffile = reffile,
-            initmat = flirt.omat,
-            outfile = outfile,
-            opts = flirt.opts, 
-            intern = intern,
-            verbose = verbose,
-            # keep retimg = FALSE
-            retimg = FALSE,
-            ...)
-res = fsl_applywarp(infile = outfile,
-              reffile = reffile,          
-              warpfile = fnirt.warpfile,
-              outfile = outfile, 
-              opts = opts, 
+                                    reffile, 
+                                    flirt.omat = NULL,
+                                    flirt.outfile = NULL,
+                                    fnirt.warpfile = NULL,
+                                    outfile = NULL,                  
+                                    retimg = TRUE,
+                                    reorient = FALSE,                 
+                                    intern = FALSE,
+                                    flirt.opts = "",
+                                    opts="", verbose = TRUE, ...){
+  flirt_apply(infile = infile,
+              reffile = reffile,
+              initmat = flirt.omat,
+              outfile = outfile,
+              opts = flirt.opts, 
               intern = intern,
-              retimg = retimg,
-              reorient = reorient,
               verbose = verbose,
+              # keep retimg = FALSE
+              retimg = FALSE,
               ...)
-return(res)
+  res = fsl_applywarp(infile = outfile,
+                      reffile = reffile,          
+                      warpfile = fnirt.warpfile,
+                      outfile = outfile, 
+                      opts = opts, 
+                      intern = intern,
+                      retimg = retimg,
+                      reorient = reorient,
+                      verbose = verbose,
+                      ...)
+  return(res)
 }

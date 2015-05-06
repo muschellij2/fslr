@@ -14,7 +14,8 @@ Description: Wrapper functions that interface with FSL
 Imports: 
     methods,
     matrixStats,
-    R.utils
+    R.utils,
+    scales
 Depends:
     stringr,
     oro.nifti (>= 0.5.0)
