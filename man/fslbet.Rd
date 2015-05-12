@@ -20,7 +20,7 @@ Passed to \code{\link{readNIfTI}}.}
 
 \item{intern}{(logical) pass to \code{\link{system}}}
 
-\item{opts}{(character) additional options to FLIRT}
+\item{opts}{(character) additional options to \code{bet}}
 
 \item{betcmd}{(character) Use \code{bet} or \code{bet2} function}
 

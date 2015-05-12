@@ -1074,7 +1074,7 @@ fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
 #' Passed to \code{\link{readNIfTI}}. 
 #' @param intern (logical) pass to \code{\link{system}}
-#' @param opts (character) additional options to FLIRT
+#' @param opts (character) additional options to \code{bet}
 #' @param betcmd (character) Use \code{bet} or \code{bet2} function
 #' @param verbose (logical) print out command before running 
 #' @param ... additional arguments passed to \code{\link{readNIfTI}}.
