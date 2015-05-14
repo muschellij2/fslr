@@ -50,7 +50,10 @@ dropEmptyImageDimensions <- function(img,
   outimg = copyNIfTIHeader(img = img, arr = i2, drop = TRUE)
   
   if (!is.null(other.imgs)){
-    other.imgs = as.list(other.imgs)
+    if (is.nifti(other.imgs)){
+      other.imgs = list(other.imgs)
+    }
+    stopifnot(is.list(other.imgs))
     other.imgs = lapply(other.imgs, 
                         check_nifti, reorient = reorient)
     other.imgs = lapply(other.imgs, function(oimg){
