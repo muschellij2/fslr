@@ -61,6 +61,9 @@ dropEmptyImageDimensions <- function(img,
       newimg = copyNIfTIHeader(img = img, arr = i2, drop = TRUE)
       return(newimg)
     })
+    if (length(other.imgs) == 1){
+      other.imgs = other.imgs[[1]]
+    }
     return(list(outimg = outimg, other.imgs = other.imgs))
   }
   return(outimg)
