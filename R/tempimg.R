@@ -6,10 +6,11 @@
 #' @param gzipped Should file be gzipped? Passed to 
 #' \code{\link{writeNIfTI}}
 #' @param checknan Check for NAs or NaNs
+#' @param check_type Check the datatype for an image.  Will run \code{\link{datatyper}}.
 #' @param ... Not used
 #' @return filename of output nii.gz
 #' @export
-tempimg = function(nim, gzipped= TRUE, checknan = TRUE, ...){
+tempimg = function(nim, gzipped= TRUE, checknan = TRUE, check_type = FALSE, ...){
   f = tempfile()
   nim = cal_img(nim)
   nim = zero_trans(nim)
@@ -19,6 +20,9 @@ tempimg = function(nim, gzipped= TRUE, checknan = TRUE, ...){
       warning("NAs and NaNs in image file, replacing with zeros")
       nim[is.na(nim)| is.nan(cnim)] = 0
     }
+  }
+  if (check_type){
+    nim = datatyper(nim)
   }
   ########### added for weird stuff of NIfTI
   nim = drop_img_dim(nim)
