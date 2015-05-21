@@ -14,7 +14,7 @@ This function calls \code{fslchfiletype}'s help
 }
 \examples{
 if (have.fsl()){
- fslchfiletype()
+ fslchfiletype.help()
 }
 }
 

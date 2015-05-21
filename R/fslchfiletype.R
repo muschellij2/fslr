@@ -48,7 +48,7 @@ fslchfiletype = function(
 #' @export
 #' @examples
 #' if (have.fsl()){
-#'  fslchfiletype()
+#'  fslchfiletype.help()
 #' }  
 fslchfiletype.help = function(){
   return(fslhelp("fslchfiletype"))
