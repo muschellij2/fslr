@@ -125,7 +125,7 @@ datatyper = function(img, type_string = NULL,
       }
     }
     signed= FALSE
-    if (any(rr) < 0){
+    if (any(rr < 0)) {
       signed = TRUE
     }
     trange = diff(rr)
