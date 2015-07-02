@@ -25,6 +25,14 @@ dropEmptyImageDimensions <- function(img,
                 "as checked by dim_"))
   }
   ############################
+  # Set NAs to 0
+  ############################
+  arr = as.array(img)
+  arr[is.na(arr)] = 0
+  img = niftiarr(img, arr)
+
+    
+  ############################
   # Get indices for slices with all zeros (or of certain value)
   ############################
   inds = vector(mode = "list", length = 3)
