@@ -1143,7 +1143,12 @@ fslbet.help = function(betcmd = c("bet2", "bet")){
 #' } 
 cog = function(img, thresh = 0, ceil = FALSE){
 #   stopifnot(inherits(img, "nifti"))
-  xyz = colMeans(which(img > thresh, arr.ind = TRUE))
+  mask = img > thresh
+  if (sum(mask, na.rm = TRUE) == 0) {
+    xyz = dim(mask) / 2
+  } else {
+    xyz = colMeans(which(mask, arr.ind = TRUE))
+  }
   if (ceil) xyz = ceiling(xyz)
   return(xyz)
 }
