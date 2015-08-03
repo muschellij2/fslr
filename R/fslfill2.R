@@ -44,7 +44,7 @@ fslfill2 = function(file,
   ind = which(bin >0, arr.ind=TRUE)
   ind = ind[ (ind[, "dim3"] %in% c(1, dimg[3])) |
              (ind[, "dim1"] %in% c(1, dimg[1])) |
-             (ind[, "dim2"] %in% c(1, dimg[2])) ,]
+             (ind[, "dim2"] %in% c(1, dimg[2])) , , drop = FALSE]
   nind = nrow(ind)
   
   #### inverting, eroding (equivalent to dilation), then invert back
