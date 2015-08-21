@@ -842,6 +842,9 @@ fslsub2 = function(file,
 #' @export
 fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
   cmd <- get.fsl()
+  if (is.nifti(file)) {
+    file = checkimg(file)
+  }
   file = lapply(file, checkimg, ...)
   if (length(file) != length(opts)){
     opts = rep(opts, length = length(file))
