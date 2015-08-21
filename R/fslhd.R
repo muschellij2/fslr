@@ -846,8 +846,14 @@ fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
     file = checkimg(file)
   }
   file = lapply(file, checkimg, ...)
-  if (length(file) != length(opts)){
+  if (length(file) != length(opts)) {
     opts = rep(opts, length = length(file))
+  } else {
+    if (length(file) > length(opts)) {
+      opts = c(opts, rep("", length = (length(file) - length(opts))))
+    } else {
+      opts = opts[seq(length(file))]
+    }
   }
   file = shQuote(file)
   file = paste(file, opts)
