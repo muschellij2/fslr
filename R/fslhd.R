@@ -842,12 +842,18 @@ fslsub2 = function(file,
 #' @export
 fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
   cmd <- get.fsl()
-  file = checkimg(file, ...)
-  cmd <- paste0(cmd, sprintf('fslview "%s" %s', file, opts))
+  file = lapply(file, checkimg, ...)
+  if (length(file) != length(opts)){
+    opts = rep(opts, length = length(file))
+  }
+  file = shQuote(file)
+  file = paste(file, opts)
+  file = paste(file, collapse = " ")
+  cmd <- paste0(cmd, sprintf('fslview %s', file))
   if (verbose){
     cat(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
+  res = system(cmd, intern = intern)
   return(res)
 }
 
