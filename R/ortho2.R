@@ -185,7 +185,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                   asp = pdim[4]/pdim[3], xlab = xlab, ylab = ylab, 
                   axes = axes, ...)
   if (!add & crosshairs) {
-    abline(h = xyz[3], v = xyz[1], col = col.crosshairs)
+    abline(h = xyz[3], v = xyz[2], col = col.crosshairs)
   }
   if (!is.null(y)) {
     if (is.null(ybreaks)){
@@ -220,7 +220,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                   asp = pdim[3]/pdim[2], xlab = xlab, ylab = ylab, 
                   axes = axes, ...)
   if (!add & crosshairs) {
-    abline(h = xyz[3], v = xyz[1], col = col.crosshairs)
+    abline(h = xyz[2], v = xyz[1], col = col.crosshairs)
   }
   if (!is.null(y)) {
     if (is.null(ybreaks)){
