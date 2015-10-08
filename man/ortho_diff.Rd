@@ -4,12 +4,14 @@
 \alias{ortho_diff}
 \title{Plot differences for Prediction and Gold Standard}
 \usage{
-ortho_diff(img, roi, cols = c("#56B4E9", "#D55E00", "#009E73"),
+ortho_diff(img, pred, roi, cols = c("#56B4E9", "#D55E00", "#009E73"),
   levels = c("False Negative", "False Positive", "True Positive"),
   addlegend = TRUE, center = TRUE, leg.cex = 1.5, ...)
 }
 \arguments{
-\item{img}{binary segmentation (prediction)}
+\item{img}{image to be underlaid}
+
+\item{pred}{binary segmentation (prediction)}
 
 \item{roi}{binary manual segmentation (ground truth)}
 

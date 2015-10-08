@@ -2,8 +2,8 @@ Package: fslr
 Type: Package
 Title: Wrapper Functions for FSL (FMRIB Software Library) from Functional MRI
     of the Brain (FMRIB)
-Version: 1.4.9
-Date: 2015-08-21
+Version: 1.5.0
+Date: 2015-10-08
 Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Wrapper functions that interface with FSL

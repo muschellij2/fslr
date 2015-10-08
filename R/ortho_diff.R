@@ -2,7 +2,8 @@
 #'
 #' @description Uses \code{\link{ortho2}} to plot differences between a predicted binary
 #' image and the assumed ground truth (\code{roi}).
-#' @param img binary segmentation (prediction)
+#' @param img image to be underlaid
+#' @param pred binary segmentation (prediction)
 #' @param roi binary manual segmentation (ground truth)
 #' @param cols colors for false negatives/positives
 #' @param levels labels for false negatives/positives
@@ -13,7 +14,8 @@
 #' @export
 #' @seealso \code{\link{ortho2}}
 #' @return NULL
-ortho_diff <- function(img, # binary segmentation (prediction)
+ortho_diff <- function(img, 
+                       pred, # binary segmentation (prediction)
                       roi, # binary manual segmentation (ground truth)
                       cols = c("#56B4E9", "#D55E00", "#009E73"), # colors for false negatives, positives
                       levels = c("False Negative", "False Positive", "True Positive"), # labels for false negatives, positives
@@ -32,16 +34,16 @@ ortho_diff <- function(img, # binary segmentation (prediction)
     xyz = NULL
   }
   
-  img = img > 0
+  pred = pred > 0
   roi = roi > 0
   
-  diff = niftiarr(img, NA)
+  diff = niftiarr(pred, NA)
   # false negative
-  diff[ roi %in% 1 & img %in% 0] = 1
+  diff[ roi %in% 1 & pred %in% 0] = 1
   # false positive
-  diff[ roi %in% 0 & img %in% 1] = 2
+  diff[ roi %in% 0 & pred %in% 1] = 2
   # true positive
-  diff[ roi %in% 1 & img %in% 1] = 3
+  diff[ roi %in% 1 & pred %in% 1] = 3
   diff = cal_img(diff)
   
   ortho2(x = img, 
