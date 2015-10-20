@@ -1,7 +1,15 @@
-fslr v1.4-4 (Release date: 2015-05-20)
-==============
+# fslr v1.5.1 (Release date: 2015-10-20)
 
-Changes:
+
+## Major changes
+
+* Added `readnii` and `writenii`
+* Added `ortho_diff`
+
+# fslr v1.4-4 (Release date: 2015-05-20)
+
+
+## Major Changes
 
 * Moved functions such as cal_img to oro.nifti package.  They are all legacies, such as cal_img still works, but calibrateImage and other camelCase functions have been made default.
 * Fixed fsl_biascorrect.  
