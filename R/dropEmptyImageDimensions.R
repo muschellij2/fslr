@@ -72,7 +72,7 @@ dropEmptyImageDimensions <- function(img,
     if (length(other.imgs) == 1){
       other.imgs = other.imgs[[1]]
     }
-    return(list(outimg = outimg, other.imgs = other.imgs))
+    return(list(outimg = outimg, other.imgs = other.imgs, inds = inds))
   }
   return(outimg)
 }

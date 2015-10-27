@@ -310,6 +310,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 #' @param maxleft Extent the lefthand for colorbar
 #' @note Much of this was taken from \code{vertical.image.legend} from
 #' the \code{aqfig} package
+#' @import graphics
 #' @export
 #' @return A plot
 colorbar <- function (breaks, #the minimum and maximum z values for which 

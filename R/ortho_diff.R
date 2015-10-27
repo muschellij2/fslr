@@ -5,6 +5,7 @@
 #' @param img image to be underlaid
 #' @param pred binary segmentation (prediction)
 #' @param roi binary manual segmentation (ground truth)
+#' @param xyz coordinate for the center of the crosshairs.
 #' @param cols colors for false negatives/positives
 #' @param levels labels for false negatives/positives
 #' @param addlegend add legend, passed to \code{\link{ortho2}}
@@ -17,6 +18,7 @@
 ortho_diff <- function(img, 
                        pred, # binary segmentation (prediction)
                       roi, # binary manual segmentation (ground truth)
+                      xyz = NULL, 
                       cols = c("#56B4E9", "#D55E00", "#009E73"), # colors for false negatives, positives
                       levels = c("False Negative", "False Positive", "True Positive"), # labels for false negatives, positives
                       addlegend = TRUE, # add legend
@@ -29,9 +31,12 @@ ortho_diff <- function(img,
   ### Drop empty image dimensions
   ###########################
   if (center) {
+    if (!is.null(xyz)){
+      warning("Overriding xyz set as center = TRUE\n")
+    }
     xyz = xyz(roi)
   } else {
-    xyz = NULL
+    xyz = xyz
   }
   
   pred = pred > 0
