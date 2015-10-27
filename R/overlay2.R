@@ -34,9 +34,9 @@
 #'
 #' @return NULL
 #' @export 
-#' @examples \dont{
+#' @examples \dontrun{
 #' 
-#'  if (require(brainR)){
+#'  if (require(brainR)) {
 #'    library(scales)
 #'    visits = 1:3
 #'    y = paste0("Visit_", visits, ".nii.gz")

@@ -74,9 +74,9 @@ Creates a multi-row or multi-column plot with image
 slices and the potential for overlays as well.
 }
 \examples{
-\dont{
+\dontrun{
 
- if (require(brainR)){
+ if (require(brainR)) {
    library(scales)
    visits = 1:3
    y = paste0("Visit_", visits, ".nii.gz")
