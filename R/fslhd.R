@@ -2,6 +2,9 @@
 #' @title Create command declaring FSLDIR
 #' @description Finds the FSLDIR from system environment or \code{getOption("fsl.path")}
 #' for location of FSL fuctions
+#' @note This will use \code{Sys.getenv("FSLDIR")} before \code{getOption("fsl.path")}.
+#' If the directory is not found for FSL in \code{Sys.getenv("FSLDIR")} and 
+#' \code{getOption("fsl.path")}, it will try the default directory \code{/usr/local/fsl}.
 #' @return NULL if FSL in path, or bash code for setting up FSL DIR
 #' @export
 get.fsl = function(){
@@ -9,6 +12,15 @@ get.fsl = function(){
   fsldir = Sys.getenv("FSLDIR")
   if (fsldir == "") {
     fsldir = getOption("fsl.path")
+    ## Will try a default directory (/usr/local/fsl) if nothing else
+    if (is.null(fsldir)) {
+      def_path = "/usr/local/fsl"
+      if (file.exists(def_path)) {
+        warning("Setting fsl.path to /usr/local/fsl")
+        options(fsl.path = def_path)
+        fsldir = def_path
+      }
+    }
     fslout = get.fsloutput()
     cmd <- paste0("FSLDIR=", shQuote(fsldir), "; ", 
                   'export FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; ',
