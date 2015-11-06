@@ -11,4 +11,7 @@
 \arguments{
 \item{object}{is a filename to pass to \link{fslval}}
 }
+\description{
+vox_offset method for character types
+}
 

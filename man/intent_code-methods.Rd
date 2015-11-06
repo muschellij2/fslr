@@ -11,4 +11,7 @@
 \arguments{
 \item{object}{is a filename to pass to \link{fslval}}
 }
+\description{
+intent_code method for character types
+}
 

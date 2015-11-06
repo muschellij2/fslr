@@ -1,4 +1,5 @@
 #' @rdname orientation-methods
+#' @description Gets q/s-forms from a character
 #' @title Extract NIfTI 3D Image Orientation
 #' @param object is a \code{nifti} object
 #' @aliases qform,character

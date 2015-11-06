@@ -11,4 +11,7 @@
 \arguments{
 \item{object}{is a filename to pass to \link{fslval}}
 }
+\description{
+slice_end method for character types
+}
 

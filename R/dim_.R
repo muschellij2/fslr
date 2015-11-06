@@ -2,6 +2,7 @@
 #' @rdname dim_-methods
 #' @title Extract Image dim_ attribute 
 #' @name dim_-methods
+#' @description \code{dim_} method for class character
 #' @aliases dim_,character-method
 #' @param object is a filename to pass to \link{fslval}
 #' @import oro.nifti

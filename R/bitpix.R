@@ -5,6 +5,7 @@
 #' @aliases bitpix,character-method
 #' @import oro.nifti
 #' @export
+#' @description bitpix method for character types
 #' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("bitpix", "character", function(object) { 

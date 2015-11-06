@@ -5,6 +5,7 @@
 #' @aliases intent_p3,character-method
 #' @import oro.nifti
 #' @export
+#' @description intent_p3 method for character types
 #' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("intent_p3", "character", function(object) { 

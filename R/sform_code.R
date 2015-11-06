@@ -5,6 +5,7 @@
 #' @aliases sform_code,character-method
 #' @import oro.nifti
 #' @export
+#' @description sform_code method for character types
 #' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("sform_code", "character", function(object) { 

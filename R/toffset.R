@@ -2,6 +2,7 @@
 #' @rdname toffset-methods
 #' @title Extract Image toffset attribute 
 #' @name toffset-methods
+#' @description Gets toffset from a character
 #' @aliases toffset,character-method
 #' @param object is a filename to pass to \link{fslval}
 #' @import oro.nifti

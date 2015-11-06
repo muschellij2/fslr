@@ -5,6 +5,7 @@
 #' @aliases slice_end,character-method
 #' @import oro.nifti
 #' @export
+#' @description slice_end method for character types
 #' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("slice_end", "character", function(object) { 

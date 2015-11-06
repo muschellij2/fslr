@@ -14,6 +14,9 @@ check_file(file, ...)
 \value{
 result of \code{\link{checkout}}
 }
+\description{
+Checking the q/s-forms for a header
+}
 \examples{
 if (have.fsl()){
  mnifile = file.path(fsldir(), "data", "standard", 

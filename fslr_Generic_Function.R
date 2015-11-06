@@ -5,6 +5,7 @@
 #' @aliases %%,character-method
 #' @import oro.nifti
 #' @export
+#' @description %ff% method for character types
 #' @param object is a filename to pass to \link{fslval}
 %example% 
 setMethod("%%", "character", function(object) { 

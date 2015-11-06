@@ -5,6 +5,7 @@
 #' @aliases intent_code,character-method
 #' @import oro.nifti
 #' @export
+#' @description intent_code method for character types
 #' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("intent_code", "character", function(object) { 

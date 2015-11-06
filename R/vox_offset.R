@@ -5,6 +5,7 @@
 #' @aliases vox_offset,character-method
 #' @import oro.nifti
 #' @export
+#' @description vox_offset method for character types
 #' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("vox_offset", "character", function(object) { 

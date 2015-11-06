@@ -620,6 +620,7 @@ checkout <- function(hd){
 }
 
 #' @title Wrapper for getForms with filename
+#' @description Checking the q/s-forms for a header
 #' @param file (character) filename of image to be checked
 #' @param ... options passed to \code{\link{checkimg}}
 #' @return result of \code{\link{checkout}}

@@ -5,6 +5,7 @@
 #' @aliases slice_duration,character-method
 #' @import oro.nifti
 #' @export
+#' @description slice_duration method for character types
 #' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("slice_duration", "character", function(object) { 

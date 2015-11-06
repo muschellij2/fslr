@@ -15,4 +15,7 @@
 \arguments{
 \item{object}{is a \code{nifti} object}
 }
+\description{
+Gets q/s-forms from a character
+}
 

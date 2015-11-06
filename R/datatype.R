@@ -5,6 +5,7 @@
 #' @aliases datatype,character-method
 #' @import oro.nifti
 #' @export
+#' @description datatype method for character types
 #' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("datatype", "character", function(object) { 

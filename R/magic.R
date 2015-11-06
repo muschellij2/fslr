@@ -5,6 +5,7 @@
 #' @aliases magic,character-method
 #' @import oro.nifti
 #' @export
+#' @description magic method for character types
 #' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("magic", "character", function(object) { 

@@ -26,6 +26,10 @@ checknii(file, ...)
 character filename of image or temporary nii, 
 with .nii extension
 }
+\description{
+Ensures the output to be a character filename (or vector) from an input
+image or \code{nifti}, but not gzipped and has \code{.nii} extension
+}
 \author{
 John Muschelli \email{muschellij2@gmail.com}
 }

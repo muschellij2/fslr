@@ -5,6 +5,7 @@
 #' @aliases cal.max,character-method
 #' @import oro.nifti
 #' @export
+#' @description cal_max method for character types
 #' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("cal.max", "character", function(object) { 

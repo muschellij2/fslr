@@ -1,6 +1,7 @@
 #' @docType methods
 #' @rdname pixdim-methods
 #' @title Extract Image pixdim attribute 
+#' @description Gets pixdim from a character
 #' @name pixdim-methods
 #' @aliases pixdim,character-method
 #' @param object is a filename to pass to \link{fslval} 

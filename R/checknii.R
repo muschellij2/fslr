@@ -1,7 +1,8 @@
 #' @name checknii-methods
 #' @docType methods 
 #' @aliases checknii
-#' 
+#' @description Ensures the output to be a character filename (or vector) from an input
+#' image or \code{nifti}, but not gzipped and has \code{.nii} extension
 #' 
 #' @title Force object to filename with .nii extension
 #' @param file character or \code{nifti} object
