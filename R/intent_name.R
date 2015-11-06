@@ -4,8 +4,8 @@
 #' @name intent_name-methods
 #' @aliases intent_name,character-method
 #' @import oro.nifti
-#' @param object is a filename to pass to \link{fslval}
 #' @export
+#' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("intent_name", "character", function(object) { 
   object = path.expand(object)

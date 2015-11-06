@@ -4,8 +4,8 @@
 #' @name slice_duration-methods
 #' @aliases slice_duration,character-method
 #' @import oro.nifti
-#' @param object is a filename to pass to \link{fslval}
 #' @export
+#' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("slice_duration", "character", function(object) { 
   object = path.expand(object)

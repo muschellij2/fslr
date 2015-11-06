@@ -4,8 +4,8 @@
 #' @name sizeof_hdr-methods
 #' @aliases sizeof_hdr,character-method
 #' @import oro.nifti
-#' @param object is a filename to pass to \link{fslval}
 #' @export
+#' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("sizeof_hdr", "character", function(object) { 
   object = path.expand(object)

@@ -4,8 +4,8 @@
 #' @name magic-methods
 #' @aliases magic,character-method
 #' @import oro.nifti
-#' @param object is a filename to pass to \link{fslval}
 #' @export
+#' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("magic", "character", function(object) { 
   object = path.expand(object)

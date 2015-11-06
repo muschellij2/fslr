@@ -4,8 +4,8 @@
 #' @name qform_code-methods
 #' @aliases qform_code,character-method
 #' @import oro.nifti
-#' @param object is a filename to pass to \link{fslval}
 #' @export
+#' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("qform_code", "character", function(object) { 
   object = path.expand(object)

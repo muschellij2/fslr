@@ -4,8 +4,8 @@
 #' @name bitpix-methods
 #' @aliases bitpix,character-method
 #' @import oro.nifti
-#' @param object is a filename to pass to \link{fslval}
 #' @export
+#' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("bitpix", "character", function(object) { 
   object = path.expand(object)

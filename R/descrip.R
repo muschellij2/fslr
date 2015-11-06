@@ -4,8 +4,8 @@
 #' @name descrip-methods
 #' @aliases descrip,character-method
 #' @import oro.nifti
-#' @param object is a filename to pass to \link{fslval}
 #' @export
+#' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("descrip", "character", function(object) { 
   object = path.expand(object)

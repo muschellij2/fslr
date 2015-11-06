@@ -4,8 +4,8 @@
 #' @name cal.max-methods
 #' @aliases cal.max,character-method
 #' @import oro.nifti
-#' @param object is a filename to pass to \link{fslval}
 #' @export
+#' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("cal.max", "character", function(object) { 
   object = path.expand(object)

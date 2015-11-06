@@ -4,8 +4,8 @@
 #' @name sform_code-methods
 #' @aliases sform_code,character-method
 #' @import oro.nifti
-#' @param object is a filename to pass to \link{fslval}
 #' @export
+#' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("sform_code", "character", function(object) { 
   object = path.expand(object)
