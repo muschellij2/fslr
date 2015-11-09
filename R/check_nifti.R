@@ -35,8 +35,8 @@ setMethod("check_nifti", "nifti", function(x,
 #'  
 #' @export
 setMethod("check_nifti", "character", function(x, 
-                                            reorient=FALSE, 
-                                            allow.array=FALSE) { 
+                                               reorient=FALSE, 
+                                               allow.array=FALSE) { 
   ### add vector capability
   if (length(x) > 1){
     file = lapply(x, check_nifti,  
@@ -68,8 +68,8 @@ setMethod("check_nifti", "list", function(x,
 #' @aliases check_nifti,array-method
 #' @export
 setMethod("check_nifti", "array", function(x,  
-                                          reorient=FALSE, 
-                                          allow.array=FALSE) { 
+                                           reorient=FALSE, 
+                                           allow.array=FALSE) { 
   if (!allow.array){
     stop("x is array but allow.array = FALSE")
   }
