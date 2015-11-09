@@ -18,6 +18,7 @@ setGeneric("finite_img", function(img, replace = 0) {
 #' @export
 setMethod("finite_img", "nifti", function(img, replace = 0) { 
   img[ !is.finite(img) ] = replace
+  img = cal_img(img)
   return(img)
 })
 
