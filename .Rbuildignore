@@ -9,6 +9,9 @@ Generic_Function.R
 Generic_Function2.R
 fslr_Generic_Maker.R
 fslr_Generic_Function.R
+fslr_Generic_fslstats.R
+fslr_Generic_fslstats_nonzero.R
+fslr_Generic_fslstats_Maker.R
 fslr_Generic_fslmaths.R
 fslr_Generic_fslmaths_onefile.R
 fslr_Generic_fslmaths_Maker.R

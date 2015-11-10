@@ -4,10 +4,12 @@
 \alias{fslrange}
 \title{Get range of an image}
 \usage{
-fslrange(file, verbose = TRUE, ts = FALSE, ...)
+fslrange(file, robust = FALSE, verbose = TRUE, ts = FALSE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be checked}
+
+\item{robust}{(logical) Should the range be robust (\code{-r})}
 
 \item{verbose}{(logical) print out command before running}
 
@@ -20,7 +22,8 @@ option}
 numeric vector of length 2
 }
 \description{
-This function calls \code{fslstats -R} to get the range of an image
+This function calls \code{fslstats -R} to get the range of an image or \code{fslstats -r} to 
+get the robust range
 }
 \examples{
 if (have.fsl()){

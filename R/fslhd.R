@@ -118,7 +118,7 @@ fslmaths.help = function(){
 #' @title FSL Stats Help
 #' @description This function calls \code{fslstats}'s help
 #' @return Prints help output and returns output as character vector
-#' @aliases fslrange.help
+#' @aliases fslrange.help fslmean.help fslentropy.help fslsd.help
 #' @export
 #' @examples
 #' if (have.fsl()){
@@ -659,8 +659,10 @@ check_sform_file <- function(file, value=0, ...){
 
 
 #' @title Get range of an image
-#' @description This function calls \code{fslstats -R} to get the range of an image
+#' @description This function calls \code{fslstats -R} to get the range of an image or \code{fslstats -r} to 
+#' get the robust range
 #' @param file (character) filename of image to be checked
+#' @param robust (logical) Should the range be robust (\code{-r})
 #' @param verbose (logical) print out command before running
 #' @param ts (logical) is the series a timeseries (4D), invoking \code{-t} 
 #' option
@@ -674,22 +676,18 @@ check_sform_file <- function(file, value=0, ...){
 #'    "MNI152_T1_2mm.nii.gz")
 #'  fslrange(mnifile)
 #' }  
-fslrange <- function(file, verbose =TRUE, ts = FALSE, ...){
-  cmd <- get.fsl()
-  file = checkimg(file, ...)
-  cmd <- paste0(cmd, 
-                sprintf('fslstats %s "%s" -R', ifelse(ts, "-t", ""), file))
-  if (verbose){
-    cat(cmd, "\n")
-  }
-  x = str_trim(system(cmd, intern = TRUE))
-  x = strsplit(x, " ")
-  if (length(x) == 1) {
-    x = as.numeric(x[[1]])
+fslrange <- function(file, robust = FALSE, verbose = TRUE, ts = FALSE, ...){
+  opts = "-R"
+  opts = ifelse(robust, tolower(opts), opts)
+  
+  val = fslstats(file, opts = opts, verbose = verbose, ts = ts)
+  val = strsplit(val, " ")
+  if (length(val) == 1) {
+    val = as.numeric(val[[1]])
   } else {
-    x = t(sapply(x, as.numeric))
+    val = t(sapply(val, as.numeric))
   }
-  x
+  val
 }
 
 #' @title Fill image holes
