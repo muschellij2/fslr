@@ -55,6 +55,8 @@ makefunc("s", FUNC = "Standard Deviation", func = "sd",
          remove = remove)
 makefunc("e", FUNC = "Mean Entropy", func = "entropy",
          remove = remove)
+makefunc("v", FUNC = "Volume", func = "volume",
+         remove = remove)
 
 
 
