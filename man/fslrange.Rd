@@ -4,12 +4,15 @@
 \alias{fslrange}
 \title{Get range of an image}
 \usage{
-fslrange(file, verbose = TRUE, ...)
+fslrange(file, verbose = TRUE, ts = FALSE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be checked}
 
 \item{verbose}{(logical) print out command before running}
+
+\item{ts}{(logical) is the series a timeseries (4D), invoking \code{-t} 
+option}
 
 \item{...}{options passed to \code{\link{checkimg}}}
 }

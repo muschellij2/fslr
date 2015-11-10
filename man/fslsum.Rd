@@ -4,12 +4,15 @@
 \alias{fslsum}
 \title{FSL Sum}
 \usage{
-fslsum(file, opts = "", ...)
+fslsum(file, opts = "", ts = FALSE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be checked}
 
 \item{opts}{Additional options to pass to \code{\link{fslstats}}}
+
+\item{ts}{(logical) is the series a timeseries (4D), invoking \code{-t} 
+option}
 
 \item{...}{options passed to \code{\link{fslstats}}}
 }

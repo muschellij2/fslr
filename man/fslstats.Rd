@@ -4,7 +4,7 @@
 \alias{fslstats}
 \title{FSL Stats}
 \usage{
-fslstats(file, opts = "", verbose = TRUE, ...)
+fslstats(file, opts = "", verbose = TRUE, ts = FALSE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be checked}
@@ -12,6 +12,9 @@ fslstats(file, opts = "", verbose = TRUE, ...)
 \item{opts}{(character) operation passed to \code{fslstats}}
 
 \item{verbose}{(logical) print out command before running}
+
+\item{ts}{(logical) is the series a timeseries (4D), invoking \code{-t} 
+option}
 
 \item{...}{options passed to \code{\link{checkimg}}}
 }

@@ -4,7 +4,7 @@
 \alias{fslcog}
 \title{Image Center of Gravity (FSL)}
 \usage{
-fslcog(img, mm = TRUE, verbose = TRUE)
+fslcog(img, mm = TRUE, verbose = TRUE, ts = FALSE)
 }
 \arguments{
 \item{img}{Object of class nifti, or path of file}
@@ -13,9 +13,12 @@ fslcog(img, mm = TRUE, verbose = TRUE)
 or voxels (\code{FALSE})}
 
 \item{verbose}{(logical) print out command before running}
+
+\item{ts}{(logical) is the series a timeseries (4D), invoking \code{-t} 
+option}
 }
 \value{
-Vector of length 3
+Vector of length 3 unless ts option invoked
 }
 \description{
 Find Center of Gravity of Image from FSL
