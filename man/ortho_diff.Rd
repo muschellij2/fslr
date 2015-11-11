@@ -23,7 +23,8 @@ ortho_diff(img, pred, roi, xyz = NULL, cols = c("#56B4E9", "#D55E00",
 
 \item{addlegend}{add legend, passed to \code{\link{ortho2}}}
 
-\item{center}{run \code{\link{xyz}} on \code{roi}}
+\item{center}{run \code{\link{xyz}} on \code{roi}.  Disregarded if \code{xyz} is
+not \code{NULL}}
 
 \item{leg.cex}{multiplier for legend size}
 

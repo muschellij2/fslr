@@ -9,7 +9,8 @@
 #' @param cols colors for false negatives/positives
 #' @param levels labels for false negatives/positives
 #' @param addlegend add legend, passed to \code{\link{ortho2}}
-#' @param center run \code{\link{xyz}} on \code{roi}
+#' @param center run \code{\link{xyz}} on \code{roi}.  Disregarded if \code{xyz} is
+#' not \code{NULL}
 #' @param leg.cex multiplier for legend size
 #' @param ... arguments to be passed to \code{\link{ortho2}}
 #' @export
@@ -31,10 +32,11 @@ ortho_diff <- function(img,
   ### Drop empty image dimensions
   ###########################
   if (center) {
-    if (!is.null(xyz)){
-      warning("Overriding xyz set as center = TRUE\n")
+    if (is.null(xyz)){
+      xyz = xyz(roi)
+    } else {
+      warning("xyz set, and center = TRUE, using user set xyz")
     }
-    xyz = xyz(roi)
   } else {
     xyz = xyz
   }
