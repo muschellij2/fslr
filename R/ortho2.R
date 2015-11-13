@@ -77,6 +77,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                    add = TRUE,
                    ...) 
 {
+  x = check_nifti(x)
   if (!is.null(y)) {
     if (!all(dim(x)[1:3] == dim(y)[1:3])) {
       stop("dimensions of \"x\" and \"y\" must be equal")
@@ -99,6 +100,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   lr.shift = 4
   ud.shift = 6
   if (!is.null(y)){
+    y = check_nifti(y)
     if (NA.y){
       y[ y == 0 ] = NA
       y = cal_img(y)
