@@ -96,19 +96,6 @@ multi_overlay = function(x,
                          NA.y = TRUE,
                          ...) {
   
-  zlimmer = function(x, zlim){
-    if (is.null(zlim)) {
-      zlim <- c(x@cal_min, x@cal_max)
-      if (any(!is.finite(zlim)) || diff(zlim) == 0) {
-        zlim <- c(x@glmin, x@glmax)
-      }
-      if (any(!is.finite(zlim)) || diff(zlim) == 0) {
-        zlim <- range(x, na.rm = TRUE)
-      }
-    }
-    return(zlim)
-  }
-  
   relist = function(r){
     r = check_nifti(r)
     if ( !"list" %in% typeof(r)){
