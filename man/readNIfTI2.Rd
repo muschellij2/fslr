@@ -13,6 +13,10 @@ readnii(..., reorient = FALSE, dtype = TRUE, drop_dim = TRUE)
 \item{...}{Arguments to pass to \code{\link{readNIfTI}}}
 
 \item{reorient}{Reorientation argument to pass to \code{\link{readNIfTI}}}
+
+\item{dtype}{Should \code{\link{datatyper}} be run after reading?}
+
+\item{drop_dim}{Should \code{\link{drop_img_dim}} be run after reading?}
 }
 \value{
 \code{nifti} object

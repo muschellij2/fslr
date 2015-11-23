@@ -12,6 +12,8 @@ readNIfTI2 <- function(..., reorient = FALSE){
 }
 
 #' @rdname readNIfTI2
+#' @param dtype Should \code{\link{datatyper}} be run after reading?
+#' @param drop_dim Should \code{\link{drop_img_dim}} be run after reading?
 #' @export
 readnii <- function(..., reorient = FALSE, dtype = TRUE, drop_dim = TRUE){
   nim = readNIfTI(..., reorient = reorient)
