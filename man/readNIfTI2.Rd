@@ -7,7 +7,7 @@
 \usage{
 readNIfTI2(..., reorient = FALSE)
 
-readnii(..., reorient = FALSE)
+readnii(..., reorient = FALSE, dtype = TRUE, drop_dim = TRUE)
 }
 \arguments{
 \item{...}{Arguments to pass to \code{\link{readNIfTI}}}

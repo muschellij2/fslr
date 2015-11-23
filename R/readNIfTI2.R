@@ -13,6 +13,13 @@ readNIfTI2 <- function(..., reorient = FALSE){
 
 #' @rdname readNIfTI2
 #' @export
-readnii <- function(..., reorient = FALSE){
-  readNIfTI(..., reorient = reorient)
+readnii <- function(..., reorient = FALSE, dtype = TRUE, drop_dim = TRUE){
+  nim = readNIfTI(..., reorient = reorient)
+  if (drop_dim) {
+    nim = drop_img_dim(nim)
+  }
+  if (dtype) {
+    nim = datatyper(nim)
+  }
+  return(nim)
 }
