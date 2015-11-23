@@ -10,7 +10,7 @@
 setMethod("dim_", "character", function(object){
   object = path.expand(object)
   stopifnot(file.exists(object))
-  slots = paste0("dim0", 0:7)
+  slots = paste0("dim", 0:7)
   res = sapply(slots, function(key) {
     fslval(object, keyword = key, verbose = FALSE)
   })
