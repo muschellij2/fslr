@@ -2,10 +2,13 @@
 % Please edit documentation in R/dropEmptyImageDimensions.R
 \name{dropEmptyImageDimensions}
 \alias{dropEmptyImageDimensions}
+\alias{drop_empty_dim}
 \title{Drop Empty Image Dimensions}
 \usage{
 dropEmptyImageDimensions(img, value = 0, threshold = 0, other.imgs = NULL,
   keep_ind = FALSE, reorient = FALSE)
+
+drop_empty_dim(...)
 }
 \arguments{
 \item{img}{nifti object}
@@ -33,5 +36,9 @@ Otherwise object of class \code{nifti}
 \description{
 Drops dimensions of an image that has all irrelevant
 values
+}
+\note{
+\code{drop_empty_dim} is a shorthand for \code{dropEmptyImageDimensions}
+with all the same arguments
 }
 

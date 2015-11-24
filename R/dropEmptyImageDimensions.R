@@ -16,6 +16,8 @@
 #' @return List of output image indices, and other images
 #' if \code{other.imgs} not specified or \code{keep_ind = TRUE}. 
 #' Otherwise object of class \code{nifti}
+#' @note \code{drop_empty_dim} is a shorthand for \code{dropEmptyImageDimensions}
+#' with all the same arguments
 #' @export
 dropEmptyImageDimensions <- function(img, 
                                      value = 0, 
@@ -86,4 +88,10 @@ dropEmptyImageDimensions <- function(img,
                   orig.dim = dim(img))
   }
   return(outimg)
+}
+
+#' @rdname dropEmptyImageDimensions
+#' @export
+drop_empty_dim <- function(...) {
+  dropEmptyImageDimensions(...)
 }
