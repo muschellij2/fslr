@@ -1,5 +1,4 @@
 #' @title Drop Empty Image Dimensions
-#' @return Object of class nifti
 #' @name dropEmptyImageDimensions
 #' @param img nifti object
 #' @param value Value to check against.  If zero, then 
@@ -9,14 +8,20 @@
 #' are in the slice
 #' @param other.imgs List of other nifti objects or filenames 
 #' to apply the same dropping as \code{img}.
+#' @param keep_ind keep indices in output.  Will return list, even if 
+#' \code{other.imgs} not specified
 #' @param reorient Should image be reoriented if a filename?
 #' @description Drops dimensions of an image that has all irrelevant
 #' values
+#' @return List of output image indices, and other images
+#' if \code{other.imgs} not specified or \code{keep_ind = TRUE}. 
+#' Otherwise object of class \code{nifti}
 #' @export
 dropEmptyImageDimensions <- function(img, 
                                      value = 0, 
                                      threshold = 0,
                                      other.imgs = NULL, 
+                                     keep_ind = FALSE,
                                      reorient = FALSE) {
   
   img = check_nifti(img, reorient = reorient)
@@ -72,7 +77,13 @@ dropEmptyImageDimensions <- function(img,
     if (length(other.imgs) == 1){
       other.imgs = other.imgs[[1]]
     }
-    return(list(outimg = outimg, other.imgs = other.imgs, inds = inds))
+    return(list(outimg = outimg, 
+                other.imgs = other.imgs, 
+                inds = inds, orig.dim = dim(img)))
+  }
+  if (keep_ind){
+    outimg = list(outimg = outimg, inds = inds,
+                  orig.dim = dim(img))
   }
   return(outimg)
 }

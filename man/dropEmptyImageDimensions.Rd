@@ -5,7 +5,7 @@
 \title{Drop Empty Image Dimensions}
 \usage{
 dropEmptyImageDimensions(img, value = 0, threshold = 0, other.imgs = NULL,
-  reorient = FALSE)
+  keep_ind = FALSE, reorient = FALSE)
 }
 \arguments{
 \item{img}{nifti object}
@@ -20,10 +20,15 @@ are in the slice}
 \item{other.imgs}{List of other nifti objects or filenames 
 to apply the same dropping as \code{img}.}
 
+\item{keep_ind}{keep indices in output.  Will return list, even if 
+\code{other.imgs} not specified}
+
 \item{reorient}{Should image be reoriented if a filename?}
 }
 \value{
-Object of class nifti
+List of output image indices, and other images
+if \code{other.imgs} not specified or \code{keep_ind = TRUE}. 
+Otherwise object of class \code{nifti}
 }
 \description{
 Drops dimensions of an image that has all irrelevant
