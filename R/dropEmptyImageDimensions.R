@@ -37,8 +37,8 @@ dropEmptyImageDimensions <- function(img,
   arr = as.array(img)
   arr[is.na(arr)] = 0
   img = niftiarr(img, arr)
-
-    
+  
+  
   ############################
   # Get indices for slices with all zeros (or of certain value)
   ############################
@@ -92,6 +92,16 @@ dropEmptyImageDimensions <- function(img,
 
 #' @rdname dropEmptyImageDimensions
 #' @export
-drop_empty_dim <- function(...) {
-  dropEmptyImageDimensions(...)
+drop_empty_dim <- function(img, 
+                           value = 0, 
+                           threshold = 0,
+                           other.imgs = NULL, 
+                           keep_ind = FALSE,
+                           reorient = FALSE) {
+  dropEmptyImageDimensions(img = img, 
+                           value = value, 
+                           threshold = threshold,
+                           other.imgs = other.imgs, 
+                           keep_ind = keep_ind,
+                           reorient = reorient)
 }
