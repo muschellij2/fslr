@@ -7,7 +7,7 @@
 replace_dropped_dimensions(img, inds, orig.dim)
 }
 \arguments{
-\item{img}{Object of class \code{nifti}}
+\item{img}{Object of class \code{nifti} where image dimensions were dropped.}
 
 \item{inds}{List of length 3 of indices from 
 \code{\link{dropEmptyImageDimensions}}}
@@ -21,6 +21,6 @@ Object of class nifti
 \description{
 This funtion is the reverse of \code{dropEmptyImageDimensions}.
 If \code{dropEmptyImageDimensions} was run, and the output is a list, 
-usually if \code{keep_ind = TRUE}, this function reverses that
+usually if \code{keep_ind = TRUE}, this function reverses that.
 }
 
