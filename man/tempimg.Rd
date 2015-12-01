@@ -4,7 +4,8 @@
 \alias{tempimg}
 \title{Create temporary nii.gz file for FSL}
 \usage{
-tempimg(nim, gzipped = TRUE, checknan = TRUE, check_type = FALSE, ...)
+tempimg(nim, gzipped = TRUE, checknan = TRUE, check_type = FALSE,
+  warn = FALSE, ...)
 }
 \arguments{
 \item{nim}{object of class nifti}
@@ -15,6 +16,9 @@ tempimg(nim, gzipped = TRUE, checknan = TRUE, check_type = FALSE, ...)
 \item{checknan}{Check for NAs or NaNs}
 
 \item{check_type}{Check the datatype for an image.  Will run \code{\link{datatyper}}.}
+
+\item{warn}{Should warnings be displayed if \code{\link{writeNIfTI}} has
+any?  Passed to \code{\link{writenii}}.}
 
 \item{...}{Not used}
 }
