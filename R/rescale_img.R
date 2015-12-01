@@ -11,7 +11,7 @@
 #' set to Inf
 #' @param ROIformat if TRUE, any values $< 0$ will be set to 0
 #' @param writer character value to add to description slot of NIfTI header
-#' @param ... extra methods to be passed to \code{\link{writeNIfTI}}
+#' @param ... extra methods to be passed to \code{\link{writenii}}
 #' @description Rescales an image to be in certain value range.  This was created
 #' as sometimes DICOM scale and slope parameters may be inconsistent across sites
 #' and the data need to be value restricted
@@ -55,7 +55,7 @@ rescale_img = function(filename,
   filename = nii.stub(filename)
   
   if (write.nii) {
-    writeNIfTI(img, file=filename, ...)
+    writenii(img, file=filename, ...)
   }
   return(img)
 }

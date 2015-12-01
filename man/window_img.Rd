@@ -25,6 +25,6 @@ Windows an image to min and max values and also changes
 cal_max and cal_min parameters
 }
 \seealso{
-\link{readNIfTI}
+\link{readnii}
 }
 

@@ -13,13 +13,13 @@ fslreorient2std(file, retimg = TRUE, reorient = FALSE, intern = FALSE,
 \item{retimg}{(logical) return image of class nifti}
 
 \item{reorient}{(logical) If \code{retimg}, should file be reoriented when read in?
-Passed to \code{\link{readNIfTI}}.}
+Passed to \code{\link{readnii}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 
 \item{verbose}{(logical) print out command before running}
 
-\item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
+\item{...}{additional arguments passed to \code{\link{readnii}}.}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,

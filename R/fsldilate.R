@@ -8,12 +8,12 @@
 #' @param outfile (character) resultant dilated image name 
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param kopts (character) options for kernel
 #' @param opts (character) additional options to be passed to fslmaths
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.  If 
 #' retimg is TRUE, then the image will be returned. 
 #' @import oro.nifti
@@ -51,7 +51,7 @@ fsldilate <- function(file, outfile=NULL,
   outfile = paste0(outfile, ext)
   stopifnot(file.exists(outfile))
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }
   return(res)

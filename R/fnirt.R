@@ -6,11 +6,11 @@
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}. 
+#' Passed to \code{\link{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) additional options to FLIRT
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 fnirt = function(infile, 
@@ -47,7 +47,7 @@ fnirt = function(infile,
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }
   return(res)
@@ -74,12 +74,12 @@ fnirt.help = function(){
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}. 
+#' Passed to \code{\link{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param flirt.opts (character) additional options to FLIRT
 #' @param opts (character) additional options to FNIRT
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 fnirt_with_affine = function(infile, 
@@ -153,12 +153,12 @@ fnirt_with_affine = function(infile,
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}. 
+#' Passed to \code{\link{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param flirt.opts (character) additional options to FLIRT
 #' @param opts (character) additional options to FNIRT
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 #' @seealso fnirt_with_affine

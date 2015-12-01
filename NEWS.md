@@ -1,5 +1,10 @@
-# fslr v1.5.1 (Release date: 2015-10-20)
+# fslr v1.6.0 (Release date: 2015-12-01)
 
+## Major changes
+
+* Changed default reading/writing to `readnii`/`writenii`
+
+# fslr v1.5.1 (Release date: 2015-10-20)
 
 ## Major changes
 

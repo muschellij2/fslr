@@ -6,7 +6,7 @@
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param bthresh brightness threshold and should be greater than noise level and less than contrast of edges to be preserved.
 #' @param sigma spatial size (sigma i.e. half-width) of smoothing in mm.

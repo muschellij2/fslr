@@ -8,10 +8,10 @@
 #' @param refill (logical) Run \code{\link{fslfill}} after dilation/erosion.
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param verbose (logical) print out command before running 
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return character or logical depending on intern
 #' @note This function binarizes the image before running.
 #' @export
@@ -84,7 +84,7 @@ fslfill2 = function(file,
   dil = cal_img(dil)
   if (have.outfile){
     gzipped = grepl("gz$", get.imgext())    
-    writeNIfTI(dil, filename = outfile, gzipped = gzipped)
+    writenii(dil, filename = outfile, gzipped = gzipped)
   }
   if (retimg){
     return(dil)

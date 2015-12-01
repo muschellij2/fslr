@@ -26,7 +26,7 @@ set to Inf}
 
 \item{writer}{character value to add to description slot of NIfTI header}
 
-\item{...}{extra methods to be passed to \code{\link{writeNIfTI}}}
+\item{...}{extra methods to be passed to \code{\link{writenii}}}
 }
 \value{
 Object of class nifti

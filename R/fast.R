@@ -4,13 +4,13 @@
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fast}
 #' @param out_type (character) Suffix to grab from outfile.  For 
 #' example, output filename is \code{paste0(outfile, "_", out_type)}
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -43,7 +43,7 @@ fast = function(
     out_type = match.arg(out_type, c("seg", "mixeltype", "pve_0", 
                  "pve_1", "pve_2", "pveseg"))
     outfile = paste0(outfile, "_", out_type, ext)  
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }
   
@@ -69,12 +69,12 @@ fast.help = function(){
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fast}
 #' @param verbose (logical) print out command before running
 #' @param remove.seg (logical) Should segmentation from FAST be removed? 
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}. 
+#' @param ... additional arguments passed to \code{\link{readnii}}. 
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -119,7 +119,7 @@ fsl_biascorrect = function(
   # }
 
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }
   
