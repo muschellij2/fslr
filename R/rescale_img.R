@@ -55,7 +55,7 @@ rescale_img = function(filename,
   filename = nii.stub(filename)
   
   if (write.nii) {
-    writenii(img, file=filename, ...)
+    writenii(img, filename = filename, ...)
   }
   return(img)
 }
@@ -83,27 +83,27 @@ rescale_img = function(filename,
 datatyper = function(img, type_string = NULL,
                     datatype=NULL, bitpix=NULL, trybyte=TRUE){
   img = check_nifti(img)
-  if (!is.null(type_string)){
+  if (!is.null(type_string)) {
     accepted = names(convert.datatype())
     type_string = toupper(type_string)
     stopifnot(type_string %in% accepted)
     datatype = convert.datatype()[[type_string]]
     bitpix = convert.bitpix()[[type_string]]
   }  
-  if (!is.null(datatype) & !is.null(bitpix)){
+  if (!is.null(datatype) & !is.null(bitpix)) {
     img@datatype <- datatype
     img@bitpix <- bitpix
     return(img)
   }
-  if (!is.null(datatype) & is.null(bitpix)){
+  if (!is.null(datatype) & is.null(bitpix)) {
     stop("Both bitipx and datatype need to be specified if oneis")
   }
-  if (is.null(datatype) & !is.null(bitpix)){
+  if (is.null(datatype) & !is.null(bitpix)) {
     stop("Both bitipx and datatype need to be specified if oneis")
   }
   #### logical - sign to unsigned int 8
   is.log = inherits(img@.Data[1], "logical")
-  if (is.log){
+  if (is.log) {
     img@datatype <- convert.datatype()$UINT8
     img@bitpix <- convert.bitpix()$UINT8
     return(img)
@@ -115,17 +115,17 @@ datatyper = function(img, type_string = NULL,
     return(isTRUE(test))
   }  
   is.int = testInteger(img)
-  if (is.int){
-    rr = range(img, na.rm=TRUE)
+  if (is.int) {
+    rr = range(img, na.rm = TRUE)
     ##### does this just for binary mask
-    if (all(rr == c(0, 1)) & trybyte){
-      if (all(img %in% c(0, 1))){
+    if (all(rr == c(0, 1)) & trybyte) {
+      if (all(img %in% c(0, 1))) {
           img@datatype <- convert.datatype()$UINT8
           img@bitpix <- convert.bitpix()$UINT8
           return(img)
       }
     }
-    signed= FALSE
+    signed = FALSE
     if (any(rr < 0)) {
       signed = TRUE
     }
@@ -134,7 +134,7 @@ datatyper = function(img, type_string = NULL,
     if (trange > 255) num = 16
     if (trange > 65535) num = 32
     if (trange > 4294967295) num = 64
-    mystr= "INT"
+    mystr = "INT"
     if (!signed) mystr = paste0("U", mystr)
     mystr = paste0(mystr, num)
     img@datatype <- convert.datatype()[[mystr]]
@@ -142,7 +142,7 @@ datatyper = function(img, type_string = NULL,
     return(img)
   } else {
     warning("Assuming FLOAT32")
-    mystr= "FLOAT32"
+    mystr = "FLOAT32"
     img@datatype <- convert.datatype()[[mystr]]
     img@bitpix <- convert.bitpix()[[mystr]]
     return(img)
@@ -256,25 +256,25 @@ zscore_img <- function(img, mask = NULL, margin=3,
     
     vec = matrix(img, ncol=dimg[margin])
     if (centrality == "mean") {
-      m = colMeans(vec, na.rm=TRUE)
+      m = colMeans(vec, na.rm = TRUE)
     }
     if (centrality == "median") {
-      m = colMedians(vec, na.rm=TRUE)
+      m = colMedians(vec, na.rm = TRUE)
     } 
     if (variability == "iqrdiff") {
-      s = colIQRDiffs(vec, na.rm=TRUE)
+      s = colIQRDiffs(vec, na.rm = TRUE)
     }
     if (variability == "maddiff") {
-      s = colMadDiffs(vec, na.rm=TRUE)
+      s = colMadDiffs(vec, na.rm = TRUE)
     }   
     if (variability == "mad") {
-      s = colMads(vec, na.rm=TRUE)
+      s = colMads(vec, na.rm = TRUE)
     }       
     if (variability == "iqr") {
-      s = colIQRs(vec, na.rm=TRUE)
+      s = colIQRs(vec, na.rm = TRUE)
     }       
     if (variability == "sd") {
-      s = colSds(vec, na.rm=TRUE)
+      s = colSds(vec, na.rm = TRUE)
     }     
     
     vecc = (t(vec) - m)/s
@@ -283,27 +283,27 @@ zscore_img <- function(img, mask = NULL, margin=3,
                  dim = dim(img))
     imgc = aperm(imgc, revperm)
   } else {
-    mn = do.call(centrality, list(x=c(img), na.rm=TRUE))
+    mn = do.call(centrality, list(x = c(img), na.rm = TRUE))
     if (variability == "iqrdiff") {
-      s = iqrDiff(c(img), na.rm=TRUE)
+      s = iqrDiff(c(img), na.rm = TRUE)
     }
     if (variability == "sd") {
-      s = sd(c(img), na.rm=TRUE)
+      s = sd(c(img), na.rm = TRUE)
     }
     if (variability == "maddiff") {
-      s = madDiff(c(img), na.rm=TRUE)
+      s = madDiff(c(img), na.rm = TRUE)
     }   
     if (variability == "mad") {
-      s = mad(c(img), na.rm=TRUE)
+      s = mad(c(img), na.rm = TRUE)
     }       
     if (variability == "iqr") {
-      s = iqr(c(img), na.rm=TRUE)
+      s = iqr(c(img), na.rm = TRUE)
     }       
     
     imgc = (img - mn) / s
   }
   stopifnot(all.equal(dim(imgc), dim(orig.img)))
-  if (inherits(orig.img, "nifti")){
+  if (inherits(orig.img, "nifti")) {
     nim = orig.img
     nim@.Data = imgc
     imgc = nim
@@ -311,16 +311,16 @@ zscore_img <- function(img, mask = NULL, margin=3,
                     datatype = convert.datatype()$FLOAT32, 
                     bitpix = convert.bitpix()$FLOAT32) 
   }
-  if (remove.na){
+  if (remove.na) {
     imgc[is.na(imgc)] = remove.val
   }
-  if (remove.nan){
+  if (remove.nan) {
     imgc[is.nan(imgc)] = remove.val
   } 
-  if (remove.inf){
+  if (remove.inf) {
     imgc[is.infinite(imgc)] = remove.val
   }   
-  if (inherits(orig.img, "nifti")){
+  if (inherits(orig.img, "nifti")) {
     imgc = cal_img(imgc)
     imgc = zero_trans(imgc)
   }
