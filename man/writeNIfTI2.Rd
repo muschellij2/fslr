@@ -7,7 +7,7 @@
 \usage{
 writeNIfTI2(nim, filename, dtype = FALSE, ...)
 
-writenii(nim, filename, dtype = TRUE, drop_dim = TRUE, ...)
+writenii(nim, filename, dtype = TRUE, drop_dim = TRUE, warn = FALSE, ...)
 }
 \arguments{
 \item{nim}{object of class \code{nifti}, passed to \code{\link{writeNIfTI}}}
@@ -19,13 +19,17 @@ writenii(nim, filename, dtype = TRUE, drop_dim = TRUE, ...)
 \item{...}{Additional arguments pased to \code{\link{writeNIfTI}}}
 
 \item{drop_dim}{Should \code{\link{drop_img_dim}} be run before writing?}
+
+\item{warn}{Should warnings from \code{\link{writeNIfTI}} be 
+printed?  If not, \code{\link{suppressWarnings}} is called}
 }
 \value{
 Nothing
 }
 \description{
 This function calls the \code{\link{writeNIfTI}} function from the 
-\code{oro.nifti} package, but makes sure to remove \code{.nii} extension
+\code{oro.nifti} package, but makes sure to remove \code{.nii} extension and
+warnings can be suppressed.
 }
 \note{
 While \code{writeNIfTI2} does not run \code{\link{datatyper}} as default, 
