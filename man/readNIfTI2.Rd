@@ -20,7 +20,8 @@ readnii(..., reorient = FALSE, dtype = TRUE, drop_dim = TRUE,
 \item{drop_dim}{Should \code{\link{drop_img_dim}} be run after reading?}
 
 \item{warn}{Should warnings from \code{\link{readNIfTI}} be 
-printed?  If not, \code{\link{suppressWarnings}} is called}
+printed?  If not, \code{\link{suppressWarnings}} is called.  Also passed to 
+\code{\link{datatyper}}}
 }
 \value{
 \code{nifti} object

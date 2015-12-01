@@ -27,7 +27,7 @@ rescale_img = function(filename,
                        writer= "dcm2nii", ...){
   
   img = check_nifti(filename)
-    # inter = as.numeric(img@scl_inter)
+  # inter = as.numeric(img@scl_inter)
   # slope = as.numeric(img@scl_slope)
   # img = (img * slope + inter)
   r = range(c(img))
@@ -76,12 +76,14 @@ rescale_img = function(filename,
 #' \code{\link{convert.bitpix}} 
 #' @param trybyte (logical) Should you try to make a byte (UINT8) if image in
 #' c(0, 1)?
+#' @param warn Should a warning be issued if defaulting to FLOAT32?
 #' @description Tries to figure out the correct datatype for image.  Useful 
 #' for image masks - makes them binary if
 #' @name datatype
 #' @export
 datatyper = function(img, type_string = NULL,
-                    datatype=NULL, bitpix=NULL, trybyte=TRUE){
+                     datatype = NULL, bitpix=NULL, trybyte=TRUE,
+                     warn = TRUE){
   img = check_nifti(img)
   if (!is.null(type_string)) {
     accepted = names(convert.datatype())
@@ -120,9 +122,9 @@ datatyper = function(img, type_string = NULL,
     ##### does this just for binary mask
     if (all(rr == c(0, 1)) & trybyte) {
       if (all(img %in% c(0, 1))) {
-          img@datatype <- convert.datatype()$UINT8
-          img@bitpix <- convert.bitpix()$UINT8
-          return(img)
+        img@datatype <- convert.datatype()$UINT8
+        img@bitpix <- convert.bitpix()$UINT8
+        return(img)
       }
     }
     signed = FALSE
@@ -141,7 +143,9 @@ datatyper = function(img, type_string = NULL,
     img@bitpix <- convert.bitpix()[[mystr]]
     return(img)
   } else {
-    warning("Assuming FLOAT32")
+    if (warn) {
+      warning("Assuming FLOAT32")
+    }
     mystr = "FLOAT32"
     img@datatype <- convert.datatype()[[mystr]]
     img@bitpix <- convert.bitpix()[[mystr]]
@@ -239,7 +243,7 @@ zscore_img <- function(img, mask = NULL, margin=3,
   }
   mask = check_nifti(mask, allow.array=TRUE)
   img[mask == 0] = NA
-
+  
   stopifnot(length(dimg) == 3)  
   if (!is.null(margin)){
     if (margin == 3){
@@ -308,8 +312,8 @@ zscore_img <- function(img, mask = NULL, margin=3,
     nim@.Data = imgc
     imgc = nim
     imgc = datatyper(imgc, 
-                    datatype = convert.datatype()$FLOAT32, 
-                    bitpix = convert.bitpix()$FLOAT32) 
+                     datatype = convert.datatype()$FLOAT32, 
+                     bitpix = convert.bitpix()$FLOAT32) 
   }
   if (remove.na) {
     imgc[is.na(imgc)] = remove.val

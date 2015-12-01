@@ -8,30 +8,31 @@
 #' @rdname readNIfTI2
 #' @export
 readNIfTI2 <- function(..., reorient = FALSE){
-  readNIfTI(..., reorient = reorient)
+  oro.nifti::readNIfTI(..., reorient = reorient)
 }
 
 #' @rdname readNIfTI2
 #' @param dtype Should \code{\link{datatyper}} be run after reading?
 #' @param drop_dim Should \code{\link{drop_img_dim}} be run after reading?
 #' @param warn Should warnings from \code{\link{readNIfTI}} be 
-#' printed?  If not, \code{\link{suppressWarnings}} is called
+#' printed?  If not, \code{\link{suppressWarnings}} is called.  Also passed to 
+#' \code{\link{datatyper}}
 #' @export
 readnii <- function(..., reorient = FALSE, dtype = TRUE, 
                     drop_dim = TRUE,
                     warn = FALSE){
   if (warn) {
-    nim = readNIfTI(..., reorient = reorient)
+    nim = oro.nifti::readNIfTI(..., reorient = reorient)
   } else {
     suppressWarnings({
-      nim = readNIfTI(..., reorient = reorient)
+      nim = oro.nifti::readNIfTI(..., reorient = reorient)
     })
   }
   if (drop_dim) {
-    nim = drop_img_dim(nim)
+    nim = oro.nifti::drop_img_dim(nim)
   }
   if (dtype) {
-    nim = datatyper(nim)
+    nim = datatyper(nim, warn = warn)
   }
   return(nim)
 }

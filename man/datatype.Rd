@@ -6,7 +6,7 @@
 \title{Change Data type for img}
 \usage{
 datatyper(img, type_string = NULL, datatype = NULL, bitpix = NULL,
-  trybyte = TRUE)
+  trybyte = TRUE, warn = TRUE)
 }
 \arguments{
 \item{img}{nifti object (or character of filename)}
@@ -24,6 +24,8 @@ both datatype and bitpix.  If specified
 
 \item{trybyte}{(logical) Should you try to make a byte (UINT8) if image in
 c(0, 1)?}
+
+\item{warn}{Should a warning be issued if defaulting to FLOAT32?}
 }
 \value{
 object of type nifti
