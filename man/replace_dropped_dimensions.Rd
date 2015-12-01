@@ -16,11 +16,21 @@ replace_dropped_dimensions(img, inds, orig.dim)
 have dimensions same as this}
 }
 \value{
-Object of class nifti
+Object of class \code{\link{nifti}}
 }
 \description{
 This funtion is the reverse of \code{dropEmptyImageDimensions}.
 If \code{dropEmptyImageDimensions} was run, and the output is a list, 
 usually if \code{keep_ind = TRUE}, this function reverses that.
+}
+\examples{
+\dontrun{
+# nim is an object of class nifti
+dd = dropEmptyImageDimensions(nim, keep_ind = TRUE)
+remake = replace_dropped_dimensions(img = dd$outimg, 
+inds = dd$inds,
+orig.dim = dd$orig.dim)
+all.equal(nim, remake)
+}
 }
 
