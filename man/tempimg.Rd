@@ -11,13 +11,13 @@ tempimg(nim, gzipped = TRUE, checknan = TRUE, check_type = FALSE,
 \item{nim}{object of class nifti}
 
 \item{gzipped}{Should file be gzipped? Passed to 
-\code{\link{writeNIfTI}}}
+\code{\link{writenii}}}
 
 \item{checknan}{Check for NAs or NaNs}
 
 \item{check_type}{Check the datatype for an image.  Will run \code{\link{datatyper}}.}
 
-\item{warn}{Should warnings be displayed if \code{\link{writeNIfTI}} has
+\item{warn}{Should warnings be displayed if \code{\link{writenii}} has
 any?  Passed to \code{\link{writenii}}.}
 
 \item{...}{Not used}
@@ -28,6 +28,6 @@ filename of output nii.gz
 \description{
 Takes in a object of class nifti, writes it 
 to a temp file, appends
-.nii.gz as \code{\link{writeNIfTI}} adds it.
+.nii.gz as \code{\link{writenii}} adds it.
 }
 

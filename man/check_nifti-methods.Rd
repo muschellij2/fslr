@@ -24,7 +24,7 @@ check_nifti(x, reorient = FALSE, allow.array = FALSE)
 \item{x}{character path of image or 
 an object of class nifti, or array}
 
-\item{reorient}{(logical) passed to \code{\link{readNIfTI}} 
+\item{reorient}{(logical) passed to \code{\link{readnii}} 
 if the image
 is to be re-oriented}
 
@@ -43,6 +43,6 @@ class nifti
 John Muschelli \email{muschellij2@gmail.com}
 }
 \seealso{
-\link{readNIfTI}
+\link{readnii}
 }
 

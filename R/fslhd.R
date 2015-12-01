@@ -137,11 +137,11 @@ fslstats.help = function(){
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fslmaths}
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -172,10 +172,10 @@ fslmaths = function(
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fslmaths}
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -252,10 +252,10 @@ fslstats <- function(file, opts="", verbose = TRUE, ts = FALSE, ...){
 #' if not give, will be the stub of the filename then _sigma
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.
 #' @examples
 #' if (have.fsl()){
@@ -318,7 +318,7 @@ fslsmooth <- function(
   }
   
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }   
   #   x = file.remove(paste0(mask.blur, ".nii"))
@@ -334,11 +334,11 @@ fslsmooth <- function(
 #' @param outfile (character) resultant masked image name
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) additional options to be passed to fslmask
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.
 #' if (have.fsl()){
 #' system.time({
@@ -371,7 +371,7 @@ fslmask <- function(file, mask, outfile=NULL,
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }  
   return(res)
@@ -386,12 +386,12 @@ fslmask <- function(file, mask, outfile=NULL,
 #' @param outfile (character) resultant eroded image name 
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param kopts (character) options for kernel
 #' @param opts (character) additional options to be passed to fslmaths
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.  If 
 #' retimg is TRUE, then the image will be returned. 
 #' @import oro.nifti
@@ -429,7 +429,7 @@ fslerode <- function(file, outfile=NULL,
   outfile = paste0(outfile, ext)
   stopifnot(file.exists(outfile))
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }
   return(res)
@@ -698,10 +698,10 @@ fslrange <- function(file, robust = FALSE, verbose = TRUE, ts = FALSE, ...){
 #' @param bin (logical) binarize the image before filling
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param verbose (logical) print out command before running 
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 #' @examples
@@ -738,7 +738,7 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }
   return(res)
@@ -753,11 +753,11 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
 #' @param uthresh (numeric) upper threshold (anything above set to 0)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}. 
+#' Passed to \code{\link{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) additional options to be passed to fslmaths 
 #' @param verbose (logical) print out command before running 
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 #' @examples
@@ -796,7 +796,7 @@ fslthresh = function(file, outfile = NULL,
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }
   return(res)
@@ -809,10 +809,10 @@ fslthresh = function(file, outfile = NULL,
 #' @param outfile (character) name of resultant subsampled file
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}. 
+#' Passed to \code{\link{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param verbose (logical) print out command before running 
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 #' @examples
@@ -849,7 +849,7 @@ fslsub2 = function(file,
   #   ext = get.imgext()
   #   outfile = paste0(outfile, ext)  
   #   if (retimg){
-  #     img = readNIfTI(outfile, reorient=reorient, ...)
+  #     img = readnii(outfile, reorient=reorient, ...)
   #     return(img)
   #   }
   return(res)
@@ -912,10 +912,10 @@ fslview.help = function(){
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param verbose (logical) print out command before running 
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 fslmerge = function(infiles, 
@@ -940,7 +940,7 @@ fslmerge = function(infiles,
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }
   return(res)
@@ -972,11 +972,11 @@ fslmerge.help = function(){
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}. 
+#' Passed to \code{\link{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) additional options to FLIRT
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 flirt = function(infile, 
@@ -1014,7 +1014,7 @@ flirt = function(infile,
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }
   if (verbose & print.omat){
@@ -1112,12 +1112,12 @@ fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}. 
+#' Passed to \code{\link{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) additional options to \code{bet}
 #' @param betcmd (character) Use \code{bet} or \code{bet2} function
 #' @param verbose (logical) print out command before running 
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 fslbet = function(infile, 
@@ -1144,7 +1144,7 @@ fslbet = function(infile,
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }
   return(res)
@@ -1255,11 +1255,11 @@ fslcog = function(img, mm = TRUE, verbose = TRUE, ts = FALSE){
 #' @param file (character) image to be manipulated
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If \code{retimg}, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fslorient}
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -1287,7 +1287,7 @@ fslorient = function(
   }
   res = system(cmd, intern=intern)
   if (retimg){
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   } 
   return(res)  
@@ -1312,10 +1312,10 @@ fslorient.help = function(){
 #' @param file (character) image to be manipulated
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If \code{retimg}, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -1361,13 +1361,13 @@ fslreorient2std.help = function(){
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param a (character) Option for x domain in \code{fslswapdim}
 #' @param b (character) Option for y domain in \code{fslswapdim}
 #' @param c (character) Option for z domain in \code{fslswapdim}
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -1419,12 +1419,12 @@ fslswapdim.help = function(){
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readNIfTI}}.
+#' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{func} 
 #' @param verbose (logical) print out command before running
 #' @param samefile (logical) is the output the same file?
-#' @param ... additional arguments passed to \code{\link{readNIfTI}}.
+#' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -1456,7 +1456,7 @@ fslcmd = function(
   outfile = paste0(outfile, ext)  
   if (retimg){
     if (samefile) outfile = file
-    img = readNIfTI(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient=reorient, ...)
     return(img)
   } 
   

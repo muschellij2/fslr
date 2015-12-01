@@ -16,13 +16,13 @@ fslnan(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
 
 \item{reorient}{(logical) If retimg, should file be reoriented 
 when read in?
-Passed to \code{\link{readNIfTI}}.}
+Passed to \code{\link{readnii}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 
 \item{opts}{(character) operations to be passed to \code{fslmaths}}
 
-\item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
+\item{...}{additional arguments passed to \code{\link{readnii}}.}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,

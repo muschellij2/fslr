@@ -17,7 +17,7 @@ susan(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
 \item{retimg}{(logical) return image of class nifti}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readNIfTI}}.}
+Passed to \code{\link{readnii}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 

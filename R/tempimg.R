@@ -1,13 +1,13 @@
 #' @title Create temporary nii.gz file for FSL
 #' @description Takes in a object of class nifti, writes it 
 #' to a temp file, appends
-#' .nii.gz as \code{\link{writeNIfTI}} adds it.
+#' .nii.gz as \code{\link{writenii}} adds it.
 #' @param nim object of class nifti
 #' @param gzipped Should file be gzipped? Passed to 
-#' \code{\link{writeNIfTI}}
+#' \code{\link{writenii}}
 #' @param checknan Check for NAs or NaNs
 #' @param check_type Check the datatype for an image.  Will run \code{\link{datatyper}}.
-#' @param warn Should warnings be displayed if \code{\link{writeNIfTI}} has
+#' @param warn Should warnings be displayed if \code{\link{writenii}} has
 #' any?  Passed to \code{\link{writenii}}.
 #' @param ... Not used
 #' @return filename of output nii.gz

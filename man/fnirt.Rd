@@ -17,7 +17,7 @@ fnirt(infile, reffile, outfile = NULL, retimg = TRUE, reorient = FALSE,
 \item{retimg}{(logical) return image of class nifti}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readNIfTI}}.}
+Passed to \code{\link{readnii}}.}
 
 \item{intern}{(logical) pass to \code{\link{system}}}
 
@@ -25,7 +25,7 @@ Passed to \code{\link{readNIfTI}}.}
 
 \item{verbose}{(logical) print out command before running}
 
-\item{...}{additional arguments passed to \code{\link{readNIfTI}}.}
+\item{...}{additional arguments passed to \code{\link{readnii}}.}
 }
 \value{
 character or logical depending on intern

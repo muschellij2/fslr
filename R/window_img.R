@@ -2,7 +2,7 @@
 #' @description Windows an image to min and max values and also changes 
 #' cal_max and cal_min parameters
 #' @return object of class nifti
-#' @seealso \link{readNIfTI}
+#' @seealso \link{readnii}
 #' @param x is either a character name for the image or an object of class nifti
 #' @param window numeric of length 2 that gives min and max for window
 #' @param replace either "window" if the any values outside of c(min, max) are
@@ -13,7 +13,7 @@ window_img = function(x, window=c(0, 100),
                       replace = c("window", "missing", "zero"), 
                       ...) {
   if (inherits(x, "character")) {
-    x= readNIfTI(x, reorient=FALSE)
+    x= readnii(x, reorient=FALSE)
   }
   if (is.null(window)){
     return(x)
