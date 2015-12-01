@@ -230,7 +230,7 @@ fslstats <- function(file, opts="", verbose = TRUE, ts = FALSE, ...){
                         file, 
                         opts))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   x = str_trim(system(cmd, intern = TRUE))
   return(x)
@@ -309,7 +309,7 @@ fslsmooth <- function(
                                      outfile, mask.blur, mask, outfile)))
   }
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }  
   res = system(cmd, intern=intern)
   outfile = paste0(outfile, ext)  
@@ -365,7 +365,7 @@ fslmask <- function(file, mask, outfile=NULL,
   cmd <- paste0(cmd, sprintf('fslmaths "%s" -mas "%s" %s "%s"', 
                              file, mask, opts, outfile))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -422,7 +422,7 @@ fslerode <- function(file, outfile=NULL,
   cmd <- paste0(cmd, sprintf('fslmaths "%s" %s -ero %s "%s"', 
                              file, kopts, opts, outfile))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -457,7 +457,7 @@ fslval <- function(file, keyword = "", verbose = TRUE, ...){
   file = checkimg(file, ...)
   cmd <- paste0(cmd, sprintf('fslval "%s" %s', file, keyword))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   return(str_trim(system(cmd, intern=TRUE)))
 }
@@ -494,7 +494,7 @@ fslhd <- function(file, opts="", verbose = TRUE, ...){
   file = checkimg(file, ...)
   cmd <- paste0(cmd, sprintf('fslhd "%s" %s', file, opts))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   system(cmd, intern=TRUE)
 }
@@ -732,7 +732,7 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
   cmd <- paste0(cmd, sprintf('fslmaths "%s" %s -fillh "%s"', file, 
                              runbin, outfile))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -790,7 +790,7 @@ fslthresh = function(file, outfile = NULL,
   cmd <- paste0(cmd, sprintf('fslmaths "%s" -thr %f %s "%s"', 
                              file, thresh, opts, outfile))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -885,7 +885,7 @@ fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
   file = paste(file, collapse = " ")
   cmd <- paste0(cmd, sprintf('fslview %s', file))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern = intern)
   return(res)
@@ -934,7 +934,7 @@ fslmerge = function(infiles,
   cmd <- paste0(cmd, sprintf('fslmerge -%s "%s" %s', 
                              direction, outfile, infiles))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -1008,7 +1008,7 @@ flirt = function(infile,
     infile, reffile, outfile, dof, omat, opts))
   
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -1018,7 +1018,7 @@ flirt = function(infile,
     return(img)
   }
   if (verbose & print.omat){
-    cat(paste0("Output matrix not specified, but stored ", 
+    message(paste0("Output matrix not specified, but stored ", 
                "temporarily at ", omat, "\n"))
   }
   return(res)
@@ -1064,7 +1064,7 @@ melodic = function(file,
   cmd <- paste0(cmd, sprintf('melodic --in "%s" --outdir "%s" %s', 
                              file, outdir, opts))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   return(res)
@@ -1099,7 +1099,7 @@ fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
   #     args = paste(help.arg, extra.args, sep=" ", collapse = " ")
   suppressWarnings({res = system(cmd, intern=TRUE)})
   #     res = system2(func_name, args = args, stdout=TRUE, stderr=TRUE)
-  cat(res, sep="\n")
+  message(res, sep="\n")
   return(invisible(res))
 }
 
@@ -1138,7 +1138,7 @@ fslbet = function(infile,
   cmd <- paste0(cmd, sprintf('%s "%s" "%s" %s', 
                              betcmd, infile, outfile, opts))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()
@@ -1283,7 +1283,7 @@ fslorient = function(
   ext = get.imgext()  
   outfile = paste0(outfile, ext)
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   if (retimg){
@@ -1450,7 +1450,7 @@ fslcmd = function(
   cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
   ext = get.imgext()
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   outfile = paste0(outfile, ext)  

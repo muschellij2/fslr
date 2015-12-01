@@ -44,7 +44,7 @@ fsldilate <- function(file, outfile=NULL,
   cmd <- paste0(cmd, sprintf('fslmaths "%s" %s "%s"', 
                              file, opts, outfile))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()

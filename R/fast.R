@@ -36,7 +36,7 @@ fast = function(
     outfile, file))
   ext = get.imgext()
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)  
   if (retimg){
@@ -101,7 +101,7 @@ fsl_biascorrect = function(
     opts, outfile, file))
   ext = get.imgext()
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
 

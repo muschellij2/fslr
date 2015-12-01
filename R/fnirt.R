@@ -41,7 +41,7 @@ fnirt = function(infile,
     infile, reffile, outfile, opts))
   
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   ext = get.imgext()

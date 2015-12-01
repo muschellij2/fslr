@@ -30,7 +30,7 @@ fsl_anat = function(
   cmd <- paste(cmd, sprintf(' %s -o "%s" -t %s -i "%s";', 
                             opts, outdir, modality, file))
   if (verbose){
-    cat(cmd, "\n")
+    message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
   return(res)  
