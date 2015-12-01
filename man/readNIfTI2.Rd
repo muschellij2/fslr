@@ -7,7 +7,8 @@
 \usage{
 readNIfTI2(..., reorient = FALSE)
 
-readnii(..., reorient = FALSE, dtype = TRUE, drop_dim = TRUE)
+readnii(..., reorient = FALSE, dtype = TRUE, drop_dim = TRUE,
+  warn = FALSE)
 }
 \arguments{
 \item{...}{Arguments to pass to \code{\link{readNIfTI}}}
@@ -17,6 +18,9 @@ readnii(..., reorient = FALSE, dtype = TRUE, drop_dim = TRUE)
 \item{dtype}{Should \code{\link{datatyper}} be run after reading?}
 
 \item{drop_dim}{Should \code{\link{drop_img_dim}} be run after reading?}
+
+\item{warn}{Should warnings from \code{\link{readNIfTI}} be 
+printed?  If not, \code{\link{suppressWarnings}} is called}
 }
 \value{
 \code{nifti} object

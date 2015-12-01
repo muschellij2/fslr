@@ -14,9 +14,19 @@ readNIfTI2 <- function(..., reorient = FALSE){
 #' @rdname readNIfTI2
 #' @param dtype Should \code{\link{datatyper}} be run after reading?
 #' @param drop_dim Should \code{\link{drop_img_dim}} be run after reading?
+#' @param warn Should warnings from \code{\link{readNIfTI}} be 
+#' printed?  If not, \code{\link{suppressWarnings}} is called
 #' @export
-readnii <- function(..., reorient = FALSE, dtype = TRUE, drop_dim = TRUE){
-  nim = readNIfTI(..., reorient = reorient)
+readnii <- function(..., reorient = FALSE, dtype = TRUE, 
+                    drop_dim = TRUE,
+                    warn = FALSE){
+  if (warn) {
+    nim = readNIfTI(..., reorient = reorient)
+  } else {
+    suppressWarnings({
+      nim = readNIfTI(..., reorient = reorient)
+    })
+  }
   if (drop_dim) {
     nim = drop_img_dim(nim)
   }
