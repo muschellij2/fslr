@@ -33,7 +33,7 @@ writenii <- function(nim, filename,
     nim = drop_img_dim(nim)
   }
   if (dtype) {
-    nim = datatyper(nim)
+    nim = datatyper(nim, warn = warn)
   }
   if (warn) {
     x = oro.nifti::writeNIfTI(nim, nii.stub(filename), ...)

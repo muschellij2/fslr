@@ -26,7 +26,7 @@ tempimg = function(nim, gzipped = TRUE, checknan = TRUE,
     }
   }
   if (check_type) {
-    nim = datatyper(nim)
+    nim = datatyper(nim, warn = warn)
   }
   ########### added for weird stuff of NIfTI
   nim = drop_img_dim(nim)
