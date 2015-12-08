@@ -1272,9 +1272,14 @@ fslorient = function(
   verbose = TRUE,
   ...){
   
-  if (grepl("-get", opts) & retimg){
+  if (grepl("-get", opts) & retimg) {
     warning(paste0("fslorient option was a -get, ",
-                   "image was not changed - output not returned"))
+                   "image was not changed - output not returned,",
+                   " and retimg set to FALSE"))
+    if (!intern) {
+      warning("intern set to TRUE")
+    }
+    retimg = FALSE
   }  
   cmd = get.fsl()
   file = checkimg(file, ...)
