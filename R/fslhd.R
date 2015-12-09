@@ -54,7 +54,7 @@ fsldir = function(){
 #' @examples
 #' have.fsl()
 have.fsl = function(){
-  x = suppressWarnings(try(get.fsl(), silent=TRUE))
+  x = suppressWarnings(try(get.fsl(), silent = TRUE))
   return(!inherits(x, "try-error"))
 }
 
@@ -156,9 +156,9 @@ fslmaths = function(
   ...){
   
   res = fslcmd("fslmaths", 
-               file=file, 
-               outfile = outfile, retimg= retimg,
-               reorient=reorient, intern=intern, opts=opts, 
+               file = file, 
+               outfile = outfile, retimg = retimg,
+               reorient = reorient, intern = intern, opts = opts, 
                ... = ..., verbose = verbose, samefile = FALSE)
   
   return(res)  
@@ -188,10 +188,10 @@ fslbin = function(
   opts = "", 
   ...){
   
-  all.opts = paste("-bin ", opts, collapse=" " )
-  res = fslmaths(file=file, outfile=outfile, 
-                 retimg=retimg, reorient=reorient,
-                 intern=intern, opts = all.opts, ...)
+  all.opts = paste("-bin ", opts, collapse = " " )
+  res = fslmaths(file = file, outfile = outfile, 
+                 retimg = retimg, reorient = reorient,
+                 intern = intern, opts = all.opts, ...)
   
   return(res)  
 }
@@ -229,7 +229,7 @@ fslstats <- function(file, opts="", verbose = TRUE, ts = FALSE, ...){
                         ifelse(ts, "-t", ""), 
                         file, 
                         opts))
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
   x = str_trim(system(cmd, intern = TRUE))
@@ -283,11 +283,12 @@ fslsmooth <- function(
   leader = cmd = get.fsl()
   file = checkimg(file, ...)
   cmd <- paste0(cmd, sprintf('fslmaths "%s"', file))
-  if (! is.null(mask)) {
+  if ( !is.null(mask)) {
     mask = checkimg(mask, ...)
     cmd <- paste(cmd, sprintf(' -mas "%s"', mask))
   }
-  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
+  outfile = check_outfile(outfile = outfile, 
+                          retimg = retimg, fileext = "")
   outfile = nii.stub(outfile)
   cmd <- paste(cmd, sprintf(' -s %s "%s";', sigma, outfile))
   ext = get.imgext()
@@ -308,17 +309,17 @@ fslsmooth <- function(
                              sprintf('fslmaths "%s" -div "%s" -mas "%s" "%s";', 
                                      outfile, mask.blur, mask, outfile)))
   }
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }  
-  res = system(cmd, intern=intern)
+  res = system(cmd, intern = intern)
   outfile = paste0(outfile, ext)  
-  if (rm.mask.img){
+  if (rm.mask.img) {
     file.remove(paste0(mask.blur, ext))    
   }
   
-  if (retimg){
-    img = readnii(outfile, reorient=reorient, ...)
+  if (retimg) {
+    img = readnii(outfile, reorient = reorient, ...)
     return(img)
   }   
   #   x = file.remove(paste0(mask.blur, ".nii"))
@@ -358,20 +359,21 @@ fslmask <- function(file, mask, outfile=NULL,
                     ...){
   
   cmd = get.fsl()
-  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
+  outfile = check_outfile(outfile = outfile, 
+                          retimg = retimg, fileext = "")
   outfile = nii.stub(outfile)
   file = checkimg(file, ...)
   mask = checkimg(mask, ...)
   cmd <- paste0(cmd, sprintf('fslmaths "%s" -mas "%s" %s "%s"', 
                              file, mask, opts, outfile))
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
+  res = system(cmd, intern = intern)
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
-  if (retimg){
-    img = readnii(outfile, reorient=reorient, ...)
+  if (retimg) {
+    img = readnii(outfile, reorient = reorient, ...)
     return(img)
   }  
   return(res)
@@ -415,21 +417,22 @@ fslerode <- function(file, outfile=NULL,
                      ...){
   
   cmd = get.fsl()
-  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
+  outfile = check_outfile(outfile = outfile, 
+                          retimg = retimg, fileext = "")
   
   outfile = nii.stub(outfile)
   file = checkimg(file, ...)    
   cmd <- paste0(cmd, sprintf('fslmaths "%s" %s -ero %s "%s"', 
                              file, kopts, opts, outfile))
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
+  res = system(cmd, intern = intern)
   ext = get.imgext()
   outfile = paste0(outfile, ext)
   stopifnot(file.exists(outfile))
-  if (retimg){
-    img = readnii(outfile, reorient=reorient, ...)
+  if (retimg) {
+    img = readnii(outfile, reorient = reorient, ...)
     return(img)
   }
   return(res)
@@ -456,10 +459,10 @@ fslval <- function(file, keyword = "", verbose = TRUE, ...){
   cmd <- get.fsl()
   file = checkimg(file, ...)
   cmd <- paste0(cmd, sprintf('fslval "%s" %s', file, keyword))
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  return(str_trim(system(cmd, intern=TRUE)))
+  return(str_trim(system(cmd, intern = TRUE)))
 }
 
 #' @title fslval help
@@ -471,7 +474,7 @@ fslval <- function(file, keyword = "", verbose = TRUE, ...){
 #'  fslval.help()
 #' } 
 fslval.help = function(){
-  return(fslhelp("fslval", help.arg=""))
+  return(fslhelp("fslval", help.arg = ""))
 }
 
 
@@ -493,10 +496,10 @@ fslhd <- function(file, opts="", verbose = TRUE, ...){
   cmd <- get.fsl()
   file = checkimg(file, ...)
   cmd <- paste0(cmd, sprintf('fslhd "%s" %s', file, opts))
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  system(cmd, intern=TRUE)
+  system(cmd, intern = TRUE)
 }
 
 #' @title FSLhd help
@@ -508,7 +511,7 @@ fslhd <- function(file, opts="", verbose = TRUE, ...){
 #'  fslhd.help()
 #' }   
 fslhd.help = function(){
-  return(fslhelp("fslhd", help.arg=""))
+  return(fslhelp("fslhd", help.arg = ""))
 }
 
 #' @title Parse FSL Header
@@ -524,15 +527,15 @@ fslhd.help = function(){
 #'  fslhd.parse(hd)
 #' }  
 fslhd.parse <- function(hd){
-  ss <- strsplit(hd, split=" ")
+  ss <- strsplit(hd, split = " ")
   ss <- lapply(ss, function(x) x[!x %in% ""])
   ss <- lapply(ss, function(x){
     if (grepl("_xyz", x[1])) 
-      x <- c(x[1], paste(x[2:length(x)], sep="", collapse= " "))
+      x <- c(x[1], paste(x[2:length(x)], sep = "", collapse = " "))
     if (grepl("form_name", x[1])) 
-      x <- c(x[1], paste(x[2:length(x)], sep="", collapse= "-"))
+      x <- c(x[1], paste(x[2:length(x)], sep = "", collapse = "-"))
     if (grepl("descrip", x[1])) 
-      x <- c(x[1], paste(x[2:length(x)], sep="", collapse= " "))  
+      x <- c(x[1], paste(x[2:length(x)], sep = "", collapse = " "))  
     return(x)
   })
   ss.len <- sapply(ss, length)
@@ -545,7 +548,7 @@ fslhd.parse <- function(hd){
   })
   ss <- do.call("rbind", ss)
   rownames(ss) <- ss[,1]
-  ss <- data.frame(value=ss[,2, drop=FALSE], stringsAsFactors=FALSE)
+  ss <- data.frame(value = ss[,2, drop=FALSE], stringsAsFactors = FALSE)
   return(ss)
 }
 
@@ -567,7 +570,7 @@ getForms <- function(file, ...){
   x <- fslhd(file)
   convmat <- function(form){
     ss <- strsplit(form, " ")
-    ss <- t(sapply(ss, function(x) x[x!=""]))
+    ss <- t(sapply(ss, function(x) x[ x != "" ]))
     ss <- ss[, -1]
     class(ss) <- "numeric"
     return(ss)
@@ -582,12 +585,12 @@ getForms <- function(file, ...){
   
   short_orient <- function(orient){
     ss <- strsplit(orient, " ")
-    ss <- sapply(ss, function(x) x[x!=""])[2,]
+    ss <- sapply(ss, function(x) x[ x != "" ])[2,]
     first <- substr(ss, 1,1)
     ss2 <- strsplit(ss, "-")
     ss2 <- sapply(ss2, function(x) x[length(x)])
     second <- substr(ss2, 1,1)
-    paste(first, second, sep="")
+    paste(first, second, sep = "")
   }
   ssor <- short_orient(sor)
   sqor <- short_orient(qor)
@@ -599,8 +602,9 @@ getForms <- function(file, ...){
   qform_code <- as.numeric(
     gsub("qform_code", "", x[grepl("qform_code", x)])
   )  
-  return(list(qform=qform, sform=sform, sor=sor, qor=qor, 
-              ssor=ssor, sqor=sqor, sform_code= sform_code, qform_code=qform_code ))
+  return(list(qform = qform, sform = sform, sor = sor, qor = qor, 
+              ssor = ssor, sqor = sqor, sform_code = sform_code, 
+              qform_code = qform_code ))
 }
 
 #' @title Determine of Q and S forms are consistent
@@ -652,7 +656,7 @@ check_sform <- function(hd, value=0){
 check_sform_file <- function(file, value=0, ...){
   file = checkimg(file, ...)  
   hd <- getForms(file, ...)
-  check_sform(hd, value=value)
+  check_sform(hd, value = value)
 }
 ## if sign(det(res$sform)) == sign(det(res$qform)) and 
 ## res$ssor[1] == res$sqor[1] then all good
@@ -722,7 +726,8 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
                    intern=FALSE, verbose = TRUE,
                    ...){
   cmd <- get.fsl()
-  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
+  outfile = check_outfile(outfile = outfile, 
+                          retimg = retimg, fileext = "")
   
   outfile = nii.stub(outfile)
   
@@ -731,14 +736,14 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
   if (bin) runbin = "-bin"
   cmd <- paste0(cmd, sprintf('fslmaths "%s" %s -fillh "%s"', file, 
                              runbin, outfile))
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
+  res = system(cmd, intern = intern)
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
-  if (retimg){
-    img = readnii(outfile, reorient=reorient, ...)
+  if (retimg) {
+    img = readnii(outfile, reorient = reorient, ...)
     return(img)
   }
   return(res)
@@ -778,25 +783,26 @@ fslthresh = function(file, outfile = NULL,
                      intern=FALSE, 
                      opts = "", verbose = TRUE, ...){
   cmd <- get.fsl()
-  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
+  outfile = check_outfile(outfile = outfile, 
+                          retimg = retimg, fileext = "")
   
   outfile = nii.stub(outfile)
   
   file = checkimg(file, ...)  
   
-  if (!is.null(uthresh)){
+  if (!is.null(uthresh)) {
     opts = paste(sprintf("-uthr %f", uthresh), opts)
   }
   cmd <- paste0(cmd, sprintf('fslmaths "%s" -thr %f %s "%s"', 
                              file, thresh, opts, outfile))
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
+  res = system(cmd, intern = intern)
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
-  if (retimg){
-    img = readnii(outfile, reorient=reorient, ...)
+  if (retimg) {
+    img = readnii(outfile, reorient = reorient, ...)
     return(img)
   }
   return(res)
@@ -831,12 +837,12 @@ fslsub2 = function(file,
                    retimg = TRUE,
                    reorient = FALSE,
                    intern=FALSE, verbose = TRUE, ...){
-  res = fslmaths(file=file, 
+  res = fslmaths(file = file, 
                  outfile = outfile, 
                  retimg = retimg,
                  reorient = reorient,
-                 opts="-subsamp2",
-                 intern=intern, verbose = verbose, ... = ...)
+                 opts = "-subsamp2",
+                 intern = intern, verbose = verbose, ... = ...)
   #   cmd <- get.fsl()
   #  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
   #   outfile = nii.stub(outfile)
@@ -884,7 +890,7 @@ fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
   file = paste(file, opts)
   file = paste(file, collapse = " ")
   cmd <- paste0(cmd, sprintf('fslview %s', file))
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
   res = system(cmd, intern = intern)
@@ -926,21 +932,22 @@ fslmerge = function(infiles,
                     intern=FALSE, verbose = TRUE, ...){
   cmd <- get.fsl()
   direction = direction[1]
-  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = ".nii.gz")
+  outfile = check_outfile(outfile = outfile, 
+                          retimg = retimg, fileext = ".nii.gz")
   outfile = nii.stub(outfile)  
   infiles = sapply(infiles, checkimg)
-  infiles = paste(infiles, sep="", collapse = " ")
+  infiles = paste(infiles, sep = "", collapse = " ")
   
   cmd <- paste0(cmd, sprintf('fslmerge -%s "%s" %s', 
                              direction, outfile, infiles))
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
+  res = system(cmd, intern = intern)
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
-  if (retimg){
-    img = readnii(outfile, reorient=reorient, ...)
+  if (retimg) {
+    img = readnii(outfile, reorient = reorient, ...)
     return(img)
   }
   return(res)
@@ -988,7 +995,7 @@ flirt = function(infile,
                  intern=FALSE,
                  opts="", verbose = TRUE, ...){
   cmd <- get.fsl()
-  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
+  outfile = check_outfile(outfile = outfile, retimg = retimg, fileext = "")
   #   infile = path.expand(infile)
   #   outfile = path.expand(outfile)
   #   reffile = path.expand(reffile)
@@ -998,7 +1005,7 @@ flirt = function(infile,
   outfile = nii.stub(outfile, ...)
   
   print.omat = FALSE
-  if (is.null(omat)){
+  if (is.null(omat)) {
     omat = tempfile(fileext = ".mat")
     print.omat = TRUE
   }
@@ -1007,17 +1014,17 @@ flirt = function(infile,
     'flirt -in "%s" -ref "%s" -out "%s" -dof %d -omat "%s" %s', 
     infile, reffile, outfile, dof, omat, opts))
   
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
+  res = system(cmd, intern = intern)
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
-  if (retimg){
-    img = readnii(outfile, reorient=reorient, ...)
+  if (retimg) {
+    img = readnii(outfile, reorient = reorient, ...)
     return(img)
   }
-  if (verbose & print.omat){
+  if (verbose & print.omat) {
     message(paste0("Output matrix not specified, but stored ", 
                "temporarily at ", omat, "\n"))
   }
@@ -1063,10 +1070,10 @@ melodic = function(file,
   
   cmd <- paste0(cmd, sprintf('melodic --in "%s" --outdir "%s" %s', 
                              file, outdir, opts))
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
+  res = system(cmd, intern = intern)
   return(res)
 }
 
@@ -1092,14 +1099,14 @@ melodic.help = function(){
 #' \code{--help}
 #' @return Prints help output and returns output as character vector
 #' @export
-fslhelp = function(func_name, help.arg = "--help",extra.args = ""){
+fslhelp = function(func_name, help.arg = "--help", extra.args = ""){
   cmd = get.fsl()
   cmd <- paste0(cmd, sprintf('%s %s %s', func_name, 
                              help.arg, extra.args))
   #     args = paste(help.arg, extra.args, sep=" ", collapse = " ")
-  suppressWarnings({res = system(cmd, intern=TRUE)})
+  suppressWarnings({res = system(cmd, intern = TRUE)})
   #     res = system2(func_name, args = args, stdout=TRUE, stderr=TRUE)
-  message(res, sep="\n")
+  message(res, sep = "\n")
   return(invisible(res))
 }
 
@@ -1131,20 +1138,20 @@ fslbet = function(infile,
                   ...){
   betcmd = match.arg( betcmd )
   cmd <- get.fsl()
-  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
+  outfile = check_outfile(outfile = outfile, retimg = retimg, fileext = "")
   infile = checkimg(infile, ...)  
   outfile = checkimg(outfile, ...)  
   outfile = nii.stub(outfile, ...)
   cmd <- paste0(cmd, sprintf('%s "%s" "%s" %s', 
                              betcmd, infile, outfile, opts))
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
+  res = system(cmd, intern = intern)
   ext = get.imgext()
   outfile = paste0(outfile, ext)  
-  if (retimg){
-    img = readnii(outfile, reorient=reorient, ...)
+  if (retimg) {
+    img = readnii(outfile, reorient = reorient, ...)
     return(img)
   }
   return(res)
@@ -1162,7 +1169,7 @@ fslbet = function(infile,
 #' }  
 fslbet.help = function(betcmd = c("bet2", "bet")){
   betcmd = match.arg( betcmd )
-  return(fslhelp(betcmd, help.arg="-h"))
+  return(fslhelp(betcmd, help.arg = "-h"))
 }
 
 
@@ -1208,7 +1215,7 @@ cog = function(img, thresh = 0, ceil = FALSE, warn = TRUE){
 #' @note Just a convenience wrapper for \code{cog(ceil=TRUE)}
 #' @export
 xyz = function(...){
-  xyz = cog(..., ceil=TRUE)
+  xyz = cog(..., ceil = TRUE)
   return(xyz)
 }
 
@@ -1287,12 +1294,12 @@ fslorient = function(
   outfile = nii.stub(file)
   ext = get.imgext()  
   outfile = paste0(outfile, ext)
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
-  if (retimg){
-    img = readnii(outfile, reorient=reorient, ...)
+  res = system(cmd, intern = intern)
+  if (retimg) {
+    img = readnii(outfile, reorient = reorient, ...)
     return(img)
   } 
   return(res)  
@@ -1307,7 +1314,7 @@ fslorient = function(
 #'  fslorient.help()
 #' } 
 fslorient.help = function(){
-  return(fslhelp("fslorient", help.arg=""))
+  return(fslhelp("fslorient", help.arg = ""))
 }
 
 
@@ -1332,8 +1339,8 @@ fslreorient2std = function(
   verbose = TRUE,
   ...){
   
-  res = fslcmd(func="fslreorient2std", 
-               file= file,
+  res = fslcmd(func = "fslreorient2std", 
+               file = file,
                outfile = NULL,
                retimg = retimg,
                reorient = reorient,
@@ -1355,7 +1362,7 @@ fslreorient2std = function(
 #'  fslreorient2std.help()
 #' }  
 fslreorient2std.help = function(){
-  return(fslhelp("fslreorient2std", help.arg=""))
+  return(fslhelp("fslreorient2std", help.arg = ""))
 }
 
 
@@ -1450,18 +1457,19 @@ fslcmd = function(
   cmd <- paste0(cmd, sprintf('%s "%s"', func, file))
   no.outfile = is.null(outfile)
   if (no.outfile & samefile) outfile = ""  
-  outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
+  outfile = check_outfile(outfile = outfile, 
+                          retimg = retimg, fileext = "")
   outfile = nii.stub(outfile)
   cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
   ext = get.imgext()
-  if (verbose){
+  if (verbose) {
     message(cmd, "\n")
   }
-  res = system(cmd, intern=intern)
+  res = system(cmd, intern = intern)
   outfile = paste0(outfile, ext)  
-  if (retimg){
+  if (retimg) {
     if (samefile) outfile = file
-    img = readnii(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient = reorient, ...)
     return(img)
   } 
   
