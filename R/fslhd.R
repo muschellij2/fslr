@@ -1390,8 +1390,8 @@ fslswapdim = function(
   
   opts = paste(a, b, c)
   
-  res = fslcmd(func="fslswapdim", 
-               file= file,
+  res = fslcmd(func = "fslswapdim", 
+               file = file,
                outfile = outfile,
                retimg = retimg,
                reorient = reorient,
