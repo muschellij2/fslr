@@ -11,8 +11,8 @@ fslorienter = function(
   verbose = TRUE){
   
   res = fslorient(file = file, verbose = verbose, retimg = FALSE,
-            intern = TRUE, opts = opts)
-
+                  intern = TRUE, opts = opts)
+  
   return(res)  
 }
 
