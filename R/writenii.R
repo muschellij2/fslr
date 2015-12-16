@@ -42,5 +42,5 @@ writenii <- function(nim, filename,
       x = oro.nifti::writeNIfTI(nim, nii.stub(filename), ...)
     })
   }
-  return(invisibile(x))
+  return(invisible(x))
 }

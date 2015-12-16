@@ -30,8 +30,10 @@ copyNIfTIHeader <- function(img, # object of class nifti to copy header
   snames = snames[ !snames %in% drop_slots ]
   # create new nifti object
   arr = nifti(img = arr, dim = dim(arr))
+  # need this for niftiExtensions
+  class(arr) = class(img)
   # copy over slots
-  for (islot in snames){
+  for (islot in snames) {
     slot(arr, islot) = slot(img, islot)
   }
   #calibrate image
