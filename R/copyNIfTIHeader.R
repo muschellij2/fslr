@@ -7,7 +7,11 @@
 #' @param arr array to copy header information
 #' @param drop_slots Slots not to copy over from header
 #' @param drop Should \code{\link{dropImageDimension}} be called before returning?
-#' @param ... arguments to pass to \code{\link{niftiarr}}
+#' @param onlylast if \code{drop = TRUE}, passed to \code{\link{dropImageDimension}},
+#' if only the last dimensions should be dropped
+#' @param warn if \code{drop = TRUE}, passed to \code{\link{dropImageDimension}}, 
+#' for warning print out
+#' @param ... arguments to pass to \code{\link{nifti}}
 #' @export
 #' @return Object of class nifti the size of \code{arr}
 #' @examples 
@@ -21,6 +25,8 @@ copyNIfTIHeader <- function(img, # object of class nifti to copy header
                       arr, # array to copy header information
                       drop_slots = c(".Data", "dim_"),
                       drop = TRUE,
+                      onlylast = TRUE,
+                      warn = TRUE,
                       ...
                       ){
   arr = as.array(arr)
@@ -29,7 +35,7 @@ copyNIfTIHeader <- function(img, # object of class nifti to copy header
   # drop those not to be copied
   snames = snames[ !snames %in% drop_slots ]
   # create new nifti object
-  arr = nifti(img = arr, dim = dim(arr))
+  arr = nifti(img = arr, dim = dim(arr), ...)
   # need this for niftiExtensions
   class(arr) = class(img)
   # copy over slots

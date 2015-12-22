@@ -29,4 +29,4 @@ Suggests:
     knitr
 BugReports: https://github.com/muschellij2/fslr/issues
 SystemRequirements: FSL (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/)
-RoxygenNote: 5.0.0
+RoxygenNote: 5.0.1

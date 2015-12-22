@@ -4,7 +4,8 @@
 \alias{copyNIfTIHeader}
 \title{Copy NIfTI Header to an array}
 \usage{
-copyNIfTIHeader(img, arr, drop_slots = c(".Data", "dim_"), drop = TRUE, ...)
+copyNIfTIHeader(img, arr, drop_slots = c(".Data", "dim_"), drop = TRUE,
+  onlylast = TRUE, warn = TRUE, ...)
 }
 \arguments{
 \item{img}{object of class nifti to copy header}
@@ -15,7 +16,13 @@ copyNIfTIHeader(img, arr, drop_slots = c(".Data", "dim_"), drop = TRUE, ...)
 
 \item{drop}{Should \code{\link{dropImageDimension}} be called before returning?}
 
-\item{...}{arguments to pass to \code{\link{niftiarr}}}
+\item{onlylast}{if \code{drop = TRUE}, passed to \code{\link{dropImageDimension}},
+if only the last dimensions should be dropped}
+
+\item{warn}{if \code{drop = TRUE}, passed to \code{\link{dropImageDimension}}, 
+for warning print out}
+
+\item{...}{arguments to pass to \code{\link{nifti}}}
 }
 \value{
 Object of class nifti the size of \code{arr}
