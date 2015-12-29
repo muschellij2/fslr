@@ -1,5 +1,6 @@
-#' @title FSL Swap Dimensions 
-#' @description This function calls \code{fslswapdim}
+#' @title FSL Slice Timing Correction
+#' @description This function calls \code{slicetimer} and performs
+#' slice timing correction for fMRI data
 #' @param file (character) image to be manipulated
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti

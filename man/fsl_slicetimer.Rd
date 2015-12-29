@@ -2,7 +2,7 @@
 % Please edit documentation in R/fsl_slicetimer.R
 \name{fsl_slicetimer}
 \alias{fsl_slicetimer}
-\title{FSL Swap Dimensions}
+\title{FSL Slice Timing Correction}
 \usage{
 fsl_slicetimer(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, tr = 3, direction = "z", indexing = c("up", "down"),
@@ -39,6 +39,7 @@ If \code{retimg} then object of class nifti.  Otherwise,
 Result from system command, depends if intern is TRUE or FALSE.
 }
 \description{
-This function calls \code{fslswapdim}
+This function calls \code{slicetimer} and performs
+slice timing correction for fMRI data
 }
 
