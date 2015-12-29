@@ -3,7 +3,7 @@
 #' @aliases checkimg
 #' @description Ensures the output to be a character filename (or vector) from an input
 #' image or \code{nifti}.  
-#' @title Force object to filename with .nii extension
+#' @title Force object to filename 
 #' @param file character or \code{nifti} object
 #' @param ... options passed to \code{\link{tempimg}}
 #' @return character filename of image or temporary nii, 

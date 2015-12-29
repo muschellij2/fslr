@@ -7,7 +7,7 @@
 \alias{checkimg,list-method}
 \alias{checkimg,nifti-method}
 \alias{checkimg-methods}
-\title{Force object to filename with .nii extension}
+\title{Force object to filename}
 \usage{
 checkimg(file, ...)
 
