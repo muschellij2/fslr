@@ -38,26 +38,29 @@ fsl_slicetimer = function(
                      z = 3)
   acq_order = match.arg(acq_order)
   acq_order = switch(acq_order,
-                    contiguous = "",
-                    interleaved = "--odd")
+                     contiguous = "",
+                     interleaved = "--odd")
   
   indexing = match.arg(indexing)
   indexing = switch(indexing,
-                     up = "",
-                     down = "--down")
+                    up = "",
+                    down = "--down")
   
   if (verbose) {
-    opts = paste(opts, "--verbose")
+    opts = paste(opts, "-v")
   }
   
-  opts = paste(opts, paste0("--repeat ", tr), 
-               paste0("--direction ", direction),
+  opts = paste(opts, paste0("-r ", tr), 
+               paste0("-d ", direction),
                acq_order,
                indexing)
   # need to do this for slicetimer syntax
-  opts = paste(opts, "--out ")  
-#   
-  res = fslcmd(func = "slicetimer --in", 
+  opts = paste(opts, "-o ")  
+  opts = gsub("\\s+", " ", opts)
+  
+  opts = trimws(opts)
+  
+  res = fslcmd(func = "slicetimer -i", 
                file = file,
                outfile = outfile,
                retimg = retimg,
