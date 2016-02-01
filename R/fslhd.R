@@ -42,6 +42,7 @@ get.fsl = function(){
 fsldir = function(){
   fsldir = Sys.getenv("FSLDIR")
   if (fsldir == "") {
+    x = get.fsl()
     fsldir = getOption("fsl.path")
   }
   return(fsldir)
