@@ -4,7 +4,7 @@
 #' @param pngname filename of png of histogram of values of image to be made. For no
 #' png - set to NULL (default)
 #' @param write.nii logical - should the image be written.  
-#' filename must be character if this is TRUE (default)
+#' @param outfile if \code{write.nii = TRUE}, filename of output file
 #' @param min.val minimum value of image (default -1024 (for CT)).  If no thresholding
 #' set to -Inf
 #' @param max.val maximum value of image (default 3071 (for CT)).  If no thresholding
@@ -20,11 +20,16 @@
 #' @export
 rescale_img = function(filename, 
                        pngname = NULL, 
-                       write.nii = TRUE,
+                       write.nii = FALSE,
+                       outfile = NULL,
                        min.val = -1024,
                        max.val = 3071,
                        ROIformat=FALSE, 
-                       writer= "dcm2nii", ...){
+                       writer = "dcm2nii", ...){
+  
+  if (write.nii){
+    stopifnot(!is.null(outfile))
+  }
   
   img = check_nifti(filename)
   # inter = as.numeric(img@scl_inter)
@@ -52,10 +57,9 @@ rescale_img = function(filename,
     hist(img)
     dev.off()
   }
-  filename = nii.stub(filename)
   
   if (write.nii) {
-    writenii(img, filename = filename, ...)
+    writenii(img, filename = outfile, ...)
   }
   return(img)
 }

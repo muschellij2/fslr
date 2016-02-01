@@ -4,8 +4,9 @@
 \alias{rescale_img}
 \title{Image Rescaler}
 \usage{
-rescale_img(filename, pngname = NULL, write.nii = TRUE, min.val = -1024,
-  max.val = 3071, ROIformat = FALSE, writer = "dcm2nii", ...)
+rescale_img(filename, pngname = NULL, write.nii = FALSE, outfile = NULL,
+  min.val = -1024, max.val = 3071, ROIformat = FALSE,
+  writer = "dcm2nii", ...)
 }
 \arguments{
 \item{filename}{filename of image to be read into R or nifti object}
@@ -13,8 +14,9 @@ rescale_img(filename, pngname = NULL, write.nii = TRUE, min.val = -1024,
 \item{pngname}{filename of png of histogram of values of image to be made. For no
 png - set to NULL (default)}
 
-\item{write.nii}{logical - should the image be written.
-filename must be character if this is TRUE (default)}
+\item{write.nii}{logical - should the image be written.}
+
+\item{outfile}{if \code{write.nii = TRUE}, filename of output file}
 
 \item{min.val}{minimum value of image (default -1024 (for CT)).  If no thresholding
 set to -Inf}
