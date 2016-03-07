@@ -57,7 +57,7 @@ get_empty_dim <- function(img,
                           threshold = 0,
                           reorient = FALSE) {
   getEmptyImageDimensions(img = img, 
-                           value = value, 
-                           threshold = threshold,
-                           reorient = reorient)
+                          value = value, 
+                          threshold = threshold,
+                          reorient = reorient)
 }
