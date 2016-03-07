@@ -5,9 +5,9 @@
 #'
 #' @param img Object of class \code{nifti} where image dimensions were dropped.
 #' @param inds List of length 3 of indices from 
-#' \code{\link{dropEmptyImageDimensions}}
+#' \code{\link{dropEmptyImageDimensions}} or \code{\link{getEmptyImageDimensions}}
 #' @param orig.dim Original dimension of pre-dropped image. Output image will
-#' have dimensions same as this
+#' have dimensions same as this value
 #'
 #' @return Object of class \code{\link{nifti}}
 #' @export

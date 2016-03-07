@@ -16,7 +16,8 @@ drop_empty_dim(img, value = 0, threshold = 0, other.imgs = NULL,
 
 \item{value}{Value to check against.  If zero, then 
 \code{dropEmptyImageDimensions} will drop any dimension that has 
-all zeroes}
+fewer than \code{threshold} zeroes.  May be a vector of values, matched with 
+\code{\link{match}}}
 
 \item{threshold}{Drop dimension if fewer than \code{threshold} voxels
 are in the slice}
@@ -40,6 +41,9 @@ values
 }
 \note{
 \code{drop_empty_dim} is a shorthand for \code{dropEmptyImageDimensions}
-with all the same arguments
+with all the same arguments.  Also, \code{NA} are set to zero.
+}
+\seealso{
+\code{\link{getEmptyImageDimensions}}
 }
 

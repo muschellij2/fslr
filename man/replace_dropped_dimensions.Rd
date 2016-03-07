@@ -10,10 +10,10 @@ replace_dropped_dimensions(img, inds, orig.dim)
 \item{img}{Object of class \code{nifti} where image dimensions were dropped.}
 
 \item{inds}{List of length 3 of indices from 
-\code{\link{dropEmptyImageDimensions}}}
+\code{\link{dropEmptyImageDimensions}} or \code{\link{getEmptyImageDimensions}}}
 
 \item{orig.dim}{Original dimension of pre-dropped image. Output image will
-have dimensions same as this}
+have dimensions same as this value}
 }
 \value{
 Object of class \code{\link{nifti}}
