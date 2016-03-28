@@ -22,23 +22,21 @@ get.fsl = function(){
       }
     }
     fslout = get.fsloutput()
+    shfile = file.path(fsldir, "etc/fslconf/fsl.sh")
     cmd <- paste0("FSLDIR=", shQuote(fsldir), "; ", 
                   'PATH=${FSLDIR}/bin:${PATH};',
-                  'export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; ',
+                  'export PATH FSLDIR; ', 
+                  ifelse(file.exists(shfile), 
+                         'sh "${FSLDIR}/etc/fslconf/fsl.sh"; ', ""),
                   "FSLOUTPUTTYPE=", fslout, "; export FSLOUTPUTTYPE; ", 
                   "${FSLDIR}/bin/")
-    add_fsl50 = getOption("add_fsl50")
-    if (is.null(add_fsl50)) { 
-      add_fsl50 = FALSE 
+    fsl_pre = getOption("add_fsl50")
+    if (is.null(fsl_pre)) { 
+      fsl_pre = "" 
     } else { 
-      if (add_fsl50 == "") {
-        add_fsl50 = FALSE 
-      }
-      add_fsl50 = as.logical(add_fsl50)
+      fsl_pre = as.character(fsl_pre)
     }
-    if (add_fsl50) {
-      cmd = paste0(cmd, "fsl5.0-")
-    }
+    cmd = paste0(cmd, fsl_pre)
   } 
   if (is.null(fsldir)) stop("Can't find FSL")
   if (fsldir %in% "") stop("Can't find FSL")
