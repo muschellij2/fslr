@@ -45,9 +45,15 @@ fslroi = function(
   # Check that if min is set then size must be set
   ##################################
   nuller = function(min, size, name) {
-    if (is.null(min) == is.null(size)) {
+    
+    if (is.null(min) != is.null(size)) {
       stop(paste0(name, "min set and ", name, 
-                  "size not set, or vice versa!"))
+                  "size not set, or vice versa! Failing..."))
+    }
+    if (!is.null(size)) {
+      if (size == 0) {
+        warning("Size of 0 may have bad side effects/fail")
+      }
     }
   }
   nuller(xmin, xsize, "x")
@@ -97,7 +103,8 @@ fslroi = function(
                file = file, 
                outfile = outfile, retimg = retimg,
                reorient = reorient, intern = intern, opts = opts, 
-               ... = ..., verbose = verbose, samefile = FALSE)
+               ... = ..., verbose = verbose, samefile = FALSE,
+               opts_after_outfile = TRUE)
   
   return(res)  
 }

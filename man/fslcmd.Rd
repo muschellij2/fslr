@@ -5,7 +5,8 @@
 \title{FSL Command Wrapper}
 \usage{
 fslcmd(func, file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", verbose = TRUE, samefile = FALSE, ...)
+  intern = FALSE, opts = "", verbose = TRUE, samefile = FALSE,
+  opts_after_outfile = FALSE, ...)
 }
 \arguments{
 \item{func}{(character) FSL function}
@@ -26,6 +27,9 @@ Passed to \code{\link{readnii}}.}
 \item{verbose}{(logical) print out command before running}
 
 \item{samefile}{(logical) is the output the same file?}
+
+\item{opts_after_outfile}{(logical) should \code{opts} come after 
+the \code{outfile} in the FSL command?}
 
 \item{...}{additional arguments passed to \code{\link{readnii}}.}
 }

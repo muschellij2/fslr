@@ -1444,6 +1444,8 @@ fslswapdim.help = function(){
 #' @param opts (character) operations to be passed to \code{func} 
 #' @param verbose (logical) print out command before running
 #' @param samefile (logical) is the output the same file?
+#' @param opts_after_outfile (logical) should \code{opts} come after 
+#' the \code{outfile} in the FSL command?
 #' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
@@ -1458,6 +1460,7 @@ fslcmd = function(
   opts = "", 
   verbose = TRUE,
   samefile = FALSE,
+  opts_after_outfile = FALSE,
   ...){
   
   cmd = get.fsl()
@@ -1468,7 +1471,11 @@ fslcmd = function(
   outfile = check_outfile(outfile = outfile, 
                           retimg = retimg, fileext = "")
   outfile = nii.stub(outfile)
-  cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
+  if (!opts_after_outfile) {
+    cmd <- paste(cmd, sprintf(' %s "%s";', opts, outfile))
+  } else {
+    cmd <- paste(cmd, sprintf(' "%s" %s;', outfile, opts))
+  }
   ext = get.imgext()
   if (verbose) {
     message(cmd, "\n")
