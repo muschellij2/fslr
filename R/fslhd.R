@@ -23,9 +23,10 @@ get.fsl = function(){
     }
     fslout = get.fsloutput()
     cmd <- paste0("FSLDIR=", shQuote(fsldir), "; ", 
-                  'export FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; ',
+                  'PATH=${FSLDIR}/bin:${PATH};',
+                  'export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; ',
                   "FSLOUTPUTTYPE=", fslout, "; export FSLOUTPUTTYPE; ", 
-                  "$FSLDIR/bin/")
+                  "${FSLDIR}/bin/")
   } 
   if (is.null(fsldir)) stop("Can't find FSL")
   if (fsldir %in% "") stop("Can't find FSL")
