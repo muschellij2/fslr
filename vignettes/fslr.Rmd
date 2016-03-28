@@ -12,7 +12,7 @@ library(knitr)
 
 ## Checking if FSL exists
 
-If `R` is run using a GUI, then `fsl.path` must be set using `option(fsl.path='/path/to/fsl')`.  `have.fsl()` checks to see if FSL is in the PATH or the options are correctly set and returns `TRUE` and returns `FALSE` otherwise.
+If `R` is run using a GUI, then `fsl.path` must be set using `options(fsl.path='/path/to/fsl')`.  `have.fsl()` checks to see if FSL is in the PATH or the options are correctly set and returns `TRUE` and returns `FALSE` otherwise.
 
 ## Returning Objects
 In functions where an image is the end result, the `outfile` and `retimg` arguments are present.  If `outfile` is specified, the user wants a file to be saved to disk.  If `outfile` is not specified, a temporary file (using `tempfile`) will be created for the result and deleted at the end of the `R` session.  If `retimg=TRUE`, then the user specified that an object of class `nifti` will be returned to `R`.  If both `retimg=TRUE` and `outfile` is specified, the image will be written to disk, read into `R` and the `nifti` object will be returned.  If `retimg=FALSE` and `outfile` is not specified, the function will fail as `fslr` would be calculating an image and no result would be able to be obtained since the `outfile` is deleted.
