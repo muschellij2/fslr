@@ -30,7 +30,7 @@ get.fsl = function(){
                          'sh "${FSLDIR}/etc/fslconf/fsl.sh"; ', ""),
                   "FSLOUTPUTTYPE=", fslout, "; export FSLOUTPUTTYPE; ", 
                   "${FSLDIR}/bin/")
-    fsl_pre = getOption("add_fsl50")
+    fsl_pre = getOption("fsl_pre")
     if (is.null(fsl_pre)) { 
       fsl_pre = "" 
     } else { 
