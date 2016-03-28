@@ -27,6 +27,15 @@ get.fsl = function(){
                   'export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; ',
                   "FSLOUTPUTTYPE=", fslout, "; export FSLOUTPUTTYPE; ", 
                   "${FSLDIR}/bin/")
+    # add_fsl50 = getOption("add_fsl50")
+    # if (is.null(add_fsl50)) { 
+    # add_fsl50 = FALSE 
+    # } else { 
+      # add_fsl50 = as.logical(add_fsl50)
+    # }
+    # if (add_fsl50) {
+    # cmd = paste0(cmd, "fsl5.0-")
+    # }
   } 
   if (is.null(fsldir)) stop("Can't find FSL")
   if (fsldir %in% "") stop("Can't find FSL")
