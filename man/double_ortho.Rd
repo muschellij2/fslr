@@ -4,8 +4,8 @@
 \alias{double_ortho}
 \title{Double Orthographic Display}
 \usage{
-double_ortho(x, y = NULL, col.y = gray(0:64/64), mfrow = c(2, 4),
-  add = FALSE, ...)
+double_ortho(x, y = NULL, col.y = gray(0:64/64), NA.x = TRUE,
+  mfrow = c(2, 4), add = FALSE, ...)
 }
 \arguments{
 \item{x}{is an object of class nifti or similar.}
@@ -13,6 +13,8 @@ double_ortho(x, y = NULL, col.y = gray(0:64/64), mfrow = c(2, 4),
 \item{y}{is an object of class nifti or similar to be set aside x.}
 
 \item{col.y}{is grayscale (by default).}
+
+\item{NA.x}{Set any values of 0 in \code{x} to \code{NA}}
 
 \item{mfrow}{(numeric) layout of the 3 slices}
 
