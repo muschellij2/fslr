@@ -4,7 +4,7 @@
 \alias{zero_pad}
 \title{Zero pads an image}
 \usage{
-zero_pad(img, kdim, invert = FALSE)
+zero_pad(img, kdim, invert = FALSE, ...)
 }
 \arguments{
 \item{img}{Array or class nifti}
@@ -13,9 +13,11 @@ zero_pad(img, kdim, invert = FALSE)
 
 \item{invert}{(logical) If \code{FALSE}, does zero padding.  If \code{TRUE}, 
 reverses the process.}
+
+\item{...}{Options to \code{\link{copyNIfTIHeader}}}
 }
 \value{
-Array
+Object of class nifti
 }
 \description{
 This function zero pads an image by a certain number of 

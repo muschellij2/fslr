@@ -5,8 +5,8 @@
 #' @param kdim Dimensions of kernel
 #' @param invert (logical) If \code{FALSE}, does zero padding.  If \code{TRUE}, 
 #' reverses the process.
-#' @return Array
-#' @import fslr
+#' @param ... Options to \code{\link{copyNIfTIHeader}}
+#' @return Object of class nifti
 #' @export
 #' @examples
 #' kdim = c(3,3,5)
@@ -16,7 +16,7 @@
 #' all.equal(back, img)
 zero_pad = function(img, 
                     kdim, 
-                    invert = FALSE){
+                    invert = FALSE, ...){
   
   dimg = dim(img)
   #   img[1:dimg[1], 1:dimg[2], c(1:7, 36:29)] = 0
@@ -45,6 +45,10 @@ zero_pad = function(img,
     arr = array( 0 , dim = newdim)    
     arr[inds] = img
   }
+  if (is.nifti(img)) {
+    arr = copyNIfTIHeader(img, arr, ...)
+  }
+  
   return(arr)
 }
 
