@@ -279,8 +279,9 @@ fslstats <- function(file, opts="", verbose = TRUE, ts = FALSE, ...){
 #' @examples
 #' if (have.fsl()){
 #' system.time({
-#' x = array(rnorm(1e6), dim = c(100, 100, 100))
-#' img = nifti(x, dim= c(100, 100, 100), 
+#' dims = c(50, 50, 20)
+#' x = array(rnorm(prod(dims)), dim = dims)
+#' img = nifti(x, dim= dims, 
 #' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
 #' cal.max = max(x), pixdim = rep(1, 4))
 #' s.img = fslsmooth(img, retimg=TRUE)
@@ -420,8 +421,9 @@ fslmask <- function(file, mask, outfile=NULL,
 #' @examples
 #' if (have.fsl()){
 #' system.time({
-#' x = array(rnorm(1e6), dim = c(100, 100, 100))
-#' img = nifti(x, dim= c(100, 100, 100), 
+#' dims = c(50, 50, 20)
+#' x = array(rnorm(prod(dims)), dim = dims) 
+#' img = nifti(x, dim= dims, 
 #' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
 #' cal.max = max(x), pixdim = rep(1, 4))
 #' mask = img > .5
@@ -730,8 +732,9 @@ fslrange <- function(file, robust = FALSE, verbose = TRUE, ts = FALSE, ...){
 #' @examples
 #' if (have.fsl()){
 #' system.time({
-#' x = array(rnorm(1e6), dim = c(100, 100, 100))
-#' img = nifti(x, dim= c(100, 100, 100), 
+#' dims = c(50, 50, 20)
+#' x = array(rnorm(prod(dims)), dim = dims) 
+#' img = nifti(x, dim= dims, 
 #' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
 #' cal.max = max(x), pixdim = rep(1, 4))
 #' mask = img > .5
@@ -1457,6 +1460,7 @@ fslswapdim.help = function(){
 #' @param samefile (logical) is the output the same file?
 #' @param opts_after_outfile (logical) should \code{opts} come after 
 #' the \code{outfile} in the FSL command?
+#' @param frontopts (character) options/character to put in before filename
 #' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
@@ -1472,11 +1476,22 @@ fslcmd = function(
   verbose = TRUE,
   samefile = FALSE,
   opts_after_outfile = FALSE,
+  frontopts = "",
   ...){
   
   cmd = get.fsl()
   file = checkimg(file, ...)
-  cmd <- paste0(cmd, sprintf('%s "%s"', func, file))
+  
+  ##########################
+  # Add frontopts
+  ##########################
+  s = sprintf('%s %s ', func, frontopts)
+  s = gsub("\\s\\s+", " ", s)
+  s = sub("[ \t\r\n]+$", "", s, perl = TRUE)
+  s = paste(s, sprintf('"%s"', file))
+  cmd <- paste0(cmd, s)
+  # cmd <- paste0(cmd, sprintf('%s "%s"', func, file))
+  
   no.outfile = is.null(outfile)
   if (no.outfile & samefile) outfile = ""  
   outfile = check_outfile(outfile = outfile, 

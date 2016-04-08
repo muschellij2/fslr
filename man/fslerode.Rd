@@ -39,8 +39,9 @@ either saves the image or returns an object of class nifti.
 \examples{
 if (have.fsl()){
 system.time({
-x = array(rnorm(1e6), dim = c(100, 100, 100))
-img = nifti(x, dim= c(100, 100, 100), 
+dims = c(50, 50, 20)
+x = array(rnorm(prod(dims)), dim = dims) 
+img = nifti(x, dim= dims, 
 datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
 cal.max = max(x), pixdim = rep(1, 4))
 mask = img > .5

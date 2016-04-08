@@ -6,7 +6,7 @@
 \usage{
 fslcmd(func, file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", verbose = TRUE, samefile = FALSE,
-  opts_after_outfile = FALSE, ...)
+  opts_after_outfile = FALSE, frontopts = "", ...)
 }
 \arguments{
 \item{func}{(character) FSL function}
@@ -30,6 +30,8 @@ Passed to \code{\link{readnii}}.}
 
 \item{opts_after_outfile}{(logical) should \code{opts} come after 
 the \code{outfile} in the FSL command?}
+
+\item{frontopts}{(character) options/character to put in before filename}
 
 \item{...}{additional arguments passed to \code{\link{readnii}}.}
 }
