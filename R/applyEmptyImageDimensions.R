@@ -27,7 +27,7 @@ applyEmptyImageDimensions <- function(img,
   return(outimg)
 }
 
-#' @rdname maskEmptyImageDimensions
+#' @rdname applyEmptyImageDimensions
 #' @export
 apply_empty_dim <- function(img, 
                             inds,
