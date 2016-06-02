@@ -4,7 +4,8 @@
 \alias{mni_fname}
 \title{Construct MNI Filename}
 \usage{
-mni_fname(mm = c("1", "0.5", "2"), brain = FALSE, linear = FALSE)
+mni_fname(mm = c("1", "0.5", "2"), brain = FALSE, linear = FALSE,
+  mask = FALSE)
 }
 \arguments{
 \item{mm}{Resolution (in mm) of the brain image (isotropic)}
@@ -12,6 +13,9 @@ mni_fname(mm = c("1", "0.5", "2"), brain = FALSE, linear = FALSE)
 \item{brain}{Should the brain be returned (default) or the T1 with the skull}
 
 \item{linear}{Should the linearized MNI template be used}
+
+\item{mask}{should the mask be given?  Generally, only
+MNI152_T1_1mm_brain_mask exists.}
 }
 \value{
 Character path of filename, warning if that file does not exist

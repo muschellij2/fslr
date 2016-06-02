@@ -4,17 +4,21 @@
 #' @param mm Resolution (in mm) of the brain image (isotropic)
 #' @param brain Should the brain be returned (default) or the T1 with the skull
 #' @param linear Should the linearized MNI template be used
+#' @param mask should the mask be given?  Generally, only
+#' MNI152_T1_1mm_brain_mask exists.
 #' @return Character path of filename, warning if that file does not exist
 #' @export
 mni_fname = function(mm = c("1", "0.5", "2"),
                    brain = FALSE,
-                   linear = FALSE){
+                   linear = FALSE,
+                   mask = FALSE){
   mm = as.character(mm)
   mm = match.arg(mm)
   stub = "MNI152"
   stub = paste0(stub, ifelse(linear, "lin", ""), "_T1")
   stub = paste0(stub, "_", mm, "mm")
   stub = paste0(stub, ifelse(brain, "_brain", ""))
+  stub = paste0(stub, ifelse(mask, "_mask", ""))
   
   fname = paste0(stub, ".nii.gz") 
   fname = file.path(fsl_std_dir(), fname)
