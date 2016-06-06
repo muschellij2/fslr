@@ -40,7 +40,7 @@ run_first_all <- function(img, oprefix,
   ##########################
   # Add frontopts
   ##########################
-  cmd <- paste0(cmd, " run_first_all", args)
+  cmd <- paste0(cmd, "run_first_all ", args)
 
   if (verbose) {
     message(cmd, "\n")
