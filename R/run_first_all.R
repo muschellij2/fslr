@@ -11,7 +11,7 @@
 #' @return Result of \code{\link{system}}
 #' @export
 run_first_all <- function(img, oprefix, 
-                          brain_extracted = TRUE,
+                          brain_extracted = FALSE,
                           structures = NULL,
                           affine = NULL,
                           opts = "",

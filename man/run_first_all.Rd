@@ -4,7 +4,7 @@
 \alias{run_first_all}
 \title{Run FIRST All}
 \usage{
-run_first_all(img, oprefix, brain_extracted = TRUE, structures = NULL,
+run_first_all(img, oprefix, brain_extracted = FALSE, structures = NULL,
   affine = NULL, opts = "", verbose = TRUE)
 }
 \arguments{
