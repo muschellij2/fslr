@@ -44,7 +44,7 @@ rescale_img = function(filename,
   img = zero_trans(img)
   if (ROIformat) img[img < 0] = 0
   img = cal_img(img)
-  img@descrip = paste0("written by ", writer, " - ", img@descrip)
+  descrip(img) = paste0("written by ", writer, " - ", descrip(img))
   
   img = drop_img_dim(img)
   #### create histograms
@@ -97,8 +97,8 @@ datatyper = function(img, type_string = NULL,
     bitpix = convert.bitpix()[[type_string]]
   }  
   if (!is.null(datatype) & !is.null(bitpix)) {
-    img@datatype <- datatype
-    img@bitpix <- bitpix
+    datatype(img) <- datatype
+    bitpix(img) <- bitpix
     return(img)
   }
   if (!is.null(datatype) & is.null(bitpix)) {
@@ -108,15 +108,16 @@ datatyper = function(img, type_string = NULL,
     stop("Both bitipx and datatype need to be specified if oneis")
   }
   #### logical - sign to unsigned int 8
-  is.log = inherits(img@.Data[1], "logical")
+  arr = as(img, "array")
+  is.log = inherits(arr[1], "logical")
   if (is.log) {
-    img@datatype <- convert.datatype()$UINT8
-    img@bitpix <- convert.bitpix()$UINT8
+    datatype(img) <- convert.datatype()$UINT8
+    bitpix(img) <- convert.bitpix()$UINT8
     return(img)
   }
   #### testing for integers
   testInteger <- function(img){
-    x = c(img@.Data)
+    x = c(as(img, "array"))
     test <- all.equal(x, as.integer(x), check.attributes = FALSE)
     return(isTRUE(test))
   }  
@@ -126,8 +127,8 @@ datatyper = function(img, type_string = NULL,
     ##### does this just for binary mask
     if (all(rr == c(0, 1)) & trybyte) {
       if (all(img %in% c(0, 1))) {
-        img@datatype <- convert.datatype()$UINT8
-        img@bitpix <- convert.bitpix()$UINT8
+        datatype(img) <- convert.datatype()$UINT8
+        bitpix(img) <- convert.bitpix()$UINT8
         return(img)
       }
     }
@@ -136,23 +137,36 @@ datatyper = function(img, type_string = NULL,
       signed = TRUE
     }
     trange = diff(rr)
-    num = 8
-    if (trange > 255) num = 16
-    if (trange > 65535) num = 32
-    if (trange > 4294967295) num = 64
-    mystr = "INT"
-    if (!signed) mystr = paste0("U", mystr)
-    mystr = paste0(mystr, num)
-    img@datatype <- convert.datatype()[[mystr]]
-    img@bitpix <- convert.bitpix()[[mystr]]
+    # u = "U"
+    mystr = NULL
+    num = 16 # default is signed short
+    if (is.null(mystr) & trange <= (2 ^ num) - 1 ) {
+        mystr = ifelse(signed, "INT16", "UINT16")
+    }
+
+    num = 32 
+    if (is.null(mystr) & trange <= (2 ^ num) - 1 ) {
+      mystr = "INT32" # no UINT32 allowed
+    }
+    
+    num = 64
+    if (is.null(mystr) & trange <= (2 ^ num) - 1 ) {
+      mystr = "DOUBLE64" # Only way to 64 bits is through double
+    }
+    if (is.null(mystr)) {
+      stop(paste0("Cannot determine integer datatype, ", 
+                  "may want to recheck data or not use datatyper!"))
+    }
+    datatype(img) <- convert.datatype()[[mystr]]
+    bitpix(img) <- convert.bitpix()[[mystr]]
     return(img)
   } else {
     if (warn) {
       warning("Assuming FLOAT32")
     }
     mystr = "FLOAT32"
-    img@datatype <- convert.datatype()[[mystr]]
-    img@bitpix <- convert.bitpix()[[mystr]]
+    datatype(img) <- convert.datatype()[[mystr]]
+    bitpix(img) <- convert.bitpix()[[mystr]]
     return(img)
   }
 }
@@ -312,9 +326,7 @@ zscore_img <- function(img, mask = NULL, margin=3,
   }
   stopifnot(all.equal(dim(imgc), dim(orig.img)))
   if (inherits(orig.img, "nifti")) {
-    nim = orig.img
-    nim@.Data = imgc
-    imgc = nim
+    imgc = niftiarr(orig.img, imgc)
     imgc = datatyper(imgc, 
                      datatype = convert.datatype()$FLOAT32, 
                      bitpix = convert.bitpix()$FLOAT32) 
