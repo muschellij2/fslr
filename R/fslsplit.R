@@ -10,7 +10,7 @@
 #' @param verbose (logical) print out command before running 
 #' @return List of output files 
 #' @export
-fslmerge = function(infile, 
+fslsplit = function(infile, 
                     direction = c("t", "x", "y", "z"), 
                     output_basename = NULL, 
                     retimg = TRUE,
