@@ -37,7 +37,7 @@ fslsplit = function(infile,
   }    
   
   if (is.null(output_basename)) {
-    output_basename = tempfile()
+    output_basename = tempfile(fileext = "_")
   }
   cmd <- paste0(cmd, sprintf('fslsplit "%s" %s -%s', 
                              infile, output_basename, direction))
