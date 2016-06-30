@@ -1481,7 +1481,7 @@ fslcmd = function(
   
   cmd = get.fsl()
   file = checkimg(file, ...)
-  file = path.expand(file)
+  # file = path.expand(file)
   
   ##########################
   # Add frontopts
