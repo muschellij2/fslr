@@ -7,9 +7,7 @@
 check_mask_fail(...)
 }
 \arguments{
-\item{mask}{Object of class \code{nifti}}
-
-\item{allow.NA}{allow NAs in the mask}
+\item{...}{arguments to pass to \code{\link{check_mask}}}
 }
 \value{
 Either will error if conditions not met or an invisible \code{NULL}

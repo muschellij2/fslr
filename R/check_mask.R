@@ -24,8 +24,7 @@ check_mask <- function(mask, allow.NA = TRUE){
 
 #' @title Check Mask is Binary, Fail otherwise
 #' @description Determine if only values in a mask are 0/1.  Will error otherwise.
-#' @param mask Object of class \code{nifti}
-#' @param allow.NA allow NAs in the mask
+#' @param ... arguments to pass to \code{\link{check_mask}}
 #' @return Either will error if conditions not met or an invisible \code{NULL}
 #' @export
 #' @examples 
