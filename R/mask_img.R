@@ -13,13 +13,7 @@ mask_img <- function(img, # object of class \code{nifti}
                     allow.NA = TRUE # allow NAs in the mask
 ){
   stopifnot(inherits(img, "nifti"))
-  allowable = c(0, 1)
-  if (allow.NA) allowable = c(allowable, NA)
-  mask = as(mask, "array")
-  class(mask) = "numeric"
-  umask = unique(c(mask))
-  if (!all(umask %in% allowable)){
-    stop("Mask must be binary 0/1.  If it has NAs, allow.NA must be TRUE")
-  }
+  check_mask_fail(mask = mask, allow.NA = allow.NA)
+  
   niftiarr(img, img * mask)
 }
