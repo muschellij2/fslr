@@ -4,7 +4,7 @@
 \alias{check_mask}
 \title{Check Mask is Binary}
 \usage{
-check_mask(mask, allow.NA = TRUE)
+check_mask(mask, allow.NA = FALSE)
 }
 \arguments{
 \item{mask}{Object of class \code{nifti}}

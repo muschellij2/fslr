@@ -18,14 +18,8 @@ quantile_img = function(img,
     mask = niftiarr(img, 1)  
   }
   
-  allowable = c(0, 1)
-  mask = as(mask, "array")
-  class(mask) = "numeric"
-  umask = unique(c(mask))
-  if (!all(umask %in% allowable)) {
-    stop("Mask must be binary 0/1.")
-  }
-  
+  check_mask_fail(mask, allow.NA = FALSE)
+
   vals = img[mask == 1]
   e = ecdf(vals)
   qimg = niftiarr(img, e(c(img)))

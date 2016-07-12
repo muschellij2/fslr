@@ -9,7 +9,7 @@
 #' arr = array(rbinom(1000, size = 1, prob = 0.2), dim = c(10,10,10))
 #' nim = oro.nifti::nifti(arr)
 #' check_mask(nim)
-check_mask <- function(mask, allow.NA = TRUE){
+check_mask <- function(mask, allow.NA = FALSE){
   mask = check_nifti(mask)
   allowable = c(0, 1)
   if (allow.NA) {
@@ -33,7 +33,7 @@ check_mask <- function(mask, allow.NA = TRUE){
 #' check_mask_fail(nim)
 check_mask_fail <- function(...){
   res = check_mask(...)
-  if (!res){
+  if (!res) {
     stop("Mask must be binary 0/1.  If it has NAs, allow.NA must be TRUE")
   } else {
     return(invisible(NULL))
