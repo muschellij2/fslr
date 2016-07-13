@@ -3,6 +3,8 @@
 language: r
 warnings_are_errors: true
 sudo: required
+before_script:
+    - cat ${TRAVIS_BUILD_ID}
 notifications:
   email:
     on_success: change
