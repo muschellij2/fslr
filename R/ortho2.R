@@ -51,7 +51,17 @@
 #' @param ... other arguments to the image function may be provided here.
 #' @import scales
 #' @export
-ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64), 
+#' @examples 
+#' x = oro.nifti:::nifti(array(rnorm(1000), dim = rep(10, 3)))
+#' ortho2(x)
+#' y = x > 2
+#' ortho2(x, y)
+#' arr_x = as.array(x)
+#' arr_y = as.array(y)
+#' ortho2( arr_x)
+#' ortho2( arr_x, arr_y)
+#' 
+ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64), 
                    col.y = hotmetal(), zlim = NULL, zlim.y = NULL, 
                    NA.x = FALSE,
                    NA.y = TRUE,
@@ -77,15 +87,17 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                    add = TRUE,
                    ...) 
 {
-  x = check_nifti(x)
+  x = check_nifti(x, allow.array = TRUE)
   if (!is.null(y)) {
     if (!all(dim(x)[1:3] == dim(y)[1:3])) {
       stop("dimensions of \"x\" and \"y\" must be equal")
     }
   }
-  if (inherits(x, "nifti")){
+  x_is_nifti = FALSE
+  if (inherits(x, "nifti")) {
+    x_is_nifti = TRUE
     if (!is.null(window)) {
-      x = window_img(x, window=window, replace="window")
+      x = window_img(x, window = window, replace = "window")
 #       x@cal_min = window[1]
 #       x@cal_max = window[2]
 #       x[ x < window[1] ] = window[1]
@@ -96,36 +108,49 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   Y <- ncol(x)
   Z <- nsli(x)
   W <- ntim(x)
-  mXY = max(X, Y)
+  # mXY = max(X, Y)
   lr.shift = 4
   ud.shift = 6
-  if (!is.null(y)){
-    y = check_nifti(y)
-    if (NA.y){
+  if (!is.null(y)) {
+    y = check_nifti(y, allow.array = TRUE)
+    y_is_nifti = FALSE
+    if (inherits(y, "nifti")) {
+      y_is_nifti = TRUE    
+    }
+    if (NA.y) {
       y[ y == 0 ] = NA
+    }
+    if (y_is_nifti) {
       y = cal_img(y)
     }
   }
-  if (NA.x){
+  if (NA.x) {
     x[ x == 0 ] = NA
-    x = cal_img(x)
   }
+  if (x_is_nifti) {
+    x = cal_img(x)
+  }  
   if (is.null(xyz)) {
     xyz <- ceiling(c(X, Y, Z)/2)
   }
   if (X == 0 || Y == 0 || Z == 0) {
     stop("size of NIfTI volume is zero, nothing to plot")
   }  
-  if (is.null(zlim)) {
-    zlim <- c(x@cal_min, x@cal_max)
-    if (any(!is.finite(zlim)) || diff(zlim) == 0) {
-      zlim <- c(x@glmin, x@glmax)
-    }
-    if (any(!is.finite(zlim)) || diff(zlim) == 0) {
-      zlim <- range(x, na.rm = TRUE)
-    }
-  }
-  if (is.null(breaks)){
+  zlim = zlimmer(x, zlim = zlim)
+  # if (is.null(zlim)) {
+  #   if (x_is_nifti) {
+  #     zlim <- c(cal.min(x), cal.max(x))
+  #     if (any(!is.finite(zlim)) || diff(zlim) == 0) {
+  #       zlim <- c(glmin(x), glmax(x))
+  #     }
+  #   } else {
+  #     zlim = c(0, 0)
+  #   }
+  #   if (any(!is.finite(zlim)) || diff(zlim) == 0) {
+  #     zlim <- range(x, na.rm = TRUE)
+  #   }
+  # }
+  if (is.null(breaks)) {
     breaks <- c(min(x, zlim, na.rm = TRUE), 
                 seq(min(zlim, na.rm = TRUE),
                     max(zlim, na.rm = TRUE), 
@@ -133,22 +158,67 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                 max(x, zlim, na.rm = TRUE))
   }
 
-  if (!is.null(y) && is.null(zlim.y)) {
-    zlim.y <- c(y@cal_min, y@cal_max)
-    if (max(zlim.y) == 0) {
-      zlim.y <- c(x@glmin, x@glmax)
-    }
-  }
+  zlim.y = zlimmer(y, zlim = zlim.y)
+  
+  # if (!is.null(y) && is.null(zlim.y)) {
+  #   if (y_is_nifti){
+  #     zlim.y <- c(cal.min(y), cal.max(y))
+  #     if (any(!is.finite(zlim.y)) || diff(zlim.y) == 0) {
+  #       zlim.y <- c(glmin(x), glmax(x))
+  #     }
+  #   } else {
+  #     zlim = c(0, 0)
+  #   }
+  #   
+  #   zlim.y <- c(y@cal_min, y@cal_max)
+  #   if (max(zlim.y) == 0) {
+  #     zlim.y <- c(x@glmin, x@glmax)
+  #   }
+  # }
   oldpar <- par(no.readonly = TRUE)
   par(mfrow = mfrow, oma = oma, mar = mar, bg = bg)
   
-  pdim = x@pixdim
+  if (x_is_nifti) {
+    pdim = pixdim(x)
+  } else {
+    pdim = rep(1, 4)
+  }
+  
   if (!is.na(W)) {
     if (w < 1 || w > W) {
       stop("volume \"w\" out of range")
     }
     x = x[, , , w]
   }
+  # L = list(X = 1:X,
+  #          Y = 1:Y,
+  #          Z = 1:Z)
+  # grapher = function(img, idim, zlimit, adder, colors, runbreaks, ...){
+  #   xyz_val = xyz[idim]
+  #   if (idim == 1) {
+  #     vec = img[xyz_val, , ]
+  #   }
+  #   if (idim == 2) {
+  #     vec = img[, xyz_val, ]
+  #   }
+  #   if (idim == 3) {
+  #     vec = img[, , xyz_val]
+  #   }
+  #   dims = 1:3
+  #   grab = !(dims %in% idim)
+  #   l = L[grab]
+  #   asp = (dims + 1)[grab]
+  #   asp = pdim[asp[2]]/pdim[asp[1]]
+  #   
+  #   graphics::image(l[[1]], l[[2]], vec, col = colors, 
+  #                   zlim = zlimit,
+  #                   add = adder,
+  #                   breaks = runbreaks, 
+  #                   asp = asp, xlab = ylab, 
+  #                   ylab = xlab, axes = axes, ...)
+  # }
+  # grapher(img = x, idim = 2, zlimit = zlim, adder = FALSE, colors = col, 
+  #         runbreaks = breaks, ...)
   graphics::image(1:X, 1:Z, x[, xyz[2], ], col = col, zlim = zlim, 
                   breaks = breaks, asp = pdim[4]/pdim[2], xlab = ylab, 
                   ylab = xlab, axes = axes, ...)
@@ -156,11 +226,12 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
     abline(h = xyz[3], v = xyz[1], col = col.crosshairs)
   }
   if (!is.null(y)) {
-    if (inherits(y, "nifti") | inherits(y, "anlz")){
-      class(y@.Data) == "numeric"
+    if (inherits(y, "nifti") || inherits(y, "anlz")) {
+      # class(y@.Data) == "numeric"
+      y = as.array(y)
     }
     
-    if (is.null(ybreaks)){
+    if (is.null(ybreaks)) {
       graphics::image(1:X, 1:Z, y[, xyz[2], ], col = col.y, 
                     zlim = zlim.y, add = add,
                     asp = ifelse(add, NA, pdim[4]/pdim[2]),
@@ -177,11 +248,11 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   if (crosshairs) {
     abline(h = xyz[3], v = xyz[1], col = col.crosshairs)
   }
-  if (add.orient){
-    text("L", x = X + lr.shift, y = Z/2, las = 1, col="white")
-    text("R", x = -lr.shift, y = Z/2, las = 1, col="white")
-    text("S", x = X/2-.5, y = Z-ud.shift, las = 1, col="white")
-    text("I", x = X/2-.5, y = ud.shift, las = 1, col="white")
+  if (add.orient) {
+    text("L", x = X + lr.shift, y = Z/2, las = 1, col = "white")
+    text("R", x = -lr.shift, y = Z/2, las = 1, col = "white")
+    text("S", x = X/2 - .5, y = Z - ud.shift, las = 1, col = "white")
+    text("I", x = X/2 - .5, y = ud.shift, las = 1, col = "white")
   }
   graphics::image(1:Y, 1:Z, x[xyz[1], , ], col = col, breaks = breaks, 
                   asp = pdim[4]/pdim[3], xlab = xlab, ylab = ylab, 
@@ -190,7 +261,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
     abline(h = xyz[3], v = xyz[2], col = col.crosshairs)
   }
   if (!is.null(y)) {
-    if (is.null(ybreaks)){
+    if (is.null(ybreaks)) {
       graphics::image(1:Y, 1:Z, y[xyz[1], , ], col = col.y, 
                     zlim = zlim.y, add = add,
                     asp = ifelse(add, NA, pdim[4]/pdim[3]),
@@ -198,7 +269,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                     )
     } else {
       graphics::image(1:Y, 1:Z, y[xyz[1], , ], col = col.y, 
-                      zlim = zlim.y, add = add, breaks=ybreaks,
+                      zlim = zlim.y, add = add, breaks = ybreaks,
                       asp = ifelse(add, NA, pdim[4]/pdim[3]),
                       axes = axes
                       )
@@ -207,11 +278,11 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   if (crosshairs) {
     abline(h = xyz[3], v = xyz[2], col = col.crosshairs)
   }
-  if (add.orient){
-    text("A", x = Y-1, y = Z/2, las = 1, col="white")
-    text("P", x = 0+1, y = Z/2, las = 1, col="white")
-    text("S", x = Y/2-.5, y = Z-ud.shift, las = 1, col="white")
-    text("I", x = Y/2-.5, y = ud.shift, las = 1, col="white")
+  if (add.orient) {
+    text("A", x = Y - 1, y = Z/2, las = 1, col = "white")
+    text("P", x = 0 + 1, y = Z/2, las = 1, col = "white")
+    text("S", x = Y/2 - .5, y = Z - ud.shift, las = 1, col = "white")
+    text("I", x = Y/2 - .5, y = ud.shift, las = 1, col = "white")
     #     
     #     mtext("A", side=4, las = 1, outer=FALSE, adj=0)
     #     mtext("P", side=2, las = 1, outer=FALSE, adj= 0, padj=0)
@@ -225,7 +296,7 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
     abline(h = xyz[2], v = xyz[1], col = col.crosshairs)
   }
   if (!is.null(y)) {
-    if (is.null(ybreaks)){
+    if (is.null(ybreaks)) {
       graphics::image(1:X, 1:Y, y[, , xyz[3]], col = col.y, 
                       zlim = zlim.y, add = add,
                       asp = ifelse(add, NA, pdim[3]/pdim[2]),
@@ -242,11 +313,11 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   if (crosshairs) {
     abline(h = xyz[2], v = xyz[1], col = col.crosshairs)
   }
-  if (add.orient){
-    text("L", x = X + lr.shift, y = Y/2, las = 1, col="white")
-    text("R", x = -lr.shift, y = Y/2, las = 1, col="white")
-    text("A", x = X/2-.5, y = Y-ud.shift, las = 1, col="white")
-    text("P", x = X/2-.5, y = ud.shift, las = 1, col="white")
+  if (add.orient) {
+    text("L", x = X + lr.shift, y = Y/2, las = 1, col = "white")
+    text("R", x = -lr.shift, y = Y/2, las = 1, col = "white")
+    text("A", x = X/2 - .5, y = Y - ud.shift, las = 1, col = "white")
+    text("P", x = X/2 - .5, y = ud.shift, las = 1, col = "white")
     
     #     mtext("L", side=4, las = 1, outer=FALSE, adj=0)
     #     mtext("R", side=2, las = 1, outer=FALSE, adj= 0, padj=0)
@@ -260,24 +331,24 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                     ylab = "", axes = FALSE, ...)
     })
     if (addlegend) {
-      legend(x = leg.x, y= leg.y, 
-           legend=legend, 
-           pch=rep(15, length(leg.col)),
-           col=leg.col, 
+      legend(x = leg.x, y = leg.y, 
+           legend = legend, 
+           pch = rep(15, length(leg.col)),
+           col = leg.col, 
            cex = leg.cex, 
            text.col = "white",
            title = leg.title)    
     }
-    if (!is.null(text)){
-      text(labels = text, x=text.x, y=text.y, col = 
+    if (!is.null(text)) {
+      text(labels = text, x = text.x, y = text.y, col = 
              text.color, cex = text.cex)
     }    
   }
 
   par(oldpar)
   if (!is.null(y)) {
-    if (is.null(ybreaks)){
-      if (ycolorbar){
+    if (is.null(ybreaks)) {
+      if (ycolorbar) {
         warning("colorbar not supported if ybreaks unspecified")
         #         nc <- length(col.y)
         #         if (diff(zlim.y) == 0) {
@@ -290,9 +361,9 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
         #         colorbar(breaks=ybreaks, col=col.y, text.col="white")
       }
     } else {
-      if (ycolorbar){
-        colorbar(breaks=ybreaks, col=alpha(col.y, 1), 
-                 text.col="white", 
+      if (ycolorbar) {
+        colorbar(breaks = ybreaks, col = alpha(col.y, 1), 
+                 text.col = "white", 
                  labels = clabels)
       }
     }
@@ -315,19 +386,19 @@ ortho2 = function (x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
 #' @import graphics
 #' @export
 #' @return A plot
-colorbar <- function (breaks, #the minimum and maximum z values for which 
+colorbar <- function(breaks, #the minimum and maximum z values for which 
                       # colors should be plotted (see \code{\link{image}})
                      col, # a list of colors (see \code{\link{image}})
                      text.col = "white", # axis and text label color
                      labels = TRUE,
                      maxleft = 0.95
-                     ) {
+                     ){
   # taken from vertical.image.legend from package aqfig
   starting.par.settings <- par(no.readonly = TRUE)
   mai <- par("mai")
   fin <- par("fin")
   rat = mai[4]/fin[1]
-  rat = max(rat, 1-maxleft)
+  rat = max(rat, 1 - maxleft)
   x.legend.fig <- c(1 - rat, 1)
   y.legend.fig <- c(mai[1]/fin[2], 1 - (mai[3]/fin[2]))
   x.legend.plt <- c(x.legend.fig[1] + (0.08 * (x.legend.fig[2] - 
@@ -340,7 +411,7 @@ colorbar <- function (breaks, #the minimum and maximum z values for which
   par(new = TRUE, pty = "m", plt = c(x.legend.plt, y.legend.plt))
   image(x = 1, y = z, z = matrix(z, nrow = 1, ncol = length(col)), 
         col = col, xlab = "", ylab = "", xaxt = "n", yaxt = "n")
-  if (isTRUE(labels)){
+  if (isTRUE(labels)) {
     at = NULL
   } else {
     at = z

@@ -7,14 +7,19 @@
 #' @return If \code{zlim = NULL}, then vector of length 2, otherwise returns \code{zlim}
 #' @export
 zlimmer = function(x, zlim = NULL){
-  if (is.null(x)){
+  if (is.null(x)) {
     return(NULL)
   }
-  x = check_nifti(x)
+  x = check_nifti(x, allow.array = TRUE)
+  x_is_nifti = inherits(x, "nifti")
   if (is.null(zlim)) {
-    zlim <- c(x@cal_min, x@cal_max)
-    if (any(!is.finite(zlim)) || diff(zlim) == 0) {
-      zlim <- c(x@glmin, x@glmax)
+    if (x_is_nifti) {
+      zlim <- c(cal.min(x), cal.max(x))
+      if (any(!is.finite(zlim)) || diff(zlim) == 0) {
+        zlim <- c(glmin(x), glmax(x))
+      }
+    } else {
+      zlim = c(0, 0)
     }
     if (any(!is.finite(zlim)) || diff(zlim) == 0) {
       zlim <- range(x, na.rm = TRUE)

@@ -104,6 +104,17 @@ in \code{double_ortho}}
 Copy of \code{oro.nifti}'s \code{\link{orthographic}} function 
 with some tweaks such as adding L/R designations for left and right
 }
+\examples{
+x = oro.nifti:::nifti(array(rnorm(1000), dim = rep(10, 3)))
+ortho2(x)
+y = x > 2
+ortho2(x, y)
+arr_x = as.array(x)
+arr_y = as.array(y)
+ortho2( arr_x)
+ortho2( arr_x, arr_y)
+
+}
 \seealso{
 \link{orthographic}
 }
