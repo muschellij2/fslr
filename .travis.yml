@@ -3,8 +3,11 @@
 language: r
 warnings_are_errors: true
 sudo: required
-before_script:
-    - cat ${TRAVIS_BUILD_ID}
+before_install:
+    - echo "TRAVIS BUILD ID"
+    - echo ${TRAVIS_BUILD_ID}
+    - echo "TRAVIS JOB ID"
+    - echo ${TRAVIS_JOB_ID}
 notifications:
   email:
     on_success: change
