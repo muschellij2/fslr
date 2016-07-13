@@ -48,6 +48,8 @@
 #' @param clabels Label for colorbar (see \code{\link{colorbar}})
 #' @param add Should the y-plot be added or its own plot?  Used
 #' in \code{double_ortho}
+#' @param pdim Pixel dimensions if passing in arrays.  Will be overridden if 
+#' \code{x} is a \code{nifti} object
 #' @param ... other arguments to the image function may be provided here.
 #' @import scales
 #' @export
@@ -60,7 +62,6 @@
 #' arr_y = as.array(y)
 #' ortho2( arr_x)
 #' ortho2( arr_x, arr_y)
-#' 
 ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64), 
                    col.y = hotmetal(), zlim = NULL, zlim.y = NULL, 
                    NA.x = FALSE,
@@ -85,6 +86,7 @@ ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                    ycolorbar = FALSE,
                    clabels = TRUE,
                    add = TRUE,
+                   pdim = NULL,
                    ...) 
 {
   x = check_nifti(x, allow.array = TRUE)
@@ -181,8 +183,11 @@ ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   if (x_is_nifti) {
     pdim = pixdim(x)
   } else {
-    pdim = rep(1, 4)
+    if (is.null(pdim)) {
+      pdim = rep(1, 4)
+    } 
   }
+  stopifnot(length(pdim) >= 4)
   
   if (!is.na(W)) {
     if (w < 1 || w > W) {
