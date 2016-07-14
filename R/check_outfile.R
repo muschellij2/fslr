@@ -2,7 +2,7 @@
 #'
 #' @description This function checks if an output filename is not NULL 
 #' in conjunction
-#' whether the user would like to return an iamge
+#' whether the user would like to return an image
 #' @param outfile output filename or NULL
 #' @param retimg Should an image be returned
 #' @param fileext a non-empty character vector giving the file extension

@@ -19,6 +19,6 @@ Filename of output file or a temporary filename
 \description{
 This function checks if an output filename is not NULL 
 in conjunction
-whether the user would like to return an iamge
+whether the user would like to return an image
 }
 

@@ -14,11 +14,15 @@ get.fsl = function(){
     fsldir = getOption("fsl.path")
     ## Will try a default directory (/usr/local/fsl) if nothing else
     if (is.null(fsldir)) {
-      def_path = "/usr/local/fsl"
-      if (file.exists(def_path)) {
-        warning("Setting fsl.path to /usr/local/fsl")
-        options(fsl.path = def_path)
-        fsldir = def_path
+      #### adding in "/usr/share/fsl/5.0" for NeuroDeb
+      def_paths = c("/usr/local/fsl", "/usr/share/fsl/5.0")
+      for (def_path in def_paths){
+        if (file.exists(def_path)) {
+          warning(paste0("Setting fsl.path to ", def_path))
+          options(fsl.path = def_path)
+          fsldir = def_path
+          break;
+        }
       }
     }
     fslout = get.fsloutput()
