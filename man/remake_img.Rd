@@ -4,7 +4,7 @@
 \alias{remake_img}
 \title{Remake Image from Vector}
 \usage{
-remake_img(vec, img, mask = NULL)
+remake_img(vec, img, mask = NULL, warn = FALSE, ...)
 }
 \arguments{
 \item{vec}{vector of values to be in resulting image}
@@ -13,6 +13,10 @@ remake_img(vec, img, mask = NULL)
 
 \item{mask}{binary array/ \code{\link{nifti}} object to denote where
 vector values are to be.}
+
+\item{warn}{Should a warning be issued if defaulting to FLOAT32?}
+
+\item{...}{additional arguments passed to \code{\link{datatyper}}}
 }
 \value{
 object of class  \code{\link{nifti}}
