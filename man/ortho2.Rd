@@ -13,7 +13,7 @@ ortho2(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   mfrow = c(2, 2), ybreaks = NULL, breaks = NULL, addlegend = FALSE,
   leg.x = 32, leg.y = 32, legend, leg.col, leg.title = NULL, leg.cex,
   window = NULL, ycolorbar = FALSE, clabels = TRUE, add = TRUE,
-  pdim = NULL, ...)
+  pdim = NULL, useRaster = TRUE, ...)
 }
 \arguments{
 \item{x}{is an object of class nifti or similar.}
@@ -101,6 +101,10 @@ in \code{double_ortho}}
 
 \item{pdim}{Pixel dimensions if passing in arrays.  Will be overridden if 
 \code{x} is a \code{nifti} object}
+
+\item{useRaster}{logical; if TRUE a bitmap raster is used to 
+plot the image instead of polygons.  Passed to 
+\code{\link[graphics]{image}}.}
 
 \item{...}{other arguments to the image function may be provided here.}
 }

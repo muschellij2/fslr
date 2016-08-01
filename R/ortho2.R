@@ -50,6 +50,9 @@
 #' in \code{double_ortho}
 #' @param pdim Pixel dimensions if passing in arrays.  Will be overridden if 
 #' \code{x} is a \code{nifti} object
+#' @param useRaster logical; if TRUE a bitmap raster is used to 
+#' plot the image instead of polygons.  Passed to 
+#' \code{\link[graphics]{image}}.
 #' @param ... other arguments to the image function may be provided here.
 #' @import scales
 #' @export
@@ -87,6 +90,7 @@ ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
                    clabels = TRUE,
                    add = TRUE,
                    pdim = NULL,
+                  useRaster = TRUE,
                    ...) 
 {
   x = check_nifti(x, allow.array = TRUE)
@@ -220,13 +224,15 @@ ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   #                   add = adder,
   #                   breaks = runbreaks, 
   #                   asp = asp, xlab = ylab, 
-  #                   ylab = xlab, axes = axes, ...)
+  #                   ylab = xlab, axes = axes, useRaster = useRaster, 
+  # ...)
   # }
   # grapher(img = x, idim = 2, zlimit = zlim, adder = FALSE, colors = col, 
   #         runbreaks = breaks, ...)
   graphics::image(1:X, 1:Z, x[, xyz[2], ], col = col, zlim = zlim, 
                   breaks = breaks, asp = pdim[4]/pdim[2], xlab = ylab, 
-                  ylab = xlab, axes = axes, ...)
+                  ylab = xlab, axes = axes, 
+                  useRaster = useRaster, ...)
   if (!add & crosshairs) {
     abline(h = xyz[3], v = xyz[1], col = col.crosshairs)
   }
@@ -240,13 +246,15 @@ ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
       graphics::image(1:X, 1:Z, y[, xyz[2], ], col = col.y, 
                     zlim = zlim.y, add = add,
                     asp = ifelse(add, NA, pdim[4]/pdim[2]),
-                    axes = axes
+                    axes = axes,
+                    useRaster = useRaster
                     )
     } else {
       graphics::image(1:X, 1:Z, y[, xyz[2], ], col = col.y, 
                       zlim = zlim.y, add = add, breaks = ybreaks,
                       asp = ifelse(add, NA, pdim[4]/pdim[2]),
-                      axes = axes
+                      axes = axes,
+                      useRaster = useRaster
                       )
     }
   }
@@ -261,7 +269,8 @@ ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   }
   graphics::image(1:Y, 1:Z, x[xyz[1], , ], col = col, breaks = breaks, 
                   asp = pdim[4]/pdim[3], xlab = xlab, ylab = ylab, 
-                  axes = axes, ...)
+                  axes = axes,
+                  useRaster = useRaster, ...)
   if (!add & crosshairs) {
     abline(h = xyz[3], v = xyz[2], col = col.crosshairs)
   }
@@ -270,13 +279,15 @@ ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
       graphics::image(1:Y, 1:Z, y[xyz[1], , ], col = col.y, 
                     zlim = zlim.y, add = add,
                     asp = ifelse(add, NA, pdim[4]/pdim[3]),
-                    axes = axes
+                    axes = axes,
+                    useRaster = useRaster
                     )
     } else {
       graphics::image(1:Y, 1:Z, y[xyz[1], , ], col = col.y, 
                       zlim = zlim.y, add = add, breaks = ybreaks,
                       asp = ifelse(add, NA, pdim[4]/pdim[3]),
-                      axes = axes
+                      axes = axes,
+                      useRaster = useRaster
                       )
     }
   }
@@ -296,7 +307,9 @@ ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   }    
   graphics::image(1:X, 1:Y, x[, , xyz[3]], col = col, breaks = breaks, 
                   asp = pdim[3]/pdim[2], xlab = xlab, ylab = ylab, 
-                  axes = axes, ...)
+                  axes = axes,
+                  useRaster = useRaster,
+                  ...)
   if (!add & crosshairs) {
     abline(h = xyz[2], v = xyz[1], col = col.crosshairs)
   }
@@ -305,13 +318,15 @@ ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
       graphics::image(1:X, 1:Y, y[, , xyz[3]], col = col.y, 
                       zlim = zlim.y, add = add,
                       asp = ifelse(add, NA, pdim[3]/pdim[2]),
-                      axes = axes
+                      axes = axes,
+                      useRaster = useRaster
                       )
     } else {
       graphics::image(1:X, 1:Y, y[, , xyz[3]], col = col.y, 
                       zlim = zlim.y, add = add, breaks = ybreaks,
                       asp = ifelse(add, NA, pdim[3]/pdim[2]),
-                      axes = axes
+                      axes = axes,
+                      useRaster = useRaster
                       )
     }
   }
@@ -333,7 +348,9 @@ ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
   if (!is.null(text) | addlegend) {
     suppressWarnings({
       graphics::image(1:64, 1:64, matrix(NA, 64, 64), xlab = "", 
-                    ylab = "", axes = FALSE, ...)
+                    ylab = "", axes = FALSE,
+                    useRaster = useRaster,
+                    ...)
     })
     if (addlegend) {
       legend(x = leg.x, y = leg.y, 
