@@ -6,6 +6,11 @@
 \usage{
 get.fsl(add_bin = TRUE)
 }
+\arguments{
+\item{add_bin}{Should \code{bin} be added to the fsl path? 
+All executables are assumed to be in \code{FSLDIR/bin/}.  If not, and 
+\code{add_bin = FALSE}, they will be assumed to be in \code{FSLDIR/}.}
+}
 \value{
 NULL if FSL in path, or bash code for setting up FSL DIR
 }

@@ -4,7 +4,7 @@
 #' for location of FSL fuctions
 #' @param add_bin Should \code{bin} be added to the fsl path? 
 #' All executables are assumed to be in \code{FSLDIR/bin/}.  If not, and 
-#' \code{add_bin = FALSE, they will be assumed to be in \code{FSLDIR/}.
+#' \code{add_bin = FALSE}, they will be assumed to be in \code{FSLDIR/}.
 #' @note This will use \code{Sys.getenv("FSLDIR")} before \code{getOption("fsl.path")}.
 #' If the directory is not found for FSL in \code{Sys.getenv("FSLDIR")} and 
 #' \code{getOption("fsl.path")}, it will try the default directory \code{/usr/local/fsl}.
