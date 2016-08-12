@@ -4,7 +4,7 @@
 \alias{get.fsl}
 \title{Create command declaring FSLDIR}
 \usage{
-get.fsl()
+get.fsl(add_bin = TRUE)
 }
 \value{
 NULL if FSL in path, or bash code for setting up FSL DIR

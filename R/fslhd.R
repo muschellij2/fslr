@@ -2,12 +2,15 @@
 #' @title Create command declaring FSLDIR
 #' @description Finds the FSLDIR from system environment or \code{getOption("fsl.path")}
 #' for location of FSL fuctions
+#' @param add_bin Should \code{bin} be added to the fsl path? 
+#' All executables are assumed to be in \code{FSLDIR/bin/}.  If not, and 
+#' \code{add_bin = FALSE, they will be assumed to be in \code{FSLDIR/}.
 #' @note This will use \code{Sys.getenv("FSLDIR")} before \code{getOption("fsl.path")}.
 #' If the directory is not found for FSL in \code{Sys.getenv("FSLDIR")} and 
 #' \code{getOption("fsl.path")}, it will try the default directory \code{/usr/local/fsl}.
 #' @return NULL if FSL in path, or bash code for setting up FSL DIR
 #' @export
-get.fsl = function(){
+get.fsl = function(add_bin = TRUE){
   cmd = NULL
   fsldir = Sys.getenv("FSLDIR")
   if (fsldir == "") {
@@ -16,7 +19,7 @@ get.fsl = function(){
     if (is.null(fsldir)) {
       #### adding in "/usr/share/fsl/5.0" for NeuroDeb
       def_paths = c("/usr/local/fsl", "/usr/share/fsl/5.0")
-      for (def_path in def_paths){
+      for (def_path in def_paths) {
         if (file.exists(def_path)) {
           warning(paste0("Setting fsl.path to ", def_path))
           options(fsl.path = def_path)
@@ -25,15 +28,22 @@ get.fsl = function(){
         }
       }
     }
+    bin = "bin"
+    bin_app = paste0(bin, "/")
+    if (!add_bin) {
+      bin_app = bin = ""
+    }
+    
     fslout = get.fsloutput()
     shfile = file.path(fsldir, "etc/fslconf/fsl.sh")
     cmd <- paste0("FSLDIR=", shQuote(fsldir), "; ", 
-                  'PATH=${FSLDIR}/bin:${PATH};',
+                  paste0('PATH=${FSLDIR}/', bin, ':${PATH};'),
                   'export PATH FSLDIR; ', 
                   ifelse(file.exists(shfile), 
                          'sh "${FSLDIR}/etc/fslconf/fsl.sh"; ', ""),
                   "FSLOUTPUTTYPE=", fslout, "; export FSLOUTPUTTYPE; ", 
-                  "${FSLDIR}/bin/")
+                  paste0("${FSLDIR}/", bin_app)
+                  )
     fsl_pre = getOption("fsl_pre")
     if (is.null(fsl_pre)) { 
       fsl_pre = "" 
