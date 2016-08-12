@@ -4,7 +4,10 @@
 \alias{have.fsl}
 \title{Logical check if FSL is accessible}
 \usage{
-have.fsl()
+have.fsl(...)
+}
+\arguments{
+\item{...}{options to pass to \code{\link{get.fsl}}}
 }
 \value{
 Logical TRUE is FSL is accessible, FALSE if not
