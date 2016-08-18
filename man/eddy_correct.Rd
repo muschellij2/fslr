@@ -16,6 +16,8 @@ eddy_correct(infile, outfile = NULL, retimg = TRUE, reference_no = 0, ...)
 \item{reference_no}{Set the volume number for the reference volume 
 that will be used as a target to register all other volumes to. 
 (default=0, i.e. the first volume)}
+
+\item{...}{Additional arguments passed to \code{\link{fslcmd}}}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,

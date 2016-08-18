@@ -7,6 +7,7 @@
 #' @param reference_no Set the volume number for the reference volume 
 #' that will be used as a target to register all other volumes to. 
 #' (default=0, i.e. the first volume)
+#' @param ... Additional arguments passed to \code{\link{fslcmd}}
 #'
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
@@ -15,7 +16,7 @@ eddy_correct = function(infile,
                         outfile = NULL, 
                         retimg = TRUE, 
                         reference_no = 0, ...) {
-  fslcmd(
+  res = fslcmd(
     func = "eddy_correct",
     file = infile,
     outfile = outfile, 
@@ -23,5 +24,5 @@ eddy_correct = function(infile,
     opts = reference_no,
     opts_after_outfile = TRUE,
     ...)
-    
+  return(res)   
 }
