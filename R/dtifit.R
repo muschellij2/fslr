@@ -11,6 +11,8 @@
 #' @param opts Additional options for \code{dtifit}
 #' @param bet.opts Options for \code{\link{fslbet}} if mask is not supplied
 #' @param verbose print diagnostic messages
+#' @param sse Save sum of squared errors
+#' @param save_tensor Save tensor file out
 #' @note On successful completion of the command, the following files
 #' will be output, which are:
 #' \code{mask} - the mask used in the analysis

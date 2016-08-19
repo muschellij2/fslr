@@ -25,6 +25,10 @@ or filename of ASCII text file}
 \item{bet.opts}{Options for \code{\link{fslbet}} if mask is not supplied}
 
 \item{verbose}{print diagnostic messages}
+
+\item{sse}{Save sum of squared errors}
+
+\item{save_tensor}{Save tensor file out}
 }
 \value{
 Vector of character filenames of output.  See Note
