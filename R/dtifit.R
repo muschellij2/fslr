@@ -12,7 +12,8 @@
 #' @param bet.opts Options for \code{\link{fslbet}} if mask is not supplied
 #' @param verbose print diagnostic messages
 #' @note On successful completion of the command, the following files
-#' will be output, which are
+#' will be output, which are:
+#' \code{mask} - the mask used in the analysis
 #'\code{outprefix}_V1 - 1st eigenvector
 #'\code{outprefix}_V2 - 2nd eigenvector
 #'\code{outprefix}_V3 - 3rd eigenvector
@@ -119,6 +120,8 @@ dtifit = function(infile,
   outfile = paste0(outprefix, "_", suffixes)
   ext = get.imgext()
   outfile = paste0(outfile, ext)    
+  names(outfile) = suffixes
+  outfile = c(outfile, mask = mask)
   return(outfile)
 }
 #  

@@ -34,7 +34,8 @@ Calls \code{dtifit} from FSL
 }
 \note{
 On successful completion of the command, the following files
-will be output, which are
+will be output, which are:
+\code{mask} - the mask used in the analysis
 \code{outprefix}_V1 - 1st eigenvector
 \code{outprefix}_V2 - 2nd eigenvector
 \code{outprefix}_V3 - 3rd eigenvector
