@@ -24,7 +24,7 @@ mcflirt = function(
   ...){
   
   outfile = check_outfile(outfile = outfile, retimg = retimg)
-  opts = paste(opts, "-verbose", verbose, "-o")
+  opts = paste(opts, "-verbose", as.numeric(verbose), "-o")
   
   res = fslcmd(func = "mcflirt", 
                file = file,
