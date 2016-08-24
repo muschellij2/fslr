@@ -56,7 +56,7 @@ Here we ensure that the number of b-values/b-vectors is the same as the number o
 ```{r check_img}
 img = grep("4Ddwi_b1000", out, value = TRUE)
 n_timepoints = dim_(img)[5]
-stopifnot(nrow(b_data) == n_timepoints)
+stopifnot(nrow(b_vecs) == n_timepoints)
 ```
 
 
@@ -88,14 +88,17 @@ Using the `ortho2` function, you can plot the fractional anisotropy (FA) map
 ```{r}
 ortho2(res_imgs$FA)
 ```
+
 and the mean diffusivity (MD) map:
 ```{r}
 ortho2(res_imgs$MD)
 ```
+
 or both at the same time using the `double_ortho` function:
 ```{r}
 double_ortho(res_imgs$FA, res_imgs$MD)
 ```
+
 You can look at a scatterplot of the FA vs MD values of all values inside the mask using the following code:
 ```{r}
 mask = readnii(mask_fname)
