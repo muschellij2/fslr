@@ -23,9 +23,10 @@ Depends:
     stringr,
     oro.nifti (>= 0.5.0)
 License: GPL-3
-VignetteBuilder: knitr
+VignetteBuilder: rmarkdown
 Suggests:
-    knitr
+    knitr,
+    rmarkdown
 BugReports: https://github.com/muschellij2/fslr/issues
 SystemRequirements: FSL (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/)
 RoxygenNote: 5.0.1.9000
