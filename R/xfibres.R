@@ -90,6 +90,7 @@ xfibres = function(infile,
   
   if (is.numeric(bvals)) {
     tfile = tempfile(fileext = ".txt")
+    bvals = as.character(bvals)
     writeLines(bvals, con = tfile)
     bvals = tfile
   }

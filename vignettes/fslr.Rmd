@@ -1,7 +1,14 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{An R Markdown Vignette with knitr}
--->
+---
+title: "Working with Data in fslr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
 ```{r setup, include=FALSE}
 library(knitr)
 ```
