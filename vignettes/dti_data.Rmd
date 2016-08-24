@@ -19,7 +19,7 @@ The data located in this tutorial is located at [http://cmic.cs.ucl.ac.uk/camino
 
 1.  `4Ddwi_b1000.nii.gz` - a 4D image of the DWI data.
 2.  `brain_mask.nii.gz` - A brain mask of the DTI data
-3.  `grad_dirs.txt` - a 4 column text file with the b-vectors as the first 3 columns and the b-values as the 4th column
+3.  `grad_dirs.txt` - a 3 column text file with the b-vectors as the first 3 columns.  The b-values are either 0 or 1000 depending on the b-vector.
 
 # Reading in the Data
 First, we download the data into a temporary directory the unzip it:
