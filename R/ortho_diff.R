@@ -18,15 +18,18 @@
 #' @return NULL
 ortho_diff <- function(img, 
                        pred, # binary segmentation (prediction)
-                      roi, # binary manual segmentation (ground truth)
-                      xyz = NULL, 
-                      cols = c("#56B4E9", "#D55E00", "#009E73"), # colors for false negatives, positives
-                      levels = c("False Negative", "False Positive", "True Positive"), # labels for false negatives, positives
-                      addlegend = TRUE, # add legend
-                      center = TRUE, # run \code{\link{xyz}} on \code{roi} 
-                      leg.cex = 1.5,  # multiplier for legend size
-                      ...
+                       roi, # binary manual segmentation (ground truth)
+                       xyz = NULL, 
+                       cols = c("#56B4E9", "#D55E00", "#009E73"), # colors for false negatives, positives
+                       levels = c("False Negative", "False Positive", "True Positive"), # labels for false negatives, positives
+                       addlegend = TRUE, # add legend
+                       center = TRUE, # run \code{\link{xyz}} on \code{roi} 
+                       leg.cex = 1.5,  # multiplier for legend size
+                       ...
 ){
+  
+  roi = check_nifti(roi)
+  pred = check_nifti(pred)
   
   ###########################
   ### Drop empty image dimensions
@@ -40,6 +43,10 @@ ortho_diff <- function(img,
   } else {
     xyz = xyz
   }
+  
+  # check_mask_fail(roi)
+  # check_mask_fail(pred)
+  
   
   pred = pred > 0
   roi = roi > 0
