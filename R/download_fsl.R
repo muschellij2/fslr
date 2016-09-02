@@ -6,6 +6,7 @@
 #' should it be overwritten?
 #' @param ... Arguments to pass to \code{\link{download.file}}
 #' @return Filename of destination file
+#' @importFrom utils browseURL download.file
 download_fsl = function(
   os = c("macosx", "redhat5", "redhat6", "centos5", "centos6", "debian", "ubuntu"),
   outdir = tempdir(),

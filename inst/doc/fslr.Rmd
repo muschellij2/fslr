@@ -1,0 +1,35 @@
+---
+title: "Working with Data in fslr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+```{r setup, include=FALSE}
+library(knitr)
+```
+
+## Reading in Data
+`fslr` implicitly is partnered with the `nifti` format from `oro.nifti`.  All functions use the `system` command to implement the FSL functions. All functions will check to see whether the file passed in a character path to a filename.  If the object is a `nifti` object, the programs will create a temporary file using `tempfile()` and then return the name of this file with the `checkimg` command.  If a character path is passed to the `file` argument into an `fslr` command, then this will run in FSL assuming that file exists.  
+
+
+## Checking if FSL exists
+
+If `R` is run using a GUI, then `fsl.path` must be set using `options(fsl.path='/path/to/fsl')`.  `have.fsl()` checks to see if FSL is in the PATH or the options are correctly set and returns `TRUE` and returns `FALSE` otherwise.
+
+## Returning Objects
+In functions where an image is the end result, the `outfile` and `retimg` arguments are present.  If `outfile` is specified, the user wants a file to be saved to disk.  If `outfile` is not specified, a temporary file (using `tempfile`) will be created for the result and deleted at the end of the `R` session.  If `retimg=TRUE`, then the user specified that an object of class `nifti` will be returned to `R`.  If both `retimg=TRUE` and `outfile` is specified, the image will be written to disk, read into `R` and the `nifti` object will be returned.  If `retimg=FALSE` and `outfile` is not specified, the function will fail as `fslr` would be calculating an image and no result would be able to be obtained since the `outfile` is deleted.
+
+## Main functions
+The main functions implemented are `fslmaths` and `fslstats`.  `fslmaths` usually returns images as the result and `fslstats` usually returns a vector of information.
+
+Functions functions such as `fslmask`, `fslerode`, `fslsmooth`, and `fslfill` are implemented wrappers for ease of use, but are essentially calling `fslmaths` with specific options.  Functions such as `fslrange` is an example of a wrapper for `fslstats`.  As `fslstats` outputs are variable in their format, the results are returned simply as a character vector which needs to be parsed.  [This GitHub repository](https://github.com/muschellij2/fslr) will be used for development and issues. 
+
+
+
+
+
