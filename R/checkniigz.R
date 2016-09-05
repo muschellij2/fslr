@@ -57,3 +57,10 @@ setMethod("checkniigz", "list", function(file, ...) {
   file = sapply(file, checkniigz, ...)
   return(file)
 })
+
+#' @rdname checkniigz-methods
+#' @aliases ensure_nii_gz
+#' @export
+ensure_nii_gz = function(file, ...) { 
+  checkniigz(file = file, ...)
+}

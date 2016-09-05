@@ -7,6 +7,7 @@
 \alias{checkniigz,list-method}
 \alias{checkniigz,nifti-method}
 \alias{checkniigz-methods}
+\alias{ensure_nii_gz}
 \title{Force object to filename with .nii.gz extension}
 \usage{
 checkniigz(file, ...)
@@ -16,6 +17,8 @@ checkniigz(file, ...)
 \S4method{checkniigz}{character}(file, ...)
 
 \S4method{checkniigz}{list}(file, ...)
+
+ensure_nii_gz(file, ...)
 }
 \arguments{
 \item{file}{character or \code{nifti} object}

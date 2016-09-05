@@ -7,6 +7,7 @@
 \alias{checknii,list-method}
 \alias{checknii,nifti-method}
 \alias{checknii-methods}
+\alias{ensure_nii}
 \title{Force object to filename with .nii extension}
 \usage{
 checknii(file, ...)
@@ -16,6 +17,8 @@ checknii(file, ...)
 \S4method{checknii}{character}(file, ...)
 
 \S4method{checknii}{list}(file, ...)
+
+ensure_nii(file, ...)
 }
 \arguments{
 \item{file}{character or \code{nifti} object}

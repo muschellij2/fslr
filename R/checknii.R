@@ -56,3 +56,11 @@ setMethod("checknii", "list", function(file, ...) {
   file = sapply(file, checknii, ...)
   return(file)
 })
+
+#' @rdname checknii-methods
+#' @aliases ensure_nii
+#' @export
+ensure_nii = function(file, ...) { 
+  checknii(file = file, ...)
+}
+
