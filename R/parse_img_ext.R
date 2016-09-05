@@ -23,5 +23,8 @@ parse_img_ext = function(file){
   } else {
     ext = NA
   }
+  if (ext %in% "") {
+    ext = NA
+  }
   return(ext)
 }
