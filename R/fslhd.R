@@ -1,7 +1,7 @@
 #' @name get.fsl
 #' @title Create command declaring FSLDIR
 #' @description Finds the FSLDIR from system environment or \code{getOption("fsl.path")}
-#' for location of FSL fuctions
+#' for location of FSL functions
 #' @param add_bin Should \code{bin} be added to the fsl path? 
 #' All executables are assumed to be in \code{FSLDIR/bin/}.  If not, and 
 #' \code{add_bin = FALSE}, they will be assumed to be in \code{FSLDIR/}.
@@ -60,7 +60,7 @@ get.fsl = function(add_bin = TRUE){
 
 #' @title Get FSL's Directory 
 #' @description Finds the FSLDIR from system environment or \code{getOption("fsl.path")}
-#' for location of FSL fuctions and returns it
+#' for location of FSL functions and returns it
 #' @return Character path
 #' @aliases fsl_dir
 #' @export

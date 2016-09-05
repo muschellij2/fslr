@@ -25,29 +25,45 @@ n_timepoints = dim_(img)[5]
 stopifnot(nrow(b_vecs) == n_timepoints)
 
 ## ------------------------------------------------------------------------
-outfile = tempfile(fileext = ".nii.gz")
-ret = eddy_correct(infile = img, outfile = outfile, retimg = TRUE, reference_no = 0)
+if (have.fsl()) {
+  outfile = tempfile(fileext = ".nii.gz")
+  ret = eddy_correct(infile = img, outfile = outfile, 
+                     retimg = TRUE, reference_no = 0)
+}
 
 ## ----dtifit--------------------------------------------------------------
-mask_fname = grep("mask", out, value = TRUE)
-res = dtifit(infile = ret, bvecs = b_vecs, bvals = b_vals, mask = mask_fname)
+if (have.fsl()) {
+  mask_fname = grep("mask", out, value = TRUE)
+  res = dtifit(infile = ret, bvecs = b_vecs, 
+               bvals = b_vals, mask = mask_fname)
+}
 
 ## ----read_res------------------------------------------------------------
-res_imgs = lapply(res, readnii)
+if (have.fsl()) {
+  res_imgs = lapply(res, readnii)
+}
 
 ## ------------------------------------------------------------------------
-ortho2(res_imgs$FA)
+if (have.fsl()) {
+  ortho2(res_imgs$FA)
+}
 
 ## ------------------------------------------------------------------------
-ortho2(res_imgs$MD)
+if (have.fsl()) {
+  ortho2(res_imgs$MD)
+}
 
 ## ------------------------------------------------------------------------
-double_ortho(res_imgs$FA, res_imgs$MD)
+if (have.fsl()) {
+  double_ortho(res_imgs$FA, res_imgs$MD)
+}
 
 ## ------------------------------------------------------------------------
-mask = readnii(mask_fname)
-df = data.frame(FA = res_imgs$FA[ mask == 1], MD = res_imgs$MD[ mask == 1] )
-plot(df)
+if (have.fsl()) {
+  mask = readnii(mask_fname)
+  df = data.frame(FA = res_imgs$FA[ mask == 1], MD = res_imgs$MD[ mask == 1] )
+  plot(df)
+}
 
 ## ---- eval = FALSE-------------------------------------------------------
 #  xfibres(infile = outfile,

@@ -14,6 +14,6 @@ Character path
 }
 \description{
 Finds the FSLDIR from system environment or \code{getOption("fsl.path")}
-for location of FSL fuctions and returns it
+for location of FSL functions and returns it
 }
 

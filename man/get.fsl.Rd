@@ -16,7 +16,7 @@ NULL if FSL in path, or bash code for setting up FSL DIR
 }
 \description{
 Finds the FSLDIR from system environment or \code{getOption("fsl.path")}
-for location of FSL fuctions
+for location of FSL functions
 }
 \note{
 This will use \code{Sys.getenv("FSLDIR")} before \code{getOption("fsl.path")}.
