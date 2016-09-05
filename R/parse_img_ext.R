@@ -19,9 +19,9 @@ parse_img_ext = function(file){
     if (ext %in% "gz") {
       file = file_path_sans_ext(file)
       ext = file_ext(file)
-    } else {
-      ext = NA
-    }
+    } 
+  } else {
+    ext = NA
   }
   return(ext)
 }
