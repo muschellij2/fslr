@@ -13,7 +13,7 @@ parse_img_ext(file)
 Extension of file
 }
 \description{
-Get image extensions
+Get image extensions from a filename
 }
 \examples{
 parse_img_ext("blah.nii.gz")

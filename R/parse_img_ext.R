@@ -17,7 +17,7 @@ parse_img_ext = function(file){
   ext = tools::file_ext(file)
   if (length(ext) > 0) {
     if (ext %in% "gz") {
-      ext = file_path_sans_ext(file)
+      file = file_path_sans_ext(file)
       ext = file_ext(file)
     } else {
       ext = NA
