@@ -14,9 +14,10 @@
 #' parse_img_ext("blah.hdr")
 #' parse_img_ext("blah.hdr.gz")
 parse_img_ext = function(file){
+  file = tolower(file)
+  file = basename(file)
   ext = tools::file_ext(file)
   if (length(ext) > 0) {
-    ext = tolower(ext)
     if (ext %in% "gz") {
       file = file_path_sans_ext(file)
       ext = file_ext(file)
@@ -27,6 +28,5 @@ parse_img_ext = function(file){
   if (ext %in% "") {
     ext = NA
   }
-  ext = tolower(file)
   return(ext)
 }
