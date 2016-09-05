@@ -266,7 +266,7 @@ fslstats <- function(file, opts="", verbose = TRUE, ts = FALSE, ...){
   if (verbose) {
     message(cmd, "\n")
   }
-  x = str_trim(system(cmd, intern = TRUE))
+  x = trimws(system(cmd, intern = TRUE))
   return(x)
 }
 
@@ -484,7 +484,6 @@ fslerode <- function(file, outfile=NULL,
 #' @param ... options passed to \code{\link{checkimg}}
 #' @return Character of infromation from fslhd field specified in keyword
 #' @export
-#' @import stringr
 #' @examples
 #' if (have.fsl()){
 #'  mnifile = file.path(fsldir(), "data", "standard", 
@@ -498,7 +497,7 @@ fslval <- function(file, keyword = "", verbose = TRUE, ...){
   if (verbose) {
     message(cmd, "\n")
   }
-  return(str_trim(system(cmd, intern = TRUE)))
+  return(trimws(system(cmd, intern = TRUE)))
 }
 
 #' @title fslval help
