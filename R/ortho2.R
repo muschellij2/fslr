@@ -57,7 +57,7 @@
 #' @import scales
 #' @export
 #' @examples 
-#' x = oro.nifti:::nifti(array(rnorm(1000), dim = rep(10, 3)))
+#' x = oro.nifti::nifti(array(rnorm(1000), dim = rep(10, 3)))
 #' ortho2(x)
 #' y = x > 2
 #' ortho2(x, y)
@@ -384,6 +384,10 @@ ortho2 = function(x, y = NULL, xyz = NULL, w = 1, col = gray(0:64/64),
       }
     } else {
       if (ycolorbar) {
+            alpha = function(col, alpha = 1) {
+              cols = t(col2rgb(col, alpha = FALSE)/255)
+              rgb(cols, alpha = alpha)
+            }        
         colorbar(breaks = ybreaks, col = alpha(col.y, 1), 
                  text.col = "white", 
                  labels = clabels)

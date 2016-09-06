@@ -113,7 +113,7 @@ Copy of \code{oro.nifti}'s \code{\link{orthographic}} function
 with some tweaks such as adding L/R designations for left and right
 }
 \examples{
-x = oro.nifti:::nifti(array(rnorm(1000), dim = rep(10, 3)))
+x = oro.nifti::nifti(array(rnorm(1000), dim = rep(10, 3)))
 ortho2(x)
 y = x > 2
 ortho2(x, y)

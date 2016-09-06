@@ -37,7 +37,6 @@
 #' @examples \dontrun{
 #' 
 #'  if (require(brainR)) {
-#'    library(scales)
 #'    visits = 1:3
 #'    y = paste0("Visit_", visits, ".nii.gz")
 #'    y = system.file(y, package = "brainR")
@@ -55,7 +54,10 @@
 #'    x = lapply(visits, function(tmp){
 #'        x
 #'    })
-#' 
+#'    alpha = function(col, alpha = 1) {
+#'        cols = t(col2rgb(col, alpha = FALSE)/255)
+#'        rgb(cols, alpha = alpha)
+#'    }
 #'    multi_overlay(x, y, 
 #'          col.y = alpha(hotmetal(), 0.5),
 #'          mask = mask, 

@@ -242,7 +242,6 @@ fslbin = function(
 #' option 
 #' @param ... options passed to \code{\link{checkimg}}
 #' @return Result of fslstats command
-#' @import stringr
 #' @export
 #' @examples
 #' if (have.fsl()){
@@ -707,7 +706,6 @@ check_sform_file <- function(file, value=0, ...){
 #' option
 #' @param ... options passed to \code{\link{checkimg}}
 #' @return numeric vector of length 2
-#' @import stringr
 #' @export
 #' @examples
 #' if (have.fsl()){
