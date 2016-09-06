@@ -1,6 +1,7 @@
-Travis-CI build status:
-
 [![Build Status](https://travis-ci.org/muschellij2/fslr.svg?branch=master)](https://travis-ci.org/muschellij2/fslr)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/fslr)](http://cran.rstudio.com/web/packages/fslr/index.html)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/fslr)](http://cran.rstudio.com/web/packages/fslr/index.html)
+
 
 fslr is a port/wrapper of FSL to R.
 
