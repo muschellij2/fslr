@@ -54,7 +54,6 @@
 #' plot the image instead of polygons.  Passed to 
 #' \code{\link[graphics]{image}}.
 #' @param ... other arguments to the image function may be provided here.
-#' @import scales
 #' @export
 #' @examples 
 #' x = oro.nifti::nifti(array(rnorm(1000), dim = rep(10, 3)))
