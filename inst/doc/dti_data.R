@@ -21,7 +21,8 @@ b_vals[all_zero] = 0
 
 ## ----check_img-----------------------------------------------------------
 img = grep("4Ddwi_b1000", out, value = TRUE)
-n_timepoints = dim_(img)[5]
+nim = readnii(img)
+n_timepoints = dim(nim)[4]
 stopifnot(nrow(b_vecs) == n_timepoints)
 
 ## ------------------------------------------------------------------------
