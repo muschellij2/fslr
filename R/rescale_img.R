@@ -16,7 +16,7 @@
 #' as sometimes DICOM scale and slope parameters may be inconsistent across sites
 #' and the data need to be value restricted
 #' @return Object of class nifti
-#' @import grDevices
+#' @importFrom grDevices png dev.off
 #' @export
 rescale_img = function(filename, 
                        pngname = NULL, 
@@ -53,9 +53,9 @@ rescale_img = function(filename,
     print(pngname)
     ### remove random percents
     pngname = gsub("%", "", pngname)
-    png(pngname)
-    hist(img)
-    dev.off()
+    grDevices::png(pngname)
+      graphics::hist(img)
+    grDevices::dev.off()
   }
   
   if (write.nii) {

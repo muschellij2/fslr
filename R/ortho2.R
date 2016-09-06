@@ -55,6 +55,8 @@
 #' \code{\link[graphics]{image}}.
 #' @param ... other arguments to the image function may be provided here.
 #' @export
+#' @import graphics
+#' @importFrom grDevices col2rgb gray rgb
 #' @examples 
 #' x = oro.nifti::nifti(array(rnorm(1000), dim = rep(10, 3)))
 #' ortho2(x)
