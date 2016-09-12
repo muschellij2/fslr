@@ -2,9 +2,12 @@
 % Please edit documentation in R/fslhd.R
 \name{get.fsl}
 \alias{get.fsl}
+\alias{get_fsl}
 \title{Create command declaring FSLDIR}
 \usage{
 get.fsl(add_bin = TRUE)
+
+get_fsl(add_bin = TRUE)
 }
 \arguments{
 \item{add_bin}{Should \code{bin} be added to the fsl path? 

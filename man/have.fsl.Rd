@@ -2,9 +2,12 @@
 % Please edit documentation in R/fslhd.R
 \name{have.fsl}
 \alias{have.fsl}
+\alias{have_fsl}
 \title{Logical check if FSL is accessible}
 \usage{
 have.fsl(...)
+
+have_fsl(...)
 }
 \arguments{
 \item{...}{options to pass to \code{\link{get.fsl}}}

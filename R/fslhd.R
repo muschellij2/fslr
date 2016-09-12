@@ -57,6 +57,13 @@ get.fsl = function(add_bin = TRUE){
   return(cmd)
 }
 
+#' @rdname get.fsl
+#' @aliases get_fsl
+#' @export
+get_fsl = function(add_bin = TRUE){
+  return(get.fsl(add_bin = add_bin))
+}
+
 
 #' @title Get FSL's Directory 
 #' @description Finds the FSLDIR from system environment or \code{getOption("fsl.path")}
@@ -91,6 +98,14 @@ have.fsl = function(...){
   x = suppressWarnings(try(get.fsl(...), silent = TRUE))
   return(!inherits(x, "try-error"))
 }
+
+#' @rdname have.fsl
+#' @aliases have_fsl
+#' @export
+have_fsl = function(...){
+  return(have.fsl(...))
+}
+
 
 #' @name get.fsloutput
 #' @title Determine FSL output type
