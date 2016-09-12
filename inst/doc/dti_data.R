@@ -27,6 +27,11 @@ stopifnot(nrow(b_vecs) == n_timepoints)
 
 ## ------------------------------------------------------------------------
 if (have.fsl()) {
+  print(fsl_version())
+}
+
+## ------------------------------------------------------------------------
+if (have.fsl()) {
   outfile = tempfile(fileext = ".nii.gz")
   ret = eddy_correct(infile = img, outfile = outfile, 
                      retimg = TRUE, reference_no = 0)

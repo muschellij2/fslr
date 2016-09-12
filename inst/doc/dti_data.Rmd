@@ -60,6 +60,13 @@ n_timepoints = dim(nim)[4]
 stopifnot(nrow(b_vecs) == n_timepoints)
 ```
 
+## Printing out FSL Version
+
+```{r}
+if (have.fsl()) {
+  print(fsl_version())
+}
+```
 
 # Running `eddy_correct`
 Here, we will run an eddy current correction using FSL's `eddy_correct` through `fslr`.  We will save the result in a temporary file (`outfile`), but also return the result as a `nifti` object `ret`, as `retimg = TRUE`.  We will use the first volume as the reference as is the default in FSL.  *Note* FSL is zero-indexed so the first volume is the zero-ith index:

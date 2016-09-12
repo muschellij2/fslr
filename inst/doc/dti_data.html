@@ -93,10 +93,8 @@ out =<span class="st"> </span><span class="kw">unzip</span>(<span class="dt">zip
 <div id="making-b-vectors-and-b-values" class="section level2">
 <h2>Making b-vectors and b-values</h2>
 <p>As <code>dtifit</code> requires the b-values and b-vectors to be separated, and this data has b-values of <span class="math inline">\(1000\)</span> when the b-vectors is not zero. <strong>This is very important and you must know where your b-values and b-vectors are when doing your analyses and what units they are in.</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(fslr)</code></pre></div>
-<pre><code>## Loading required package: oro.nifti</code></pre>
-<pre><code>## oro.nifti 0.6.0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b_data_file =<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;[.]txt$&quot;</span>, out, <span class="dt">value =</span> <span class="ot">TRUE</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(fslr)
+b_data_file =<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;[.]txt$&quot;</span>, out, <span class="dt">value =</span> <span class="ot">TRUE</span>)
 b_vecs =<span class="st"> </span><span class="kw">read.delim2</span>(b_data_file, <span class="dt">header =</span> <span class="ot">FALSE</span>)
 b_vecs =<span class="st"> </span><span class="kw">as.matrix</span>(b_vecs)
 <span class="kw">class</span>(b_vecs) =<span class="st"> &quot;numeric&quot;</span></code></pre></div>
@@ -113,6 +111,13 @@ nim =<span class="st"> </span><span class="kw">readnii</span>(img)
 n_timepoints =<span class="st"> </span><span class="kw">dim</span>(nim)[<span class="dv">4</span>]
 <span class="kw">stopifnot</span>(<span class="kw">nrow</span>(b_vecs) ==<span class="st"> </span>n_timepoints)</code></pre></div>
 </div>
+<div id="printing-out-fsl-version" class="section level2">
+<h2>Printing out FSL Version</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="kw">have.fsl</span>()) {
+  <span class="kw">print</span>(<span class="kw">fsl_version</span>())
+}</code></pre></div>
+<pre><code>## [1] &quot;5.0.0&quot;</code></pre>
+</div>
 </div>
 <div id="running-eddy_correct" class="section level1">
 <h1>Running <code>eddy_correct</code></h1>
@@ -122,7 +127,7 @@ n_timepoints =<span class="st"> </span><span class="kw">dim</span>(nim)[<span cl
   ret =<span class="st"> </span><span class="kw">eddy_correct</span>(<span class="dt">infile =</span> img, <span class="dt">outfile =</span> outfile, 
                      <span class="dt">retimg =</span> <span class="ot">TRUE</span>, <span class="dt">reference_no =</span> <span class="dv">0</span>)
 }</code></pre></div>
-<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh &quot;${FSLDIR}/etc/fslconf/fsl.sh&quot;; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/eddy_correct &quot;/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpnwB6qE/4Ddwi_b1000.nii.gz&quot;  &quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpnwB6qE/file20f516db4e2d&quot; 0;</code></pre>
+<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh &quot;${FSLDIR}/etc/fslconf/fsl.sh&quot;; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/eddy_correct &quot;/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpOC1zwy/4Ddwi_b1000.nii.gz&quot;  &quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpOC1zwy/fileeb1f76b24e65&quot; 0;</code></pre>
 <p>Note, from here on forward we will use either the filename for the output of the eddy current correction or the eddy-current-corrected <code>nifti</code> object.</p>
 </div>
 <div id="running-dti-fitting-as-a-cursor" class="section level1">
@@ -133,7 +138,7 @@ n_timepoints =<span class="st"> </span><span class="kw">dim</span>(nim)[<span cl
   res =<span class="st"> </span><span class="kw">dtifit</span>(<span class="dt">infile =</span> ret, <span class="dt">bvecs =</span> b_vecs, 
                <span class="dt">bvals =</span> b_vals, <span class="dt">mask =</span> mask_fname)
 }</code></pre></div>
-<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh &quot;${FSLDIR}/etc/fslconf/fsl.sh&quot;; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/dtifit --data=&quot;/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpnwB6qE/file20f560ca754f.nii.gz&quot; --out=&quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpnwB6qE/file20f5bdbc72e&quot; --mask=&quot;/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpnwB6qE/brain_mask.nii.gz&quot; --bvecs=&quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpnwB6qE/file20f59f1a317.txt&quot; --bvals=&quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpnwB6qE/file20f5570a401a.txt&quot; --verbose</code></pre>
+<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh &quot;${FSLDIR}/etc/fslconf/fsl.sh&quot;; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/dtifit --data=&quot;/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpOC1zwy/fileeb1fba9a1a5.nii.gz&quot; --out=&quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpOC1zwy/fileeb1f2db35d9e&quot; --mask=&quot;/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpOC1zwy/brain_mask.nii.gz&quot; --bvecs=&quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpOC1zwy/fileeb1f5ac74782.txt&quot; --bvals=&quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpOC1zwy/fileeb1f5127d65d.txt&quot; --verbose</code></pre>
 <p>By default, the result of <code>dtifit</code> is the filenames of the resultant images. Here we will read in those images:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (<span class="kw">have.fsl</span>()) {
   res_imgs =<span class="st"> </span><span class="kw">lapply</span>(res, readnii)
