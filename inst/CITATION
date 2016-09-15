@@ -1,0 +1,33 @@
+structure(list(jenkinson2012fsl = structure(list(title = "Fsl", 
+    author = structure(list(structure(list(given = "Mark", family = "Jenkinson", 
+        role = NULL, email = NULL, comment = NULL), .Names = c("given", 
+    "family", "role", "email", "comment")), structure(list(given = c("Christian", 
+    "F"), family = "Beckmann", role = NULL, email = NULL, comment = NULL), .Names = c("given", 
+    "family", "role", "email", "comment")), structure(list(given = c("Timothy", 
+    "EJ"), family = "Behrens", role = NULL, email = NULL, comment = NULL), .Names = c("given", 
+    "family", "role", "email", "comment")), structure(list(given = c("Mark", 
+    "W"), family = "Woolrich", role = NULL, email = NULL, comment = NULL), .Names = c("given", 
+    "family", "role", "email", "comment")), structure(list(given = c("Stephen", 
+    "M"), family = "Smith", role = NULL, email = NULL, comment = NULL), .Names = c("given", 
+    "family", "role", "email", "comment"))), class = "person"), 
+    journal = "Neuroimage", volume = "62", number = "2", pages = "782--790", 
+    year = "2012", publisher = "Elsevier"), .Names = c("title", 
+"author", "journal", "volume", "number", "pages", "year", "publisher"
+), bibtype = "Article", key = "jenkinson2012fsl"), muschelli2015fslr = structure(list(
+    title = "fslr: Connecting the FSL Software with R", author = structure(list(
+        structure(list(given = "John", family = "Muschelli", 
+            role = NULL, email = NULL, comment = NULL), .Names = c("given", 
+        "family", "role", "email", "comment")), structure(list(
+            given = "Elizabeth", family = "Sweeney", role = NULL, 
+            email = NULL, comment = NULL), .Names = c("given", 
+        "family", "role", "email", "comment")), structure(list(
+            given = "Martin", family = "Lindquist", role = NULL, 
+            email = NULL, comment = NULL), .Names = c("given", 
+        "family", "role", "email", "comment")), structure(list(
+            given = "Ciprian", family = "Crainiceanu", role = NULL, 
+            email = NULL, comment = NULL), .Names = c("given", 
+        "family", "role", "email", "comment"))), class = "person"), 
+    journal = "The R Journal", volume = "7", number = "1", pages = "163--175", 
+    year = "2015"), .Names = c("title", "author", "journal", 
+"volume", "number", "pages", "year"), bibtype = "Article", key = "muschelli2015fslr")), class = "bibentry", strings = structure(character(0), .Names = character(0)), .Names = c("jenkinson2012fsl", 
+"muschelli2015fslr"))
