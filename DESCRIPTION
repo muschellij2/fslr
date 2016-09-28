@@ -28,7 +28,7 @@ VignetteBuilder: knitr
 Suggests:
     knitr,
     rmarkdown
-Remotes: muschellij2/neurobase
 BugReports: https://github.com/muschellij2/fslr/issues
 SystemRequirements: FSL (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/)
 RoxygenNote: 5.0.1.9000
+Remotes: muschellij2/neurobase
