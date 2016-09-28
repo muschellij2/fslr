@@ -15,6 +15,8 @@ fslr_Generic_fslstats_Maker.R
 fslr_Generic_fslmaths.R
 fslr_Generic_fslmaths_onefile.R
 fslr_Generic_fslmaths_Maker.R
+fslr_underscore_functions.R
+fslr_underscore_functions_maker.R
 fslr_maths_helpfile.R
 Archive.zip
 NEWS.md

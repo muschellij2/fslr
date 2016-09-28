@@ -23,7 +23,7 @@ fsl_anat = function(
   cmd = get.fsl()
   
   file = checkimg(file, ...)
-  cmd <- paste0(cmd, 'fsl_ant ')
+  cmd <- paste0(cmd, 'fsl_anat ')
   if (is.null(outdir)){
     outdir = dirname(file)
   }

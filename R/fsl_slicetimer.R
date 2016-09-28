@@ -18,7 +18,7 @@
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
-fsl_slicetimer = function(
+fslslicetimer = function(
   file,
   outfile = NULL, 
   retimg = TRUE,
@@ -74,3 +74,5 @@ fsl_slicetimer = function(
   
   return(res)  
 }
+
+
