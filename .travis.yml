@@ -3,6 +3,13 @@
 language: r
 warnings_are_errors: true
 sudo: required
+
+r:
+  - release
+  - devel
+
+r_check_args: --as-cran
+
 before_install:
     - echo "TRAVIS BUILD ID"
     - echo ${TRAVIS_BUILD_ID}

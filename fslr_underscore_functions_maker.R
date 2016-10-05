@@ -1,3 +1,4 @@
+library(fslr)
 x = readLines("NAMESPACE")
 x = grep("^export\\(", x, value = TRUE)
 x = gsub("export\\((.*)\\)", "\\1", x)
@@ -33,7 +34,7 @@ nochange = c("fslhd.parse", "fslcmd", "fsldir", "fslhelp",
              "fslgetsform", "fslgetsformcode", 
              "fslhd", "fslmean", "fslorient", "fslrange",  
              "fslreorient2std", "fslfill2",
-             "fslroi", "fslsd", "fslsin", "fslslicetimer", 
+             "fslroi", "fslsd", "fslsin", 
              "fslsplit", "fslstats", "fslsum", "fslval", 
              "fslversion", "fslview", "fslvol", "fslvolume")
 
