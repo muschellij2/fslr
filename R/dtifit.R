@@ -66,7 +66,7 @@ dtifit = function(infile,
     x = paste(x, collapse = " ")
     x
   }
-  if (is.matrix(bvecs)) {
+  if (is.matrix(bvecs) || is.data.frame(bvecs)) {
     stopifnot(ncol(bvecs) == 3)
     tfile = tempfile(fileext = ".txt")
     bvecs = apply(bvecs, 1, paste, collapse = " ")
