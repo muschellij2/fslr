@@ -4,14 +4,15 @@
 #' @description Creates a 2 by 2 table for 
 #' @param x filename of logical or 0/1 image
 #' @param y filename of logical or 0/1 vimage
+#' @param ... arguments passed to \code{\link{fsl_bin_tab}}
 #' 
 #' @return Single number of the dice coefficient
 #' @export
 #' 
 fsl_dice = function(
-  x, y) {
+  x, y, ...) {
   
-  tab = fsl_bin_tab(x, y)
+  tab = fsl_bin_tab(x, y, ...)
   dtab = dim(tab)
   stopifnot(all(dtab == c(2,2)))
   good = 2 * tab[2, 2]

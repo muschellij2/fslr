@@ -4,12 +4,14 @@
 \alias{fsl_dice}
 \title{Calculate Dice Coefficient of 2 Binary images}
 \usage{
-fsl_dice(x, y)
+fsl_dice(x, y, ...)
 }
 \arguments{
 \item{x}{filename of logical or 0/1 image}
 
 \item{y}{filename of logical or 0/1 vimage}
+
+\item{...}{arguments passed to \code{\link{fsl_bin_tab}}}
 }
 \value{
 Single number of the dice coefficient

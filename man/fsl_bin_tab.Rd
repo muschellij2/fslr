@@ -4,7 +4,7 @@
 \alias{fsl_bin_tab}
 \title{Quick Tabulation for logical images}
 \usage{
-fsl_bin_tab(x, y, dnames = c("x", "y"))
+fsl_bin_tab(x, y, dnames = c("x", "y"), verbose = FALSE)
 }
 \arguments{
 \item{x}{filename of logical or 0/1 image}
@@ -12,6 +12,8 @@ fsl_bin_tab(x, y, dnames = c("x", "y"))
 \item{y}{filename of logical or 0/1 vimage}
 
 \item{dnames}{names for table}
+
+\item{verbose}{Should fsl commands be printed?}
 }
 \value{
 table of x vs y
