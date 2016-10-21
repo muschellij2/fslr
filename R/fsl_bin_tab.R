@@ -34,6 +34,8 @@ fsl_bin_tab = function(
   tab = matrix(c(n_vox - t1 - t2 + tt,  t1 - tt, t2 - tt, tt), 2, 2)
   n = list(c("FALSE", "TRUE"), c("FALSE", "TRUE"))
   names(n) = dnames
+  dimnames(tab) = n
+  tab = as.table(tab)  
   
   return(tab)
 }
