@@ -14,6 +14,12 @@ fsl_bin_tab = function(
   dnames = c("x", "y"),
   verbose = FALSE) {
   
+  dx = dim_(x)[2:4]
+  dy = dim_(y)[2:4]
+  if (!all(dx == dy)) {
+    stop("Dimensions of x and y are not the same!")
+  }
+  n_vox = prod(dx)
   bin_x = fsl_bin(x, verbose = verbose)
   bin_y = fsl_bin(y, verbose = verbose)
   
@@ -25,7 +31,7 @@ fsl_bin_tab = function(
   )
   tt = fslsum(tt, verbose = verbose)
   
-  tab = matrix(c(length(x) - t1 - t2 + tt,  t1 - tt, t2 - tt, tt), 2, 2)
+  tab = matrix(c(n_vox - t1 - t2 + tt,  t1 - tt, t2 - tt, tt), 2, 2)
   n = list(c("FALSE", "TRUE"), c("FALSE", "TRUE"))
   names(n) = dnames
   
