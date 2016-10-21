@@ -6,6 +6,8 @@
 #' @param y filename of logical or 0/1 vimage
 #' 
 #' @return Single number of the dice coefficient
+#' @export
+#' 
 fsl_dice = function(
   x, y) {
   

@@ -7,6 +7,7 @@
 #' @note \code{fsl_bin} will be run to make these images binary before running
 #' 
 #' @return table of x vs y 
+#' @export
 fsl_bin_tab = function(
   x, y,
   dnames = c("x", "y")) {
