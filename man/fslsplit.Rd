@@ -23,6 +23,8 @@ fsl_split(..., retimg = FALSE)
 Passed to \code{\link{readnii}}.}
 
 \item{verbose}{(logical) print out command before running}
+
+\item{...}{not used}
 }
 \value{
 List of output files

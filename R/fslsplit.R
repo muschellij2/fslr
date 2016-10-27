@@ -74,6 +74,7 @@ fslsplit.help = function(){
 
 #' @rdname fslsplit
 #' @aliases fsl_split
+#' @param ... not used
 #' @export
 #' @note Functions with underscores have different defaults
 #' and will return an output filename, so to be used for piping
