@@ -43,11 +43,12 @@ fast = function(
     out_type = match.arg(out_type, c("seg", "mixeltype", "pve_0", 
                  "pve_1", "pve_2", "pveseg"))
     outfile = paste0(outfile, "_", out_type, ext)  
-    img = readnii(outfile, reorient=reorient, ...)
+    img = readnii(outfile, reorient = reorient, ...)
     return(img)
   }
-  
-  return(res)  
+  outfile = paste0(outfile, "_", out_type, ext)  
+  return(outfile)
+  # return(res)  
 }
 
 #' @title FAST help
