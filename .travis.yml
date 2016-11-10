@@ -1,21 +1,26 @@
-# Sample .travis.yml for R projects.
-
 language: r
 warnings_are_errors: true
 sudo: required
-
 r:
   - release
   - devel
-
-r_check_args: --as-cran
+r_check_args: "--as-cran"
 
 before_install:
-    - echo "TRAVIS BUILD ID"
-    - echo ${TRAVIS_BUILD_ID}
-    - echo "TRAVIS JOB ID"
-    - echo ${TRAVIS_JOB_ID}
+  - echo "TRAVIS BUILD ID"
+  - echo ${TRAVIS_BUILD_ID}
+  - echo "TRAVIS JOB ID"
+  - echo ${TRAVIS_JOB_ID}
+
 notifications:
   email:
     on_success: change
     on_failure: change
+
+deploy:
+  provider: releases
+  api_key:
+    secure: Y+JfKm3oXRUxpxyWjBtXimuBcuv3+D5iakzCwMJLqEDPjd+w9ow1x5a4GN/LfFg8Lbhflc8Uaz2bpxRuD5enk+RRmFtcXBB/IsnxkXBEM3fA2eT4ZIxq/aTt4HisOdXclyZc5PxAXFOVO8/QWcjh3boqSpOjscS0kYCWkm4KT9M=
+  file: fslr.tar.gz
+  on:
+    repo: muschellij2/fslr
