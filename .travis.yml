@@ -22,6 +22,7 @@ deploy:
   provider: releases
   api_key:
     secure: Y+JfKm3oXRUxpxyWjBtXimuBcuv3+D5iakzCwMJLqEDPjd+w9ow1x5a4GN/LfFg8Lbhflc8Uaz2bpxRuD5enk+RRmFtcXBB/IsnxkXBEM3fA2eT4ZIxq/aTt4HisOdXclyZc5PxAXFOVO8/QWcjh3boqSpOjscS0kYCWkm4KT9M=
-  file: fslr.tar.gz
+  file_glob: true    
+  file: fslr*.t*gz
   on:
-    repo: muschellij2/fslr
+    r: release
