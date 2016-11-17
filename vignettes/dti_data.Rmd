@@ -3,7 +3,7 @@ title: "DTI Data in fslr"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{DTI Data in fslr}
   %\VignetteEncoding{UTF-8}
 ---
 
