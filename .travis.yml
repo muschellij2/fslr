@@ -8,7 +8,6 @@ os:
 
 r:
   - release
-  - devel
 r_check_args: "--as-cran"
 
 before_install:
