@@ -40,6 +40,11 @@ fslsmooth_in_mask <- function(
   ind = mask %in% 1
   file[ ind ] = res[ ind ]
   file = cal_img(file)
+  args = list(...)
+  outfile = args$outfile  
+  if (!is.null(outfile)) {
+    writenii(file, filename = outfile)
+  }  
   return(file)
 }
 
@@ -59,4 +64,5 @@ fsl_smooth_in_mask = function(...) {
     outfile = tempfile(fileext = ".nii.gz")
   }
   writenii(res, filename = outfile)
+  return(outfile)
 }
