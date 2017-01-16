@@ -34,4 +34,3 @@ character or logical depending on intern
 This function calls \code{fnirt} to register infile to reffile
 and either saves the image or returns an object of class nifti
 }
-

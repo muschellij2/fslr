@@ -24,4 +24,3 @@ if (have.fsl()){
  check_file(mnifile)
 } 
 }
-

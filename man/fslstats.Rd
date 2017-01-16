@@ -35,4 +35,3 @@ entropy = fslstats(img, opts='-E')
 })
 }  
 }
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/intent_code.R
 \docType{methods}
 \name{intent_code-methods}
-\alias{intent_code,character-method}
 \alias{intent_code-methods}
+\alias{intent_code,character-method}
 \title{Extract Image intent_code attribute}
 \usage{
 \S4method{intent_code}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 intent_code method for character types
 }
-

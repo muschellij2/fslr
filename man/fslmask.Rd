@@ -51,4 +51,3 @@ an image mask and either saves the image or returns an object of class nifti
 Functions with underscores have different defaults
 and will return an output filename, so to be used for piping
 }
-

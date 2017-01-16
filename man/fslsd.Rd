@@ -25,4 +25,3 @@ Estimates Standard Deviation of Image from FSL
 \note{
 This uses option -s or -S in \code{\link{fslstats}}
 }
-

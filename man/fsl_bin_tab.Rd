@@ -24,4 +24,3 @@ Creates a 2 by 2 table for
 \note{
 \code{fsl_bin} will be run to make these images binary before running
 }
-

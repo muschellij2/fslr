@@ -56,4 +56,3 @@ If \code{sse = TRUE}, then the additional file will be present:
 If \code{save_tensor = TRUE}, then the additional file will be present:
 \code{outprefix}_tensor - tensor as a 4D file in this order: Dxx,Dxy,Dxz,Dyy,Dyz,Dzz
 }
-

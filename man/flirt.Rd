@@ -40,4 +40,3 @@ This function calls \code{flirt} to register infile to reffile
 and either saves the image or returns an object of class nifti, along with the
 transformation matrix omat
 }
-

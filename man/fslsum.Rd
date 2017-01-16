@@ -26,4 +26,3 @@ aka the approximate sum.
 \note{
 This may be approximate due to rounding
 }
-

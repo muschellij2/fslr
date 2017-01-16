@@ -32,4 +32,3 @@ Result from system command, depends if intern is TRUE or FALSE.
 This function calls \code{fslmaths -sin}.  
 The R functions wraps \code{fslmaths}
 }
-

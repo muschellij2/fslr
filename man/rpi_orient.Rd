@@ -22,4 +22,3 @@ List of 3 elements
 \description{
 This function uses \code{fslswapdim} to reorient an image
 }
-

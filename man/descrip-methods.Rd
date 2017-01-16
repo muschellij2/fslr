@@ -2,8 +2,8 @@
 % Please edit documentation in R/descrip.R
 \docType{methods}
 \name{descrip-methods}
-\alias{descrip,character-method}
 \alias{descrip-methods}
+\alias{descrip,character-method}
 \title{Extract Image descrip attribute}
 \usage{
 \S4method{descrip}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 descrip method for character types
 }
-

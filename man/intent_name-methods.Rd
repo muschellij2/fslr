@@ -2,8 +2,8 @@
 % Please edit documentation in R/intent_name.R
 \docType{methods}
 \name{intent_name-methods}
-\alias{intent_name,character-method}
 \alias{intent_name-methods}
+\alias{intent_name,character-method}
 \title{Extract Image intent_name attribute}
 \usage{
 \S4method{intent_name}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 intent_name method for character types
 }
-

@@ -22,4 +22,3 @@ Uses \code{get.fsl} to check if FSLDIR is accessible or the option
 \examples{
 have.fsl()
 }
-

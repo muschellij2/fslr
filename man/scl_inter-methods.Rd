@@ -2,8 +2,8 @@
 % Please edit documentation in R/scl_inter.R
 \docType{methods}
 \name{scl_inter-methods}
-\alias{scl_inter,character-method}
 \alias{scl_inter-methods}
+\alias{scl_inter,character-method}
 \title{Extract Image scl_inter attribute}
 \usage{
 \S4method{scl_inter}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 scl_inter method for character types
 }
-

@@ -43,4 +43,3 @@ This function calls \code{fslswapdim}
 Functions with underscores have different defaults
 and will return an output filename, so to be used for piping
 }
-

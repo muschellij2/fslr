@@ -57,4 +57,3 @@ dilated = fsldilate(mask, kopts = "-kernel boxv 5", retimg=TRUE)
 })
 }    
 }
-

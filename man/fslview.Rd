@@ -24,4 +24,3 @@ character or logical depending on intern
 This function calls \code{fslview} to view an image 
 in the FSL viewer
 }
-

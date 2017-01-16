@@ -25,4 +25,3 @@ Estimates Volume of Image from FSL
 \note{
 This uses option -v or -V in \code{\link{fslstats}}
 }
-

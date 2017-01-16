@@ -25,4 +25,3 @@ if (have.fsl()){
  getForms(mnifile)
 }   
 }
-

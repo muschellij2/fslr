@@ -58,4 +58,3 @@ s.img = fslsmooth(img, retimg=TRUE)
 })
 }
 }
-

@@ -36,4 +36,3 @@ character or logical depending on intern
 This function applies a matrix from \code{\link{flirt}}
 to other images
 }
-

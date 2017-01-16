@@ -54,4 +54,3 @@ Implements Smallest Univalue Segment Assimilating Nucleus
 S.M. Smith and J.M. Brady. SUSAN -a new approach to low level image processing. 
 International Journal of Computer Vision, 23(1):45-78, May 1997.
 }
-

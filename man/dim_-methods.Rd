@@ -2,8 +2,8 @@
 % Please edit documentation in R/dim_.R
 \docType{methods}
 \name{dim_-methods}
-\alias{dim_,character-method}
 \alias{dim_-methods}
+\alias{dim_,character-method}
 \title{Extract Image dim_ attribute}
 \usage{
 \S4method{dim_}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 \code{dim_} method for class character
 }
-

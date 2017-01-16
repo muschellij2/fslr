@@ -2,10 +2,10 @@
 % Please edit documentation in R/qform.R, R/sform.R
 \docType{methods}
 \name{qform,character-method}
-\alias{qform,character}
 \alias{qform,character-method}
-\alias{sform,character}
+\alias{qform,character}
 \alias{sform,character-method}
+\alias{sform,character}
 \title{Extract NIfTI 3D Image Orientation}
 \usage{
 \S4method{qform}{character}(object)
@@ -18,4 +18,3 @@
 \description{
 Gets q/s-forms from a character
 }
-

@@ -13,4 +13,3 @@ Character path
 Finds the FSLDIR from system environment or \code{getOption("fsl.path")}
 and pastes on ``data/standard''
 }
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/slice_start.R
 \docType{methods}
 \name{slice_start-methods}
-\alias{slice_start,character-method}
 \alias{slice_start-methods}
+\alias{slice_start,character-method}
 \title{Extract Image slice_start attribute}
 \usage{
 \S4method{slice_start}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 slice_start method for character types
 }
-

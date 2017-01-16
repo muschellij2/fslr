@@ -26,4 +26,3 @@ This will use \code{Sys.getenv("FSLDIR")} before \code{getOption("fsl.path")}.
 If the directory is not found for FSL in \code{Sys.getenv("FSLDIR")} and 
 \code{getOption("fsl.path")}, it will try the default directory \code{/usr/local/fsl}.
 }
-

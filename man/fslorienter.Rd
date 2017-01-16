@@ -20,4 +20,3 @@ Result from system command, output from FSL
 This function calls \code{fslorient -getorient} and is a 
 simple wrapper of \code{\link{fslorient}}
 }
-

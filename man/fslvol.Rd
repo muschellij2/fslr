@@ -21,4 +21,3 @@ This function wraps \code{\link{fslsum}} and
 \note{
 This may be approximate due to rounding
 }
-

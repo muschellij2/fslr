@@ -2,8 +2,8 @@
 % Please edit documentation in R/aux_file.R
 \docType{methods}
 \name{aux.file-methods}
-\alias{aux.file,character-method}
 \alias{aux.file-methods}
+\alias{aux.file,character-method}
 \title{Extract Image aux.file attribute}
 \usage{
 \S4method{aux.file}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 aux_file method for character types
 }
-

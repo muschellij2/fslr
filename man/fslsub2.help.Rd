@@ -21,4 +21,3 @@ if (have.fsl()){
  fslsub2.help() 
 }
 }
-

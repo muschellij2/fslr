@@ -42,4 +42,3 @@ This function calls \code{fnirt} to register infile to reffile
 and either saves the image or returns an object of class nifti, but does
 the affine registration first
 }
-

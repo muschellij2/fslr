@@ -2,8 +2,8 @@
 % Please edit documentation in R/qform_code.R
 \docType{methods}
 \name{qform_code-methods}
-\alias{qform_code,character-method}
 \alias{qform_code-methods}
+\alias{qform_code,character-method}
 \title{Extract Image qform_code attribute}
 \usage{
 \S4method{qform_code}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 qform_code method for character types
 }
-

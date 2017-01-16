@@ -23,4 +23,3 @@ Object of class \code{nifti}
 \description{
 This function uses \code{fslswapdim} to reorient an image
 }
-

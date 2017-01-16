@@ -2,8 +2,8 @@
 % Please edit documentation in R/slice_end.R
 \docType{methods}
 \name{slice_end-methods}
-\alias{slice_end,character-method}
 \alias{slice_end-methods}
+\alias{slice_end,character-method}
 \title{Extract Image slice_end attribute}
 \usage{
 \S4method{slice_end}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 slice_end method for character types
 }
-

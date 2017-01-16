@@ -17,4 +17,3 @@ if (have.fsl()){
  fsl_anat.help()
 }
 }
-

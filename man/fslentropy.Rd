@@ -25,4 +25,3 @@ Estimates Mean Entropy of Image from FSL
 \note{
 This uses option -e or -E in \code{\link{fslstats}}
 }
-

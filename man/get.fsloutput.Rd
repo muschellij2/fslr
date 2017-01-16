@@ -13,4 +13,3 @@ FSLOUTPUTTYPE, such as NIFTI_GZ.  If none found, uses NIFTI_GZ as default
 Finds the FSLOUTPUTTYPE from system environment or 
 \code{getOption("fsl.outputtype")} for output type (nii.gz, nii, ANALYZE,etc)
 }
-

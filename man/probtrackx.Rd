@@ -115,4 +115,3 @@ probtrackx(samples = "merged", mask, seed, verbose = TRUE, out = NULL,
 \description{
 This function wraps \code{probtrackx2} from FSL
 }
-

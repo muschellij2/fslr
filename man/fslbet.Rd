@@ -42,4 +42,3 @@ from an image, usually for skull stripping.
 Functions with underscores have different defaults
 and will return an output filename, so to be used for piping
 }
-

@@ -28,4 +28,3 @@ if (have.fsl()){
  fslval(mnifile, keyword = "dim1")
 }  
 }
-

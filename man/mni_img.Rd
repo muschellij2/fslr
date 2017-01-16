@@ -16,4 +16,3 @@ Object of class \code{\link{nifti}}
 Simple wrapper for reading in the MNI image constructed from 
 \code{\link{mni_fname}}
 }
-

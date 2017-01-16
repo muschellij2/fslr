@@ -2,8 +2,8 @@
 % Please edit documentation in R/cal_max.R
 \docType{methods}
 \name{cal.max-methods}
-\alias{cal.max,character-method}
 \alias{cal.max-methods}
+\alias{cal.max,character-method}
 \title{Extract Image cal.max attribute}
 \usage{
 \S4method{cal.max}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 cal_max method for character types
 }
-

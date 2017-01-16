@@ -2,8 +2,8 @@
 % Please edit documentation in R/slice_code.R
 \docType{methods}
 \name{slice_code-methods}
-\alias{slice_code,character-method}
 \alias{slice_code-methods}
+\alias{slice_code,character-method}
 \title{Extract Image slice_code attribute}
 \usage{
 \S4method{slice_code}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 slice_code method for character types
 }
-

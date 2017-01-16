@@ -2,8 +2,8 @@
 % Please edit documentation in R/vox_offset.R
 \docType{methods}
 \name{vox_offset-methods}
-\alias{vox_offset,character-method}
 \alias{vox_offset-methods}
+\alias{vox_offset,character-method}
 \title{Extract Image vox_offset attribute}
 \usage{
 \S4method{vox_offset}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 vox_offset method for character types
 }
-

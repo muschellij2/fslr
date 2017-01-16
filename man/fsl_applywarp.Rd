@@ -36,4 +36,3 @@ character or logical depending on intern
 This function applies a coefficient map from \code{\link{fnirt}}
 to other images
 }
-

@@ -2,10 +2,10 @@
 % Please edit documentation in R/fslgetorient.R
 \name{fslgetorient}
 \alias{fslgetorient}
-\alias{fslgetqform}
-\alias{fslgetqformcode}
 \alias{fslgetsform}
+\alias{fslgetqform}
 \alias{fslgetsformcode}
+\alias{fslgetqformcode}
 \title{FSL Orientation Wrappers}
 \usage{
 fslgetorient(file, verbose = TRUE)
@@ -30,4 +30,3 @@ Result from system command, output from FSL
 This function calls \code{fslorient -get*} and is a 
 simple wrapper of \code{\link{fslorient}}
 }
-

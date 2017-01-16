@@ -25,4 +25,3 @@ Estimates Mean of Image from FSL
 \note{
 This uses option -m or -M in \code{\link{fslstats}}
 }
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/pixdim.R
 \docType{methods}
 \name{pixdim-methods}
-\alias{pixdim,character-method}
 \alias{pixdim-methods}
+\alias{pixdim,character-method}
 \title{Extract Image pixdim attribute}
 \usage{
 \S4method{pixdim}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 Gets pixdim from a character
 }
-

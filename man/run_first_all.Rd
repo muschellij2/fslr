@@ -29,4 +29,3 @@ Result of \code{\link{system}}
 Wrapper for \code{run_first_all} from FSL for FIRST analysis 
 segmentation of subcortical structures
 }
-

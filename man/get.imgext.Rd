@@ -13,4 +13,3 @@ Extension for output type
 Runs \code{get.fsloutput()} to extract FSLOUTPUTTYPE and then 
 gets corresponding extension (such as .nii.gz)
 }
-

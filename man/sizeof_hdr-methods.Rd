@@ -2,8 +2,8 @@
 % Please edit documentation in R/sizeof_hdr.R
 \docType{methods}
 \name{sizeof_hdr-methods}
-\alias{sizeof_hdr,character-method}
 \alias{sizeof_hdr-methods}
+\alias{sizeof_hdr,character-method}
 \title{Extract Image sizeof_hdr attribute}
 \usage{
 \S4method{sizeof_hdr}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 sizeof_hdr method for character types
 }
-

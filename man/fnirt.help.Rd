@@ -12,4 +12,3 @@ Prints help output and returns output as character vector
 \description{
 This function calls \code{fnirt}'s help
 }
-

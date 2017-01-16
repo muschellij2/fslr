@@ -2,8 +2,8 @@
 % Please edit documentation in R/sform_code.R
 \docType{methods}
 \name{sform_code-methods}
-\alias{sform_code,character-method}
 \alias{sform_code-methods}
+\alias{sform_code,character-method}
 \title{Extract Image sform_code attribute}
 \usage{
 \S4method{sform_code}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 sform_code method for character types
 }
-

@@ -19,4 +19,3 @@ Single number of the dice coefficient
 \description{
 Creates a 2 by 2 table for
 }
-

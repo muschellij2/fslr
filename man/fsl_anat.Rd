@@ -29,4 +29,3 @@ Result from system command, depends if intern is TRUE or FALSE.
 \description{
 This function calls \code{fsl_anat} from FSL
 }
-

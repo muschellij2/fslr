@@ -2,8 +2,8 @@
 % Please edit documentation in R/magic.R
 \docType{methods}
 \name{magic-methods}
-\alias{magic,character-method}
 \alias{magic-methods}
+\alias{magic,character-method}
 \title{Extract Image magic attribute}
 \usage{
 \S4method{magic}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 magic method for character types
 }
-

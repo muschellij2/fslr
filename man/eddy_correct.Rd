@@ -27,4 +27,3 @@ Result from system command, depends if intern is TRUE or FALSE.
 This function calls \code{eddy_correct} from FSL for 
 DTI Processing
 }
-

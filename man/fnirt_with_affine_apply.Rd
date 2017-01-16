@@ -47,4 +47,3 @@ Applies an affine transformation with FLIRT then the warp image with FNIRT
 \seealso{
 fnirt_with_affine
 }
-

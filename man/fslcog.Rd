@@ -37,4 +37,3 @@ cal.max = max(x), pixdim = rep(1, 4))
 fslcog(img)
 }
 }
-

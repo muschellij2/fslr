@@ -56,4 +56,3 @@ eroded = fslerode(mask, kopts = "-kernel boxv 5", retimg=TRUE)
 })
 }    
 }
-

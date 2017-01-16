@@ -21,4 +21,3 @@ if (have.fsl()){
  fslindex.help() 
 }
 }
-

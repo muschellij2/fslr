@@ -27,4 +27,3 @@ character or logical depending on intern
 \description{
 This function calls \code{melodic}
 }
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/bitpix.R
 \docType{methods}
 \name{bitpix-methods}
-\alias{bitpix,character-method}
 \alias{bitpix-methods}
+\alias{bitpix,character-method}
 \title{Extract Image bitpix attribute}
 \usage{
 \S4method{bitpix}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 bitpix method for character types
 }
-

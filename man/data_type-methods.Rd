@@ -2,8 +2,8 @@
 % Please edit documentation in R/data_type.R
 \docType{methods}
 \name{data_type-methods}
-\alias{data_type,character-method}
 \alias{data_type-methods}
+\alias{data_type,character-method}
 \title{Extract Image data_type attribute}
 \usage{
 \S4method{data_type}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 data_type method for character types
 }
-

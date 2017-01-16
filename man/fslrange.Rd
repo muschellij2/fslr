@@ -32,4 +32,3 @@ if (have.fsl()){
  fslrange(mnifile)
 }  
 }
-

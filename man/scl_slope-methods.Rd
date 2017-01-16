@@ -2,8 +2,8 @@
 % Please edit documentation in R/scl_slope.R
 \docType{methods}
 \name{scl_slope-methods}
-\alias{scl_slope,character-method}
 \alias{scl_slope-methods}
+\alias{scl_slope,character-method}
 \title{Extract Image scl_slope attribute}
 \usage{
 \S4method{scl_slope}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 scl_slope method for character types
 }
-

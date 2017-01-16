@@ -2,8 +2,8 @@
 % Please edit documentation in R/toffset.R
 \docType{methods}
 \name{toffset-methods}
-\alias{toffset,character-method}
 \alias{toffset-methods}
+\alias{toffset,character-method}
 \title{Extract Image toffset attribute}
 \usage{
 \S4method{toffset}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 Gets toffset from a character
 }
-

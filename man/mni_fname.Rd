@@ -24,4 +24,3 @@ Character path of filename, warning if that file does not exist
 Finds the standard data directory for FSL and pastes togehter
 the string for an MNI template image
 }
-

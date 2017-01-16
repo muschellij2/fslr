@@ -2,8 +2,8 @@
 % Please edit documentation in R/intent_p2.R
 \docType{methods}
 \name{intent_p2-methods}
-\alias{intent_p2,character-method}
 \alias{intent_p2-methods}
+\alias{intent_p2,character-method}
 \title{Extract Image intent_p2 attribute}
 \usage{
 \S4method{intent_p2}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 intent_p2 method for character types
 }
-

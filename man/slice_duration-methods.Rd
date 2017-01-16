@@ -2,8 +2,8 @@
 % Please edit documentation in R/slice_duration.R
 \docType{methods}
 \name{slice_duration-methods}
-\alias{slice_duration,character-method}
 \alias{slice_duration-methods}
+\alias{slice_duration,character-method}
 \title{Extract Image slice_duration attribute}
 \usage{
 \S4method{slice_duration}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 slice_duration method for character types
 }
-

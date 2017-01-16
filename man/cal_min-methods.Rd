@@ -2,8 +2,8 @@
 % Please edit documentation in R/cal_min.R
 \docType{methods}
 \name{cal.min-methods}
-\alias{cal.min,character-method}
 \alias{cal.min-methods}
+\alias{cal.min,character-method}
 \title{Extract Image cal.min attribute}
 \usage{
 \S4method{cal.min}{character}(object)
@@ -14,4 +14,3 @@
 \description{
 cal_min method for character types
 }
-
