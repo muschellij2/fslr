@@ -46,6 +46,7 @@ fslrobustfov = function(
                reorient = reorient,
                intern = intern,
                opts = opts,
+               frontopts = "-i",
                verbose = verbose,
                ... = ..., 
                samefile = TRUE)
