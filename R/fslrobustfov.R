@@ -49,7 +49,8 @@ fslrobustfov = function(
                frontopts = "-i",
                verbose = verbose,
                ... = ..., 
-               samefile = TRUE)
+               samefile = TRUE,
+               no.outfile = TRUE)
   
   return(res)  
 }
