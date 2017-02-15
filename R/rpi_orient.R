@@ -42,9 +42,11 @@ rpi_orient_file = function(file, verbose = TRUE){
                      retimg = TRUE,
                      verbose = verbose)
   }
+  outfile = tempfile(fileext = ".nii.gz")
   # Changes the data
   file = fslswapdim(file = file,
                     retimg = FALSE,
+                    outfile = outfile,
                     a = "RL", b = "PA", c = "IS",
                     verbose = verbose)
   L = list(img = file,
