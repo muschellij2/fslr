@@ -2,9 +2,12 @@
 % Please edit documentation in R/rpi_orient.R
 \name{rpi_orient}
 \alias{rpi_orient}
+\alias{rpi_orient_file}
 \title{Reorient an Image to RPI orientation}
 \usage{
 rpi_orient(file, verbose = TRUE)
+
+rpi_orient_file(file, verbose = TRUE)
 }
 \arguments{
 \item{file}{Object of class \code{nifti} or character path}

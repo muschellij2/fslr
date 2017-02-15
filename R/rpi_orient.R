@@ -10,6 +10,14 @@
 #' }
 #' @export
 rpi_orient = function(file, verbose = TRUE){
+  L = rpi_orient_file(file = file, verbose = verbose)
+  L$img = check_nifti(L$img)
+  return(L)
+}
+
+#' @export
+#' @rdname rpi_orient
+rpi_orient_file = function(file, verbose = TRUE){
   file = checkimg(file)
   forms = getForms(file)
   if (forms$sform_code == 0 & forms$qform_code == 0) {
@@ -36,14 +44,16 @@ rpi_orient = function(file, verbose = TRUE){
   }
   # Changes the data
   file = fslswapdim(file = file,
-                    retimg = TRUE,
+                    retimg = FALSE,
                     a = "RL", b = "PA", c = "IS",
                     verbose = verbose)
-  L = list(img = check_nifti(file),
+  L = list(img = file,
            convention = ori,
            orientation = sorient)
   return(L)
 }
+
+
 
 #' @title Reverse Reorientation an Image to RPI orientation
 #' @description This function uses \code{fslswapdim} to reorient an image
