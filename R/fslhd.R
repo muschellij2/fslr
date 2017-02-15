@@ -1445,7 +1445,6 @@ fslcmd = function(
   cmd <- paste0(cmd, s)
   # cmd <- paste0(cmd, sprintf('%s "%s"', func, file))
   
-  no.outfile = is.null(outfile)
   if (no.outfile & samefile) outfile = ""  
   outfile = check_outfile(outfile = outfile, 
                           retimg = retimg, fileext = "")
