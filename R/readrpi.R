@@ -14,7 +14,7 @@ readrpi <- function(file, ..., verbose = TRUE) {
   }
   
   L = rpi_orient_file(file = file, verbose = verbose)
-  file = L$file
+  file = L$img
   nim = readnii(fname = file, ...)
   return(nim)
 }
