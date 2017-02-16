@@ -16,7 +16,7 @@ fslhd(file, opts = "", verbose = TRUE, ...)
 \item{...}{options passed to \code{\link{checkimg}}}
 }
 \value{
-Character of infromation from fslhd
+Character of information from fslhd
 }
 \description{
 This function calls \code{fslhd} to obtain a nifti header

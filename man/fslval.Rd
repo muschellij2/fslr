@@ -16,7 +16,7 @@ fslval(file, keyword = "", verbose = TRUE, ...)
 \item{...}{options passed to \code{\link{checkimg}}}
 }
 \value{
-Character of infromation from fslhd field specified in keyword
+Character of information from fslhd field specified in keyword
 }
 \description{
 This function calls \code{fslval} to obtain a nifti header

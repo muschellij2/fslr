@@ -466,7 +466,7 @@ fslerode <- function(file, outfile=NULL,
 #' @param keyword (character) keyword to be taken from fslhd
 #' @param verbose (logical) print out command before running 
 #' @param ... options passed to \code{\link{checkimg}}
-#' @return Character of infromation from fslhd field specified in keyword
+#' @return Character of information from fslhd field specified in keyword
 #' @export
 #' @examples
 #' if (have.fsl()){
@@ -503,7 +503,7 @@ fslval.help = function(){
 #' @param opts (character) additional options to be passed to fslhd
 #' @param verbose (logical) print out command before running 
 #' @param ... options passed to \code{\link{checkimg}}
-#' @return Character of infromation from fslhd
+#' @return Character of information from fslhd
 #' @export
 #' @examples
 #' if (have.fsl()){
