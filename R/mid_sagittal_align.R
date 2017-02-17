@@ -18,7 +18,7 @@ mid_sagittal_align = function(
   opts = "",
   verbose = TRUE) {
   
-  check_outfile(outfile = outfile, retimg = retimg)
+  outfile = check_outfile(outfile = outfile, retimg = retimg)
   rp = rpi_orient_file(file, verbose = verbose)
   
   img = rp$img
@@ -39,8 +39,8 @@ mid_sagittal_align = function(
         outfile = tfile,
         verbose = verbose)  
   
-  scaled = fsl_avscale(file = omat)
-  parsed = parse_avscale(scaled)
+  parsed = fsl_avscale(file = omat, parsed = TRUE)
+  # parsed = parse_avscale(scaled)
   
   mat = parsed$fwd_half_transform
   # mat = mat * 0.5
@@ -51,7 +51,7 @@ mid_sagittal_align = function(
   writeLines(mat, new_omat)
   
   tfile = tempfile(fileext = ".nii.gz")
-  centered = flirt_apply(
+  flirt_apply(
     infile = flipped, 
     reffile = img, 
     initmat = new_omat,
@@ -59,7 +59,7 @@ mid_sagittal_align = function(
     retimg = FALSE,
     outfile = tfile)
   centered = reverse_rpi_orient_file(
-    file = centered, 
+    file = tfile, 
     orientation = rp$orientation,
     convention = rp$convention)
   if (retimg) {
