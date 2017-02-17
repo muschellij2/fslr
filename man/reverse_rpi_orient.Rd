@@ -2,9 +2,13 @@
 % Please edit documentation in R/rpi_orient.R
 \name{reverse_rpi_orient}
 \alias{reverse_rpi_orient}
+\alias{reverse_rpi_orient_file}
 \title{Reverse Reorientation an Image to RPI orientation}
 \usage{
 reverse_rpi_orient(file, convention = c("NEUROLOGICAL", "RADIOLOGICAL"),
+  orientation, verbose = TRUE)
+
+reverse_rpi_orient_file(file, convention = c("NEUROLOGICAL", "RADIOLOGICAL"),
   orientation, verbose = TRUE)
 }
 \arguments{

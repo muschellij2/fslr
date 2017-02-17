@@ -45,10 +45,10 @@ rpi_orient_file = function(file, verbose = TRUE){
   outfile = tempfile(fileext = ".nii.gz")
   # Changes the data
   fslswapdim(file = file,
-                    retimg = FALSE,
-                    outfile = outfile,
-                    a = "RL", b = "PA", c = "IS",
-                    verbose = verbose)
+             retimg = FALSE,
+             outfile = outfile,
+             a = "RL", b = "PA", c = "IS",
+             verbose = verbose)
   L = list(img = outfile,
            convention = ori,
            orientation = sorient)
@@ -69,21 +69,38 @@ rpi_orient_file = function(file, verbose = TRUE){
 reverse_rpi_orient = function(file, 
                               convention = c("NEUROLOGICAL", "RADIOLOGICAL"), 
                               orientation, verbose = TRUE){
+  img = reverse_rpi_orient_file(file = file, convention = convention,
+                      orientation = orientation, verbose = verbose)
+  img = check_nifti(img)
+  return(img)
+}
+
+#' @rdname reverse_rpi_orient
+#' @export
+reverse_rpi_orient_file = function(
+  file, 
+  convention = c("NEUROLOGICAL", "RADIOLOGICAL"), 
+  orientation, verbose = TRUE){
+  
   file = checkimg(file)
   stopifnot(length(orientation) == 3)
   convention = match.arg(convention)
   
+  outfile = tempfile(fileext = ".nii.gz")
   if (convention == "NEUROLOGICAL") {   
-    file = fslorient(file, 
-                       opts = "-swaporient",
-                       retimg = TRUE, 
-                       verbose = verbose)      
+    fslorient(file, 
+              opts = "-swaporient",
+              retimg = FALSE, 
+              verbose = verbose,
+              outfile = outfile)   
+    file = outfile
   }
-  file = fslswapdim(file = file, 
-                      retimg = TRUE, 
-                      a = orientation[1], 
-                      b = orientation[2], 
-                      c = orientation[3], 
-                      verbose = verbose)
-  return(file)
+  fslswapdim(file = file, 
+             a = orientation[1], 
+             b = orientation[2], 
+             c = orientation[3], 
+             verbose = verbose,
+             retimg = FALSE,
+             outfile = outfile)
+  return(outfile)
 }

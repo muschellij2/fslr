@@ -3,10 +3,13 @@
 #' matrices for FSL
 #' @param file (character) matrix filename 
 #' @param volume (character) non-reference volume filename or nifti image
+#' @param parsed (logical) should \code{\link{parse_avscale}} be run 
+#' after?
 #' @param verbose (logical) print out command before running 
 #' @return Character of information from avscale
 #' @export
-fsl_avscale <- function(file, volume = NULL, verbose = TRUE){
+fsl_avscale <- function(file, volume = NULL,
+                        parsed = TRUE, verbose = TRUE){
   cmd <- get.fsl()
   add_volume = !is.null(volume)
   if (add_volume) {
@@ -22,6 +25,9 @@ fsl_avscale <- function(file, volume = NULL, verbose = TRUE){
     message(cmd, "\n")
   }
   res = system(cmd, intern = TRUE)
+  if (parsed) {
+    res = parse_avscale(res)  
+  }
   return(res)
 }
 

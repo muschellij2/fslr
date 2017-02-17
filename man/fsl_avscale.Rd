@@ -5,7 +5,7 @@
 \alias{avscale}
 \title{Scale Affine Matrix using \code{avscale}}
 \usage{
-fsl_avscale(file, volume = NULL, verbose = TRUE)
+fsl_avscale(file, volume = NULL, parsed = TRUE, verbose = TRUE)
 
 avscale(...)
 }
@@ -13,6 +13,9 @@ avscale(...)
 \item{file}{(character) matrix filename}
 
 \item{volume}{(character) non-reference volume filename or nifti image}
+
+\item{parsed}{(logical) should \code{\link{parse_avscale}} be run 
+after?}
 
 \item{verbose}{(logical) print out command before running}
 
