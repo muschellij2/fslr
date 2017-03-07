@@ -12,10 +12,3 @@ fsl_mul = function(
   return(outfile)
 }
 
-#' @rdname fslmul
-#' @aliases fsl_and
-#' @export
-fsl_and = function(
-  ...){
-  fsl_mul(...)
-}

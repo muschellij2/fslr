@@ -2,19 +2,13 @@
 % Please edit documentation in R/fsl_mul.R, R/fslmul.R
 \name{fsl_mul}
 \alias{fsl_mul}
-\alias{fsl_and}
 \alias{fslmul}
-\alias{fsland}
 \title{Multiply Images using FSL}
 \usage{
 fsl_mul(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fsl_and(...)
-
 fslmul(file, file2, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", ...)
-
-fsland(...)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}
@@ -46,6 +40,4 @@ The R functions wraps \code{fslmaths}
 \note{
 Functions with underscores have different defaults
 and will return an output filename, so to be used for piping
-
-\code{fsland} is a duplicate of \code{fslmul}
 }

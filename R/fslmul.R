@@ -13,7 +13,6 @@
 #' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
-#' @note \code{fsland} is a duplicate of \code{fslmul}
 #' @export
 fslmul = function(
   file,
@@ -37,9 +36,3 @@ fslmul = function(
 }
 
 
-#' @rdname fslmul
-#' @export
-fsland = function(
-  ...){
-  fslmul(...)
-}
