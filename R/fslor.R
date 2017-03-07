@@ -30,14 +30,13 @@ fslor = function(
     file = file, 
     file2 = file2,
     ...)
-  res = fsl_bin(
+  res = fslbin(
     file = res, 
     outfile = outfile, 
     retimg = retimg,
     reorient = reorient,
     intern = intern,
     ...)
-  
   return(res)  
 }
 

@@ -30,7 +30,7 @@ fslxor = function(
     file = file, 
     file2 = file2,
     ...)
-  res = fsl_thresh(
+  res = fslthresh(
     file = res, 
     thresh = 0, 
     uthresh = 1,
