@@ -2,11 +2,14 @@
 % Please edit documentation in R/fsl_mul.R, R/fslmul.R
 \name{fsl_mul}
 \alias{fsl_mul}
+\alias{fsl_and}
 \alias{fslmul}
 \alias{fsland}
 \title{Multiply Images using FSL}
 \usage{
 fsl_mul(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
+
+fsl_and(...)
 
 fslmul(file, file2, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", ...)

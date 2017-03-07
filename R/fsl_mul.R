@@ -11,3 +11,11 @@ fsl_mul = function(
   fslmul(..., outfile = outfile, retimg = retimg)
   return(outfile)
 }
+
+#' @rdname fslmul
+#' @aliases fsl_and
+#' @export
+fsl_and = function(
+  ...){
+  fsl_mul(...)
+}
