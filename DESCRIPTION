@@ -27,8 +27,8 @@ License: GPL-3
 VignetteBuilder: knitr
 Suggests:
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 BugReports: https://github.com/muschellij2/fslr/issues
 SystemRequirements: FSL <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/>
 RoxygenNote: 6.0.1
-

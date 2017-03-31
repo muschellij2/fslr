@@ -16,6 +16,9 @@ before_install:
   - echo "TRAVIS JOB ID"
   - echo ${TRAVIS_JOB_ID}
 
+after_success:
+  - Rscript -e 'covr::coveralls()'
+
 notifications:
   email:
     on_success: change
