@@ -28,6 +28,12 @@ get.fsl = function(add_bin = TRUE){
           break;
         }
       }
+    } else {
+      if (!file.exists(fsldir)) {
+        warning(paste0("fsl.path set but folder doesn't exist! ", 
+                       "Likely mis-configured option"))
+      }
+      
     }
     bin = "bin"
     bin_app = paste0(bin, "/")
@@ -261,11 +267,14 @@ fslstats <- function(file, opts="", verbose = TRUE, ts = FALSE, ...){
 #' @title Gaussian smooth image using FSL
 #' @description This function calls \code{fslmaths -s} to smooth an image and either
 #' saves the image or returns an object of class nifti
-#' @param file (character) image to be smoothed
+#' @param file (character or nifti) image to be smoothed
 #' @param sigma (numeric) sigma (in mm) of Gaussian kernel for smoothing
 #' @param mask (character) optional mask given for image
 #' @param smooth_mask (logical) Smooth mask?  If TRUE, the masked image 
 #' will be divided by the smoothed mask.
+#' @param smoothed_mask (character or nifti) If specified and 
+#' \code{smooth_mask = TRUE}, then will use this as the smoothed mask for 
+#' division.
 #' @param outfile (character) resultant smoothed image name (optional)
 #' if not give, will be the stub of the filename then _sigma
 #' @param retimg (logical) return image of class nifti
@@ -292,6 +301,7 @@ fslsmooth <- function(
   sigma=10, 
   mask=NULL, 
   smooth_mask = TRUE,
+  smoothed_mask = NULL,
   outfile=NULL, 
   retimg = TRUE,
   reorient = FALSE,
@@ -302,6 +312,7 @@ fslsmooth <- function(
   leader = cmd = get.fsl()
   file = checkimg(file, ...)
   cmd <- paste0(cmd, sprintf('fslmaths "%s"', file))
+  
   if ( !is.null(mask)) {
     mask = checkimg(mask, ...)
     cmd <- paste(cmd, sprintf(' -mas "%s"', mask))
@@ -312,31 +323,29 @@ fslsmooth <- function(
   cmd <- paste(cmd, sprintf(' -s %s "%s";', sigma, outfile))
   ext = get.imgext()
   
-  rm.mask.img = FALSE
   ### tempfile for mask.stub
   if ( !is.null(mask) & smooth_mask ) {
-    rm.mask.img = TRUE
-    mask = checkimg(mask, ...)
-    mask.stub <- basename(mask)
-    mask.stub = nii.stub(mask.stub)
-    mask.stub <- file.path(dirname(mask), mask.stub)
-    mask.blur <- sprintf("%s_%s", mask.stub, sigma)
-    cmd <- paste(cmd, paste0(leader, 
-                             sprintf('fslmaths "%s" -s %s "%s";', 
-                                     mask, sigma, mask.blur)))
-    cmd <- paste(cmd, paste0(leader, 
-                             sprintf('fslmaths "%s" -div "%s" -mas "%s" "%s";', 
-                                     outfile, mask.blur, mask, outfile)))
+    if (is.null(smoothed_mask)) {
+      smoothed_mask = tempfile(fileext = ".nii.gz")
+      cmd <- paste(
+        cmd, 
+        paste0(leader, 
+               sprintf('fslmaths "%s" -s %s "%s";', 
+                       mask, sigma, smoothed_mask)))
+    } else {
+      smoothed_mask = checkimg(smoothed_mask, ...)
+    }
+    cmd <- paste(
+      cmd, paste0(leader, 
+                  sprintf('fslmaths "%s" -div "%s" -mas "%s" "%s";', 
+                          outfile, smoothed_mask, mask, outfile)))    
   }
   if (verbose) {
     message(cmd, "\n")
   }  
   res = system(cmd, intern = intern)
   outfile = paste0(outfile, ext)  
-  if (rm.mask.img) {
-    file.remove(paste0(mask.blur, ext))    
-  }
-  
+
   if (retimg) {
     img = readnii(outfile, reorient = reorient, ...)
     return(img)

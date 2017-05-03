@@ -8,8 +8,8 @@
 fsl_smooth(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
 fslsmooth(file, sigma = 10, mask = NULL, smooth_mask = TRUE,
-  outfile = NULL, retimg = TRUE, reorient = FALSE, intern = FALSE,
-  verbose = TRUE, ...)
+  smoothed_mask = NULL, outfile = NULL, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, verbose = TRUE, ...)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}
@@ -19,7 +19,7 @@ if not give, will be the stub of the filename then _sigma}
 
 \item{retimg}{(logical) return image of class nifti}
 
-\item{file}{(character) image to be smoothed}
+\item{file}{(character or nifti) image to be smoothed}
 
 \item{sigma}{(numeric) sigma (in mm) of Gaussian kernel for smoothing}
 
@@ -27,6 +27,10 @@ if not give, will be the stub of the filename then _sigma}
 
 \item{smooth_mask}{(logical) Smooth mask?  If TRUE, the masked image 
 will be divided by the smoothed mask.}
+
+\item{smoothed_mask}{(character or nifti) If specified and 
+\code{smooth_mask = TRUE}, then will use this as the smoothed mask for 
+division.}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
 Passed to \code{\link{readnii}}.}
