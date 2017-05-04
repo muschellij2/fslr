@@ -43,7 +43,7 @@ fast = function(
   opts = opts[ opts != "" ]
   opts = paste(opts, collapse = " ")
   
-  cmd <- paste(cmd, sprintf(' %s --out="%s" "%s";', opts, 
+  cmd <- paste(cmd, sprintf('%s --out="%s" "%s";', opts, 
     outfile, file))
   ext = get.imgext()
   if (verbose){
