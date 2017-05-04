@@ -127,3 +127,27 @@ fsl_biascorrect = function(
   return(res)  
 }
 
+
+
+#' @rdname fast
+#' @aliases fsl_fast
+#' @export
+#' @note Functions with underscores have different defaults
+#' and will return an output filename, so to be used for piping
+fsl_fast = function(
+  ...,
+  outfile = tempfile(fileext = ".nii.gz"),
+  retimg = FALSE
+) {
+  fast(..., outfile = outfile, retimg = retimg)
+  return(outfile)
+}
+
+#' @rdname fast
+#' @aliases fslfast
+#' @export
+fslfast = function(
+  ...
+) {
+  fast(...)
+}

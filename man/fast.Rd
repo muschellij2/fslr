@@ -2,11 +2,17 @@
 % Please edit documentation in R/fast.R
 \name{fast}
 \alias{fast}
+\alias{fsl_fast}
+\alias{fslfast}
 \title{FSL FAST}
 \usage{
 fast(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", out_type = c("seg", "mixeltype", "pve_0",
   "pve_1", "pve_2", "pveseg"), verbose = TRUE, ...)
+
+fsl_fast(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
+
+fslfast(...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}
@@ -35,4 +41,8 @@ Result from system command, depends if intern is TRUE or FALSE.
 }
 \description{
 This function calls \code{fast} from FSL
+}
+\note{
+Functions with underscores have different defaults
+and will return an output filename, so to be used for piping
 }
