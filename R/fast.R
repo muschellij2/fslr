@@ -2,6 +2,9 @@
 #' @description This function calls \code{fast} from FSL
 #' @param file (character) image to be manipulated
 #' @param outfile (character) resultant image name (optional)
+#' @param bias_correct (logical) if \code{FALSE}, then 
+#' \code{"--nobias"} is passed to FAST.  Additional options can be 
+#' sent using \code{opts}, but this is the most commonly one changed.
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
 #' Passed to \code{\link{readnii}}.
@@ -17,6 +20,7 @@
 fast = function(
   file,
   outfile=NULL, 
+  bias_correct = TRUE,
   retimg = TRUE,
   reorient = FALSE,
   intern=FALSE, 
@@ -32,6 +36,13 @@ fast = function(
   no.outfile = is.null(outfile)
   outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
   outfile = nii.stub(outfile)
+  if (!bias_correct) {
+    opts = c(opts, "--nobias")
+  }
+  opts = trimws(opts)
+  opts = opts[ opts != "" ]
+  opts = paste(opts, collapse = " ")
+  
   cmd <- paste(cmd, sprintf(' %s --out="%s" "%s";', opts, 
     outfile, file))
   ext = get.imgext()
