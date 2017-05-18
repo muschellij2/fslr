@@ -39,6 +39,9 @@ fast = function(
   if (!bias_correct) {
     opts = c(opts, "--nobias")
   }
+  if (verbose) {
+    opts = c(opts, "--verbose")
+  }
   opts = trimws(opts)
   opts = opts[ opts != "" ]
   opts = paste(opts, collapse = " ")
