@@ -18,6 +18,7 @@ before_install:
 
 after_success:
   - Rscript -e 'covr::coveralls(type = "all")'
+  - Rscript -e 'covr::codecov(type = "all")'
   - Rscript -e 'devtools::build(binary = FALSE)'
   - R CMD INSTALL --build ${PKG_TARBALL}
 
