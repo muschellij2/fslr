@@ -17,7 +17,7 @@ before_install:
   - echo ${TRAVIS_JOB_ID}
 
 after_success:
-  - Rscript -e 'covr::coveralls()'
+  - Rscript -e 'covr::coveralls(type = "all")'
   - Rscript -e 'devtools::build(binary = FALSE)'
   - R CMD INSTALL --build ${PKG_TARBALL}
 
@@ -35,4 +35,4 @@ deploy:
   file: fslr*.t*gz
   on:
     tags: true    
-    repo: muschellij2/neurobase
+    repo: muschellij2/fslr
