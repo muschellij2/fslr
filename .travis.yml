@@ -1,26 +1,17 @@
 language: r
 warnings_are_errors: true
-sudo: required
+sudo: false
+cache: packages
 
 os:
   - linux
   - osx
 
-r:
-  - release
-r_check_args: "--as-cran"
-
-before_install:
-  - echo "TRAVIS BUILD ID"
-  - echo ${TRAVIS_BUILD_ID}
-  - echo "TRAVIS JOB ID"
-  - echo ${TRAVIS_JOB_ID}
+r_check_args: "--as-cran --install-args=--build"
 
 after_success:
   - Rscript -e 'covr::coveralls(type = "all")'
   - Rscript -e 'covr::codecov(type = "all")'
-  - Rscript -e 'devtools::build(binary = FALSE)'
-  - R CMD INSTALL --build ${PKG_TARBALL}
 
 notifications:
   email:
