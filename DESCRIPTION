@@ -3,8 +3,7 @@ Type: Package
 Title: Wrapper Functions for FSL ('FMRIB' Software Library) from Functional MRI
     of the Brain ('FMRIB')
 Version: 2.13.1
-Authors@R: 
-    person(given = "John",
+Authors@R: person(given = "John",
            family = "Muschelli",
            role = "cre",
            email = "muschellij2@gmail.com")
