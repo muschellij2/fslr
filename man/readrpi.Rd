@@ -7,11 +7,11 @@
 readrpi(file, ..., verbose = TRUE)
 }
 \arguments{
-\item{file}{file name of the NIfTI file.}
-
 \item{...}{Arguments to pass to \code{\link{readnii}}}
 
 \item{verbose}{print diagnostics, passed to \code{\link{rpi_orient_file}}}
+
+\item{files}{file name of the NIfTI file.}
 }
 \description{
 This function calls the \code{\link{readnii}} function after

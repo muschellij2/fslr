@@ -2,7 +2,7 @@
 #' 
 #' @description  This function calls the \code{\link{readnii}} function after
 #' calling \code{\link{rpi_orient_file}} to force RPI orientation.
-#' @param file file name of the NIfTI file. 
+#' @param files file name of the NIfTI file. 
 #' @param ... Arguments to pass to \code{\link{readnii}}
 #' @param verbose print diagnostics, passed to \code{\link{rpi_orient_file}}
 #' @export
