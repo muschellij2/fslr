@@ -4,8 +4,8 @@
 \alias{run_first_all}
 \title{Run FIRST All}
 \usage{
-run_first_all(img, oprefix, brain_extracted = FALSE, structures = NULL,
-  affine = NULL, opts = "", verbose = TRUE)
+run_first_all(img, oprefix = tempfile(), brain_extracted = FALSE,
+  structures = NULL, affine = NULL, opts = "", verbose = TRUE)
 }
 \arguments{
 \item{img}{pecifies the input image (T1-weighted)}
@@ -23,7 +23,8 @@ run_first_all(img, oprefix, brain_extracted = FALSE, structures = NULL,
 \item{verbose}{(logical) print out command before running}
 }
 \value{
-Result of \code{\link{system}}
+List of results, including result of \code{\link{system}}
+and some output files
 }
 \description{
 Wrapper for \code{run_first_all} from FSL for FIRST analysis 
