@@ -18,7 +18,9 @@ fsl_version = function(){
     warning("No version file exists, fun fsl to see version")
     version = ""
   } else {
-    version = readLines(version_file)
+    suppressWarnings({
+      version = readLines(version_file)
+    })
   }
   return(version)
 }

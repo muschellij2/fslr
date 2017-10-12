@@ -3,7 +3,9 @@
 fslr
 ====
 
-The goal of fslr is to port/wrap of FSL into R.
+<img src="sticker.png" width="100">
+
+The goal of fslr is to port/wrap of FSL into R. As FSL has a fossil as it's logo and it was to sound like "fossil", that's why we have that as our logo.
 
 Much of the operations of FSL, such as fslmaths and fslstats are incorporated. This package is very useful for structural imaging, such as MRI. Some of the fMRI functionality has not been ported or has limited capabiilty.
 
@@ -62,3 +64,5 @@ in your `.bash_profile` or `.profile` to get things to work.
 Otherwise, you may get errors such as:
 
     error while loading shared libraries: libnewimage.so: cannot open shared object file: No such file or directory
+
+fossil icon by [Alice Ralph](https://thenounproject.com/aliceralph/)

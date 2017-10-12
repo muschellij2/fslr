@@ -26,3 +26,6 @@ README.md
 
 docs/*
 ^README\.Rmd$
+^icon\.png$
+^sticker\.R$
+^sticker\.png$

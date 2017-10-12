@@ -1,4 +1,4 @@
-structure(list(jenkinson2012fsl = structure(list(title = "Fsl", 
+structure(list(jenkinson2012fsl = structure(list(title = "FSL", 
     author = structure(list(structure(list(given = "Mark", family = "Jenkinson", 
         role = NULL, email = NULL, comment = NULL), .Names = c("given", 
     "family", "role", "email", "comment")), structure(list(given = c("Christian", 

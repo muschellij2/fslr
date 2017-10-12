@@ -889,54 +889,6 @@ fslsub2 = function(file,
   return(res)
 }
 
-#' @title Open image in FSLView
-#' @description This function calls \code{fslview} to view an image 
-#' in the FSL viewer
-#' @param file (character) filename of image to be thresholded
-#' @param intern (logical) pass to \code{\link{system}}
-#' @param opts (character) options for FSLView
-#' @param verbose (logical) print out command before running
-#' @param ... options passed to \code{\link{checkimg}}
-#' @return character or logical depending on intern
-#' @export
-fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
-  cmd <- get.fsl()
-  if (is.nifti(file)) {
-    file = checkimg(file)
-  }
-  file = lapply(file, checkimg, ...)
-  if (length(file) != length(opts)) {
-    opts = rep(opts, length = length(file))
-  } else {
-    if (length(file) > length(opts)) {
-      opts = c(opts, rep("", length = (length(file) - length(opts))))
-    } else {
-      opts = opts[seq(length(file))]
-    }
-  }
-  file = shQuote(file)
-  file = paste(file, opts)
-  file = paste(file, collapse = " ")
-  cmd <- paste0(cmd, sprintf('fslview %s', file))
-  if (verbose) {
-    message(cmd, "\n")
-  }
-  res = system(cmd, intern = intern)
-  return(res)
-}
-
-#' @title FSLView help
-#' @description This function calls \code{fslview}'s help
-#' @return Prints help output and returns output as character vector
-#' @export
-#' @examples
-#' if (have.fsl()){
-#'  fslview.help()
-#' }   
-fslview.help = function(){
-  return(fslhelp("fslview"))
-}
-
 #' @title Merge images using FSL
 #' @description This function calls \code{fslmerge} to merge files on some dimension
 #' and either saves the image or returns an object of class nifti   

@@ -5,7 +5,8 @@
 \title{DTI Fitting Procedure from FSL}
 \usage{
 dtifit(infile, bvecs, bvals, mask = NULL, outprefix = NULL, opts = "",
-  bet.opts = "", verbose = TRUE, sse = FALSE, save_tensor = FALSE)
+  bet.opts = "", verbose = TRUE, sse = FALSE, save_tensor = FALSE,
+  grad_image = NULL)
 }
 \arguments{
 \item{infile}{Input filename}
@@ -29,6 +30,8 @@ or filename of ASCII text file}
 \item{sse}{Save sum of squared errors}
 
 \item{save_tensor}{Save tensor file out}
+
+\item{grad_image}{Gradient Nonlinearity Tensor file}
 }
 \value{
 Vector of character filenames of output.  See Note

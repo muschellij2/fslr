@@ -3,10 +3,10 @@ Type: Package
 Title: Wrapper Functions for FSL ('FMRIB' Software Library) from Functional MRI
     of the Brain ('FMRIB')
 Version: 2.15.1
-Authors@R: person(given = "John",
+Authors@R: c(person(given = "John",
            family = "Muschelli",
-           role = "cre",
-           email = "muschellij2@gmail.com")
+           email = "muschellij2@gmail.com",
+           role = c("aut", "cre")))
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Wrapper functions that interface with 'FSL' 
     <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/>, a powerful and commonly-used 'neuroimaging'

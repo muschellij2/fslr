@@ -13,6 +13,7 @@
 #' @param verbose print diagnostic messages
 #' @param sse Save sum of squared errors
 #' @param save_tensor Save tensor file out
+#' @param grad_image Gradient Nonlinearity Tensor file
 #' @note On successful completion of the command, the following files
 #' will be output, which are:
 #' \code{mask} - the mask used in the analysis
@@ -42,7 +43,8 @@ dtifit = function(infile,
                   bet.opts = "",
                   verbose = TRUE,
                   sse = FALSE,
-                  save_tensor = FALSE) {
+                  save_tensor = FALSE,
+                  grad_image = NULL) {
   infile = checkimg(infile)
   
   if (is.null(outprefix)) {
@@ -80,12 +82,16 @@ dtifit = function(infile,
     writeLines(bvals, con = tfile)
     bvals = tfile
   }
+  if (!is.null(grad_image)) {
+    grad_image = checkimg(grad_image)
+  }
   
   vec = c("--data" = infile,
           "--out" = outprefix,
           "--mask" = mask,
           "--bvecs" = bvecs,
-          "--bvals" = bvals)
+          "--bvals" = bvals,
+          "--gradnonlin", grad_image)
   vec = parse_args(vec)
   
   if (verbose) {
