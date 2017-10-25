@@ -4,10 +4,12 @@
 \alias{getForms}
 \title{Get Q and S Forms of orientation matrix}
 \usage{
-getForms(file, ...)
+getForms(file, verbose = FALSE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to pass to header}
+
+\item{verbose}{(logical) passed to \code{\link{fslhd}}}
 
 \item{...}{options passed to \code{\link{checkimg}}}
 }

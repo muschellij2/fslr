@@ -584,6 +584,7 @@ fslhd.parse <- function(hd){
 #' @description This function obtains the s and q forms of an image transformation 
 #' matrix
 #' @param file (character) filename of image to pass to header
+#' @param verbose (logical) passed to \code{\link{fslhd}}
 #' @param ... options passed to \code{\link{checkimg}}
 #' @return list with elements of sform and qform and their respective codes
 #' @export
@@ -593,9 +594,11 @@ fslhd.parse <- function(hd){
 #'    "MNI152_T1_2mm.nii.gz")
 #'  getForms(mnifile)
 #' }   
-getForms <- function(file, ...){
+getForms <- function(file, 
+                     verbose = FALSE,
+                     ...){
   file = checkimg(file, ...)  
-  x <- fslhd(file)
+  x <- fslhd(file, verbose = verbose)
   convmat <- function(form){
     ss <- strsplit(form, " ")
     ss <- t(sapply(ss, function(x) x[ x != "" ]))

@@ -19,7 +19,7 @@ rpi_orient = function(file, verbose = TRUE){
 #' @rdname rpi_orient
 rpi_orient_file = function(file, verbose = TRUE){
   file = checkimg(file)
-  forms = getForms(file)
+  forms = getForms(file, verbose = verbose)
   if (forms$sform_code == 0 & forms$qform_code == 0) {
     stop("Cannot swap dimensions - sform_code and qform_code are 0!")
   }
@@ -28,7 +28,7 @@ rpi_orient_file = function(file, verbose = TRUE){
   } else {
     sorient = forms$sqor
   }
-  ori = fslgetorient(file)
+  ori = fslgetorient(file, verbose = verbose)
   if (ori == "NEUROLOGICAL") {
     # need to copy because fslorient samefile stuff
     tdir = tempfile()
