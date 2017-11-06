@@ -91,7 +91,7 @@ dtifit = function(infile,
           "--mask" = mask,
           "--bvecs" = bvecs,
           "--bvals" = bvals,
-          "--gradnonlin", grad_image)
+          "--gradnonlin" = grad_image)
   vec = parse_args(vec)
   
   if (verbose) {
