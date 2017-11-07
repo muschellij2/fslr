@@ -125,6 +125,7 @@ probtrackx = function(samples = "merged",
   # vec = shQuote(vec)
   # vec = parse_args(vec)
   # 
+  # ####need to unname
   # num_vec = c(
   #   "--nfibres" = nfibres,
   #   "--njumps" = njumps,

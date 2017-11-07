@@ -86,6 +86,13 @@ dtifit = function(infile,
     grad_image = checkimg(grad_image)
   }
   
+  infile = unname(infile)
+  outprefix = unname(outprefix)
+  mask = unname(mask)
+  bvecs = unname(bvecs)
+  bvals = unname(bvals)
+  grad_image = unname(grad_image)
+  
   vec = c("--data" = infile,
           "--out" = outprefix,
           "--mask" = mask,

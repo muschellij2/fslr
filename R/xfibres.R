@@ -95,11 +95,23 @@ xfibres = function(infile,
     bvals = tfile
   }
   
+  infile = unname(infile)
+  mask = unname(mask)
+  bvecs = unname(bvecs)
+  bvals = unname(bvals)
+
   vec = c("--data" = infile,
           "--mask" = mask,
           "--bvecs" = bvecs,
           "--bvals" = bvals)
   vec = parse_args(vec)
+  
+  nfibres = unname(nfibres)
+  njumps = unname(njumps)
+  burnin = unname(burnin)
+  burnin_noard = unname(burnin_noard)
+  sampleevery = unname(sampleevery)
+  updateproposalevery = unname(updateproposalevery)
   
   num_vec = c(
            "--nfibres" = nfibres,
@@ -112,12 +124,24 @@ xfibres = function(infile,
   vec = paste(vec, num_vec)
   
   if (is.null(seed)) {
+    seed = unname(seed)
     vec = c(vec, "--seed" = seed)
   }
   
   ########################################
   # Logical switches, no =
   ########################################  
+
+  noard = unname(noard) 
+  allard = unname(allard) 
+  nospat = unname(nospat) 
+  nonlinear = unname(nonlinear) 
+  cnonlinear = unname(cnonlinear) 
+  rician = unname(rician) 
+  f0 = unname(f0) 
+  ardf0 = unname(ardf0)
+  verbose = unname(verbose)
+  
   log_vec = c(
     "--noard" = noard, 
     "--allard" = allard, 
