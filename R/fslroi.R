@@ -25,12 +25,12 @@
 #' @export
 fslroi = function(
   file,
-  xmin = NULL,
-  xsize = NULL,
-  ymin = NULL,
-  ysize = NULL,
-  zmin = NULL,
-  zsize = NULL,
+  xmin = 0,
+  xsize = -1,
+  ymin = 0,
+  ysize = -1,
+  zmin = 0,
+  zsize = -1,
   tmin = NULL,
   tsize = NULL,
   
@@ -107,4 +107,26 @@ fslroi = function(
                opts_after_outfile = TRUE)
   
   return(res)  
+}
+
+#' @rdname fslroi
+#' @export
+fslroi_time = function(
+  file,
+  tmin = NULL,
+  tsize = NULL,
+  ...) {
+  ret = fslroi(
+    file,
+    xmin = 0,
+    xsize = -1,
+    ymin = 0,
+    ysize = -1,
+    zmin = 0,
+    zsize = -1,
+    tmin = tmin,
+    tsize = tsize,
+    ...
+  )
+  return(ret)
 }
