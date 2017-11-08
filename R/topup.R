@@ -1,7 +1,8 @@
 #' @title topup - calling FSL topup
-#' @description A tool for estimating and correcting susceptibility induced distortions
+#' @description A tool for estimating and correcting susceptibility 
+#' induced distortions
 #' 
-#' @param imain name of 4D file with images
+#' @param infile name of 4D file with images
 #' @param datain name of text file with PE directions/times
 #' @param out base-name of output files (spline coefficients (Hz) and 
 #' movement parameters)
@@ -33,7 +34,7 @@
 #' grid, default 1 (true)
 #' @param verbose Print diagonostic information while running
 topup = function(
-  imain, 
+  infile, 
   datain, 
   out = NULL, 
   fout = NULL, 
@@ -107,10 +108,14 @@ topup = function(
   
   cmd = get.fsl()
   cmd = paste0(cmd, "topup")
-  imain = normalizePath(imain)
-  datain = normalizePath(datain)
+  infile = checkimg(infile)
+  infile = unname(infile)
+  infile = normalizePath(infile)
   
-  args = paste0("--imain=", imain, " --datain=", datain)
+  datain = normalizePath(datain)
+  datain = unname(datain)
+  
+  args = paste0("--infile=", infile, " --datain=", datain)
   cmd = paste(cmd, args, opts)
   
   if (verbose) {

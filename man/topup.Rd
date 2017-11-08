@@ -5,7 +5,7 @@
 \alias{fsl_topup}
 \title{topup - calling FSL topup}
 \usage{
-topup(imain, datain, out = NULL, fout = NULL, iout = NULL,
+topup(infile, datain, out = NULL, fout = NULL, iout = NULL,
   logout = NULL, warpres = 10, subsamp = 1, fwhm = 8, config = NULL,
   miter = 5, lambda = NULL, ssqlambda = 1, regmod = c("bending_energy",
   "membrane_energy"), estmov = 1, minmet = c(0, 1), splineorder = c(3, 2),
@@ -15,7 +15,7 @@ topup(imain, datain, out = NULL, fout = NULL, iout = NULL,
 fsl_topup(...)
 }
 \arguments{
-\item{imain}{name of 4D file with images}
+\item{infile}{name of 4D file with images}
 
 \item{datain}{name of text file with PE directions/times}
 
@@ -71,5 +71,6 @@ grid, default 1 (true)}
 \item{...}{arguments passed to \code{topup} if using \code{fsl_topup}}
 }
 \description{
-A tool for estimating and correcting susceptibility induced distortions
+A tool for estimating and correcting susceptibility 
+induced distortions
 }
