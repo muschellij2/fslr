@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -80,21 +83,30 @@
 original image with the smoothed values.</p>
     
 
-    <pre><span class='fu'>fslsmooth_in_mask</span>(<span class='no'>file</span>, <span class='kw'>sigma</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>fslsmooth_in_mask</span>(<span class='no'>file</span>, <span class='kw'>sigma</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
 <span class='fu'>fsl_smooth_in_mask</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>file</dt>
-      <dd>(character) image to be smoothed</dd>
-      <dt>sigma</dt>
-      <dd>(numeric) sigma (in mm) of Gaussian kernel for smoothing</dd>
-      <dt>mask</dt>
-      <dd>(character) optional mask given for image</dd>
-      <dt>...</dt>
-      <dd>additional arguments passed to <code><a href='fsl_smooth.html'>fslsmooth</a></code>.</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>(character) image to be smoothed</p></td>
+    </tr>
+    <tr>
+      <th>sigma</th>
+      <td><p>(numeric) sigma (in mm) of Gaussian kernel for smoothing</p></td>
+    </tr>
+    <tr>
+      <th>mask</th>
+      <td><p>(character) optional mask given for image</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments passed to <code><a href='fslsmooth.html'>fslsmooth</a></code>.</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
@@ -112,8 +124,8 @@ original image with the smoothed values.</p>
 <span class='no'>mask</span> <span class='kw'>=</span> <span class='fu'>abs</span>(<span class='no'>img</span> ) <span class='kw'>&gt;</span> <span class='fl'>1</span>
 <span class='no'>s.img</span> <span class='kw'>=</span> <span class='fu'>fslsmooth_in_mask</span>(<span class='no'>img</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='no'>mask</span>)
 })
-}</div><div class='output co'>#&gt; <span class='message'>fslmaths &quot;/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmphC6ohj/file667f400d9a19.nii.gz&quot;  -mas &quot;/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmphC6ohj/file667f3d000029.nii.gz&quot;  -s 10 &quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmphC6ohj/file667f4b0aa308&quot;; fslmaths &quot;/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmphC6ohj/file667f3d000029.nii.gz&quot; -s 10 &quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmphC6ohj/file667f275588b5.nii.gz&quot;; fslmaths &quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmphC6ohj/file667f4b0aa308&quot; -div &quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmphC6ohj/file667f275588b5.nii.gz&quot; -mas &quot;/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmphC6ohj/file667f3d000029.nii.gz&quot; &quot;/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmphC6ohj/file667f4b0aa308&quot;;</span></div><div class='output co'>#&gt;    user  system elapsed 
-#&gt;   0.605   0.056   0.688 </div></pre>
+}</div><div class='output co'>#&gt; <span class='message'>fslmaths "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpw5j0CC/file5c25ad5410b.nii.gz"  -mas "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpw5j0CC/file5c266a167c3.nii.gz"  -s 10 "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpw5j0CC/file5c26ea367d8"; fslmaths "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpw5j0CC/file5c266a167c3.nii.gz" -s 10 "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpw5j0CC/file5c229f6cea7.nii.gz"; fslmaths "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpw5j0CC/file5c26ea367d8" -div "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpw5j0CC/file5c229f6cea7.nii.gz" -mas "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpw5j0CC/file5c266a167c3.nii.gz" "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpw5j0CC/file5c26ea367d8";</span></div><div class='output co'>#&gt;    user  system elapsed 
+#&gt;   0.623   0.085   0.839 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

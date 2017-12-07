@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -80,30 +83,46 @@
 segmentation of subcortical structures</p>
     
 
-    <pre><span class='fu'>run_first_all</span>(<span class='no'>img</span>, <span class='no'>oprefix</span>, <span class='kw'>brain_extracted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>structures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>affine</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>run_first_all</span>(<span class='no'>img</span>, <span class='kw'>oprefix</span> <span class='kw'>=</span> <span class='fu'>tempfile</span>(), <span class='kw'>brain_extracted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>structures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>affine</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>img</dt>
-      <dd>pecifies the input image (T1-weighted)</dd>
-      <dt>oprefix</dt>
-      <dd>specifies the output image basename (extensions will be added to this)</dd>
-      <dt>brain_extracted</dt>
-      <dd>specifies that the input image has been brain extracted</dd>
-      <dt>structures</dt>
-      <dd>a restricted set of structures to be segmented</dd>
-      <dt>affine</dt>
-      <dd>specifies the affine registration matrix to standard space (optional)</dd>
-      <dt>opts</dt>
-      <dd>(character) operations to be passed to <code>run_first_all</code></dd>
-      <dt>verbose</dt>
-      <dd>(logical) print out command before running</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>img</th>
+      <td><p>pecifies the input image (T1-weighted)</p></td>
+    </tr>
+    <tr>
+      <th>oprefix</th>
+      <td><p>specifies the output image basename (extensions will be added to this)</p></td>
+    </tr>
+    <tr>
+      <th>brain_extracted</th>
+      <td><p>specifies that the input image has been brain extracted</p></td>
+    </tr>
+    <tr>
+      <th>structures</th>
+      <td><p>a restricted set of structures to be segmented</p></td>
+    </tr>
+    <tr>
+      <th>affine</th>
+      <td><p>specifies the affine registration matrix to standard space (optional)</p></td>
+    </tr>
+    <tr>
+      <th>opts</th>
+      <td><p>(character) operations to be passed to <code>run_first_all</code></p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>(logical) print out command before running</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Result of <code>system</code></p>
+    <p>List of results, including result of <code>system</code>
+and some output files</p>
     
 
   </div>

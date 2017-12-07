@@ -1,18 +1,29 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-fslr
-====
+
+# fslr
 
 <img src="sticker.png" width="100">
 
-The goal of fslr is to port/wrap of FSL into R. As FSL has a fossil as it's logo and it was to sound like "fossil", that's why we have that as our logo.
+The goal of fslr is to port/wrap of FSL into R. As FSL has a fossil as
+it’s logo and it was to sound like “fossil”, that’s why we have that as
+our logo.
 
-Much of the operations of FSL, such as fslmaths and fslstats are incorporated. This package is very useful for structural imaging, such as MRI. Some of the fMRI functionality has not been ported or has limited capabiilty.
+Much of the operations of FSL, such as fslmaths and fslstats are
+incorporated. This package is very useful for structural imaging, such
+as MRI. Some of the fMRI functionality has not been ported or has
+limited capabiilty.
 
-[![Build Status](https://travis-ci.org/muschellij2/fslr.svg?branch=master)](https://travis-ci.org/muschellij2/fslr) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/fslr)](https://cran.r-project.org/package=fslr) [![](http://cranlogs.r-pkg.org/badges/grand-total/fslr)](http://cran.rstudio.com/web/packages/fslr/index.html) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/fslr?branch=master&svg=true)](https://ci.appveyor.com/project/muschellij2/fslr) [![Coverage Status](https://coveralls.io/repos/github/muschellij2/fslr/badge.svg?branch=master)](https://coveralls.io/r/muschellij2/fslr?branch=master)
+[![Build
+Status](https://travis-ci.org/muschellij2/fslr.svg?branch=master)](https://travis-ci.org/muschellij2/fslr)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/fslr)](https://cran.r-project.org/package=fslr)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/fslr)](http://cran.rstudio.com/web/packages/fslr/index.html)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/fslr?branch=master&svg=true)](https://ci.appveyor.com/project/muschellij2/fslr)
+[![Coverage
+Status](https://coveralls.io/repos/github/muschellij2/fslr/badge.svg?branch=master)](https://coveralls.io/r/muschellij2/fslr?branch=master)
 
-Installation
-------------
+## Installation
 
 You can install fslr from github with:
 
@@ -21,10 +32,11 @@ You can install fslr from github with:
 devtools::install_github("muschellij2/fslr")
 ```
 
-Neurodebian builds
-------------------
+## Neurodebian builds
 
-Neurodebian has caused some issues in the past for me. I used the following script to just shotgun copy everything. This was discussed in [issue \#10](https://github.com/muschellij2/fslr/issues/10).
+Neurodebian has caused some issues in the past for me. I used the
+following script to just shotgun copy everything. This was discussed in
+[issue \#10](https://github.com/muschellij2/fslr/issues/10).
 
 ``` bash
 FSLDIR=/usr/local/fsl
@@ -53,7 +65,9 @@ cp -R ${FSLSHARE}/talairach-daemon-atlas/* ${FSLDIR}/data/atlases/
 
 ### RStudio Neurodebian Problems
 
-Referenced in [another issue](https://github.com/muschellij2/Neurohacking/issues/4), you may have to add
+Referenced in [another
+issue](https://github.com/muschellij2/Neurohacking/issues/4), you may
+have to add
 
 ``` bash
 export LD_LIBRARY_PATH=/usr/lib/fsl/5.0:$LD_LIBRARY_PATH
@@ -61,7 +75,8 @@ export LD_LIBRARY_PATH=/usr/lib/fsl/5.0:$LD_LIBRARY_PATH
 
 in your `.bash_profile` or `.profile` to get things to work.
 
-Otherwise, you may get errors such as:
+Otherwise, you may get errors such
+    as:
 
     error while loading shared libraries: libnewimage.so: cannot open shared object file: No such file or directory
 

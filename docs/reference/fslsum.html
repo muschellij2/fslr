@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -80,20 +83,29 @@
 aka the approximate sum.</p>
     
 
-    <pre><span class='fu'>fslsum</span>(<span class='no'>file</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>ts</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>fslsum</span>(<span class='no'>file</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>ts</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>file</dt>
-      <dd>(character) filename of image to be checked</dd>
-      <dt>opts</dt>
-      <dd>Additional options to pass to <code><a href='fslstats.html'>fslstats</a></code></dd>
-      <dt>ts</dt>
-      <dd>(logical) is the series a timeseries (4D), invoking <code>-t</code> 
-option</dd>
-      <dt>...</dt>
-      <dd>options passed to <code><a href='fslstats.html'>fslstats</a></code></dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>(character) filename of image to be checked</p></td>
+    </tr>
+    <tr>
+      <th>opts</th>
+      <td><p>Additional options to pass to <code><a href='fslstats.html'>fslstats</a></code></p></td>
+    </tr>
+    <tr>
+      <th>ts</th>
+      <td><p>(logical) is the series a timeseries (4D), invoking <code>-t</code> 
+option</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>options passed to <code><a href='fslstats.html'>fslstats</a></code></p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

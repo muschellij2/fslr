@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -79,34 +82,60 @@
     <p>Calls <code>dtifit</code> from FSL</p>
     
 
-    <pre><span class='fu'>dtifit</span>(<span class='no'>infile</span>, <span class='no'>bvecs</span>, <span class='no'>bvals</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>outprefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>bet.opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sse</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>save_tensor</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>dtifit</span>(<span class='no'>infile</span>, <span class='no'>bvecs</span>, <span class='no'>bvals</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>outprefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>bet.opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sse</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>save_tensor</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>grad_image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>infile</dt>
-      <dd>Input filename</dd>
-      <dt>bvecs</dt>
-      <dd>b-vectors: matrix of 3 columns or 
-filename of ASCII text file</dd>
-      <dt>bvals</dt>
-      <dd>b-values: vector of same length as number of rows of b-vectors
-or filename of ASCII text file</dd>
-      <dt>mask</dt>
-      <dd>Mask filename</dd>
-      <dt>outprefix</dt>
-      <dd>Output prefix</dd>
-      <dt>opts</dt>
-      <dd>Additional options for <code>dtifit</code></dd>
-      <dt>bet.opts</dt>
-      <dd>Options for <code><a href='fsl_bet.html'>fslbet</a></code> if mask is not supplied</dd>
-      <dt>verbose</dt>
-      <dd>print diagnostic messages</dd>
-      <dt>sse</dt>
-      <dd>Save sum of squared errors</dd>
-      <dt>save_tensor</dt>
-      <dd>Save tensor file out</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>infile</th>
+      <td><p>Input filename</p></td>
+    </tr>
+    <tr>
+      <th>bvecs</th>
+      <td><p>b-vectors: matrix of 3 columns or 
+filename of ASCII text file</p></td>
+    </tr>
+    <tr>
+      <th>bvals</th>
+      <td><p>b-values: vector of same length as number of rows of b-vectors
+or filename of ASCII text file</p></td>
+    </tr>
+    <tr>
+      <th>mask</th>
+      <td><p>Mask filename</p></td>
+    </tr>
+    <tr>
+      <th>outprefix</th>
+      <td><p>Output prefix</p></td>
+    </tr>
+    <tr>
+      <th>opts</th>
+      <td><p>Additional options for <code>dtifit</code></p></td>
+    </tr>
+    <tr>
+      <th>bet.opts</th>
+      <td><p>Options for <code><a href='fslbet.html'>fslbet</a></code> if mask is not supplied</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>print diagnostic messages</p></td>
+    </tr>
+    <tr>
+      <th>sse</th>
+      <td><p>Save sum of squared errors</p></td>
+    </tr>
+    <tr>
+      <th>save_tensor</th>
+      <td><p>Save tensor file out</p></td>
+    </tr>
+    <tr>
+      <th>grad_image</th>
+      <td><p>Gradient Nonlinearity Tensor file</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

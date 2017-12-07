@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -80,29 +83,44 @@
 and either saves the image or returns an object of class nifti</p>
     
 
-    <pre><span class='fu'>fslsplit</span>(<span class='no'>infile</span>, <span class='kw'>direction</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"t"</span>, <span class='st'>"x"</span>, <span class='st'>"y"</span>, <span class='st'>"z"</span>), <span class='kw'>output_basename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>fslsplit</span>(<span class='no'>infile</span>, <span class='kw'>direction</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"t"</span>, <span class='st'>"x"</span>, <span class='st'>"y"</span>, <span class='st'>"z"</span>), <span class='kw'>output_basename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>fsl_split</span>(<span class='no'>...</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>infile</dt>
-      <dd>(character) input filename</dd>
-      <dt>direction</dt>
-      <dd>(character) direction to split over: t (time), x, y, z</dd>
-      <dt>output_basename</dt>
-      <dd>(character) prefix to have for output</dd>
-      <dt>retimg</dt>
-      <dd>(logical) return image of class nifti</dd>
-      <dt>reorient</dt>
-      <dd>(logical) If retimg, should file be reoriented when read in?
-Passed to <code>readnii</code>.</dd>
-      <dt>verbose</dt>
-      <dd>(logical) print out command before running</dd>
-      <dt>...</dt>
-      <dd>not used</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>infile</th>
+      <td><p>(character) input filename</p></td>
+    </tr>
+    <tr>
+      <th>direction</th>
+      <td><p>(character) direction to split over: t (time), x, y, z</p></td>
+    </tr>
+    <tr>
+      <th>output_basename</th>
+      <td><p>(character) prefix to have for output</p></td>
+    </tr>
+    <tr>
+      <th>retimg</th>
+      <td><p>(logical) return image of class nifti</p></td>
+    </tr>
+    <tr>
+      <th>reorient</th>
+      <td><p>(logical) If retimg, should file be reoriented when read in?
+Passed to <code>readnii</code>.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>(logical) print out command before running</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>not used</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

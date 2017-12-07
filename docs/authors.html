@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Authors • fslr</title>
+<title>Citation and Authors • fslr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -23,18 +23,21 @@
 <link href="pkgdown.css" rel="stylesheet">
 <script src="jquery.sticky-kit.min.js"></script>
 <script src="pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
-    <div class="container template-authors">
+    <div class="container template-citation-authors">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -70,14 +73,46 @@
       </header>
 
       <div class="row">
-  <div class="contents col-md-12">
+  <div class="contents col-md-9">
+
+    <div class="page-header">
+      <h1>Citation</h1>
+    </div>
+
+    <p>Jenkinson M, Beckmann CF, Behrens TE, Woolrich MW and Smith SM (2012).
+&ldquo;FSL.&rdquo;
+<em>Neuroimage</em>, <b>62</b>(2), pp. 782&ndash;790. 
+</p>
+    <pre>@Article{jenkinson2012fsl,
+  title = {FSL},
+  author = {Mark Jenkinson and Christian F Beckmann and Timothy EJ Behrens and Mark W Woolrich and Stephen M Smith},
+  journal = {Neuroimage},
+  volume = {62},
+  number = {2},
+  pages = {782--790},
+  year = {2012},
+  publisher = {Elsevier},
+}</pre>
+    <p>Muschelli J, Sweeney E, Lindquist M and Crainiceanu C (2015).
+&ldquo;fslr: Connecting the FSL Software with R.&rdquo;
+<em>The R Journal</em>, <b>7</b>(1), pp. 163&ndash;175. 
+</p>
+    <pre>@Article{muschelli2015fslr,
+  title = {fslr: Connecting the FSL Software with R},
+  author = {John Muschelli and Elizabeth Sweeney and Martin Lindquist and Ciprian Crainiceanu},
+  journal = {The R Journal},
+  volume = {7},
+  number = {1},
+  pages = {163--175},
+  year = {2015},
+}</pre>
     <div class="page-header">
       <h1>Authors</h1>
     </div>
 
     <ul class="list-unstyled">
       <li>
-        <p><strong>John Muschelli</strong>. Maintainer.
+        <p><strong>John Muschelli</strong>. Author, maintainer.
         </p>
       </li>
     </ul>

@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -77,23 +80,30 @@
 
     
     <p>This function multiplies two images 
-using <code><a href='fsl_mul.html'>fslmul</a></code>) after
-binarizing the images (using <code><a href='fsl_bin.html'>fslbin</a></code></p>
+using <code><a href='fslmul.html'>fslmul</a></code>) after
+binarizing the images (using <code><a href='fslbin.html'>fslbin</a></code></p>
     
 
-    <pre><span class='fu'>fsland</span>(<span class='no'>file</span>, <span class='no'>file2</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>fsland</span>(<span class='no'>file</span>, <span class='no'>file2</span>, <span class='no'>...</span>)
 
 <span class='fu'>fsl_and</span>(<span class='no'>file</span>, <span class='no'>file2</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>file</dt>
-      <dd>(character) input image</dd>
-      <dt>file2</dt>
-      <dd>(character) image to be multiplied</dd>
-      <dt>...</dt>
-      <dd>additional arguments passed to <code><a href='fsl_mul.html'>fslmul</a></code>.</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>(character) input image</p></td>
+    </tr>
+    <tr>
+      <th>file2</th>
+      <td><p>(character) image to be multiplied</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments passed to <code><a href='fslmul.html'>fslmul</a></code>.</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

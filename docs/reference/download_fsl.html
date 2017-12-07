@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -79,21 +82,30 @@
     <p>Download FSL Tarball</p>
     
 
-    <pre><span class='fu'>download_fsl</span>(<span class='kw'>os</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"macosx"</span>, <span class='st'>"redhat5"</span>, <span class='st'>"redhat6"</span>, <span class='st'>"centos5"</span>, <span class='st'>"centos6"</span>,
+    <pre class="usage"><span class='fu'>download_fsl</span>(<span class='kw'>os</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"macosx"</span>, <span class='st'>"redhat5"</span>, <span class='st'>"redhat6"</span>, <span class='st'>"centos5"</span>, <span class='st'>"centos6"</span>,
   <span class='st'>"debian"</span>, <span class='st'>"ubuntu"</span>), <span class='kw'>outdir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>(), <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>os</dt>
-      <dd>Operating system</dd>
-      <dt>outdir</dt>
-      <dd>Output directory for tarball</dd>
-      <dt>overwrite</dt>
-      <dd>If <code>file.path(outdir, tarball_name)</code> exists,
-should it be overwritten?</dd>
-      <dt>...</dt>
-      <dd>Arguments to pass to <code>download.file</code></dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>os</th>
+      <td><p>Operating system</p></td>
+    </tr>
+    <tr>
+      <th>outdir</th>
+      <td><p>Output directory for tarball</p></td>
+    </tr>
+    <tr>
+      <th>overwrite</th>
+      <td><p>If <code>file.path(outdir, tarball_name)</code> exists,
+should it be overwritten?</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Arguments to pass to <code>download.file</code></p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

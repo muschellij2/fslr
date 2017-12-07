@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Scale Affine Matrix using  — fsl_avscale • fslr</title>
+<title>Scale Affine Matrix using <code>avscale</code> — fsl_avscale • fslr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -72,7 +75,7 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Scale Affine Matrix using </h1>
+    <h1>Scale Affine Matrix using <code>avscale</code></h1>
     </div>
 
     
@@ -80,24 +83,35 @@
 matrices for FSL</p>
     
 
-    <pre><span class='fu'>fsl_avscale</span>(<span class='no'>file</span>, <span class='kw'>volume</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>parsed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>fsl_avscale</span>(<span class='no'>file</span>, <span class='kw'>volume</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>parsed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>avscale</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>file</dt>
-      <dd>(character) matrix filename</dd>
-      <dt>volume</dt>
-      <dd>(character) non-reference volume filename or nifti image</dd>
-      <dt>parsed</dt>
-      <dd>(logical) should <code><a href='parse_avscale.html'>parse_avscale</a></code> be run 
-after?</dd>
-      <dt>verbose</dt>
-      <dd>(logical) print out command before running</dd>
-      <dt>...</dt>
-      <dd>not used, but used for duplicating <code>avscale</code> as alias</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>(character) matrix filename</p></td>
+    </tr>
+    <tr>
+      <th>volume</th>
+      <td><p>(character) non-reference volume filename or nifti image</p></td>
+    </tr>
+    <tr>
+      <th>parsed</th>
+      <td><p>(logical) should <code><a href='parse_avscale.html'>parse_avscale</a></code> be run 
+after?</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>(logical) print out command before running</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>not used, but used for duplicating <code>avscale</code> as alias</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

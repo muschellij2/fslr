@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract Image bitpix attribute — bitpix-methods • fslr</title>
+<title>Eddy Current Correction — eddy • fslr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -75,24 +75,77 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract Image bitpix attribute</h1>
+    <h1>Eddy Current Correction</h1>
     </div>
 
     
-    <p>bitpix method for character types</p>
+    <p>This function calls <code>eddy</code> from FSL for 
+DTI Processing</p>
     
 
-    <pre class="usage"><span class='co'># S4 method for character</span>
-<span class='fu'>bitpix</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>eddy</span>(<span class='no'>infile</span>, <span class='no'>mask</span>, <span class='no'>acq_file</span>, <span class='no'>index_file</span>, <span class='no'>bvecs</span>, <span class='no'>bvals</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>is a filename to pass to <a href='fslval.html'>fslval</a></p></td>
+      <th>infile</th>
+      <td><p>input filename of 4D image.</p></td>
+    </tr>
+    <tr>
+      <th>mask</th>
+      <td><p>Mask filename (or class nifti)</p></td>
+    </tr>
+    <tr>
+      <th>acq_file</th>
+      <td><p>A text-file describing the acquisition parameters for the 
+different images in <code>infile</code> The format of this file is identical 
+to that used by topup (though the parameter is called <code>--datain</code> 
+there).</p></td>
+    </tr>
+    <tr>
+      <th>index_file</th>
+      <td><p>A text-file that determines the relationship between 
+on the one hand the images in <code>infile</code> and on the other hand the 
+acquisition parameters in <code>acq_file</code>.</p></td>
+    </tr>
+    <tr>
+      <th>bvecs</th>
+      <td><p>A text file with normalised vectors describing 
+the direction of the diffusion weighting.</p></td>
+    </tr>
+    <tr>
+      <th>bvals</th>
+      <td><p>A text file with b-values describing the "amount of" 
+diffusion weighting</p></td>
+    </tr>
+    <tr>
+      <th>outfile</th>
+      <td><p>Output file basename</p></td>
+    </tr>
+    <tr>
+      <th>retimg</th>
+      <td><p>(logical) return image of class nifti</p></td>
+    </tr>
+    <tr>
+      <th>opts</th>
+      <td><p>Additional options to pass to arguments 
+passed to <code>eddy</code></p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>print diagnostic messages</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Not currently used</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Result from system command currently</p>
     
 
   </div>
@@ -100,7 +153,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

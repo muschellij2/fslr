@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -80,34 +83,55 @@
 it again to erode it.</p>
     
 
-    <pre><span class='fu'>fslfill2</span>(<span class='no'>file</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>kopts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>remove.ends</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <pre class="usage"><span class='fu'>fslfill2</span>(<span class='no'>file</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>kopts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>remove.ends</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>refill</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>file</dt>
-      <dd>(character) filename of image to be filled</dd>
-      <dt>outfile</dt>
-      <dd>(character) name of resultant filled file</dd>
-      <dt>kopts</dt>
-      <dd>(character) Options passed for kernel before erosion/dilation</dd>
-      <dt>remove.ends</dt>
-      <dd>(logical) Remove top and bottom dilation.</dd>
-      <dt>refill</dt>
-      <dd>(logical) Run <code><a href='fsl_fill.html'>fslfill</a></code> after dilation/erosion.</dd>
-      <dt>retimg</dt>
-      <dd>(logical) return image of class nifti</dd>
-      <dt>reorient</dt>
-      <dd>(logical) If retimg, should file be reoriented when read in?
-Passed to <code>readnii</code>.</dd>
-      <dt>intern</dt>
-      <dd>(logical) pass to <code>system</code></dd>
-      <dt>verbose</dt>
-      <dd>(logical) print out command before running</dd>
-      <dt>...</dt>
-      <dd>additional arguments passed to <code>readnii</code>.</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>(character) filename of image to be filled</p></td>
+    </tr>
+    <tr>
+      <th>outfile</th>
+      <td><p>(character) name of resultant filled file</p></td>
+    </tr>
+    <tr>
+      <th>kopts</th>
+      <td><p>(character) Options passed for kernel before erosion/dilation</p></td>
+    </tr>
+    <tr>
+      <th>remove.ends</th>
+      <td><p>(logical) Remove top and bottom dilation.</p></td>
+    </tr>
+    <tr>
+      <th>refill</th>
+      <td><p>(logical) Run <code><a href='fslfill.html'>fslfill</a></code> after dilation/erosion.</p></td>
+    </tr>
+    <tr>
+      <th>retimg</th>
+      <td><p>(logical) return image of class nifti</p></td>
+    </tr>
+    <tr>
+      <th>reorient</th>
+      <td><p>(logical) If retimg, should file be reoriented when read in?
+Passed to <code>readnii</code>.</p></td>
+    </tr>
+    <tr>
+      <th>intern</th>
+      <td><p>(logical) pass to <code>system</code></p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>(logical) print out command before running</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments passed to <code>readnii</code>.</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

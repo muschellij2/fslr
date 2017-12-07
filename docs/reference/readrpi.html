@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -80,17 +83,24 @@
 calling <code><a href='rpi_orient.html'>rpi_orient_file</a></code> to force RPI orientation.</p>
     
 
-    <pre><span class='fu'>readrpi</span>(<span class='no'>file</span>, <span class='no'>...</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>readrpi</span>(<span class='no'>file</span>, <span class='no'>...</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>file</dt>
-      <dd>file name of the NIfTI file.</dd>
-      <dt>...</dt>
-      <dd>Arguments to pass to <code>readnii</code></dd>
-      <dt>verbose</dt>
-      <dd>print diagnostics, passed to <code><a href='rpi_orient.html'>rpi_orient_file</a></code></dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>file name of the NIfTI file.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Arguments to pass to <code>readnii</code></p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>print diagnostics, passed to <code><a href='rpi_orient.html'>rpi_orient_file</a></code></p></td>
+    </tr>
+    </table>
     
 
   </div>

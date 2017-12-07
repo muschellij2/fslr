@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -79,20 +82,29 @@
     <p>Estimates Mean Entropy of Image from FSL</p>
     
 
-    <pre><span class='fu'>fslentropy</span>(<span class='no'>img</span>, <span class='kw'>nonzero</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ts</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>fslentropy</span>(<span class='no'>img</span>, <span class='kw'>nonzero</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ts</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>img</dt>
-      <dd>Object of class nifti, or path of file</dd>
-      <dt>nonzero</dt>
-      <dd>(logical) Should the statistic be taken over non-zero voxels</dd>
-      <dt>verbose</dt>
-      <dd>(logical) print out command before running</dd>
-      <dt>ts</dt>
-      <dd>(logical) is the series a timeseries (4D), invoking <code>-t</code> 
-option</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>img</th>
+      <td><p>Object of class nifti, or path of file</p></td>
+    </tr>
+    <tr>
+      <th>nonzero</th>
+      <td><p>(logical) Should the statistic be taken over non-zero voxels</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>(logical) print out command before running</p></td>
+    </tr>
+    <tr>
+      <th>ts</th>
+      <td><p>(logical) is the series a timeseries (4D), invoking <code>-t</code> 
+option</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

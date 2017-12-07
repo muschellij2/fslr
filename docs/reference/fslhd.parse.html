@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -79,13 +82,16 @@
     <p>This function takes in a FSL header and parses the components</p>
     
 
-    <pre><span class='fu'>fslhd.parse</span>(<span class='no'>hd</span>)</pre>
+    <pre class="usage"><span class='fu'>fslhd.parse</span>(<span class='no'>hd</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>hd</dt>
-      <dd>(character) header from <code><a href='fslhd.html'>fslhd</a></code></dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>hd</th>
+      <td><p>(character) header from <code><a href='fslhd.html'>fslhd</a></code></p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
@@ -98,7 +104,7 @@
    <span class='st'>"MNI152_T1_2mm.nii.gz"</span>)
  <span class='no'>hd</span> <span class='kw'>=</span> <span class='fu'><a href='fslhd.html'>fslhd</a></span>(<span class='no'>mnifile</span>)
  <span class='fu'>fslhd.parse</span>(<span class='no'>hd</span>)
-}</div><div class='output co'>#&gt; <span class='message'>fslhd &quot;/usr/local/fsl/data/standard/MNI152_T1_2mm.nii.gz&quot; </span></div><div class='output co'>#&gt;                                                            value
+}</div><div class='output co'>#&gt; <span class='message'>fslhd "/usr/local/fsl/data/standard/MNI152_T1_2mm.nii.gz" </span></div><div class='output co'>#&gt;                                                            value
 #&gt; filename       /usr/local/fsl/data/standard/MNI152_T1_2mm.nii.gz
 #&gt; sizeof_hdr                                                   348
 #&gt; data_type                                                  INT16
@@ -115,14 +121,14 @@
 #&gt; datatype                                                       4
 #&gt; nbyper                                                         2
 #&gt; bitpix                                                        16
-#&gt; pixdim0                                             0.0000000000
-#&gt; pixdim1                                             2.0000000000
-#&gt; pixdim2                                             2.0000000000
-#&gt; pixdim3                                             2.0000000000
-#&gt; pixdim4                                             1.0000000000
-#&gt; pixdim5                                             0.0000000000
-#&gt; pixdim6                                             0.0000000000
-#&gt; pixdim7                                             0.0000000000
+#&gt; pixdim0                                                 0.000000
+#&gt; pixdim1                                                 2.000000
+#&gt; pixdim2                                                 2.000000
+#&gt; pixdim3                                                 2.000000
+#&gt; pixdim4                                                 1.000000
+#&gt; pixdim5                                                 0.000000
+#&gt; pixdim6                                                 0.000000
+#&gt; pixdim7                                                 0.000000
 #&gt; vox_offset                                                   352
 #&gt; cal_max                                                8000.0000
 #&gt; cal_min                                                3000.0000

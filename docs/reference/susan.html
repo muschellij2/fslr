@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -80,46 +83,75 @@
 (SUSAN) noise reduction technique from FSL</p>
     
 
-    <pre><span class='fu'>susan</span>(<span class='no'>file</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+    <pre class="usage"><span class='fu'>susan</span>(<span class='no'>file</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>bthresh</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>sigma</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>dimg</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>2</span>),
   <span class='kw'>use_median</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>n_usans</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>), <span class='kw'>extra.scans</span> <span class='kw'>=</span> <span class='fu'>list</span>(),
   <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>file</dt>
-      <dd>(character) image to be manipulated</dd>
-      <dt>outfile</dt>
-      <dd>(character) resultant image name (optional)</dd>
-      <dt>retimg</dt>
-      <dd>(logical) return image of class nifti</dd>
-      <dt>reorient</dt>
-      <dd>(logical) If retimg, should file be reoriented when read in?
-Passed to <code>readnii</code>.</dd>
-      <dt>intern</dt>
-      <dd>(logical) to be passed to <code>system</code></dd>
-      <dt>bthresh</dt>
-      <dd>brightness threshold and should be greater than noise level and less than contrast of edges to be preserved.</dd>
-      <dt>sigma</dt>
-      <dd>spatial size (sigma i.e. half-width) of smoothing in mm.</dd>
-      <dt>dimg</dt>
-      <dd>dimensionality (2 or 3) depending on whether smoothing is to be within-plane (2) or fully 3D (3).</dd>
-      <dt>use_median</dt>
-      <dd>determines whether to use a local median filter in the cases where single-point noise is detected (0 or 1).</dd>
-      <dt>n_usans</dt>
-      <dd>determines whether the smoothing area (USAN) is to be found from secondary images (0 1 or 2).</dd>
-      <dt>extra.scans</dt>
-      <dd>List of extra scans for USAN.  List of 
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>(character) image to be manipulated</p></td>
+    </tr>
+    <tr>
+      <th>outfile</th>
+      <td><p>(character) resultant image name (optional)</p></td>
+    </tr>
+    <tr>
+      <th>retimg</th>
+      <td><p>(logical) return image of class nifti</p></td>
+    </tr>
+    <tr>
+      <th>reorient</th>
+      <td><p>(logical) If retimg, should file be reoriented when read in?
+Passed to <code>readnii</code>.</p></td>
+    </tr>
+    <tr>
+      <th>intern</th>
+      <td><p>(logical) to be passed to <code>system</code></p></td>
+    </tr>
+    <tr>
+      <th>bthresh</th>
+      <td><p>brightness threshold and should be greater than noise level and less than contrast of edges to be preserved.</p></td>
+    </tr>
+    <tr>
+      <th>sigma</th>
+      <td><p>spatial size (sigma i.e. half-width) of smoothing in mm.</p></td>
+    </tr>
+    <tr>
+      <th>dimg</th>
+      <td><p>dimensionality (2 or 3) depending on whether smoothing is to be within-plane (2) or fully 3D (3).</p></td>
+    </tr>
+    <tr>
+      <th>use_median</th>
+      <td><p>determines whether to use a local median filter in the cases where single-point noise is detected (0 or 1).</p></td>
+    </tr>
+    <tr>
+      <th>n_usans</th>
+      <td><p>determines whether the smoothing area (USAN) is to be found from secondary images (0 1 or 2).</p></td>
+    </tr>
+    <tr>
+      <th>extra.scans</th>
+      <td><p>List of extra scans for USAN.  List of 
 <code>n_usans</code> elements, where each element has 2 named objects
-<code>bthresh</code> and <code>filename</code></dd>
-      <dt>opts</dt>
-      <dd>(character) operations to be passed to <code>susan</code>, not 
-currently used.</dd>
-      <dt>verbose</dt>
-      <dd>(logical) print out command before running</dd>
-      <dt>...</dt>
-      <dd>additional arguments passed to <code><a href='fslcmd.html'>fslcmd</a></code>.</dd>
-    </dl>
+<code>bthresh</code> and <code>filename</code></p></td>
+    </tr>
+    <tr>
+      <th>opts</th>
+      <td><p>(character) operations to be passed to <code>susan</code>, not 
+currently used.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>(logical) print out command before running</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments passed to <code><a href='fslcmd.html'>fslcmd</a></code>.</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

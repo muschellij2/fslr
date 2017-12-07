@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FSL Bias Correct — fsl_biascorrect • fslr</title>
+<title>Register EPI images to Structural image — fslepi_reg • fslr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -75,27 +75,42 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>FSL Bias Correct</h1>
+    <h1>Register EPI images to Structural image</h1>
     </div>
 
     
-    <p>This function wraps a call to <code>fast</code> that performs bias
-corretion</p>
+    <p>This function calls <code>epi_reg</code>, designed to 
+register EPI images (typically functional or diffusion) to structural 
+(e.g. T1-weighted) image.</p>
     
 
-    <pre class="usage"><span class='fu'>fsl_biascorrect</span>(<span class='no'>file</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>remove.seg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>fslepi_reg</span>(<span class='no'>epi</span>, <span class='no'>t1</span>, <span class='no'>t1_brain</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fmap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fmap_mag</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fmap_mag_brain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>echo_spacing</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>phase_enc_dir</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"x"</span>, <span class='st'>"y"</span>,
+  <span class='st'>"z"</span>, <span class='st'>"-x"</span>, <span class='st'>"-y"</span>, <span class='st'>"-z"</span>), <span class='kw'>weight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>...</span>)
+
+<span class='fu'>fsl_epi_reg</span>(<span class='no'>...</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'>tempfile</span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".nii.gz"</span>), <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='fu'>epi_reg</span>(<span class='no'>...</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'>tempfile</span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".nii.gz"</span>), <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>(character) image to be manipulated</p></td>
+      <th>epi</th>
+      <td><p>EPI image, character or nifti object</p></td>
+    </tr>
+    <tr>
+      <th>t1</th>
+      <td><p>whole head T1 image , character or nifti object</p></td>
+    </tr>
+    <tr>
+      <th>t1_brain</th>
+      <td><p>brain extracted T1 image</p></td>
     </tr>
     <tr>
       <th>outfile</th>
-      <td><p>(character) resultant image name (optional)</p></td>
+      <td><p>output registered image filename</p></td>
     </tr>
     <tr>
       <th>retimg</th>
@@ -111,16 +126,37 @@ Passed to <code>readnii</code>.</p></td>
       <td><p>(logical) to be passed to <code>system</code></p></td>
     </tr>
     <tr>
-      <th>opts</th>
-      <td><p>(character) operations to be passed to <code>fast</code></p></td>
+      <th>fmap</th>
+      <td><p>fieldmap image (in rad/s)</p></td>
+    </tr>
+    <tr>
+      <th>fmap_mag</th>
+      <td><p>fieldmap magnitude image - whole head extracted</p></td>
+    </tr>
+    <tr>
+      <th>fmap_mag_brain</th>
+      <td><p>fieldmap magnitude image - brain extracted</p></td>
+    </tr>
+    <tr>
+      <th>echo_spacing</th>
+      <td><p>Effective EPI echo spacing 
+(sometimes called dwell time) - in seconds</p></td>
+    </tr>
+    <tr>
+      <th>phase_enc_dir</th>
+      <td><p>phase encoding direction, dir = x/y/z/-x/-y/-z</p></td>
+    </tr>
+    <tr>
+      <th>weight</th>
+      <td><p>weighting image (in T1 space)</p></td>
     </tr>
     <tr>
       <th>verbose</th>
       <td><p>(logical) print out command before running</p></td>
     </tr>
     <tr>
-      <th>remove.seg</th>
-      <td><p>(logical) Should segmentation from FAST be removed?</p></td>
+      <th>opts</th>
+      <td><p>(character) operations to be passed to <code>fslmaths</code></p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -133,6 +169,11 @@ Passed to <code>readnii</code>.</p></td>
     <p>If <code>retimg</code> then object of class nifti.  Otherwise,
 Result from system command, depends if intern is TRUE or FALSE.</p>
     
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Functions with underscores have different defaults
+and will return an output filename, so to be used for piping</p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -141,6 +182,8 @@ Result from system command, depends if intern is TRUE or FALSE.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
           </ul>
 
   </div>

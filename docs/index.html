@@ -10,13 +10,13 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body>
-    <div class="container template-home">
+    <div class="container template-vignette">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -49,25 +49,76 @@
 
       
       </header><div class="row">
-  <div class="contents col-md-9">
-    <div id="fslr" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#fslr" class="anchor"> </a>fslr</h1></div>
-<p>The goal of fslr is to port/wrap of FSL into R.</p>
+  <div class="col-md-9">
+    
+
+    
+    
+<div class="contents">
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<section id="fslr" class="level1"><div class="page-header"><h1>fslr</h1></div>
+<p><img src="sticker.png" width="100"></p>
+<p>The goal of fslr is to port/wrap of FSL into R. As FSL has a fossil as it’s logo and it was to sound like “fossil”, that’s why we have that as our logo.</p>
 <p>Much of the operations of FSL, such as fslmaths and fslstats are incorporated. This package is very useful for structural imaging, such as MRI. Some of the fMRI functionality has not been ported or has limited capabiilty.</p>
-<p><a href="https://travis-ci.org/muschellij2/fslr"><img src="https://travis-ci.org/muschellij2/fslr.svg?branch=master" alt="Build Status"></a> <a href="https://cran.r-project.org/package=fslr"><img src="http://www.r-pkg.org/badges/version/fslr" alt="CRAN_Status_Badge"></a> <a href="http://cran.rstudio.com/web/packages/fslr/index.html"><img src="http://cranlogs.r-pkg.org/badges/grand-total/fslr"></a> <a href="https://ci.appveyor.com/project/muschellij2/fslr"><img src="https://ci.appveyor.com/api/projects/status/github/muschellij2/fslr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://coveralls.io/r/muschellij2/fslr?branch=master"><img src="https://img.shields.io/coveralls/muschellij2/fslr.svg" alt="Coverage Status"></a></p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"> </a>Installation</h2>
+<p><a href="https://travis-ci.org/muschellij2/fslr"><img src="https://travis-ci.org/muschellij2/fslr.svg?branch=master" alt="Build Status"></a> <a href="https://cran.r-project.org/package=fslr"><img src="http://www.r-pkg.org/badges/version/fslr" alt="CRAN_Status_Badge"></a> <a href="http://cran.rstudio.com/web/packages/fslr/index.html"><img src="http://cranlogs.r-pkg.org/badges/grand-total/fslr"></a> <a href="https://ci.appveyor.com/project/muschellij2/fslr"><img src="https://ci.appveyor.com/api/projects/status/github/muschellij2/fslr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://coveralls.io/r/muschellij2/fslr?branch=master"><img src="https://coveralls.io/repos/github/muschellij2/fslr/badge.svg?branch=master" alt="Coverage Status"></a></p>
+<section id="installation" class="level2"><h2>Installation</h2>
 <p>You can install fslr from github with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"muschellij2/fslr"</span>)</code></pre></div>
-</div>
+<pre class="sourceCode r"><code class="sourceCode r"><div class="sourceLine" id="1" href="#1" data-line-number="1"><span class="co"># install.packages("devtools")</span></div>
+<div class="sourceLine" id="2" href="#2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"muschellij2/fslr"</span>)</div></code></pre>
+</section><section id="neurodebian-builds" class="level2"><h2>Neurodebian builds</h2>
+<p>Neurodebian has caused some issues in the past for me. I used the following script to just shotgun copy everything. This was discussed in <a href="https://github.com/muschellij2/fslr/issues/10">issue #10</a>.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><div class="sourceLine" id="1" href="#1" data-line-number="1">
+<span class="va">FSLDIR=</span>/usr/local/fsl</div>
+<div class="sourceLine" id="2" href="#2" data-line-number="2">
+<span class="va">FSLSHARE=</span>/usr/share/data</div>
+<div class="sourceLine" id="3" href="#3" data-line-number="3"></div>
+<div class="sourceLine" id="4" href="#4" data-line-number="4">
+<span class="fu">mkdir</span> -p <span class="va">${FSLDIR}</span>/bin <span class="kw">&amp;&amp;</span> <span class="fu">cp</span> /usr/lib/fsl/5.0/* <span class="va">${FSLDIR}</span>/bin/</div>
+<div class="sourceLine" id="5" href="#5" data-line-number="5">
+<span class="fu">mkdir</span> -p <span class="va">${FSLDIR}</span>/data/standard <span class="kw">&amp;&amp;</span> <span class="fu">mkdir</span> -p <span class="va">${FSLDIR}</span>/data/atlases </div>
+<div class="sourceLine" id="6" href="#6" data-line-number="6"></div>
+<div class="sourceLine" id="7" href="#7" data-line-number="7"></div>
+<div class="sourceLine" id="8" href="#8" data-line-number="8"><span class="co">#######################################</span></div>
+<div class="sourceLine" id="9" href="#9" data-line-number="9"><span class="co"># Setting things up like other installers</span></div>
+<div class="sourceLine" id="10" href="#10" data-line-number="10"><span class="co">#######################################</span></div>
+<div class="sourceLine" id="11" href="#11" data-line-number="11">
+<span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/fsl-mni152-templates/* <span class="va">${FSLDIR}</span>/data/standard/</div>
+<div class="sourceLine" id="12" href="#12" data-line-number="12"></div>
+<div class="sourceLine" id="13" href="#13" data-line-number="13"><span class="co"># setting up atlases</span></div>
+<div class="sourceLine" id="14" href="#14" data-line-number="14">
+<span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/harvard-oxford-atlases/* <span class="va">${FSLDIR}</span>/data/atlases/ </div>
+<div class="sourceLine" id="15" href="#15" data-line-number="15">
+<span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/juelich-histological-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </div>
+<div class="sourceLine" id="16" href="#16" data-line-number="16">
+<span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/bangor-cerebellar-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </div>
+<div class="sourceLine" id="17" href="#17" data-line-number="17">
+<span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/jhu-dti-whitematter-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </div>
+<div class="sourceLine" id="18" href="#18" data-line-number="18">
+<span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/forstmann-subthalamic-nucleus-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </div>
+<div class="sourceLine" id="19" href="#19" data-line-number="19">
+<span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/fsl-resting-connectivity-parcellation-atlases/* <span class="va">${FSLDIR}</span>/data/atlases/ </div>
+<div class="sourceLine" id="20" href="#20" data-line-number="20">
+<span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/mni-structural-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </div>
+<div class="sourceLine" id="21" href="#21" data-line-number="21">
+<span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/oxford-thalamic-connectivity-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </div>
+<div class="sourceLine" id="22" href="#22" data-line-number="22">
+<span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/talairach-daemon-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </div></code></pre>
+<section id="rstudio-neurodebian-problems" class="level3"><h3>RStudio Neurodebian Problems</h3>
+<p>Referenced in <a href="https://github.com/muschellij2/Neurohacking/issues/4">another issue</a>, you may have to add</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><div class="sourceLine" id="1" href="#1" data-line-number="1">
+<span class="bu">export</span> <span class="va">LD_LIBRARY_PATH=</span>/usr/lib/fsl/5.0:<span class="va">$LD_LIBRARY_PATH</span>
+</div></code></pre>
+<p>in your <code>.bash_profile</code> or <code>.profile</code> to get things to work.</p>
+<p>Otherwise, you may get errors such as:</p>
+<pre><code>error while loading shared libraries: libnewimage.so: cannot open shared object file: No such file or directory</code></pre>
+<p>fossil icon by <a href="https://thenounproject.com/aliceralph/">Alice Ralph</a></p>
+</section></section></section>
 </div>
   </div>
 
-  <div class="col-md-3" id="sidebar">
-    <h2>Links</h2>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2 class="hasAnchor">
+<a href="#sidebar" class="anchor"></a>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cran.r-project.org/package=fslr">https://​cran.r-project.org/​package=fslr</a>
 </li>
@@ -76,11 +127,16 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 </ul>
 <h2>License</h2>
 <p><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></p>
+<h2>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html">Citing fslr</a></li>
+</ul>
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>John Muschelli <br><small class="roles"> Maintainer </small> </li>
+<li>John Muschelli <br><small class="roles"> Author, maintainer </small> </li>
 </ul>
 </div>
+
 </div>
 
 
