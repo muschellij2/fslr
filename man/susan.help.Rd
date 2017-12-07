@@ -13,6 +13,7 @@ Prints help output and returns output as character vector
 This function calls \code{susan}'s help
 }
 \examples{
+library(fslr)
 if (have.fsl()){
  susan.help() 
 }

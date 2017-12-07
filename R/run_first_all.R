@@ -102,6 +102,8 @@ run_first_all <- function(
 #' @return Prints help output and returns output as character vector
 #' @export
 #' @examples
+#' library(fslr)
+#' 
 #' if (have.fsl()){
 #'  run_first_all.help() 
 #' }

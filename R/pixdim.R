@@ -5,8 +5,9 @@
 #' @name pixdim-methods
 #' @aliases pixdim,character-method
 #' @param object is a filename to pass to \link{fslval} 
+#' @importMethodsFrom oro.nifti pixdim
+#' 
 #' @import oro.nifti
-#' @export
 setMethod("pixdim", "character", function(object){
   object = path.expand(object)
   stopifnot(file.exists(object))

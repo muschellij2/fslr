@@ -13,6 +13,8 @@ Prints help output and returns output as character vector
 This function calls \code{run_first_all}'s help
 }
 \examples{
+library(fslr)
+
 if (have.fsl()){
  run_first_all.help() 
 }

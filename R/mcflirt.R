@@ -46,6 +46,7 @@ mcflirt = function(
 #' @return Prints help output and returns output as character vector
 #' @export
 #' @examples
+#' library(fslr)
 #' if (have.fsl()){
 #'  mcflirt.help()
 #' } 

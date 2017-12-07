@@ -13,6 +13,7 @@ Prints help output and returns output as character vector
 This function calls \code{fslview}'s help
 }
 \examples{
+library(fslr)
 if (have.fsl()){
  fslview.help()
 }   

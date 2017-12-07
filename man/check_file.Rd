@@ -18,6 +18,7 @@ result of \code{\link{checkout}}
 Checking the q/s-forms for a header
 }
 \examples{
+library(fslr)
 if (have.fsl()){
  mnifile = file.path(fsldir(), "data", "standard", 
    "MNI152_T1_2mm.nii.gz")

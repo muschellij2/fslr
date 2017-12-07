@@ -668,6 +668,7 @@ checkout <- function(hd){
 #' @return result of \code{\link{checkout}}
 #' @export
 #' @examples
+#' library(fslr)
 #' if (have.fsl()){
 #'  mnifile = file.path(fsldir(), "data", "standard", 
 #'    "MNI152_T1_2mm.nii.gz")

@@ -13,6 +13,7 @@ Prints help output and returns output as character vector
 This function calls \code{mcflirt}'s help
 }
 \examples{
+library(fslr)
 if (have.fsl()){
  mcflirt.help()
 } 
