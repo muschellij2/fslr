@@ -523,6 +523,9 @@ fslval.help = function(){
 fslhd <- function(file, opts="", verbose = TRUE, ...){
   cmd <- get.fsl()
   file = checkimg(file, ...)
+  if (!file.exists(file)) {
+    stop(paste0("File ", file, " does not exist!"))
+  }  
   cmd <- paste0(cmd, sprintf('fslhd "%s" %s', file, opts))
   if (verbose) {
     message(cmd, "\n")
