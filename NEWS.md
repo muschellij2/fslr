@@ -1,3 +1,9 @@
+# fslr 2.17.3
+
+- Added functionality of `topup` and other DTI-based tools.
+- Tried to get `susan` to work properly.
+- Need to incorporate `fsleyes` in the future release.
+
 # fslr v1.6.0 (Release date: 2015-12-01)
 
 ## Major changes

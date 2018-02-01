@@ -19,7 +19,6 @@ fslr_underscore_functions.R
 fslr_underscore_functions_maker.R
 fslr_maths_helpfile.R
 Archive.zip
-NEWS.md
 README.md
 ^.lintr$
 ^appveyor\.yml$
