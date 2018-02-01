@@ -1,5 +1,5 @@
 #' @title Construct MNI Filename
-#' @description Finds the standard data directory for FSL and pastes togehter
+#' @description Finds the standard data directory for FSL and pastes together
 #' the string for an MNI template image
 #' @param mm Resolution (in mm) of the brain image (isotropic)
 #' @param brain Should the brain be returned (default) or the T1 with the skull

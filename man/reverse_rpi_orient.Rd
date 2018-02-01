@@ -16,7 +16,7 @@ reverse_rpi_orient_file(file, convention = c("NEUROLOGICAL", "RADIOLOGICAL"),
 
 \item{convention}{Convention of original image (usually from \code{\link{rpi_orient}})}
 
-\item{orientation}{Vector of length 3 fromoriginal image 
+\item{orientation}{Vector of length 3 from original image 
 (usually from \code{\link{rpi_orient}})}
 
 \item{verbose}{print diagnostic messages}

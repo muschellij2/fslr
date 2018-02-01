@@ -40,7 +40,7 @@ the different sub-sampling levels, default 10}
 \item{miter}{Max # of non-linear iterations, default 5}
 
 \item{lambda}{Weight of regularisation, default depending on 
-\code{ssqlambda} and \code{regmod} switches. See user documetation.}
+\code{ssqlambda} and \code{regmod} switches. See user documentation.}
 
 \item{ssqlambda}{If set (=1), lambda is weighted by current ssq, default 1}
 
@@ -66,7 +66,7 @@ common mean, default 0 (false)}
 \item{regrid}{If set (=1), the calculations are done in a different 
 grid, default 1 (true)}
 
-\item{verbose}{Print diagonostic information while running}
+\item{verbose}{Print diagnostic information while running}
 
 \item{...}{arguments passed to \code{topup} if using \code{fsl_topup}}
 }

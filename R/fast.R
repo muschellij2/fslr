@@ -79,7 +79,7 @@ fast.help = function(){
 
 #' @title FSL Bias Correct
 #' @description This function wraps a call to \code{fast} that performs bias
-#' corretion
+#' correction
 #' @param file (character) image to be manipulated
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti

@@ -33,5 +33,5 @@ Result from system command, depends if intern is TRUE or FALSE.
 }
 \description{
 This function wraps a call to \code{fast} that performs bias
-corretion
+correction
 }

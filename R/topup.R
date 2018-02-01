@@ -16,7 +16,7 @@
 #' @param config Name of config file specifying command line arguments
 #' @param miter Max # of non-linear iterations, default 5
 #' @param lambda Weight of regularisation, default depending on 
-#' \code{ssqlambda} and \code{regmod} switches. See user documetation.
+#' \code{ssqlambda} and \code{regmod} switches. See user documentation.
 #' @param ssqlambda If set (=1), lambda is weighted by current ssq, default 1
 #' @param regmod Model for regularisation of warp-field 
 #' [membrane_energy bending_energy], default bending_energy
@@ -32,7 +32,7 @@
 #' common mean, default 0 (false)
 #' @param regrid If set (=1), the calculations are done in a different 
 #' grid, default 1 (true)
-#' @param verbose Print diagonostic information while running
+#' @param verbose Print diagnostic information while running
 topup = function(
   infile, 
   datain, 

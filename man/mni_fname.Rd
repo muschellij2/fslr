@@ -21,6 +21,6 @@ MNI152_T1_1mm_brain_mask exists.}
 Character path of filename, warning if that file does not exist
 }
 \description{
-Finds the standard data directory for FSL and pastes togehter
+Finds the standard data directory for FSL and pastes together
 the string for an MNI template image
 }

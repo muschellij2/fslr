@@ -65,7 +65,7 @@ rpi_orient_file = function(file, verbose = TRUE){
 #' @description This function uses \code{fslswapdim} to reorient an image
 #' @param file Object of class \code{nifti} or character path
 #' @param convention Convention of original image (usually from \code{\link{rpi_orient}})
-#' @param orientation Vector of length 3 fromoriginal image 
+#' @param orientation Vector of length 3 from original image 
 #' (usually from \code{\link{rpi_orient}})
 #' @param verbose print diagnostic messages
 #' @return Object of class \code{nifti}
