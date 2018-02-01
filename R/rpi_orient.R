@@ -23,6 +23,12 @@ rpi_orient_file = function(file, verbose = TRUE){
   if (forms$sform_code == 0 & forms$qform_code == 0) {
     stop("Cannot swap dimensions - sform_code and qform_code are 0!")
   }
+  if (forms$sform_code != 0 & forms$qform_code != 0) {
+    if (!all(forms$ssor == forms$sqor)) {
+      warning(paste0("sform and qform are set, but the orientation ", 
+                     "is not the same, using sform"))
+    }
+  }  
   if (forms$sform_code != 0) {
     sorient = forms$ssor
   } else {
@@ -54,8 +60,6 @@ rpi_orient_file = function(file, verbose = TRUE){
            orientation = sorient)
   return(L)
 }
-
-
 
 #' @title Reverse Reorientation an Image to RPI orientation
 #' @description This function uses \code{fslswapdim} to reorient an image
