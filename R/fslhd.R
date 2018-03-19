@@ -1435,8 +1435,10 @@ fslcmd = function(
   if (retimg) {
     if (samefile) outfile = file
     img = readnii(outfile, reorient = reorient, ...)
+    attr(img, "result") = res
     return(img)
   } 
+  attr(outfile, "result") = res
   
-  return(res)  
+  return(outfile)  
 }
