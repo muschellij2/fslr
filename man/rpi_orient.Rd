@@ -3,11 +3,17 @@
 \name{rpi_orient}
 \alias{rpi_orient}
 \alias{rpi_orient_file}
+\alias{is_rpi}
+\alias{is.rpi}
 \title{Reorient an Image to RPI orientation}
 \usage{
 rpi_orient(file, verbose = TRUE)
 
 rpi_orient_file(file, verbose = TRUE)
+
+is_rpi(file, verbose = FALSE)
+
+is.rpi(file, verbose = FALSE)
 }
 \arguments{
 \item{file}{Object of class \code{nifti} or character path}
