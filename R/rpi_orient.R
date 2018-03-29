@@ -53,10 +53,12 @@ rpi_orient_file = function(file, verbose = TRUE){
                       basename(file))
     file.copy(file, tfile, overwrite = TRUE)
     # changes from NEUROLOGICAL to RADIOLOGICAL
-    file = fslorient(tfile,
-                     opts = "-swaporient",
-                     retimg = TRUE,
-                     verbose = verbose)
+    fslorient(tfile,
+              opts = "-swaporient",
+              retimg = FALSE,
+              outfile = tfile,
+              verbose = verbose)
+    file = tfile
   }
   outfile = tempfile(fileext = ".nii.gz")
   # Changes the data
@@ -84,7 +86,7 @@ reverse_rpi_orient = function(file,
                               convention = c("NEUROLOGICAL", "RADIOLOGICAL"), 
                               orientation, verbose = TRUE){
   img = reverse_rpi_orient_file(file = file, convention = convention,
-                      orientation = orientation, verbose = verbose)
+                                orientation = orientation, verbose = verbose)
   img = check_nifti(img)
   return(img)
 }
