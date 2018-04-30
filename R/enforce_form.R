@@ -10,7 +10,9 @@
 #' @export
 #' 
 #' @examples 
+#' if (have_fsl()) {
 #' res = enforce_form(mni_fname())
+#' }
 enforce_form = function(file, ...) {
   file = checkimg(file)
   stopifnot(length(file) == 1)

@@ -20,5 +20,7 @@ A character filename
 Enforce Either Qform or Sform is set
 }
 \examples{
+if (have_fsl()) {
 res = enforce_form(mni_fname())
+}
 }
