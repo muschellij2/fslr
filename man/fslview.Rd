@@ -2,9 +2,12 @@
 % Please edit documentation in R/fslview.R
 \name{fslview}
 \alias{fslview}
+\alias{fsleyes}
 \title{Open image in FSLView}
 \usage{
 fslview(file, intern = TRUE, opts = "", verbose = TRUE, ...)
+
+fsleyes(file, intern = TRUE, opts = "", verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) filename of image to be thresholded}

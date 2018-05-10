@@ -3,6 +3,7 @@
 \name{fsldir}
 \alias{fsldir}
 \alias{fsl_dir}
+\alias{fsl_dir}
 \title{Get FSL's Directory}
 \usage{
 fsldir()

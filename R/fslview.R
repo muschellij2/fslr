@@ -57,3 +57,36 @@ fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
 fslview.help = function(){
   return(fslhelp("fslview"))
 }
+
+#' @rdname fslview
+#' @export
+fsleyes = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
+  cmd <- get.fsl()
+  if (is.nifti(file)) {
+    file = checkimg(file)
+  }
+  file = lapply(file, checkimg, ...)
+  if (length(file) != length(opts)) {
+    opts = rep(opts, length = length(file))
+  } else {
+    if (length(file) > length(opts)) {
+      opts = c(opts, rep("", length = (length(file) - length(opts))))
+    } else {
+      opts = opts[seq(length(file))]
+    }
+  }
+  file = shQuote(file)
+  file = paste(file, opts)
+  file = paste(file, collapse = " ")
+  fslview_cmd = "fsleyes"
+  ################################## 
+  # new version deprecated it
+  ################################## 
+  string = paste0(fslview_cmd, " %s")
+  cmd <- paste0(cmd, sprintf(string, file))  
+  if (verbose) {
+    message(cmd, "\n")
+  }
+  res = system(cmd, intern = intern)
+  return(res)
+}
