@@ -31,8 +31,8 @@ mid_sagittal_align = function(
   
   omat = tempfile(fileext = ".mat")
   tfile = tempfile(fileext = ".nii.gz")
-  flirt(infile = flipped, 
-        reffile = img,
+  flirt(infile = img, 
+        reffile = flipped,
         omat = omat, dof = 6,
         opts = opts,
         retimg = FALSE, 
@@ -52,8 +52,8 @@ mid_sagittal_align = function(
   
   tfile = tempfile(fileext = ".nii.gz")
   flirt_apply(
-    infile = flipped, 
-    reffile = img, 
+    infile = img, 
+    reffile = flipped, 
     initmat = new_omat,
     verbose = verbose,
     retimg = FALSE,
