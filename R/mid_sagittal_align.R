@@ -66,6 +66,8 @@ mid_sagittal_align = function(
     centered = readnii(centered)
   }
   
+  attr(centered, "half_transform") = new_omat
+  attr(centered, "full_transform") = omat
   return(centered)
   
 }
