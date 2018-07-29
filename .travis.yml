@@ -6,7 +6,7 @@ cache: packages
 os:
   - linux
   - osx
-  
+
 
 r_check_args: "--as-cran --install-args=--build"
 

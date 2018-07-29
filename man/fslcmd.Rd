@@ -6,7 +6,8 @@
 \usage{
 fslcmd(func, file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, opts = "", verbose = TRUE, samefile = FALSE,
-  opts_after_outfile = FALSE, frontopts = "", no.outfile = FALSE, ...)
+  opts_after_outfile = FALSE, frontopts = "", no.outfile = FALSE,
+  trim_front = FALSE, run = TRUE, ...)
 }
 \arguments{
 \item{func}{(character) FSL function}
@@ -35,6 +36,10 @@ the \code{outfile} in the FSL command?}
 
 \item{no.outfile}{(logical) is there an output file in the arguments of 
 the FSL function?}
+
+\item{trim_front}{trim the whitespace from the front of the command.}
+
+\item{run}{(logical) Should the command just be printed (if \code{FALSE})?}
 
 \item{...}{additional arguments passed to \code{\link{readnii}}.}
 }

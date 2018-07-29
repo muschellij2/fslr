@@ -1380,6 +1380,8 @@ fslswapdim.help = function(){
 #' @param frontopts (character) options/character to put in before filename
 #' @param no.outfile (logical) is there an output file in the arguments of 
 #' the FSL function?
+#' @param trim_front trim the whitespace from the front of the command.
+#' @param run (logical) Should the command just be printed (if \code{FALSE})?
 #' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
@@ -1397,6 +1399,8 @@ fslcmd = function(
   opts_after_outfile = FALSE,
   frontopts = "",
   no.outfile = FALSE,
+  trim_front = FALSE,
+  run = TRUE,
   ...){
   
   cmd = get.fsl()
@@ -1406,10 +1410,17 @@ fslcmd = function(
   ##########################
   # Add frontopts
   ##########################
+  frontopts = paste(frontopts, collapse = " ")
+  
   s = sprintf('%s %s ', func, frontopts)
   s = gsub("\\s\\s+", " ", s)
   s = sub("[ \t\r\n]+$", "", s, perl = TRUE)
-  s = paste(s, sprintf('"%s"', file))
+  if (trim_front) {
+    s = trimws(s)
+    s = paste0(s, sprintf('"%s"', file))
+  } else {
+    s = paste(s, sprintf('"%s"', file))
+  }
   cmd <- paste0(cmd, s)
   # cmd <- paste0(cmd, sprintf('%s "%s"', func, file))
   
@@ -1417,6 +1428,8 @@ fslcmd = function(
   outfile = check_outfile(outfile = outfile, 
                           retimg = retimg, fileext = "")
   outfile = nii.stub(outfile)
+  
+  opts = paste(opts, collapse = " ")
   if (no.outfile) {
     cmd <- paste(cmd, sprintf(' %s ;', opts))
   } else {
@@ -1429,6 +1442,9 @@ fslcmd = function(
   ext = get.imgext()
   if (verbose) {
     message(cmd, "\n")
+  }
+  if (!run) {
+    return(cmd)
   }
   res = system(cmd, intern = intern)
   outfile = paste0(outfile, ext)  
