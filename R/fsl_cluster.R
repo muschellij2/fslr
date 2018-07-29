@@ -195,8 +195,8 @@ cluster = fsl_cluster
 
 #' @export
 #' @rdname fsl_cluster
-fslcluster = function(..., reorient = TRUE) {
-  res = fsl_cluster(..., reorient = reorient)
+fslcluster = function(..., retimg = TRUE) {
+  res = fsl_cluster(..., retimg = retimg)
   return(res)
 }
 

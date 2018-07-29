@@ -20,7 +20,7 @@ cluster(file, threshold, retimg = FALSE, reorient = FALSE, opts = "",
   connectivity = 26, mm = FALSE, find_minima = FALSE,
   standard_image = NULL, verbose = TRUE, ...)
 
-fslcluster(..., reorient = TRUE)
+fslcluster(..., retimg = TRUE)
 
 read_cluster_table(file)
 }
