@@ -61,8 +61,6 @@ Passed to \code{\link{readnii}}.}
 \item{verbose}{(logical) print out command before running}
 
 \item{...}{additional arguments to pass to \code{\link{fslcmd}}}
-
-\item{intern}{(logical) to be passed to \code{\link{system}}}
 }
 \value{
 A list of filenames of outputs and tables:

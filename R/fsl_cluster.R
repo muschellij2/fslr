@@ -6,7 +6,6 @@
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
 #' Passed to \code{\link{readnii}}.
-#' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{cluster}  
 #' @param cope_image filename of input cope volume
 #' @param pthresh p-threshold
@@ -162,13 +161,13 @@ fsl_cluster = function(
     outfile = NULL, retimg = FALSE,
     reorient = reorient, intern = FALSE, opts = opts, 
     ... = ..., verbose = verbose, no.outfile = TRUE, samefile = TRUE)
+  fe = sapply(outputs, file.exists)
   if (retimg) {
     outputs[output_images] = lapply(
       outputs[output_images],
       readnii, reorient = reorient)
-  }
+  }  
   L = outputs
-  fe = sapply(outputs, file.exists)
   result = attributes(res)$result
 
 
