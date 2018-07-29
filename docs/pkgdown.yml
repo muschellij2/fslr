@@ -1,0 +1,7 @@
+pandoc: 2.1.3
+pkgdown: 1.1.0
+pkgdown_sha: ~
+articles:
+  dti_data: dti_data.html
+  fslr: fslr.html
+

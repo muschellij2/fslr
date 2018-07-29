@@ -8,14 +8,17 @@
 <title>Working with Data in fslr • fslr</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Working with Data in fslr">
+<meta property="og:description" content="">
+<meta name="twitter:card" content="summary">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -24,18 +27,40 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">fslr</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">fslr</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2.20.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="../articles/fslr.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="../articles/index.html">Articles</a>
+      <a href="../articles/dti_data.html">DTI Data in fslr</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
@@ -48,32 +73,47 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Working with Data in fslr</h1>
             
-          </div>
+      
+      
+      <div class="hidden name"><code>fslr.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
-<section id="reading-in-data" class="level2"><h2>Reading in Data</h2>
+<div id="reading-in-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#reading-in-data" class="anchor"></a>Reading in Data</h2>
 <p><code>fslr</code> implicitly is partnered with the <code>nifti</code> format from <code>oro.nifti</code>. All functions use the <code>system</code> command to implement the FSL functions. All functions will check to see whether the file passed in a character path to a filename. If the object is a <code>nifti</code> object, the programs will create a temporary file using <code>tempfile()</code> and then return the name of this file with the <code>checkimg</code> command. If a character path is passed to the <code>file</code> argument into an <code>fslr</code> command, then this will run in FSL assuming that file exists.</p>
-</section><section id="checking-if-fsl-exists" class="level2"><h2>Checking if FSL exists</h2>
+</div>
+<div id="checking-if-fsl-exists" class="section level2">
+<h2 class="hasAnchor">
+<a href="#checking-if-fsl-exists" class="anchor"></a>Checking if FSL exists</h2>
 <p>If <code>R</code> is run using a GUI, then <code>fsl.path</code> must be set using <code>options(fsl.path='/path/to/fsl')</code>. <code><a href="../reference/have.fsl.html">have.fsl()</a></code> checks to see if FSL is in the PATH or the options are correctly set and returns <code>TRUE</code> and returns <code>FALSE</code> otherwise.</p>
-<section id="printing-out-fsl-version" class="level3"><h3>Printing out FSL Version</h3>
+<div id="printing-out-fsl-version" class="section level3">
+<h3 class="hasAnchor">
+<a href="#printing-out-fsl-version" class="anchor"></a>Printing out FSL Version</h3>
 <p>For example, you can wrap example functions with a logical check for <code><a href="../reference/have.fsl.html">have.fsl()</a></code> to have the execute if FSL exists:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><div class="sourceLine" id="1" href="#1" data-line-number="1">
-<span class="cf">if</span> (<span class="kw"><a href="../reference/have.fsl.html">have.fsl</a></span>()) {</div>
-<div class="sourceLine" id="2" href="#2" data-line-number="2">  <span class="kw">print</span>(<span class="kw"><a href="../reference/fsl_version.html">fsl_version</a></span>())</div>
-<div class="sourceLine" id="3" href="#3" data-line-number="3">}</div></code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">if</span> (<span class="kw"><a href="../reference/have.fsl.html">have.fsl</a></span>()) {</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw">print</span>(<span class="kw"><a href="../reference/fsl_version.html">fsl_version</a></span>())</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">}</a></code></pre></div>
 <pre><code>## [1] "5.0.10"</code></pre>
-</section></section><section id="returning-objects" class="level2"><h2>Returning Objects</h2>
+</div>
+</div>
+<div id="returning-objects" class="section level2">
+<h2 class="hasAnchor">
+<a href="#returning-objects" class="anchor"></a>Returning Objects</h2>
 <p>In functions where an image is the end result, the <code>outfile</code> and <code>retimg</code> arguments are present. If <code>outfile</code> is specified, the user wants a file to be saved to disk. If <code>outfile</code> is not specified, a temporary file (using <code>tempfile</code>) will be created for the result and deleted at the end of the <code>R</code> session. If <code>retimg=TRUE</code>, then the user specified that an object of class <code>nifti</code> will be returned to <code>R</code>. If both <code>retimg=TRUE</code> and <code>outfile</code> is specified, the image will be written to disk, read into <code>R</code> and the <code>nifti</code> object will be returned. If <code>retimg=FALSE</code> and <code>outfile</code> is not specified, the function will fail as <code>fslr</code> would be calculating an image and no result would be able to be obtained since the <code>outfile</code> is deleted.</p>
-</section><section id="main-functions" class="level2"><h2>Main functions</h2>
+</div>
+<div id="main-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#main-functions" class="anchor"></a>Main functions</h2>
 <p>The main functions implemented are <code>fslmaths</code> and <code>fslstats</code>. <code>fslmaths</code> usually returns images as the result and <code>fslstats</code> usually returns a vector of information.</p>
 <p>Functions functions such as <code>fslmask</code>, <code>fslerode</code>, <code>fslsmooth</code>, and <code>fslfill</code> are implemented wrappers for ease of use, but are essentially calling <code>fslmaths</code> with specific options. Functions such as <code>fslrange</code> is an example of a wrapper for <code>fslstats</code>. As <code>fslstats</code> outputs are variable in their format, the results are returned simply as a character vector which needs to be parsed. <a href="https://github.com/muschellij2/fslr">This GitHub repository</a> will be used for development and issues.</p>
-</section>
 </div>
   </div>
 
@@ -98,11 +138,13 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>
