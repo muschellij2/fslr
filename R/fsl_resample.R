@@ -6,7 +6,6 @@
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
 #' Passed to \code{\link{readnii}}. 
-#' @param opts (character) additional options to FLIRT
 #' @param verbose (logical) print out command before running
 #'
 #' @return If \code{retimg} then object of class nifti.  Otherwise,

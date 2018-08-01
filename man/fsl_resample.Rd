@@ -20,8 +20,6 @@ fsl_resample(file, voxel_size, outfile = NULL, retimg = TRUE,
 Passed to \code{\link{readnii}}.}
 
 \item{verbose}{(logical) print out command before running}
-
-\item{opts}{(character) additional options to FLIRT}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,
@@ -33,8 +31,10 @@ Title
 \examples{
 if (have_fsl()) {
 file = mni_fname(mm = 1, brain = TRUE)
+est2 = fsl_resample(file = file, voxel_size = 1, retimg = FALSE)
+pixdim(est2)
 est = fsl_resample(file = file, voxel_size = 1)
-est = fsl_resample(file = file, voxel_size = 1)
+pixdim(est)
 }
 
 }
