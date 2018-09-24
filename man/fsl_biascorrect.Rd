@@ -4,8 +4,9 @@
 \alias{fsl_biascorrect}
 \title{FSL Bias Correct}
 \usage{
-fsl_biascorrect(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", verbose = TRUE, remove.seg = TRUE, ...)
+fsl_biascorrect(file, outfile = NULL, retimg = TRUE,
+  reorient = FALSE, intern = FALSE, opts = "", verbose = TRUE,
+  remove.seg = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

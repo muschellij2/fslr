@@ -5,11 +5,12 @@
 \alias{fslsmooth}
 \title{Gaussian smooth image using FSL}
 \usage{
-fsl_smooth(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
+fsl_smooth(..., outfile = tempfile(fileext = ".nii.gz"),
+  retimg = FALSE)
 
 fslsmooth(file, sigma = 10, mask = NULL, smooth_mask = TRUE,
-  smoothed_mask = NULL, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, verbose = TRUE, ...)
+  smoothed_mask = NULL, outfile = NULL, retimg = TRUE,
+  reorient = FALSE, intern = FALSE, verbose = TRUE, ...)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

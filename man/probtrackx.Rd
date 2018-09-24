@@ -4,18 +4,20 @@
 \alias{probtrackx}
 \title{Probabilistic diffusion tractography with multiple fibre orientations}
 \usage{
-probtrackx(samples = "merged", mask, seed, verbose = TRUE, out = NULL,
-  dir = NULL, forcedir = FALSE, simple = NULL, network = FALSE,
-  opd = NULL, pd = FALSE, fopd = NULL, os2t = FALSE, s2tastext = NULL,
-  targetmasks = NULL, waypoints = NULL, waycond = c("AND", "OR"),
-  wayorder = NULL, onewaycondition = FALSE, avoid = NULL, stop = NULL,
-  omatrix1 = NULL, distthresh1 = NULL, omatrix2 = NULL, target2 = NULL,
-  omatrix3 = NULL, target3 = NULL, lrtarget3 = NULL, distthresh3 = 0,
-  xfm = NULL, invxfm = NULL, seedref = NULL, meshspace = c("caret",
-  "freesurfer", "first", "vox"), nsamples = 5000, nsteps = 2000,
-  steplength = 0.5, distthresh = 0, cthr = 0.2, fibthresh = 0.01,
-  loopcheck = FALSE, usef = FALSE, modeuler = FALSE, sampvox = 0,
-  randfib = 0, fibst = 1, rseed = NULL, ...)
+probtrackx(samples = "merged", mask, seed, verbose = TRUE,
+  out = NULL, dir = NULL, forcedir = FALSE, simple = NULL,
+  network = FALSE, opd = NULL, pd = FALSE, fopd = NULL,
+  os2t = FALSE, s2tastext = NULL, targetmasks = NULL,
+  waypoints = NULL, waycond = c("AND", "OR"), wayorder = NULL,
+  onewaycondition = FALSE, avoid = NULL, stop = NULL,
+  omatrix1 = NULL, distthresh1 = NULL, omatrix2 = NULL,
+  target2 = NULL, omatrix3 = NULL, target3 = NULL,
+  lrtarget3 = NULL, distthresh3 = 0, xfm = NULL, invxfm = NULL,
+  seedref = NULL, meshspace = c("caret", "freesurfer", "first", "vox"),
+  nsamples = 5000, nsteps = 2000, steplength = 0.5, distthresh = 0,
+  cthr = 0.2, fibthresh = 0.01, loopcheck = FALSE, usef = FALSE,
+  modeuler = FALSE, sampvox = 0, randfib = 0, fibst = 1,
+  rseed = NULL, ...)
 }
 \arguments{
 \item{samples}{Basename for samples files - e.g. 'merged'}

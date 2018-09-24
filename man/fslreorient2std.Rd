@@ -4,8 +4,8 @@
 \alias{fslreorient2std}
 \title{FSL Orient to MNI}
 \usage{
-fslreorient2std(file, retimg = TRUE, reorient = FALSE, intern = FALSE,
-  verbose = TRUE, ...)
+fslreorient2std(file, retimg = TRUE, reorient = FALSE,
+  intern = FALSE, verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

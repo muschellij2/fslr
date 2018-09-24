@@ -8,10 +8,12 @@
 \usage{
 fslepi_reg(epi, t1, t1_brain, outfile = NULL, retimg = TRUE,
   reorient = FALSE, intern = FALSE, fmap = NULL, fmap_mag = NULL,
-  fmap_mag_brain = NULL, echo_spacing = NA, phase_enc_dir = c("x", "y",
-  "z", "-x", "-y", "-z"), weight = NULL, verbose = TRUE, opts = "", ...)
+  fmap_mag_brain = NULL, echo_spacing = NA, phase_enc_dir = c("x",
+  "y", "z", "-x", "-y", "-z"), weight = NULL, verbose = TRUE,
+  opts = "", ...)
 
-fsl_epi_reg(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
+fsl_epi_reg(..., outfile = tempfile(fileext = ".nii.gz"),
+  retimg = FALSE)
 
 epi_reg(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 }

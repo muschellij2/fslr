@@ -5,7 +5,8 @@
 \alias{fsldilate}
 \title{Dilate image using FSL}
 \usage{
-fsl_dilate(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
+fsl_dilate(..., outfile = tempfile(fileext = ".nii.gz"),
+  retimg = FALSE)
 
 fsldilate(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, kopts = "", opts = "", verbose = TRUE, ...)

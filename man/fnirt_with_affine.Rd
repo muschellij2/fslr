@@ -4,9 +4,10 @@
 \alias{fnirt_with_affine}
 \title{Register using FNIRT, but doing Affine Registration as well}
 \usage{
-fnirt_with_affine(infile, reffile, flirt.omat = NULL, flirt.outfile = NULL,
-  outfile = NULL, retimg = TRUE, reorient = FALSE, intern = FALSE,
-  flirt.opts = "", opts = "", verbose = TRUE, ...)
+fnirt_with_affine(infile, reffile, flirt.omat = NULL,
+  flirt.outfile = NULL, outfile = NULL, retimg = TRUE,
+  reorient = FALSE, intern = FALSE, flirt.opts = "", opts = "",
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{infile}{(character) input filename}

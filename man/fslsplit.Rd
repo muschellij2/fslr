@@ -5,8 +5,9 @@
 \alias{fsl_split}
 \title{Split images using FSL}
 \usage{
-fslsplit(infile, direction = c("t", "x", "y", "z"), output_basename = NULL,
-  retimg = TRUE, reorient = FALSE, verbose = TRUE)
+fslsplit(infile, direction = c("t", "x", "y", "z"),
+  output_basename = NULL, retimg = TRUE, reorient = FALSE,
+  verbose = TRUE)
 
 fsl_split(..., retimg = FALSE)
 }

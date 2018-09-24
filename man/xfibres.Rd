@@ -6,10 +6,11 @@
 \title{Bayesian Estimation of Diffusion Parameters 
 Obtained using Sampling Techniques with Crossing Fibers}
 \usage{
-xfibres(infile, bvecs, bvals, mask = NULL, nfibres = 1, bet.opts = "",
-  verbose = TRUE, njumps = NULL, burnin = NULL, burnin_noard = NULL,
-  sampleevery = NULL, updateproposalevery = NULL, seed = NULL,
-  noard = FALSE, allard = FALSE, nospat = FALSE, nonlinear = FALSE,
+xfibres(infile, bvecs, bvals, mask = NULL, nfibres = 1,
+  bet.opts = "", verbose = TRUE, njumps = NULL, burnin = NULL,
+  burnin_noard = NULL, sampleevery = NULL,
+  updateproposalevery = NULL, seed = NULL, noard = FALSE,
+  allard = FALSE, nospat = FALSE, nonlinear = FALSE,
   cnonlinear = FALSE, rician = FALSE, f0 = FALSE, ardf0 = FALSE,
   opts = "")
 }

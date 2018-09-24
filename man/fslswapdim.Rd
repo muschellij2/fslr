@@ -5,7 +5,8 @@
 \alias{fslswapdim}
 \title{FSL Swap Dimensions}
 \usage{
-fsl_swapdim(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
+fsl_swapdim(..., outfile = tempfile(fileext = ".nii.gz"),
+  retimg = FALSE)
 
 fslswapdim(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
   intern = FALSE, a = "x", b = "y", c = "z", verbose = TRUE, ...)

@@ -5,7 +5,8 @@
 \alias{fslthresh}
 \title{Threshold an image}
 \usage{
-fsl_thresh(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
+fsl_thresh(..., outfile = tempfile(fileext = ".nii.gz"),
+  retimg = FALSE)
 
 fslthresh(file, outfile = NULL, thresh = 0, uthresh = NULL,
   retimg = TRUE, reorient = FALSE, intern = FALSE, opts = "",

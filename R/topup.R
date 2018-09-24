@@ -33,6 +33,7 @@
 #' @param regrid If set (=1), the calculations are done in a different 
 #' grid, default 1 (true)
 #' @param verbose Print diagnostic information while running
+#' @export
 topup = function(
   infile, 
   datain, 
@@ -115,7 +116,7 @@ topup = function(
   datain = normalizePath(datain)
   datain = unname(datain)
   
-  args = paste0("--infile=", infile, " --datain=", datain)
+  args = paste0("--imain=", infile, " --datain=", datain)
   cmd = paste(cmd, args, opts)
   
   if (verbose) {
@@ -127,6 +128,7 @@ topup = function(
 
 #' @param ... arguments passed to \code{topup} if using \code{fsl_topup}
 #' @rdname topup
+#' @export
 fsl_topup = function(...){
   res = topup(...)
   return(res)

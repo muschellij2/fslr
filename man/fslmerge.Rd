@@ -7,8 +7,9 @@
 \usage{
 fsl_merge(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslmerge(infiles, direction = c("x", "y", "z", "t", "a"), outfile = NULL,
-  retimg = TRUE, reorient = FALSE, intern = FALSE, verbose = TRUE, ...)
+fslmerge(infiles, direction = c("x", "y", "z", "t", "a"),
+  outfile = NULL, retimg = TRUE, reorient = FALSE, intern = FALSE,
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

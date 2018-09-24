@@ -6,11 +6,12 @@
 \title{topup - calling FSL topup}
 \usage{
 topup(infile, datain, out = NULL, fout = NULL, iout = NULL,
-  logout = NULL, warpres = 10, subsamp = 1, fwhm = 8, config = NULL,
-  miter = 5, lambda = NULL, ssqlambda = 1, regmod = c("bending_energy",
-  "membrane_energy"), estmov = 1, minmet = c(0, 1), splineorder = c(3, 2),
-  numprec = c("double", "float"), interp = c("spline", "linear"),
-  scale = c(0, 1), regrid = c(0, 1), verbose = TRUE)
+  logout = NULL, warpres = 10, subsamp = 1, fwhm = 8,
+  config = NULL, miter = 5, lambda = NULL, ssqlambda = 1,
+  regmod = c("bending_energy", "membrane_energy"), estmov = 1,
+  minmet = c(0, 1), splineorder = c(3, 2), numprec = c("double",
+  "float"), interp = c("spline", "linear"), scale = c(0, 1),
+  regrid = c(0, 1), verbose = TRUE)
 
 fsl_topup(...)
 }

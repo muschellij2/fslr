@@ -6,10 +6,12 @@
 \title{FSL Slice Timing Correction}
 \usage{
 fslslicetimer(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, tr = 3, direction = "z", indexing = c("up", "down"),
-  acq_order = c("contiguous", "interleaved"), verbose = TRUE, ...)
+  intern = FALSE, tr = 3, direction = "z", indexing = c("up",
+  "down"), acq_order = c("contiguous", "interleaved"), verbose = TRUE,
+  ...)
 
-fsl_slicetimer(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
+fsl_slicetimer(..., outfile = tempfile(fileext = ".nii.gz"),
+  retimg = FALSE)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

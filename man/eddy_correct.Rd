@@ -4,7 +4,8 @@
 \alias{eddy_correct}
 \title{Eddy Current Correction}
 \usage{
-eddy_correct(infile, outfile = NULL, retimg = TRUE, reference_no = 0, ...)
+eddy_correct(infile, outfile = NULL, retimg = TRUE, reference_no = 0,
+  ...)
 }
 \arguments{
 \item{infile}{input filename of 4D image.}
