@@ -24,6 +24,8 @@ applytopup = function(
   interp = c("spline", "trilinear"), 
   verbose = TRUE ){
   
+  warning("This function has not been tested")
+  
   index = paste(index, collapse = ",")
   
   topup_files = checkimg(topup_files)

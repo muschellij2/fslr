@@ -58,6 +58,8 @@ topup = function(
   regrid = c(0, 1), 
   verbose = TRUE ){
   
+  warning("This function has not been tested")
+  
   regmod = match.arg(regmod)
   minmet = minmet[1]
   splineorder = splineorder[1]
