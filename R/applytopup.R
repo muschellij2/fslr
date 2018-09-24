@@ -84,8 +84,6 @@ applytopup = function(
 }
 
 
-#' @param ... arguments passed to \code{applytopup} if
-#'  using \code{fsl_applytopup}
 #' @rdname applytopup
 #' @export
 apply_topup = function(...){

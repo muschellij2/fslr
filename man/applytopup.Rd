@@ -33,9 +33,6 @@ least-squares resampling (lsr), default=lsr.}
 
 \item{verbose}{Print diagnostic information while running}
 
-\item{...}{arguments passed to \code{applytopup} if
-using \code{fsl_applytopup}}
-
 \item{...}{arguments passed to \code{topup} if using \code{fsl_topup}}
 }
 \description{
