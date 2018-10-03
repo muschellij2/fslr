@@ -60,6 +60,7 @@ fast = function(
   }  
   if (retimg){
     outfile = paste0(outfile, "_", out_type, ext)  
+    names(outfile) = out_type
     img = check_nifti(outfile, reorient = reorient)
     return(img)
   }
