@@ -13,13 +13,14 @@
 #' @param out_type (character) Suffix to grab from outfile.  For 
 #' example, output filename is \code{paste0(outfile, "_", out_type)}
 #' @param verbose (logical) print out command before running
+#' @param all_images If \code{retimg} 
 #' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
 fast = function(
   file,
-  outfile=NULL, 
+  outfile = NULL, 
   bias_correct = TRUE,
   retimg = TRUE,
   reorient = FALSE,
@@ -28,8 +29,9 @@ fast = function(
   out_type = c("seg", "mixeltype", "pve_0", 
                "pve_1", "pve_2", "pveseg"),  
   verbose = TRUE,
+  all_images = FALSE,
   ...){
-    
+  
   cmd = get.fsl()
   file = checkimg(file, ...)
   cmd <- paste0(cmd, 'fast ')
@@ -47,23 +49,45 @@ fast = function(
   opts = paste(opts, collapse = " ")
   
   cmd <- paste(cmd, sprintf('%s --out="%s" "%s";', opts, 
-    outfile, file))
+                            outfile, file))
   ext = get.imgext()
   if (verbose){
     message(cmd, "\n")
   }
   res = system(cmd, intern=intern)  
+  if (!all_images) {
+    out_type = match.arg(out_type)
+  }  
   if (retimg){
-    out_type = match.arg(out_type, c("seg", "mixeltype", "pve_0", 
-                 "pve_1", "pve_2", "pveseg"))
     outfile = paste0(outfile, "_", out_type, ext)  
-    img = readnii(outfile, reorient = reorient, ...)
+    img = check_nifti(outfile, reorient = reorient)
     return(img)
   }
   outfile = paste0(outfile, "_", out_type, ext)  
   return(outfile)
   # return(res)  
 }
+
+
+#' @rdname fast
+#' @aliases fast_all
+#' @export
+fast_all = function(
+  ...,
+  all_images = FALSE) {
+  fast(..., all_images = all_images)
+}
+
+
+#' @rdname fast
+#' @aliases fast_nobias_all
+#' @export
+fast_nobias_all = function(..., bias_correct = FALSE,
+                           all_images = FALSE) {
+  fast(..., all_images = all_images, 
+       bias_correct = bias_correct)
+}
+
 
 #' @title FAST help
 #' @description This function calls \code{fast}'s help
@@ -111,15 +135,15 @@ fsl_biascorrect = function(
   outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
   
   outfile = nii.stub(outfile)
-
+  
   cmd <- paste(cmd, sprintf(' %s -B --nopve --out="%s" "%s";', 
-    opts, outfile, file))
+                            opts, outfile, file))
   ext = get.imgext()
   if (verbose){
     message(cmd, "\n")
   }
   res = system(cmd, intern=intern)
-
+  
   # if (have.outfile){
   ext = get.imgext()
   
@@ -132,7 +156,7 @@ fsl_biascorrect = function(
   outfile = paste0(stub, ext)
   file.rename(output, outfile)
   # }
-
+  
   if (retimg){
     img = readnii(outfile, reorient=reorient, ...)
     return(img)
@@ -165,3 +189,31 @@ fslfast = function(
 ) {
   fast(...)
 }
+
+
+
+#' @rdname fast
+#' @aliases fsl_fast_nobias
+#' @export
+fsl_fast_nobias = function(
+  ...,
+  bias_correct = FALSE,
+  outfile = tempfile(fileext = ".nii.gz"),
+  retimg = FALSE
+) {
+  fast(..., bias_correct = bias_correct, 
+       outfile = outfile, retimg = retimg)
+  return(outfile)
+}
+
+#' @rdname fast
+#' @aliases fast_nobias
+#' @export
+fast_nobias = function(..., bias_correct = FALSE) {
+  fast(..., bias_correct = bias_correct)
+}
+
+#' @rdname fast
+#' @aliases fslfast_nobias
+#' @export
+fslfast_nobias = fast_nobias

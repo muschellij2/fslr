@@ -2,17 +2,34 @@
 % Please edit documentation in R/fast.R
 \name{fast}
 \alias{fast}
+\alias{fast_all}
+\alias{fast_nobias_all}
 \alias{fsl_fast}
 \alias{fslfast}
+\alias{fsl_fast_nobias}
+\alias{fast_nobias}
+\alias{fslfast_nobias}
 \title{FSL FAST}
 \usage{
 fast(file, outfile = NULL, bias_correct = TRUE, retimg = TRUE,
   reorient = FALSE, intern = FALSE, opts = "", out_type = c("seg",
-  "mixeltype", "pve_0", "pve_1", "pve_2", "pveseg"), verbose = TRUE, ...)
+  "mixeltype", "pve_0", "pve_1", "pve_2", "pveseg"), verbose = TRUE,
+  all_images = FALSE, ...)
+
+fast_all(..., all_images = FALSE)
+
+fast_nobias_all(..., bias_correct = FALSE, all_images = FALSE)
 
 fsl_fast(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
 fslfast(...)
+
+fsl_fast_nobias(..., bias_correct = FALSE, outfile = tempfile(fileext =
+  ".nii.gz"), retimg = FALSE)
+
+fast_nobias(..., bias_correct = FALSE)
+
+fslfast_nobias(..., bias_correct = FALSE)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}
@@ -36,6 +53,8 @@ Passed to \code{\link{readnii}}.}
 example, output filename is \code{paste0(outfile, "_", out_type)}}
 
 \item{verbose}{(logical) print out command before running}
+
+\item{all_images}{If \code{retimg}}
 
 \item{...}{additional arguments passed to \code{\link{readnii}}.}
 }
