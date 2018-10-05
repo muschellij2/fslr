@@ -19,7 +19,8 @@ before_install:
     fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; 
     then 
-      sudo python fslinstaller.py -q -d /usr/local;
+      wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py ;
+      sudo python fslinstaller.py -d /usr/local/fsl -q ;
     fi
 
 r_check_args: "--as-cran --install-args=--build"
