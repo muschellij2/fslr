@@ -42,12 +42,16 @@ get.fsl = function(add_bin = TRUE){
     }
     
     fslout = get.fsloutput()
+    ld_dir = "/usr/lib/fsl/5.0"
     shfile = file.path(fsldir, "etc/fslconf/fsl.sh")
     cmd <- paste0("FSLDIR=", shQuote(fsldir), "; ", 
                   paste0('PATH=${FSLDIR}/', bin, ':${PATH};'),
                   'export PATH FSLDIR; ', 
                   ifelse(file.exists(shfile), 
                          'sh "${FSLDIR}/etc/fslconf/fsl.sh"; ', ""),
+                  ifelse(dir.exists(ld_dir),
+                      paste0('export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}":',
+                             ld_dir, ";"), ""),
                   "FSLOUTPUTTYPE=", fslout, "; export FSLOUTPUTTYPE; ", 
                   paste0("${FSLDIR}/", bin_app)
     )
