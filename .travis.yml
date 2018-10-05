@@ -17,6 +17,10 @@ before_install:
         sudo apt-get install -y fsl ;
       fi
     fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; 
+    then 
+      sudo python fslinstaller.py ;
+    fi
 
 r_check_args: "--as-cran --install-args=--build"
 
