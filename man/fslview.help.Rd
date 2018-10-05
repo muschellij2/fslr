@@ -15,6 +15,7 @@ This function calls \code{fslview}'s help
 \examples{
 library(fslr)
 if (have.fsl()){
+ print(fsl_version())
  fslview.help()
 }   
 }

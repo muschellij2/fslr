@@ -59,6 +59,7 @@ fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
 #' @examples
 #' library(fslr)
 #' if (have.fsl()){
+#'  print(fsl_version())
 #'  fslview.help()
 #' }   
 fslview.help = function(){
