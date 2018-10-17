@@ -9,6 +9,7 @@ os:
 
 before_install:
   - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py ;
+  - python --version
   - travis_wait 100 sudo python fslinstaller.py -d /usr/local/fsl -q ;    
   # - if [ "$TRAVIS_OS_NAME" = "linux" ]; 
   #     then
