@@ -1,3 +1,8 @@
+
+# fslr 2.22.0
+
+- fixed bug in `reverse_rpi_orient_file` that was causing `ERROR: Could not open file /usr/local/fsl/bin/fslswapdim: 107: [: =: unexpected operator` error.
+
 # fslr 2.17.3
 
 - Added functionality of `topup` and other DTI-based tools.
