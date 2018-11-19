@@ -39,7 +39,7 @@
 #' @param steplength Steplength in mm - default=0.5
 #' @param distthresh Discards samples shorter than this threshold (in mm - default=0)
 #' @param cthr Curvature threshold - default=0.2
-#' @param fibthresh Volume fraction before subsidary fibre orientations are considered - default=0.01
+#' @param fibthresh Volume fraction before subsidiary fibre orientations are considered - default=0.01
 #' @param loopcheck Perform loopchecks on paths - slower, but allows lower curvature threshold
 #' @param usef Use anisotropy to constrain tracking
 #' @param modeuler Use modified euler streamlining

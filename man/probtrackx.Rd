@@ -96,7 +96,7 @@ probtrackx(samples = "merged", mask, seed, verbose = TRUE,
 
 \item{cthr}{Curvature threshold - default=0.2}
 
-\item{fibthresh}{Volume fraction before subsidary fibre orientations are considered - default=0.01}
+\item{fibthresh}{Volume fraction before subsidiary fibre orientations are considered - default=0.01}
 
 \item{loopcheck}{Perform loopchecks on paths - slower, but allows lower curvature threshold}
 

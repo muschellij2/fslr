@@ -3,7 +3,7 @@
 \name{fsl_randn}
 \alias{fsl_randn}
 \alias{fslrandn}
-\title{Add Random Standard Guassian Noise Image using FSL}
+\title{Add Random Standard Gaussian Noise Image using FSL}
 \usage{
 fsl_randn(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 

@@ -122,7 +122,7 @@ have_fsl = function(...){
 #' @title Determine FSL output type
 #' @description Finds the FSLOUTPUTTYPE from system environment or 
 #' \code{getOption("fsl.outputtype")} for output type (nii.gz, nii, ANALYZE,etc) 
-#' @return FSLOUTPUTTYPE, such as NIFTI_GZ.  If none found, uses NIFTI_GZ as default
+#' @return FSLOUTPUTTYPE, such as \code{NIFTI_GZ}.  If none found, uses NIFTI_GZ as default
 #' 
 #' @export
 get.fsloutput = function(){

@@ -7,7 +7,7 @@
 get.fsloutput()
 }
 \value{
-FSLOUTPUTTYPE, such as NIFTI_GZ.  If none found, uses NIFTI_GZ as default
+FSLOUTPUTTYPE, such as \code{NIFTI_GZ}.  If none found, uses NIFTI_GZ as default
 }
 \description{
 Finds the FSLOUTPUTTYPE from system environment or 

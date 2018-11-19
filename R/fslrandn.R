@@ -1,5 +1,5 @@
 
-#' @title Add Random Standard Guassian Noise Image using FSL 
+#' @title Add Random Standard Gaussian Noise Image using FSL 
 #' @description This function calls \code{fslmaths -randn}.  
 #' The R functions wraps \code{fslmaths}
 #' @param file (character) input image to add random standard to Gaussian noise
