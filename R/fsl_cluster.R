@@ -188,9 +188,9 @@ fsl_cluster = function(
 }
 
 
-#' @export
-#' @rdname fsl_cluster
-cluster = fsl_cluster
+# @export
+# @rdname fsl_cluster
+# cluster = fsl_cluster
 
 #' @export
 #' @rdname fsl_cluster

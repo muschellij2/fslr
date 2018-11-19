@@ -2,7 +2,6 @@
 % Please edit documentation in R/fsl_cluster.R
 \name{fsl_cluster}
 \alias{fsl_cluster}
-\alias{cluster}
 \alias{fslcluster}
 \alias{read_cluster_table}
 \title{Form clusters, report information about clusters 
@@ -13,12 +12,6 @@ fsl_cluster(file, threshold, retimg = FALSE, reorient = FALSE,
   volume = FALSE, smooth_est = NULL, voxel_resel = NULL,
   fractional = FALSE, connectivity = 26, mm = FALSE,
   find_minima = FALSE, standard_image = NULL, verbose = TRUE, ...)
-
-cluster(file, threshold, retimg = FALSE, reorient = FALSE, opts = "",
-  cope_image = NULL, pthresh = NULL, peakdist = 0, volume = FALSE,
-  smooth_est = NULL, voxel_resel = NULL, fractional = FALSE,
-  connectivity = 26, mm = FALSE, find_minima = FALSE,
-  standard_image = NULL, verbose = TRUE, ...)
 
 fslcluster(..., retimg = TRUE)
 
