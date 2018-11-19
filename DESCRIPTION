@@ -17,7 +17,6 @@ Description: Wrapper functions that interface with 'FSL'
     object of class 'nifti' if desired.
 Imports:
     methods,
-    matrixStats,
     R.utils,
     graphics,
     grDevices,

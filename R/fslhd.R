@@ -517,6 +517,11 @@ fslval.help = function(){
 #' @param verbose (logical) print out command before running 
 #' @param ... options passed to \code{\link{checkimg}}
 #' @return Character of information from fslhd
+#' 
+#' @import R.utils
+#' @import graphics
+#' @import grDevices
+#' @import stats
 #' @export
 #' @examples
 #' if (have.fsl()){

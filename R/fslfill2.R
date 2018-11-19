@@ -16,14 +16,14 @@
 #' @note This function binarizes the image before running.
 #' @export
 fslfill2 = function(file, 
-                   outfile = NULL, 
-                   kopts= "",
-                   remove.ends = TRUE,
-                   refill = TRUE,
-                   retimg = TRUE,
-                   reorient = FALSE,
-                   intern=FALSE, verbose = TRUE,
-                   ...){
+                    outfile = NULL, 
+                    kopts= "",
+                    remove.ends = TRUE,
+                    refill = TRUE,
+                    retimg = TRUE,
+                    reorient = FALSE,
+                    intern=FALSE, verbose = TRUE,
+                    ...){
   have.outfile = TRUE
   
   if (retimg){
@@ -43,23 +43,23 @@ fslfill2 = function(file,
   ##### should make for all max
   ind = which(bin >0, arr.ind=TRUE)
   ind = ind[ (ind[, "dim3"] %in% c(1, dimg[3])) |
-             (ind[, "dim1"] %in% c(1, dimg[1])) |
-             (ind[, "dim2"] %in% c(1, dimg[2])) , , drop = FALSE]
+               (ind[, "dim1"] %in% c(1, dimg[1])) |
+               (ind[, "dim2"] %in% c(1, dimg[2])) , , drop = FALSE]
   nind = nrow(ind)
   
   #### inverting, eroding (equivalent to dilation), then invert back
   opts = paste0("-mul -1 -add 1 ", kopts, " -ero -mul -1 -add 1")
   fslmaths(file = temp.img,
-                 outfile = outfile,
-                 opts = opts, 
+           outfile = outfile,
+           opts = opts, 
            # Keep retimg=FALSE
-                 retimg=FALSE, 
+           retimg=FALSE, 
            intern=intern, verbose = verbose)
   dil = fslerode(file = outfile,
-                   outfile = outfile,
-                   kopts = kopts, 
+                 outfile = outfile,
+                 kopts = kopts, 
                  # Keep retimg=TRUE
-                   retimg=TRUE, 
+                 retimg=TRUE, 
                  intern=intern, verbose = verbose)
   if (remove.ends) {
     #### making the ends correct - boundary problem
@@ -78,7 +78,7 @@ fslfill2 = function(file,
   }
   if (refill) {
     dil = fslfill(file = dil, 
-                    retimg=TRUE, 
+                  retimg=TRUE, 
                   intern=intern, verbose = verbose)  
   }
   dil = cal_img(dil)

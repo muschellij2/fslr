@@ -7,6 +7,7 @@
 - Added `fsl_cluster`.   Removed `cluster` from exports due to conflicts.
 - added `read_xfm` for reading transformations.
 - Fixes `mid_sagittal_align` for flipping.
+- Removed `matrixStats` as unnecessary dependency.
  
 
 # fslr 2.17.3
