@@ -2,6 +2,9 @@
 # fslr 2.22.0
 
 - fixed bug in `reverse_rpi_orient_file` that was causing `ERROR: Could not open file /usr/local/fsl/bin/fslswapdim: 107: [: =: unexpected operator` error.
+- added `topup` to the exports.
+- added `fsl_resample`.
+- Added `fsl_cluster`.   Removed `cluster` from exports due to conflicts.
 
 # fslr 2.17.3
 
