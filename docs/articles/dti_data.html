@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2.20.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2.22.0</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@
 <p>As <code>dtifit</code> requires the b-values and b-vectors to be separated, and this data has b-values of <span class="math inline">\(1000\)</span> when the b-vectors is not zero. <strong>This is very important and you must know where your b-values and b-vectors are when doing your analyses and what units they are in.</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(fslr)</a></code></pre></div>
 <pre><code>## Loading required package: oro.nifti</code></pre>
-<pre><code>## oro.nifti 0.9.6</code></pre>
+<pre><code>## oro.nifti 0.9.11</code></pre>
 <pre><code>## Loading required package: neurobase</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">b_data_file =<span class="st"> </span><span class="kw">grep</span>(<span class="st">"[.]txt$"</span>, out, <span class="dt">value =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">b_vecs =<span class="st"> </span><span class="kw">read.delim2</span>(b_data_file, <span class="dt">header =</span> <span class="ot">FALSE</span>)</a>
@@ -156,7 +156,7 @@
 <a class="sourceLine" id="cb11-3" data-line-number="3">  ret =<span class="st"> </span><span class="kw"><a href="../reference/eddy_correct.html">eddy_correct</a></span>(<span class="dt">infile =</span> img, <span class="dt">outfile =</span> outfile, </a>
 <a class="sourceLine" id="cb11-4" data-line-number="4">                     <span class="dt">retimg =</span> <span class="ot">TRUE</span>, <span class="dt">reference_no =</span> <span class="dv">0</span>)</a>
 <a class="sourceLine" id="cb11-5" data-line-number="5">}</a></code></pre></div>
-<pre><code>## eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpEjQjvX/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpEjQjvX/file31df1a4f1ed5" 0;</code></pre>
+<pre><code>## eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmppA5RlI/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmppA5RlI/filef38b71be87d5" 0;</code></pre>
 <p>Note, from here on forward we will use either the filename for the output of the eddy current correction or the eddy-current-corrected <code>nifti</code> object.</p>
 </div>
 <div id="running-dti-fitting-as-a-cursor" class="section level1">
@@ -168,7 +168,7 @@
 <a class="sourceLine" id="cb13-3" data-line-number="3">  res =<span class="st"> </span><span class="kw"><a href="../reference/dtifit.html">dtifit</a></span>(<span class="dt">infile =</span> ret, <span class="dt">bvecs =</span> b_vecs, </a>
 <a class="sourceLine" id="cb13-4" data-line-number="4">               <span class="dt">bvals =</span> b_vals, <span class="dt">mask =</span> mask_fname)</a>
 <a class="sourceLine" id="cb13-5" data-line-number="5">}</a></code></pre></div>
-<pre><code>## dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpEjQjvX/file31df4afc34c4.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpEjQjvX/file31df73ec5651" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpEjQjvX/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpEjQjvX/file31df21171b4c.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpEjQjvX/file31df74012b8c.txt" --verbose</code></pre>
+<pre><code>## dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmppA5RlI/filef38b2a28516b.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmppA5RlI/filef38b3cf95d6c" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmppA5RlI/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmppA5RlI/filef38b17647cba.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmppA5RlI/filef38b4638a355.txt" --verbose</code></pre>
 <p>By default, the result of <code>dtifit</code> is the filenames of the resultant images. Here we will read in those images:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="cf">if</span> (<span class="kw"><a href="../reference/have.fsl.html">have.fsl</a></span>()) {</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2">  res_imgs =<span class="st"> </span><span class="kw">lapply</span>(res, readnii)</a>
@@ -203,7 +203,7 @@
 <div id="fitting-bedpostx" class="section level1">
 <h1 class="hasAnchor">
 <a href="#fitting-bedpostx" class="anchor"></a>Fitting bedpostx</h1>
-<p>Accoriding to <a href="http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide" class="uri">http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide</a>, the <code>bedpostx</code> function from FSL stands for “Bayesian Estimation of Diffusion Parameters Obtained using Sampling Techniques. The X stands for modelling Crossing Fibres”. It also states “bedpostx takes about 15 hours to run”. We have implemented <code>xfibres</code>, the function <code>bedpostx</code> calls. Running it with the default options, the command would be:</p>
+<p>According to <a href="http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide" class="uri">http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide</a>, the <code>bedpostx</code> function from FSL stands for “Bayesian Estimation of Diffusion Parameters Obtained using Sampling Techniques. The X stands for modelling Crossing Fibres”. It also states “bedpostx takes about 15 hours to run”. We have implemented <code>xfibres</code>, the function <code>bedpostx</code> calls. Running it with the default options, the command would be:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="../reference/xfibres.html">xfibres</a></span>(<span class="dt">infile =</span> outfile, </a>
 <a class="sourceLine" id="cb20-2" data-line-number="2">        <span class="dt">bvecs =</span> b_vecs,</a>
 <a class="sourceLine" id="cb20-3" data-line-number="3">        <span class="dt">bvals =</span> b_vals,</a>

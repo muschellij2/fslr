@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FSL Volume in mL (or cubic centimeters) — fslvol • fslr</title>
+<title>applytopup - calling FSL applytopup — applytopup • fslr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="FSL Volume in mL (or cubic centimeters) — fslvol" />
+<meta property="og:title" content="applytopup - calling FSL applytopup — applytopup" />
 
-<meta property="og:description" content="This function wraps fslsum and 
-voxdim" />
+<meta property="og:description" content="A tool for applying and correcting 
+estimated susceptibility induced distortions" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,40 +111,68 @@ voxdim" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>FSL Volume in mL (or cubic centimeters)</h1>
+    <h1>applytopup - calling FSL applytopup</h1>
     
-    <div class="hidden name"><code>fslvol.Rd</code></div>
+    <div class="hidden name"><code>applytopup.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function wraps <code><a href='fslsum.html'>fslsum</a></code> and 
-<code>voxdim</code></p>
+    <p>A tool for applying and correcting 
+estimated susceptibility induced distortions</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fslvol</span>(<span class='no'>file</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>applytopup</span>(<span class='no'>infile</span>, <span class='no'>datain</span>, <span class='no'>index</span>, <span class='no'>topup_files</span>, <span class='kw'>out</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"lsr"</span>, <span class='st'>"jac"</span>), <span class='kw'>interp</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"spline"</span>, <span class='st'>"trilinear"</span>),
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'>apply_topup</span>(<span class='no'>...</span>)
+
+<span class='fu'>fsl_applytopup</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>(character) filename of image to be checked</p></td>
+      <th>infile</th>
+      <td><p>list of names of input image (to be corrected)</p></td>
+    </tr>
+    <tr>
+      <th>datain</th>
+      <td><p>name of text file with PE directions/times</p></td>
+    </tr>
+    <tr>
+      <th>index</th>
+      <td><p>list of indicies into --datain of 
+the input image (to be corrected)</p></td>
+    </tr>
+    <tr>
+      <th>topup_files</th>
+      <td><p>name of field/movements (from topup)</p></td>
+    </tr>
+    <tr>
+      <th>out</th>
+      <td><p>basename for output (warped) image</p></td>
+    </tr>
+    <tr>
+      <th>method</th>
+      <td><p>Use jacobian modulation (jac) or 
+least-squares resampling (lsr), default=lsr.</p></td>
+    </tr>
+    <tr>
+      <th>interp</th>
+      <td><p>Image interpolation model, trilinear or spline. Default spline</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Print diagnostic information while running</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>options passed to <code><a href='fslsum.html'>fslsum</a></code></p></td>
+      <td><p>arguments passed to <code>topup</code> if using <code>fsl_topup</code></p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Numeric value of volume in mL</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>This may be approximate due to rounding</p>
     
 
   </div>
@@ -152,11 +180,7 @@ voxdim" />
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#note">Note</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

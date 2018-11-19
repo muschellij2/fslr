@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2.20.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2.22.0</span>
       </span>
     </div>
 
@@ -111,6 +111,20 @@
       
     </div>
 
+    <div id="fslr-2-22-0" class="section level1">
+<h1 class="page-header">
+<a href="#fslr-2-22-0" class="anchor"></a>fslr 2.22.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>fixed bug in <code>reverse_rpi_orient_file</code> that was causing <code>ERROR: Could not open file /usr/local/fsl/bin/fslswapdim: 107: [: =: unexpected operator</code> error.</li>
+<li>added <code>topup</code> to the exports.</li>
+<li>added <code>fsl_resample</code>.</li>
+<li>Added <code>fsl_cluster</code>. Removed <code>cluster</code> from exports due to conflicts.</li>
+<li>added <code>read_xfm</code> for reading transformations.</li>
+<li>Fixes <code>mid_sagittal_align</code> for flipping.</li>
+<li>Removed <code>matrixStats</code> as unnecessary dependency.</li>
+</ul>
+</div>
     <div id="fslr-2-17-3" class="section level1">
 <h1 class="page-header">
 <a href="#fslr-2-17-3" class="anchor"></a>fslr 2.17.3<small> 2018-02-02 </small>
@@ -127,6 +141,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#fslr-2-22-0">2.22.0</a></li>
         <li><a href="#fslr-2-17-3">2.17.3</a></li>
       </ul>
     </div>

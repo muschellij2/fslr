@@ -64,7 +64,7 @@ and/or perform cluster-based inference.  Wrapper for cluster" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2.20.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2.22.0</span>
       </span>
     </div>
 
@@ -126,17 +126,11 @@ and/or perform cluster-based inference.  Wrapper for <code>cluster</code></p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fsl_cluster</span>(<span class='no'>file</span>, <span class='no'>threshold</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>cope_image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pthresh</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>peakdist</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>volume</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>smooth_est</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>voxel_resel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fractional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>connectivity</span> <span class='kw'>=</span> <span class='fl'>26</span>, <span class='kw'>mm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>find_minima</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>standard_image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
-
-<span class='fu'>cluster</span>(<span class='no'>file</span>, <span class='no'>threshold</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>cope_image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pthresh</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>peakdist</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>volume</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>smooth_est</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>voxel_resel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fractional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>connectivity</span> <span class='kw'>=</span> <span class='fl'>26</span>, <span class='kw'>mm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>find_minima</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>standard_image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>fsl_cluster</span>(<span class='no'>file</span>, <span class='no'>threshold</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>cope_image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pthresh</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>peakdist</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>volume</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>smooth_est</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>voxel_resel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fractional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>connectivity</span> <span class='kw'>=</span> <span class='fl'>26</span>, <span class='kw'>mm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>find_minima</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>standard_image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
 <span class='fu'>fslcluster</span>(<span class='no'>...</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
@@ -240,7 +234,7 @@ Passed to <code>readnii</code>.</p></td>
 <span class='no'>file</span> <span class='kw'>=</span> <span class='fu'><a href='mni_fname.html'>mni_fname</a></span>(<span class='kw'>brain</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='no'>threshold</span> <span class='kw'>=</span> <span class='fl'>6000</span>
 <span class='no'>clus</span> <span class='kw'>=</span> <span class='fu'>fsl_cluster</span>(<span class='no'>file</span>, <span class='no'>threshold</span>)
-}</div><div class='output co'>#&gt; <span class='message'>cluster --in="/usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz"  --thresh=6000 --oindex=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpf5CAAd/file316763df59bd.nii.gz --othresh=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpf5CAAd/file31675c7cba84.nii.gz --olmax=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpf5CAAd/file3167b95f8c --olmaxim=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpf5CAAd/file3167a2fe0b3.nii.gz --osize=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpf5CAAd/file31674d490cfe.nii.gz --omax=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpf5CAAd/file316776f41f55.nii.gz --omean=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpf5CAAd/file316715354276.nii.gz  --minclustersize --verbose &gt; /var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpf5CAAd/file31675b9e5bda ;</span></div></pre>
+}</div><div class='output co'>#&gt; <span class='message'>cluster --in="/usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz"  --thresh=6000 --oindex=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmph6rcTZ/filef24f5ac4a55f.nii.gz --othresh=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmph6rcTZ/filef24f24452e87.nii.gz --olmax=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmph6rcTZ/filef24f39f1b3ab --olmaxim=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmph6rcTZ/filef24f2b4abd45.nii.gz --osize=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmph6rcTZ/filef24f37d01337.nii.gz --omax=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmph6rcTZ/filef24f3d9d9c81.nii.gz --omean=/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmph6rcTZ/filef24f368df8c1.nii.gz  --minclustersize --verbose &gt; /var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmph6rcTZ/filef24f22c662e2 ;</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

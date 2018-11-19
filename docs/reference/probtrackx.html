@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2.20.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2.22.0</span>
       </span>
     </div>
 
@@ -121,18 +121,20 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>probtrackx</span>(<span class='kw'>samples</span> <span class='kw'>=</span> <span class='st'>"merged"</span>, <span class='no'>mask</span>, <span class='no'>seed</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>out</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>forcedir</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>simple</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>network</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>opd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fopd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>os2t</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>s2tastext</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>targetmasks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>waypoints</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>waycond</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"AND"</span>, <span class='st'>"OR"</span>),
-  <span class='kw'>wayorder</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>onewaycondition</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>avoid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>omatrix1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>distthresh1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>omatrix2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>target2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>omatrix3</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>target3</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>lrtarget3</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>distthresh3</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>xfm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>invxfm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>seedref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>meshspace</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"caret"</span>,
-  <span class='st'>"freesurfer"</span>, <span class='st'>"first"</span>, <span class='st'>"vox"</span>), <span class='kw'>nsamples</span> <span class='kw'>=</span> <span class='fl'>5000</span>, <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>2000</span>,
-  <span class='kw'>steplength</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>distthresh</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>cthr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>fibthresh</span> <span class='kw'>=</span> <span class='fl'>0.01</span>,
-  <span class='kw'>loopcheck</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>usef</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>modeuler</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sampvox</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>randfib</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>fibst</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>rseed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>probtrackx</span>(<span class='kw'>samples</span> <span class='kw'>=</span> <span class='st'>"merged"</span>, <span class='no'>mask</span>, <span class='no'>seed</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>out</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>forcedir</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>simple</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>network</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>opd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fopd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>os2t</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>s2tastext</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>targetmasks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>waypoints</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>waycond</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"AND"</span>, <span class='st'>"OR"</span>), <span class='kw'>wayorder</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>onewaycondition</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>avoid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>omatrix1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>distthresh1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>omatrix2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>target2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>omatrix3</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>target3</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>lrtarget3</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>distthresh3</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>xfm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>invxfm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>seedref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>meshspace</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"caret"</span>, <span class='st'>"freesurfer"</span>, <span class='st'>"first"</span>, <span class='st'>"vox"</span>),
+  <span class='kw'>nsamples</span> <span class='kw'>=</span> <span class='fl'>5000</span>, <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>steplength</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>distthresh</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>cthr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>fibthresh</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>loopcheck</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>usef</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>modeuler</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sampvox</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>randfib</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>fibst</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>rseed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -291,7 +293,7 @@
     </tr>
     <tr>
       <th>fibthresh</th>
-      <td><p>Volume fraction before subsidary fibre orientations are considered - default=0.01</p></td>
+      <td><p>Volume fraction before subsidiary fibre orientations are considered - default=0.01</p></td>
     </tr>
     <tr>
       <th>loopcheck</th>
