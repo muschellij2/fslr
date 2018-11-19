@@ -5,6 +5,9 @@
 - added `topup` to the exports.
 - added `fsl_resample`.
 - Added `fsl_cluster`.   Removed `cluster` from exports due to conflicts.
+- added `read_xfm` for reading transformations.
+- Fixes `mid_sagittal_align` for flipping.
+ 
 
 # fslr 2.17.3
 
