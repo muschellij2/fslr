@@ -8,8 +8,11 @@ os:
   - osx
 
 before_install:
-  - sudo apt-get update -qq ;
-  - sudo apt-get install libmng2 ;
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; 
+      then 
+        sudo apt-get update -qq ;
+        sudo apt-get install libmng2 ;
+    fi
   - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py ;
   - python --version
   - travis_wait 100 sudo python fslinstaller.py -V 5.0.10 -d /usr/local/fsl -q ;    
