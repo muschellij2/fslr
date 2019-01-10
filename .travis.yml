@@ -11,7 +11,8 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; 
       then 
         sudo apt-get update -qq ;
-        sudo apt-get install libmng2 ;
+        sudo apt-get install libmng2 ; 
+        sudo updatedb;
     fi
   - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py ;
   - python --version
