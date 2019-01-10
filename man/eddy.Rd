@@ -2,9 +2,15 @@
 % Please edit documentation in R/eddy.R
 \name{eddy}
 \alias{eddy}
+\alias{eddy_openmp}
+\alias{eddy_cuda}
 \title{Eddy Current Correction}
 \usage{
-eddy(infile, mask, acq_file, index_file, bvecs, bvals, outfile = NULL,
+eddy(infile, mask, acq_file, index_file, bvecs, bvals, topup = NULL, outfile = NULL,
+  retimg = TRUE, opts = "", verbose = TRUE, ...)
+eddy_openmp(infile, mask, acq_file, index_file, bvecs, bvals, topup = NULL, outfile = $
+  retimg = TRUE, opts = "", verbose = TRUE, ...)
+eddy_cuda(infile, mask, acq_file, index_file, bvecs, bvals, topup = NULL, outfile = $
   retimg = TRUE, opts = "", verbose = TRUE, ...)
 }
 \arguments{
@@ -26,6 +32,10 @@ the direction of the diffusion weighting.}
 
 \item{bvals}{A text file with b-values describing the "amount of" 
 diffusion weighting}
+
+\item{topup}{This should only be specified if you have previously 
+run topup on your data and should be the same name that you gave 
+as an argument to the --out parameter when you ran topup.}
 
 \item{outfile}{Output file basename}
 
