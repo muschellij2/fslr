@@ -59,8 +59,13 @@ fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
 #' @examples
 #' library(fslr)
 #' if (have.fsl()){
-#'  print(fsl_version())
-#'  fslview.help()
+#'   print(fsl_version())
+#'   in_ci <- function() {
+#'    nzchar(Sys.getenv("CI"))
+#'   }
+#'  if (!in_ci()) {
+#'    fslview.help()
+#'  }
 #' }   
 fslview.help = function(){
   fslview_cmd = "fslview"

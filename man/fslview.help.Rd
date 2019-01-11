@@ -15,7 +15,12 @@ This function calls \code{fslview}'s help
 \examples{
 library(fslr)
 if (have.fsl()){
- print(fsl_version())
- fslview.help()
+  print(fsl_version())
+  in_ci <- function() {
+   nzchar(Sys.getenv("CI"))
+  }
+ if (!in_ci()) {
+   fslview.help()
+ }
 }   
 }
