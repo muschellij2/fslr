@@ -16,7 +16,7 @@ before_install:
     fi
   - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py ;
   - python --version
-  - travis_wait 100 sudo python fslinstaller.py -V 5.0.10 -d /usr/local/fsl -q ;    
+  - travis_wait 100 sudo python fslinstaller.py -V 5.0.10 -d /usr/local/fsl --quiet ;    
   - locate libmng.so.1 || echo "fail libmng1"
   - locate libmng.so.2 || echo "fail libmng2"
   # - if [ "$TRAVIS_OS_NAME" = "linux" ]; 
