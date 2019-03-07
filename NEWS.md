@@ -1,3 +1,6 @@
+# fslr 2.23.0
+
+- Fixed `fslsmooth` to return an output file if `retimg = FALSE`.
 
 # fslr 2.22.0
 

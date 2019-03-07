@@ -353,9 +353,11 @@ fslsmooth <- function(
   if (retimg) {
     img = readnii(outfile, reorient = reorient, ...)
     return(img)
+  } else {
+    return(outfile)
   }   
   #   x = file.remove(paste0(mask.blur, ".nii"))
-  return(res)
+  # return(res)
 }
 
 #' @name fslmask
