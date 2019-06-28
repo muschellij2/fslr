@@ -1026,7 +1026,7 @@ flirt = function(infile,
     message(paste0("Output matrix not specified, but stored ", 
                    "temporarily at ", omat, "\n"))
   }
-  return(res)
+  return(outfile)
 }
 
 

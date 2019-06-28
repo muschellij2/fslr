@@ -2,10 +2,13 @@
 % Please edit documentation in R/mni_fname.R
 \name{mni_fname}
 \alias{mni_fname}
+\alias{mni_face_fname}
 \title{Construct MNI Filename}
 \usage{
 mni_fname(mm = c("1", "0.5", "2"), brain = FALSE, linear = FALSE,
   mask = FALSE)
+
+mni_face_fname(mm = c("1", "0.5", "2"))
 }
 \arguments{
 \item{mm}{Resolution (in mm) of the brain image (isotropic)}

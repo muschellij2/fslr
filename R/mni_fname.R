@@ -42,3 +42,17 @@ mni_img = function(...){
   img = readnii(fname)
   return(img)
 }
+
+#' @rdname mni_fname
+#' @export
+mni_face_fname = function(mm = c("1", "0.5", "2")){
+  mm = as.character(mm)
+  mm = match.arg(mm)
+  fname = system.file("extdata", 
+                      paste0("MNI152_T1_", mm, "mm_facemask.nii.gz"),
+                      package = "fslr")
+  if (!file.exists(fname)) {
+    warning(paste0("file ", fname, " does not exist!"))
+  }
+  return(fname)
+}

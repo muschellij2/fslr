@@ -53,6 +53,6 @@ flirt_apply = function(infile,
     img = readnii(outfile, reorient=reorient, ...)
     return(img)
   }
-  return(res)
+  return(outfile)
 }
 
