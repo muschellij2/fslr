@@ -31,3 +31,4 @@ docs/*
 ^sticker\.R$
 ^sticker\.png$
 ^cran-comments\.md$
+^data-raw$
