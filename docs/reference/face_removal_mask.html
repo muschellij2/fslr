@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reorient an Image to RPI orientation — rpi_orient • fslr</title>
+<title>Face Removal Mask — face_removal_mask • fslr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Reorient an Image to RPI orientation — rpi_orient" />
+<meta property="og:title" content="Face Removal Mask — face_removal_mask" />
 
-<meta property="og:description" content="This function uses fslswapdim to reorient an image" />
+<meta property="og:description" content="Face Removal Mask" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,48 +112,76 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Reorient an Image to RPI orientation</h1>
+    <h1>Face Removal Mask</h1>
     
-    <div class="hidden name"><code>rpi_orient.Rd</code></div>
+    <div class="hidden name"><code>face_removal_mask.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function uses <code>fslswapdim</code> to reorient an image</p>
+    <p>Face Removal Mask</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>rpi_orient</span>(<span class='no'>file</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>face_removal_mask</span>(<span class='no'>file</span>, <span class='kw'>template</span> <span class='kw'>=</span> <span class='fu'><a href='mni_fname.html'>mni_fname</a></span>(<span class='kw'>mm</span> <span class='kw'>=</span> <span class='st'>"1"</span>),
+  <span class='kw'>face_mask</span> <span class='kw'>=</span> <span class='fu'><a href='mni_fname.html'>mni_face_fname</a></span>(<span class='kw'>mm</span> <span class='kw'>=</span> <span class='st'>"1"</span>), <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cost</span> <span class='kw'>=</span> <span class='st'>"mutualinfo"</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>rpi_orient_file</span>(<span class='no'>file</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='fu'>is_rpi</span>(<span class='no'>file</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='fu'>is.rpi</span>(<span class='no'>file</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>deface_image</span>(<span class='no'>file</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>file</th>
-      <td><p>Object of class <code>nifti</code> or character path</p></td>
+      <td><p>input image</p></td>
     </tr>
     <tr>
-      <th>verbose</th>
-      <td><p>print diagnostic messages</p></td>
+      <th>template</th>
+      <td><p>Template image  to register input image to.  Set 
+to <code>NULL</code> if want to use from 
+<a href='https://github.com/poldracklab/pydeface'>https://github.com/poldracklab/pydeface</a>.
+Alternatively, use <code><a href='mni_fname.html'>mni_fname</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>face_mask</th>
+      <td><p>Mask of image, in same space as <code>template</code>.
+Set to <code>NULL</code> if want to use from 
+<a href='https://github.com/poldracklab/pydeface'>https://github.com/poldracklab/pydeface</a>. 
+Alternatively, use <code><a href='mni_fname.html'>mni_face_fname</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>outfile</th>
+      <td><p>Output</p></td>
+    </tr>
+    <tr>
+      <th>cost</th>
+      <td><p>Cost function passed to <code>flirt</code></p></td>
+    </tr>
+    <tr>
+      <th>retimg</th>
+      <td><p>(logical) return image of class nifti</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>not used</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List of 3 elements</p><ul>
-<li><p><code>img</code>: Reoriented image of class <code>nifti</code></p></li>
-<li><p><code>convention</code>: Convention (Neurological/Radiological) of original image</p></li>
-<li><p><code>orientation</code>: Original image orientations</p></li>
-</ul>
-
+    <p>An image or filename depending on <code>retimg</code></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='have.fsl.html'>have_fsl</a></span>()) {
+   <span class='no'>file</span> <span class='kw'>=</span> <span class='st'>"~/Downloads/sample_T1_input.nii.gz"</span>
+   <span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/files'>file.exists</a></span>(<span class='no'>file</span>)) {
+       <span class='no'>mask</span> <span class='kw'>=</span> <span class='fu'>face_removal_mask</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>,
+         <span class='kw'>template</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>face_mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+       <span class='no'>image</span> <span class='kw'>=</span> <span class='fu'><a href='fslmask.html'>fslmask</a></span>(<span class='no'>file</span>, <span class='no'>mask</span>)
+   }
+}</div><div class='output co'>#&gt; <span class='message'>flirt -in "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpZvD8li/file14a8e862741.nii.gz" -ref "/Users/johnmuschelli/Downloads/sample_T1_input.nii.gz" -out "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpZvD8li/file14a8e439753a0" -dof 12 -omat "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpZvD8li/file14a8e677b1cab.mat" -cost mutualinfo</span></div><div class='output co'>#&gt; <span class='message'>flirt -in "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpZvD8li/file14a8e5b0c0433.nii.gz" -ref "/Users/johnmuschelli/Downloads/sample_T1_input.nii.gz" -out "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpZvD8li/file14a8e3f3500b" -init "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpZvD8li/file14a8e677b1cab.mat" -applyxfm -interp nearestneighbour</span></div><div class='output co'>#&gt; <span class='message'>fslmaths "/Users/johnmuschelli/Downloads/sample_T1_input.nii.gz" -mas "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpZvD8li/file14a8e3f3500b.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpZvD8li/file14a8e71e7def7"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -161,7 +189,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
