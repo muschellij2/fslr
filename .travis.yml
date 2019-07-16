@@ -15,7 +15,7 @@ before_install:
         sudo apt-get install libmng1 ; 
         sudo updatedb;
     fi
-  - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py ;
+  - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py || echo "couldn't download";  
   - python --version
   - travis_wait 100 sudo python fslinstaller.py -V 5.0.10 -d /usr/local/fsl --quiet || echo "couldn't install";    
   - locate libmng.so.1 || echo "fail libmng1"
