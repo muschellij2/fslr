@@ -1,3 +1,8 @@
+# fslr 2.23.1
+
+- Added `quickshear_deface_image` to remove faces based on the QuickShear method and `nipy/quickshear`.
+
+
 # fslr 2.23.0
 
 - Added `face_removal_mask` for removal of faces, based on `pydeface`.

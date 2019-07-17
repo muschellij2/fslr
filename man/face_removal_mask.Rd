@@ -15,12 +15,12 @@ deface_image(file, ...)
 \item{file}{input image}
 
 \item{template}{Template image  to register input image to.  Set 
-to \code{NULL} if want to use from 
+to \code{NULL} (recommended)  if want to use from 
 \url{https://github.com/poldracklab/pydeface}.
 Alternatively, use \code{\link{mni_fname}}.}
 
 \item{face_mask}{Mask of image, in same space as \code{template}.
-Set to \code{NULL} if want to use from 
+Set to \code{NULL} (recommended) if want to use from 
 \url{https://github.com/poldracklab/pydeface}. 
 Alternatively, use \code{\link{mni_face_fname}}.}
 
