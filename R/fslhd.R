@@ -1277,6 +1277,7 @@ fslorient.help = function(){
 #' Passed to \code{\link{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param verbose (logical) print out command before running
+#' @param opts additional options to pass to \code{\link{fslreorient2std}}
 #' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
@@ -1287,6 +1288,7 @@ fslreorient2std = function(
   reorient = FALSE,
   intern = FALSE, 
   verbose = TRUE,
+  opts = "",
   ...){
   
   res = fslcmd(func = "fslreorient2std", 
@@ -1295,12 +1297,38 @@ fslreorient2std = function(
                retimg = retimg,
                reorient = reorient,
                intern = intern,
-               opts = "",
+               opts = opts,
                verbose = verbose,
                ... = ..., 
                samefile = TRUE)
   
   return(res)  
+}
+
+#' @param matfile Output file for the matrix for reorientation
+#' @export 
+#' @rdname fslreorient2std
+fslreorient2std_mat = function(
+  file,
+  matfile = tempfile(fileext = ".mat"),
+  verbose = TRUE,
+  ...){
+  
+  if (file.exists(matfile)) {
+    file.remove(matfile)
+  }
+  rr = fslr::fslreorient2std(
+    file, 
+    no.outfile = TRUE, 
+    opts = paste0(" > ", matfile), 
+    verbose = verbose,
+    ...)
+  result = attr(rr, "result")
+  if (result != 0 | !file.exists(matfile)) {
+    warning("result from fslreorient2std_mat did not seem to work")
+  }
+  
+  return(matfile)  
 }
 
 #' @title fslreorient2std help

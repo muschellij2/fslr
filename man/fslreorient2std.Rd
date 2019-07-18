@@ -2,10 +2,14 @@
 % Please edit documentation in R/fslhd.R
 \name{fslreorient2std}
 \alias{fslreorient2std}
+\alias{fslreorient2std_mat}
 \title{FSL Orient to MNI}
 \usage{
 fslreorient2std(file, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, verbose = TRUE, ...)
+  intern = FALSE, verbose = TRUE, opts = "", ...)
+
+fslreorient2std_mat(file, matfile = tempfile(fileext = ".mat"),
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}
@@ -19,7 +23,11 @@ Passed to \code{\link{readnii}}.}
 
 \item{verbose}{(logical) print out command before running}
 
+\item{opts}{additional options to pass to \code{\link{fslreorient2std}}}
+
 \item{...}{additional arguments passed to \code{\link{readnii}}.}
+
+\item{matfile}{Output file for the matrix for reorientation}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,

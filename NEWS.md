@@ -1,6 +1,9 @@
 # fslr 2.23.1
 
 - Added `quickshear_deface_image` to remove faces based on the QuickShear method and `nipy/quickshear`.
+- Added `mridefacer` to add to the anonymization pipelines.
+- Added `invert_xfm` and other `convert_xfm` functionality.
+- Added `fslreorient2std_mat` to get the matrix output from `fslreorient2std`.
 
 
 # fslr 2.23.0
