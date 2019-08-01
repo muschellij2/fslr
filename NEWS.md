@@ -1,4 +1,4 @@
-# fslr 2.23.1
+# fslr 2.24.0
 
 - Added `quickshear_deface_image` to remove faces based on the QuickShear method and `nipy/quickshear`.
 - Added `mridefacer` to add to the anonymization pipelines.
