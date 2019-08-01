@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.23.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.0</span>
       </span>
     </div>
 
@@ -160,7 +160,7 @@
 <a class="sourceLine" id="cb12-3" title="3">  ret =<span class="st"> </span><span class="kw"><a href="../reference/eddy_correct.html">eddy_correct</a></span>(<span class="dt">infile =</span> img, <span class="dt">outfile =</span> outfile, </a>
 <a class="sourceLine" id="cb12-4" title="4">                     <span class="dt">retimg =</span> <span class="ot">TRUE</span>, <span class="dt">reference_no =</span> <span class="dv">0</span>)</a>
 <a class="sourceLine" id="cb12-5" title="5">}</a></code></pre></div>
-<pre><code>## eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpGewyUQ/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGewyUQ/file150614ce944f7" 0;</code></pre>
+<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpjrqyt1/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpjrqyt1/filefa4c355faa5" 0;</code></pre>
 <p>Note, from here on forward we will use either the filename for the output of the eddy current correction or the eddy-current-corrected <code>nifti</code> object.</p>
 </div>
 <div id="running-dti-fitting-as-a-cursor" class="section level1">
@@ -172,7 +172,7 @@
 <a class="sourceLine" id="cb14-3" title="3">  res =<span class="st"> </span><span class="kw"><a href="../reference/dtifit.html">dtifit</a></span>(<span class="dt">infile =</span> ret, <span class="dt">bvecs =</span> b_vecs, </a>
 <a class="sourceLine" id="cb14-4" title="4">               <span class="dt">bvals =</span> b_vals, <span class="dt">mask =</span> mask_fname)</a>
 <a class="sourceLine" id="cb14-5" title="5">}</a></code></pre></div>
-<pre><code>## dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpGewyUQ/file1506161d1c48f.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGewyUQ/file1506112bfba75" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpGewyUQ/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGewyUQ/file15061696a60f0.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGewyUQ/file15061470262a1.txt" --verbose</code></pre>
+<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpjrqyt1/filefa4c7518abf1.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpjrqyt1/filefa4c26c09746" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpjrqyt1/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpjrqyt1/filefa4c2e0b888a.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpjrqyt1/filefa4c773133a3.txt" --verbose</code></pre>
 <p>By default, the result of <code>dtifit</code> is the filenames of the resultant images. Here we will read in those images:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="cf">if</span> (<span class="kw"><a href="../reference/have.fsl.html">have.fsl</a></span>()) {</a>
 <a class="sourceLine" id="cb16-2" title="2">  res_imgs =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(res, readnii)</a>

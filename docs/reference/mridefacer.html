@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perform OR/Union operation on Images using FSL — fslor • fslr</title>
+<title>MRI Defacer — mridefacer • fslr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,9 @@
 
 
 
-<meta property="og:title" content="Perform OR/Union operation on Images using FSL — fslor" />
+<meta property="og:title" content="MRI Defacer — mridefacer" />
 
-<meta property="og:description" content="This function calls fslmaths file -add file2 -bin
-after binarizing file and file2 using
- fslbin." />
+<meta property="og:description" content="MRI Defacer" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,70 +112,89 @@ after binarizing file and file2 using
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Perform OR/Union operation on Images using FSL</h1>
+    <h1>MRI Defacer</h1>
     
-    <div class="hidden name"><code>fslor.Rd</code></div>
+    <div class="hidden name"><code>mridefacer.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function calls <code>fslmaths file -add file2 -bin</code>
-after binarizing <code>file</code> and <code>file2</code> using
- <code><a href='fslbin.html'>fslbin</a></code>.</p>
+    <p>MRI Defacer</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fslor</span>(<span class='no'>file</span>, <span class='no'>file2</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>mridefacer</span>(<span class='no'>file</span>, <span class='no'>...</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>fsl_or</span>(<span class='no'>...</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".nii.gz"</span>), <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>get_mridefacer_mask</span>(<span class='no'>file</span>, <span class='kw'>brain_mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>bet_opts</span> <span class='kw'>=</span> <span class='st'>"-f 0.5"</span>,
+  <span class='kw'>search_radius</span> <span class='kw'>=</span> <span class='fl'>90</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>template_brain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>template_brain_weight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>template_biometric_mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>file</th>
-      <td><p>(character) input image</p></td>
-    </tr>
-    <tr>
-      <th>file2</th>
-      <td><p>(character) image to be unioned</p></td>
-    </tr>
-    <tr>
-      <th>outfile</th>
-      <td><p>(character) resultant image name (optional)</p></td>
-    </tr>
-    <tr>
-      <th>retimg</th>
-      <td><p>(logical) return image of class nifti</p></td>
-    </tr>
-    <tr>
-      <th>reorient</th>
-      <td><p>(logical) If retimg, should file be reoriented 
-when read in?
-Passed to <code>readnii</code>.</p></td>
-    </tr>
-    <tr>
-      <th>intern</th>
-      <td><p>(logical) to be passed to <code><a href='https://www.rdocumentation.org/packages/base/topics/system'>system</a></code></p></td>
+      <td><p>input file image to remove face/ears</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments passed to <code>readnii</code>.</p></td>
+      <td><p>not used</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>print diagnostic messages.  If <code>&gt; 1</code>, more verbose</p></td>
+    </tr>
+    <tr>
+      <th>brain_mask</th>
+      <td><p>brain mask of file.  If <code>NULL</code>, <code><a href='fslbet.html'>fslbet</a></code>
+will be applied</p></td>
+    </tr>
+    <tr>
+      <th>bet_opts</th>
+      <td><p>options to pass to  <code><a href='fslbet.html'>fslbet</a></code> if applied</p></td>
+    </tr>
+    <tr>
+      <th>search_radius</th>
+      <td><p>search radius option to pass to <code><a href='flirt.html'>flirt</a></code></p></td>
+    </tr>
+    <tr>
+      <th>opts</th>
+      <td><p>additional options to pass to <code><a href='flirt.html'>flirt</a></code></p></td>
+    </tr>
+    <tr>
+      <th>template_brain</th>
+      <td><p>template brain image, may be <code>NULL</code></p></td>
+    </tr>
+    <tr>
+      <th>template_brain_weight</th>
+      <td><p>template brain weight image, used
+for registration may be <code>NULL</code></p></td>
+    </tr>
+    <tr>
+      <th>template_biometric_mask</th>
+      <td><p>template biometric mask.  Everything that 
+is wanted should be <code>1</code>,  may be <code>NULL</code></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>If <code>retimg</code> then object of class nifti.  Otherwise,
-Result from system command, depends if intern is TRUE or FALSE.</p>
+    <p>A character filename of the output image</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Functions with underscores have different defaults
-and will return an output filename, so to be used for piping</p>
+    <p>Adapted from 
+<a href='https://github.com/mih/mridefacer'>https://github.com/mih/mridefacer</a></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='have.fsl.html'>have_fsl</a></span>()) {
+<span class='no'>file</span> <span class='kw'>=</span> <span class='st'>"~/Downloads/sample_T1_input.nii.gz"</span>
+<span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/files'>file.exists</a></span>(<span class='no'>file</span>)) {
+    <span class='no'>res</span> <span class='kw'>=</span> <span class='fu'>mridefacer</span>(<span class='no'>file</span>)
+}
+}</div><div class='output co'>#&gt; <span class='message'>Downloading template images</span></div><div class='output co'>#&gt; <span class='message'>Reorienting File</span></div><div class='output co'>#&gt; <span class='message'>Running Brain extraction</span></div><div class='output co'>#&gt; <span class='message'>Registering template brain to brain image</span></div><div class='output co'>#&gt; <span class='message'>Applying transformation to biometric mask</span></div><div class='output co'>#&gt; <span class='message'>Reversing the reorientation from first step</span></div><div class='output co'>#&gt; <span class='message'>Masking the image with mridefacer mask</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -187,7 +204,9 @@ and will return an output filename, so to be used for piping</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#note">Note</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

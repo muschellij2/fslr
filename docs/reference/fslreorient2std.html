@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.23.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.0</span>
       </span>
     </div>
 
@@ -124,7 +124,10 @@
     </div>
 
     <pre class="usage"><span class='fu'>fslreorient2std</span>(<span class='no'>file</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>...</span>)
+
+<span class='fu'>fslreorient2std_mat</span>(<span class='no'>file</span>, <span class='kw'>matfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".mat"</span>),
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,8 +154,16 @@ Passed to <code>readnii</code>.</p></td>
       <td><p>(logical) print out command before running</p></td>
     </tr>
     <tr>
+      <th>opts</th>
+      <td><p>additional options to pass to <code>fslreorient2std</code></p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>additional arguments passed to <code>readnii</code>.</p></td>
+    </tr>
+    <tr>
+      <th>matfile</th>
+      <td><p>Output file for the matrix for reorientation</p></td>
     </tr>
     </table>
     

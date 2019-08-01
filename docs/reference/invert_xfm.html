@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Face Removal Mask — face_removal_mask • fslr</title>
+<title>Convert a Transformation — invert_xfm • fslr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Face Removal Mask — face_removal_mask" />
+<meta property="og:title" content="Convert a Transformation — invert_xfm" />
 
-<meta property="og:description" content="Face Removal Mask" />
+<meta property="og:description" content="Convert a Transformation" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,76 +112,64 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Face Removal Mask</h1>
+    <h1>Convert a Transformation</h1>
     
-    <div class="hidden name"><code>face_removal_mask.Rd</code></div>
+    <div class="hidden name"><code>invert_xfm.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Face Removal Mask</p>
+    <p>Convert a Transformation</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>face_removal_mask</span>(<span class='no'>file</span>, <span class='kw'>template</span> <span class='kw'>=</span> <span class='fu'><a href='mni_fname.html'>mni_fname</a></span>(<span class='kw'>mm</span> <span class='kw'>=</span> <span class='st'>"1"</span>),
-  <span class='kw'>face_mask</span> <span class='kw'>=</span> <span class='fu'><a href='mni_fname.html'>mni_face_fname</a></span>(<span class='kw'>mm</span> <span class='kw'>=</span> <span class='st'>"1"</span>), <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cost</span> <span class='kw'>=</span> <span class='st'>"mutualinfo"</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>invert_xfm</span>(<span class='no'>inmat</span>, <span class='kw'>omat</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".mat"</span>), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>deface_image</span>(<span class='no'>file</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>concat_xfm</span>(<span class='no'>inmat</span>, <span class='no'>inmat2</span>, <span class='kw'>omat</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".mat"</span>),
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'>fixscaleskew_xfm</span>(<span class='no'>inmat</span>, <span class='no'>inmat2</span>, <span class='kw'>omat</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".mat"</span>),
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>input image</p></td>
+      <th>inmat</th>
+      <td><p>input matrix transformation</p></td>
     </tr>
     <tr>
-      <th>template</th>
-      <td><p>Template image  to register input image to.  Set 
-to <code>NULL</code> (recommended)  if want to use from 
-<a href='https://github.com/poldracklab/pydeface'>https://github.com/poldracklab/pydeface</a>.
-Alternatively, use <code><a href='mni_fname.html'>mni_fname</a></code>.</p></td>
+      <th>omat</th>
+      <td><p>output matrix transformation</p></td>
     </tr>
     <tr>
-      <th>face_mask</th>
-      <td><p>Mask of image, in same space as <code>template</code>.
-Set to <code>NULL</code> (recommended) if want to use from 
-<a href='https://github.com/poldracklab/pydeface'>https://github.com/poldracklab/pydeface</a>. 
-Alternatively, use <code><a href='mni_fname.html'>mni_face_fname</a></code>.</p></td>
+      <th>verbose</th>
+      <td><p>print diagnostic messages</p></td>
     </tr>
     <tr>
-      <th>outfile</th>
-      <td><p>Output</p></td>
-    </tr>
-    <tr>
-      <th>cost</th>
-      <td><p>Cost function passed to <code>flirt</code></p></td>
-    </tr>
-    <tr>
-      <th>retimg</th>
-      <td><p>(logical) return image of class nifti</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>not used</p></td>
+      <th>inmat2</th>
+      <td><p>second matrix filename to be concatenated or fixscaleskew
+to first</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An image or filename depending on <code>retimg</code></p>
+    <p>A filename of the output matrix file</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='have.fsl.html'>have_fsl</a></span>()) {
-   <span class='no'>file</span> <span class='kw'>=</span> <span class='st'>"~/Downloads/sample_T1_input.nii.gz"</span>
-   <span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/files'>file.exists</a></span>(<span class='no'>file</span>)) {
-       <span class='no'>mask</span> <span class='kw'>=</span> <span class='fu'>face_removal_mask</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>,
-         <span class='kw'>template</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>face_mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-       <span class='no'>image</span> <span class='kw'>=</span> <span class='fu'><a href='fslmask.html'>fslmask</a></span>(<span class='no'>file</span>, <span class='no'>mask</span>)
-   }
-}</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/flirt -in "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmp5F5bNB/filef1872817980d.nii.gz" -ref "/Users/johnmuschelli/Downloads/sample_T1_input.nii.gz" -out "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef1876cd2327" -dof 12 -omat "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef18724ff920b.mat" -cost mutualinfo</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/flirt -in "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmp5F5bNB/filef1873493f434.nii.gz" -ref "/Users/johnmuschelli/Downloads/sample_T1_input.nii.gz" -out "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef1875bed8ee" -init "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef18724ff920b.mat" -applyxfm -interp nearestneighbour</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/Users/johnmuschelli/Downloads/sample_T1_input.nii.gz" -mas "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmp5F5bNB/filef1875bed8ee.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef1875d859ce3"</span></div></pre>
+<span class='no'>img</span> <span class='kw'>=</span> <span class='fu'><a href='mni_fname.html'>mni_fname</a></span>()
+<span class='no'>mat</span> <span class='kw'>=</span> <span class='fu'><a href='fslreorient2std.html'>fslreorient2std_mat</a></span>(<span class='no'>img</span>)
+<span class='no'>inverted</span> <span class='kw'>=</span> <span class='fu'>invert_xfm</span>(<span class='no'>mat</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/readLines'>readLines</a></span>(<span class='no'>inverted</span>)
+<span class='no'>catted</span> <span class='kw'>=</span> <span class='fu'>concat_xfm</span>(<span class='no'>mat</span>, <span class='no'>mat</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/readLines'>readLines</a></span>(<span class='no'>catted</span>)
+<span class='no'>fixed</span> <span class='kw'>=</span> <span class='fu'>fixscaleskew_xfm</span>(<span class='no'>mat</span>, <span class='no'>mat</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/readLines'>readLines</a></span>(<span class='no'>fixed</span>)
+
+}</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslreorient2std "/usr/local/fsl/data/standard/MNI152_T1_1mm.nii.gz"   &gt; /var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef187550d5b9f.mat ;</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/convert_xfm -omat /var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef1875ffa4f58.mat -inverse "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmp5F5bNB/filef187550d5b9f.mat"   ;</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/convert_xfm -omat /var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef1872a6f4ba2.mat -concat /var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef187550d5b9f.mat "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmp5F5bNB/filef187550d5b9f.mat"   ;</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/convert_xfm -omat /var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef18770ce8e71.mat -fixscaleskew /var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef187550d5b9f.mat "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmp5F5bNB/filef187550d5b9f.mat"   ;</span></div><div class='output co'>#&gt; [1] "1  0  0  0  " "0  1  0  0  " "0  0  1  0  " "0  0  0  1  "</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

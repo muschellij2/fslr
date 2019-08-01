@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perform OR/Union operation on Images using FSL — fslor • fslr</title>
+<title>Face Removal Mask using "Quickshear Defacing for Neuroimages" 
+(Schimke et al. 2011) — get_quickshear_mask • fslr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +31,11 @@
 
 
 
-<meta property="og:title" content="Perform OR/Union operation on Images using FSL — fslor" />
+<meta property="og:title" content="Face Removal Mask using "Quickshear Defacing for Neuroimages" 
+(Schimke et al. 2011) — get_quickshear_mask" />
 
-<meta property="og:description" content="This function calls fslmaths file -add file2 -bin
-after binarizing file and file2 using
- fslbin." />
+<meta property="og:description" content="Face Removal Mask using &quot;Quickshear Defacing for Neuroimages&quot; 
+(Schimke et al. 2011)" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,70 +115,70 @@ after binarizing file and file2 using
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Perform OR/Union operation on Images using FSL</h1>
+    <h1>Face Removal Mask using "Quickshear Defacing for Neuroimages" 
+(Schimke et al. 2011)</h1>
     
-    <div class="hidden name"><code>fslor.Rd</code></div>
+    <div class="hidden name"><code>get_quickshear_mask.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function calls <code>fslmaths file -add file2 -bin</code>
-after binarizing <code>file</code> and <code>file2</code> using
- <code><a href='fslbin.html'>fslbin</a></code>.</p>
+    <p>Face Removal Mask using "Quickshear Defacing for Neuroimages" 
+(Schimke et al. 2011)</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fslor</span>(<span class='no'>file</span>, <span class='no'>file2</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>get_quickshear_mask</span>(<span class='no'>brain_mask</span>, <span class='kw'>buffer</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>fsl_or</span>(<span class='no'>...</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".nii.gz"</span>), <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>quickshear_deface_image</span>(<span class='no'>file</span>, <span class='kw'>brain_mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>buffer</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>brain_mask</th>
+      <td><p>Brain mask image.  If <code>NULL</code>, then
+<code><a href='fslbet.html'>fslbet</a></code> will be run</p></td>
+    </tr>
+    <tr>
+      <th>buffer</th>
+      <td><p>buffer to add to intercept for face mask equation</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>print diagnostic messages</p></td>
+    </tr>
+    <tr>
       <th>file</th>
-      <td><p>(character) input image</p></td>
-    </tr>
-    <tr>
-      <th>file2</th>
-      <td><p>(character) image to be unioned</p></td>
-    </tr>
-    <tr>
-      <th>outfile</th>
-      <td><p>(character) resultant image name (optional)</p></td>
-    </tr>
-    <tr>
-      <th>retimg</th>
-      <td><p>(logical) return image of class nifti</p></td>
-    </tr>
-    <tr>
-      <th>reorient</th>
-      <td><p>(logical) If retimg, should file be reoriented 
-when read in?
-Passed to <code>readnii</code>.</p></td>
-    </tr>
-    <tr>
-      <th>intern</th>
-      <td><p>(logical) to be passed to <code><a href='https://www.rdocumentation.org/packages/base/topics/system'>system</a></code></p></td>
+      <td><p>input image - same orientation as brain mask</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments passed to <code>readnii</code>.</p></td>
+      <td><p>additional arguments passed to <code><a href='fslmask.html'>fslmask</a></code></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>If <code>retimg</code> then object of class nifti.  Otherwise,
-Result from system command, depends if intern is TRUE or FALSE.</p>
+    <p>A binary image of the non-face areas</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Functions with underscores have different defaults
-and will return an output filename, so to be used for piping</p>
+    <p>adapted from 
+<a href='https://github.com/nipy/quickshear/blob/master/quickshear.py'>https://github.com/nipy/quickshear/blob/master/quickshear.py</a></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='have.fsl.html'>have_fsl</a></span>()) {
+   <span class='no'>file</span> <span class='kw'>=</span> <span class='st'>"~/Downloads/sample_T1_input.nii.gz"</span>
+   <span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/files'>file.exists</a></span>(<span class='no'>file</span>)) {
+       <span class='no'>res</span> <span class='kw'>=</span> <span class='fu'>quickshear_deface_image</span>(<span class='no'>file</span>)
+       <span class='no'>brain_mask</span> <span class='kw'>=</span> <span class='fu'><a href='fslbet.html'>fslbet</a></span>(<span class='no'>file</span>) <span class='kw'>&gt;</span> <span class='fl'>0</span>
+       <span class='no'>mask</span> <span class='kw'>=</span> <span class='fu'>get_quickshear_mask</span>(<span class='no'>brain_mask</span>)
+       <span class='no'>image</span> <span class='kw'>=</span> <span class='fu'><a href='fslmask.html'>fslmask</a></span>(<span class='no'>file</span>, <span class='no'>mask</span>)
+   }
+}</div><div class='output co'>#&gt; <span class='message'>Reorienting image to RPI</span></div><div class='output co'>#&gt; <span class='message'>Getting 2D Mask</span></div><div class='output co'>#&gt; <span class='message'>Eroding to get outline</span></div><div class='output co'>#&gt; <span class='message'>Getting Convex Hull</span></div><div class='output co'>#&gt; <span class='message'>Reorienting image to original orientation</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/bet2 "/Users/johnmuschelli/Downloads/sample_T1_input.nii.gz" "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef1873cea114f" </span></div><div class='output co'>#&gt; <span class='message'>Reorienting image to RPI</span></div><div class='output co'>#&gt; <span class='message'>Getting 2D Mask</span></div><div class='output co'>#&gt; <span class='message'>Eroding to get outline</span></div><div class='output co'>#&gt; <span class='message'>Getting Convex Hull</span></div><div class='output co'>#&gt; <span class='message'>Reorienting image to original orientation</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/Users/johnmuschelli/Downloads/sample_T1_input.nii.gz" -mas "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmp5F5bNB/filef1873381acd.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef187bce0729"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -187,7 +188,9 @@ and will return an output filename, so to be used for piping</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#note">Note</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

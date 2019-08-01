@@ -66,7 +66,7 @@ either saves the image or returns an object of class nifti." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.23.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.0</span>
       </span>
     </div>
 
@@ -199,8 +199,8 @@ and will return an output filename, so to be used for piping</p>
 <span class='no'>mask</span> <span class='kw'>=</span> <span class='no'>img</span> <span class='kw'>&gt;</span> <span class='fl'>.5</span>
 <span class='no'>dilated</span> <span class='kw'>=</span> <span class='fu'>fsldilate</span>(<span class='no'>mask</span>, <span class='kw'>kopts</span> <span class='kw'>=</span> <span class='st'>"-kernel boxv 5"</span>, <span class='kw'>retimg</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 })
-}</div><div class='output co'>#&gt; <span class='message'>fslmaths "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpZvD8li/file14a8e202662d0.nii.gz" -bin -mul -1 -add 1 -kernel boxv 5 -ero -mul -1 -add 1  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpZvD8li/file14a8e518f708d"</span></div><div class='output co'>#&gt;    user  system elapsed 
-#&gt;   0.824   0.020   1.388 </div></pre>
+}</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmp5F5bNB/filef1875ef8eb91.nii.gz" -bin -mul -1 -add 1 -kernel boxv 5 -ero -mul -1 -add 1  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmp5F5bNB/filef1876000f58c"</span></div><div class='output co'>#&gt;    user  system elapsed 
+#&gt;   0.674   0.027   1.054 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
