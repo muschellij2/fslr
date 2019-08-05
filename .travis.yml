@@ -17,7 +17,7 @@ before_install:
     fi
   - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py || echo "couldn't download";  
   - python --version
-  - if [[ -f fslinstaller.py]]; 
+  - if [[ -f fslinstaller.py ]]; 
     then
       travis_wait 100 sudo python fslinstaller.py -d /usr/local/fsl --quiet || echo "couldn't install";    
     fi
