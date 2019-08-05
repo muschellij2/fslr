@@ -541,7 +541,10 @@ fslhd <- function(file, opts="", verbose = TRUE, ...){
   if (verbose) {
     message(cmd, "\n")
   }
-  system(cmd, intern = TRUE)
+  hd = system(cmd, intern = TRUE)
+  # for FSL > 6.0
+  hd = sub("size of header", "sizeof_hdr", hd)
+  return(hd)
 }
 
 #' @title FSLhd help
@@ -563,13 +566,18 @@ fslhd.help = function(){
 #' @export
 #' @examples
 #' if (have.fsl()){
-#'  mnifile = file.path(fsldir(), "data", "standard", 
-#'    "MNI152_T1_2mm.nii.gz")
+#'  mnifile = mni_fname("2")
 #'  hd = fslhd(mnifile)
 #'  fslhd.parse(hd)
 #' }  
 fslhd.parse <- function(hd){
-  ss <- strsplit(hd, split = " ")
+  if (length(hd) == 1) {
+    if (file.exists(hd)) {
+      hd = fslhd(hd)
+    }
+  }
+  hd = sub("size of header", "sizeof_hdr", hd)
+  ss <- strsplit(hd, split = " |\t")
   ss <- lapply(ss, function(x) x[!x %in% ""])
   ss <- lapply(ss, function(x){
     if (grepl("_xyz", x[1])) 

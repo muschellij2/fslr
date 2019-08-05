@@ -17,8 +17,7 @@ This function takes in a FSL header and parses the components
 }
 \examples{
 if (have.fsl()){
- mnifile = file.path(fsldir(), "data", "standard", 
-   "MNI152_T1_2mm.nii.gz")
+ mnifile = mni_fname("2")
  hd = fslhd(mnifile)
  fslhd.parse(hd)
 }  
