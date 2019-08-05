@@ -22,8 +22,7 @@ matrix
 }
 \examples{
 if (have.fsl()){
- mnifile = file.path(fsldir(), "data", "standard", 
-   "MNI152_T1_2mm.nii.gz")
+ mnifile = mni_fname("2")
  getForms(mnifile)
 }   
 }

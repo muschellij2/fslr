@@ -1,5 +1,9 @@
 # fslr 2.24.0
 
+- Fixes bug with `getForms` (and therefore a lot of stuff) with FSL version 6.0 and greater.
+
+# fslr 2.24.0
+
 - Added `quickshear_deface_image` to remove faces based on the QuickShear method and `nipy/quickshear`.
 - Added `mridefacer` to add to the anonymization pipelines.
 - Added `invert_xfm` and other `convert_xfm` functionality.

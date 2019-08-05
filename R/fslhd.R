@@ -604,8 +604,7 @@ fslhd.parse <- function(hd){
 #' @export
 #' @examples
 #' if (have.fsl()){
-#'  mnifile = file.path(fsldir(), "data", "standard", 
-#'    "MNI152_T1_2mm.nii.gz")
+#'  mnifile = mni_fname("2")
 #'  getForms(mnifile)
 #' }   
 getForms <- function(file, 
@@ -614,7 +613,7 @@ getForms <- function(file,
   file = checkimg(file, ...)  
   x <- fslhd(file, verbose = verbose)
   convmat <- function(form){
-    ss <- strsplit(form, " ")
+    ss <- strsplit(form, " |\t")
     ss <- t(sapply(ss, function(x) x[ x != "" ]))
     ss <- ss[, -1]
     class(ss) <- "numeric"
@@ -629,7 +628,7 @@ getForms <- function(file,
   qor <- x[grepl("qform_(x|y|z)orient", x)]
   
   short_orient <- function(orient){
-    ss <- strsplit(orient, " ")
+    ss <- strsplit(orient, " |\t")
     ss <- sapply(ss, function(x) x[ x != "" ])[2,]
     first <- substr(ss, 1,1)
     ss2 <- strsplit(ss, "-")
@@ -684,8 +683,7 @@ checkout <- function(hd){
 #' @examples
 #' library(fslr)
 #' if (have.fsl()){
-#'  mnifile = file.path(fsldir(), "data", "standard", 
-#'    "MNI152_T1_2mm.nii.gz")
+#'  mnifile = mni_fname("2")
 #'  check_file(mnifile)
 #' } 
 check_file <- function(file, ...){

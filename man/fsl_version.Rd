@@ -3,11 +3,14 @@
 \name{fsl_version}
 \alias{fsl_version}
 \alias{fslversion}
+\alias{fsl_version_gt5}
 \title{Find FSL Version}
 \usage{
 fsl_version()
 
 fslversion()
+
+fsl_version_gt5()
 }
 \value{
 If the version file does not exist, it will throw a warning, but 

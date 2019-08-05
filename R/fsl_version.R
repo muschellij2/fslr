@@ -31,3 +31,9 @@ fsl_version = function(){
 fslversion = function(){
   return(fsl_version())
 }
+
+#' @rdname fsl_version
+#' @export
+fsl_version_gt5 = function() {
+  package_version(fsl_version()) >= package_version("6.0.0")
+}
