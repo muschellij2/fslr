@@ -375,10 +375,11 @@ fslsmooth <- function(
 #' @param verbose (logical) print out command before running
 #' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.
+#' @examples 
 #' if (have.fsl()){
 #' system.time({
-#' x = array(rnorm(1e6), dim = c(100, 100, 100))
-#' img = nifti(x, dim= c(100, 100, 100), 
+#' x = array(rnorm(1e5), dim = c(100, 100, 10))
+#' img = nifti(x, dim= c(100, 100, 10), 
 #' datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
 #' cal.max = max(x), pixdim = rep(1, 4))
 #' mask = img > .5

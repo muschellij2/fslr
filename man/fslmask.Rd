@@ -32,16 +32,6 @@ Passed to \code{\link{readnii}}.}
 }
 \value{
 Result from system command, depends if intern is TRUE or FALSE.
-if (have.fsl()){
-system.time({
-x = array(rnorm(1e6), dim = c(100, 100, 100))
-img = nifti(x, dim= c(100, 100, 100), 
-datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
-cal.max = max(x), pixdim = rep(1, 4))
-mask = img > .5
-masked = fslmask(img, mask = mask, retimg=TRUE)
-})
-}
 }
 \description{
 This function calls \code{fslmaths -mas} to mask an image from 
@@ -50,4 +40,16 @@ an image mask and either saves the image or returns an object of class nifti
 \note{
 Functions with underscores have different defaults
 and will return an output filename, so to be used for piping
+}
+\examples{
+if (have.fsl()){
+system.time({
+x = array(rnorm(1e5), dim = c(100, 100, 10))
+img = nifti(x, dim= c(100, 100, 10), 
+datatype = convert.datatype()$FLOAT32, cal.min = min(x), 
+cal.max = max(x), pixdim = rep(1, 4))
+mask = img > .5
+masked = fslmask(img, mask = mask, retimg=TRUE)
+})
+} 
 }

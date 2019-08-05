@@ -3,7 +3,7 @@
 #'
 #' @description Creates a 2 by 2 table for 
 #' @param x filename of logical or 0/1 image
-#' @param y filename of logical or 0/1 vimage
+#' @param y filename of logical or 0/1 image
 #' @param ... arguments passed to \code{\link{fsl_bin_tab}}
 #' 
 #' @return Single number of the dice coefficient

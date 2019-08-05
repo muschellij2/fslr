@@ -9,7 +9,7 @@ fsl_bin_tab(x, y, dnames = c("x", "y"), verbose = FALSE)
 \arguments{
 \item{x}{filename of logical or 0/1 image}
 
-\item{y}{filename of logical or 0/1 vimage}
+\item{y}{filename of logical or 0/1 image}
 
 \item{dnames}{names for table}
 

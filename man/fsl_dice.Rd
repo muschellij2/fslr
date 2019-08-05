@@ -9,7 +9,7 @@ fsl_dice(x, y, ...)
 \arguments{
 \item{x}{filename of logical or 0/1 image}
 
-\item{y}{filename of logical or 0/1 vimage}
+\item{y}{filename of logical or 0/1 image}
 
 \item{...}{arguments passed to \code{\link{fsl_bin_tab}}}
 }
