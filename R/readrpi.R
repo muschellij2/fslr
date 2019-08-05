@@ -6,6 +6,20 @@
 #' @param ... Arguments to pass to \code{\link{readnii}}
 #' @param verbose print diagnostics, passed to \code{\link{rpi_orient_file}}
 #' @export
+#' @examples 
+#' if (have.fsl()){
+#' print(fsl_version())
+#' in_ci <- function() {
+#'  nzchar(Sys.getenv("CI"))
+#'  }
+#'  if (in_ci()) {
+#'  destfile = tempfile(fileext = ".nii.gz")
+#'  dl = download.file(paste0("https://github.com/muschellij2/", 
+#'  "Neurohacking/files/3454385/113-01-MPRAGE2.nii.gz"),
+#'  destfile = destfile)
+#'  res = readrpi(destfile)
+#'  }
+#'  }   
 readrpi <- function(file, ..., verbose = TRUE) {
   args = list(...)
   n_args = names(args)
