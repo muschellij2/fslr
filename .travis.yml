@@ -17,9 +17,10 @@ before_install:
     fi
   - wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py || echo "couldn't download";  
   - python --version
-  - travis_wait 100 sudo python fslinstaller.py -V 5.0.10 -d /usr/local/fsl --quiet || echo "couldn't install";    
-  - locate libmng.so.1 || echo "fail libmng1"
-  - locate libmng.so.2 || echo "fail libmng2"
+  - if [[ -f fslinstaller.py]]; 
+    then
+      travis_wait 100 sudo python fslinstaller.py -d /usr/local/fsl --quiet || echo "couldn't install";    
+    fi
   # - if [ "$TRAVIS_OS_NAME" = "linux" ]; 
   #     then
   #       OS_DISTRIBUTION=$(lsb_release -cs) ;
