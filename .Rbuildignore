@@ -32,3 +32,6 @@ docs/*
 ^sticker\.png$
 ^cran-comments\.md$
 ^data-raw$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
