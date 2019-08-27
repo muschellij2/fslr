@@ -2,6 +2,7 @@
 % Please edit documentation in R/fslroi.R
 \name{fslroi}
 \alias{fslroi}
+\alias{fsl_roi}
 \alias{fslroi_time}
 \title{FSL ROI}
 \usage{
@@ -9,6 +10,8 @@ fslroi(file, xmin = 0, xsize = -1, ymin = 0, ysize = -1,
   zmin = 0, zsize = -1, tmin = NULL, tsize = NULL,
   outfile = NULL, retimg = TRUE, reorient = FALSE, intern = FALSE,
   verbose = TRUE, ...)
+
+fsl_roi(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
 fslroi_time(file, tmin = NULL, tsize = NULL, ...)
 }

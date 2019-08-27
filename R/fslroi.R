@@ -111,6 +111,18 @@ fslroi = function(
 
 #' @rdname fslroi
 #' @export
+fsl_roi = function(
+  ...,
+  outfile = tempfile(fileext = ".nii.gz"),
+  retimg = FALSE
+) {
+  fslroi(..., outfile = outfile, retimg = retimg)
+  return(outfile)
+}
+
+
+#' @rdname fslroi
+#' @export
 fslroi_time = function(
   file,
   tmin = NULL,
