@@ -13,6 +13,7 @@
 #' @param out_type (character) Suffix to grab from outfile.  For 
 #' example, output filename is \code{paste0(outfile, "_", out_type)}
 #' @param verbose (logical) print out command before running
+#' @param type type of image T1, T2, or PD.
 #' @param all_images If \code{retimg} 
 #' @param ... additional arguments passed to \code{\link{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
@@ -26,6 +27,7 @@ fast = function(
   reorient = FALSE,
   intern=FALSE, 
   opts = "", 
+  type = c("T1", "T2", "PD"),
   out_type = c("seg", "mixeltype", "pve_0", 
                "pve_1", "pve_2", "pveseg"),  
   verbose = TRUE,
@@ -34,6 +36,11 @@ fast = function(
   
   cmd = get.fsl()
   file = checkimg(file, ...)
+  type = match.arg(type)
+  type = switch(type,
+                "T1" =1,
+                "T2" = 2,
+                "PD" = 3)
   cmd <- paste0(cmd, 'fast ')
   no.outfile = is.null(outfile)
   outfile = check_outfile(outfile=outfile, retimg=retimg, fileext = "")
@@ -44,6 +51,8 @@ fast = function(
   if (verbose) {
     opts = c(opts, "--verbose")
   }
+  opts = c(opts, paste0("--type=", type))
+  
   opts = trimws(opts)
   opts = opts[ opts != "" ]
   opts = paste(opts, collapse = " ")
@@ -75,7 +84,7 @@ fast = function(
 #' @export
 fast_all = function(
   ...,
-  all_images = FALSE) {
+  all_images = TRUE) {
   fast(..., all_images = all_images)
 }
 

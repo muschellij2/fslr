@@ -12,11 +12,11 @@
 \title{FSL FAST}
 \usage{
 fast(file, outfile = NULL, bias_correct = TRUE, retimg = TRUE,
-  reorient = FALSE, intern = FALSE, opts = "", out_type = c("seg",
-  "mixeltype", "pve_0", "pve_1", "pve_2", "pveseg"), verbose = TRUE,
-  all_images = FALSE, ...)
+  reorient = FALSE, intern = FALSE, opts = "", type = c("T1", "T2",
+  "PD"), out_type = c("seg", "mixeltype", "pve_0", "pve_1", "pve_2",
+  "pveseg"), verbose = TRUE, all_images = FALSE, ...)
 
-fast_all(..., all_images = FALSE)
+fast_all(..., all_images = TRUE)
 
 fast_nobias_all(..., bias_correct = FALSE, all_images = FALSE)
 
@@ -48,6 +48,8 @@ Passed to \code{\link{readnii}}.}
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 
 \item{opts}{(character) operations to be passed to \code{fast}}
+
+\item{type}{type of image T1, T2, or PD.}
 
 \item{out_type}{(character) Suffix to grab from outfile.  For 
 example, output filename is \code{paste0(outfile, "_", out_type)}}
