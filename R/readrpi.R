@@ -14,9 +14,15 @@
 #'  }
 #'  if (in_ci()) {
 #'  destfile = tempfile(fileext = ".nii.gz")
-#'  dl = download.file(paste0("https://github.com/muschellij2/", 
-#'  "Neurohacking/files/3454385/113-01-MPRAGE2.nii.gz"),
-#'  destfile = destfile)
+#'  url = paste0("https://ndownloader.figshare.com/", 
+#'  "files/18068546")
+#'  old_url = paste0("https://github.com/muschellij2/", 
+#'  "Neurohacking/files/3454385/113-01-MPRAGE2.nii.gz")
+#'  dl = tryCatch(download.file(url,
+#'  destfile = destfile))
+#'  if (inherits(dl, "try-error") || dl != 0) {
+#'  dl = download.file(old_url, destfile = destfile)
+#'  }
 #'  res = readrpi(destfile)
 #'  }
 #'  }   
