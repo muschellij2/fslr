@@ -67,7 +67,7 @@ and either saves the image or returns an object of class nifti" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.2.1</span>
       </span>
     </div>
 
@@ -194,8 +194,8 @@ and will return an output filename, so to be used for piping</p>
 <span class='no'>eroded</span> <span class='kw'>=</span> <span class='fu'><a href='fslerode.html'>fslerode</a></span>(<span class='no'>mask</span>, <span class='kw'>kopts</span> <span class='kw'>=</span> <span class='st'>"-kernel boxv 5"</span>, <span class='kw'>retimg</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 <span class='no'>filled</span> <span class='kw'>=</span> <span class='fu'>fslfill</span>(<span class='no'>eroded</span>, <span class='kw'>retimg</span><span class='kw'>=</span> <span class='fl'>TRUE</span>)
 })
-}</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/tmp/RtmpuO6G5P/file569b360705ff.nii.gz" -kernel boxv 5 -ero  "/tmp/RtmpuO6G5P/file569b28dbc061"</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/tmp/RtmpuO6G5P/file569b61288c6b.nii.gz" -bin -fillh "/tmp/RtmpuO6G5P/file569b238b9742"</span></div><div class='output co'>#&gt;    user  system elapsed 
-#&gt;   0.479   0.023   0.501 </div></pre>
+}</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/tmp/RtmpJrAVNb/file54186fb09a4.nii.gz" -kernel boxv 5 -ero  "/tmp/RtmpJrAVNb/file541839730185"</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/tmp/RtmpJrAVNb/file541812edd2df.nii.gz" -bin -fillh "/tmp/RtmpJrAVNb/file54184d58478"</span></div><div class='output co'>#&gt;    user  system elapsed 
+#&gt;   0.460   0.032   0.493 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

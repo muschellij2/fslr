@@ -67,7 +67,7 @@ calling rpi_orient_file to force RPI orientation." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.2.1</span>
       </span>
     </div>
 
@@ -157,12 +157,18 @@ calling <code><a href='rpi_orient.html'>rpi_orient_file</a></code> to force RPI 
  }
  <span class='kw'>if</span> (<span class='fu'>in_ci</span>()) {
  <span class='no'>destfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".nii.gz"</span>)
- <span class='no'>dl</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"https://github.com/muschellij2/"</span>,
- <span class='st'>"Neurohacking/files/3454385/113-01-MPRAGE2.nii.gz"</span>),
- <span class='kw'>destfile</span> <span class='kw'>=</span> <span class='no'>destfile</span>)
+ <span class='no'>url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"https://ndownloader.figshare.com/"</span>,
+ <span class='st'>"files/18068546"</span>)
+ <span class='no'>old_url</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"https://github.com/muschellij2/"</span>,
+ <span class='st'>"Neurohacking/files/3454385/113-01-MPRAGE2.nii.gz"</span>)
+ <span class='no'>dl</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span>(<span class='no'>url</span>,
+ <span class='kw'>destfile</span> <span class='kw'>=</span> <span class='no'>destfile</span>))
+ <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/class.html'>inherits</a></span>(<span class='no'>dl</span>, <span class='st'>"try-error"</span>) <span class='kw'>||</span> <span class='no'>dl</span> <span class='kw'>!=</span> <span class='fl'>0</span>) {
+ <span class='no'>dl</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span>(<span class='no'>old_url</span>, <span class='kw'>destfile</span> <span class='kw'>=</span> <span class='no'>destfile</span>)
+ }
  <span class='no'>res</span> <span class='kw'>=</span> <span class='fu'>readrpi</span>(<span class='no'>destfile</span>)
  }
- }</div><div class='output co'>#&gt; [1] "6.0.2:a4f562d9"</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslhd "/tmp/RtmpuO6G5P/file569b393677c4.nii.gz" </span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslorient -getorient "/tmp/RtmpuO6G5P/file569b393677c4.nii.gz"</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslswapdim "/tmp/RtmpuO6G5P/file569b393677c4.nii.gz"  RL PA IS "/tmp/RtmpuO6G5P/file569b24bd6adf";</span></div></pre>
+ }</div><div class='output co'>#&gt; [1] "6.0.2:a4f562d9"</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslhd "/tmp/RtmpJrAVNb/file541857d4c3ae.nii.gz" </span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslorient -getorient "/tmp/RtmpJrAVNb/file541857d4c3ae.nii.gz"</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslswapdim "/tmp/RtmpJrAVNb/file541857d4c3ae.nii.gz"  RL PA IS "/tmp/RtmpJrAVNb/file54184fb060e7";</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
