@@ -58,5 +58,5 @@ deploy:
       tags: true    
       repo: muschellij2/fslr
   - provider: script
-    script: travis_wait 100 Rscript -e 'pkgdown::deploy_site_github()'
+    script: Rscript -e 'pkgdown::deploy_site_github()'
     skip_cleanup: true  
