@@ -10,6 +10,8 @@
 #' @param verbose (logical) print diagnostic messages
 #' @param translation (logical) should the translation parameters be
 #' preserved (TRUE) or set to zero (FALSE)
+#' @param force_rpi Should \code{\link{rpi_orient_file}} be
+#' run?
 #'
 #' @return Filename of output or nifti depending on \code{retimg}
 #' @export
@@ -19,12 +21,16 @@ mid_sagittal_align = function(
   retimg = TRUE,
   opts = "",
   translation = TRUE,
+  force_rpi = TRUE,
   verbose = TRUE) {
   
   outfile = check_outfile(outfile = outfile, retimg = retimg)
-  rp = rpi_orient_file(file, verbose = verbose)
-  
-  img = rp$img
+  if (force_rpi) {
+    rp = rpi_orient_file(file, verbose = verbose)
+    img = rp$img
+  } else {
+    img = checkimg(file)
+  }
   
   flip_lr = function(x){
     fsl_swapdim(file = x, a = "-x")
