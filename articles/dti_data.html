@@ -159,7 +159,7 @@
 <a class="sourceLine" id="cb11-3" data-line-number="3">  ret =<span class="st"> </span><span class="kw"><a href="../reference/eddy_correct.html">eddy_correct</a></span>(<span class="dt">infile =</span> img, <span class="dt">outfile =</span> outfile, </a>
 <a class="sourceLine" id="cb11-4" data-line-number="4">                     <span class="dt">retimg =</span> <span class="ot">TRUE</span>, <span class="dt">reference_no =</span> <span class="dv">0</span>)</a>
 <a class="sourceLine" id="cb11-5" data-line-number="5">}</a></code></pre></div>
-<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/eddy_correct "/tmp/RtmpsJVc8A/4Ddwi_b1000.nii.gz"  "/tmp/RtmpsJVc8A/file7ea6585747f2" 0;</code></pre>
+<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/eddy_correct "/tmp/RtmpojUphR/4Ddwi_b1000.nii.gz"  "/tmp/RtmpojUphR/file7e6371a5a965" 0;</code></pre>
 <p>Note, from here on forward we will use either the filename for the output of the eddy current correction or the eddy-current-corrected <code>nifti</code> object.</p>
 </div>
 <div id="running-dti-fitting-as-a-cursor" class="section level1">
@@ -171,7 +171,7 @@
 <a class="sourceLine" id="cb13-3" data-line-number="3">  res =<span class="st"> </span><span class="kw"><a href="../reference/dtifit.html">dtifit</a></span>(<span class="dt">infile =</span> ret, <span class="dt">bvecs =</span> b_vecs, </a>
 <a class="sourceLine" id="cb13-4" data-line-number="4">               <span class="dt">bvals =</span> b_vals, <span class="dt">mask =</span> mask_fname)</a>
 <a class="sourceLine" id="cb13-5" data-line-number="5">}</a></code></pre></div>
-<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/dtifit --data="/tmp/RtmpsJVc8A/file7ea6129f8d2a.nii.gz" --out="/tmp/RtmpsJVc8A/file7ea61e27752" --mask="/tmp/RtmpsJVc8A/brain_mask.nii.gz" --bvecs="/tmp/RtmpsJVc8A/file7ea64e3023b9.txt" --bvals="/tmp/RtmpsJVc8A/file7ea6e58cdd5.txt" --verbose</code></pre>
+<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/dtifit --data="/tmp/RtmpojUphR/file7e6346e11022.nii.gz" --out="/tmp/RtmpojUphR/file7e637ff8d403" --mask="/tmp/RtmpojUphR/brain_mask.nii.gz" --bvecs="/tmp/RtmpojUphR/file7e6379f786e1.txt" --bvals="/tmp/RtmpojUphR/file7e6341bf5c80.txt" --verbose</code></pre>
 <p>By default, the result of <code>dtifit</code> is the filenames of the resultant images. Here we will read in those images:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="cf">if</span> (<span class="kw"><a href="../reference/have.fsl.html">have.fsl</a></span>()) {</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2">  res_imgs =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(res, readnii)</a>
