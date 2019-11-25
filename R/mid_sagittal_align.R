@@ -70,10 +70,14 @@ mid_sagittal_align = function(
     verbose = verbose,
     retimg = FALSE,
     outfile = tfile)
-  centered = reverse_rpi_orient_file(
-    file = tfile, 
-    orientation = rp$orientation,
-    convention = rp$convention)
+  if (force_rpi) {
+    centered = reverse_rpi_orient_file(
+      file = tfile, 
+      orientation = rp$orientation,
+      convention = rp$convention)
+  } else {
+    centered = tfile
+  }
   if (retimg) {
     centered = readnii(centered)
   }
