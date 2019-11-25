@@ -8,6 +8,8 @@
 #' @param retimg (logical) return image of class nifti
 #' @param opts (character) options passed to \code{\link{flirt}}
 #' @param verbose (logical) print diagnostic messages
+#' @param translation (logical) should the translation parameters be
+#' preserved (TRUE) or set to zero (FALSE)
 #'
 #' @return Filename of output or nifti depending on \code{retimg}
 #' @export
@@ -16,6 +18,7 @@ mid_sagittal_align = function(
   outfile = NULL,
   retimg = TRUE,
   opts = "",
+  translation = TRUE,
   verbose = TRUE) {
   
   outfile = check_outfile(outfile = outfile, retimg = retimg)
@@ -43,6 +46,9 @@ mid_sagittal_align = function(
   # parsed = parse_avscale(scaled)
   
   mat = parsed$fwd_half_transform
+  if (!translation) {
+    mat[, 4] = c(0, 0, 0, 1)
+  }
   # mat = mat * 0.5
   
   new_omat = tempfile(fileext = ".mat")
