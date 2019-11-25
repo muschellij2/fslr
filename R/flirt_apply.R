@@ -40,8 +40,8 @@ flirt_apply = function(infile,
   
   initmat = path.expand(initmat)
   cmd <- paste0(cmd, sprintf(
-    'flirt -in "%s" -ref "%s" -out "%s" -init "%s" -applyxfm %s', 
-    infile, reffile, outfile, initmat, opts))
+    'flirt -in "%s" -ref "%s" -applyxfm -init "%s" %s -out "%s" ', 
+    infile, reffile, initmat, opts, outfile))
   
   if (verbose){
     message(cmd, "\n")
