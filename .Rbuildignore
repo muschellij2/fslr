@@ -35,3 +35,4 @@ docs/*
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^R/probtrackx2\.R$

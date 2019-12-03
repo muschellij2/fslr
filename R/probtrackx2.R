@@ -57,7 +57,7 @@
 #' @param opts Additional options or way to specify things instead of command
 #' line arguments
 #' @param ... Additional arguments
-probtrackx = function(
+probtrackx2 = function(
   samples = "merged",
   mask,
   seed,
