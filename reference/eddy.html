@@ -70,7 +70,7 @@ DTI Processing" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -129,8 +129,21 @@ DTI Processing" />
 DTI Processing</p>
     </div>
 
-    <pre class="usage"><span class='fu'>eddy</span>(<span class='no'>infile</span>, <span class='no'>mask</span>, <span class='no'>acq_file</span>, <span class='no'>index_file</span>, <span class='no'>bvecs</span>, <span class='no'>bvals</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>eddy</span>(
+  <span class='no'>infile</span>,
+  <span class='no'>mask</span>,
+  <span class='no'>acq_file</span>,
+  <span class='no'>index_file</span>,
+  <span class='no'>bvecs</span>,
+  <span class='no'>bvals</span>,
+  <span class='kw'>topup</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>eddy_cmd</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"eddy"</span>, <span class='st'>"eddy_openmp"</span>, <span class='st'>"eddy_cuda"</span>),
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,6 +180,13 @@ the direction of the diffusion weighting.</p></td>
 diffusion weighting</p></td>
     </tr>
     <tr>
+      <th>topup</th>
+      <td><p>This should only be specified if you have previously run 
+`topup` on your data and should be the same name that you gave as an 
+argument to the --out parameter when you ran topup, aka
+the base name for output files from topup.</p></td>
+    </tr>
+    <tr>
       <th>outfile</th>
       <td><p>Output file basename</p></td>
     </tr>
@@ -182,6 +202,10 @@ passed to <code>eddy</code></p></td>
     <tr>
       <th>verbose</th>
       <td><p>print diagnostic messages</p></td>
+    </tr>
+    <tr>
+      <th>eddy_cmd</th>
+      <td><p>The version of <code>eddy</code> to run.</p></td>
     </tr>
     <tr>
       <th>...</th>

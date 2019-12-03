@@ -72,7 +72,7 @@ bedpostx" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -132,13 +132,30 @@ Obtained using Sampling Techniques with Crossing Fibers</h1>
 <code>bedpostx</code></p>
     </div>
 
-    <pre class="usage"><span class='fu'>xfibres</span>(<span class='no'>infile</span>, <span class='no'>bvecs</span>, <span class='no'>bvals</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nfibres</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>bet.opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>njumps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>burnin_noard</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sampleevery</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>updateproposalevery</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>noard</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>allard</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>nospat</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>nonlinear</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>cnonlinear</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>rician</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>f0</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>ardf0</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
+    <pre class="usage"><span class='fu'>xfibres</span>(
+  <span class='no'>infile</span>,
+  <span class='no'>bvecs</span>,
+  <span class='no'>bvals</span>,
+  <span class='kw'>mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nfibres</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>bet.opts</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>njumps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>burnin_noard</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>sampleevery</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>updateproposalevery</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>noard</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>allard</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>nospat</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>nonlinear</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>cnonlinear</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>rician</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>f0</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>ardf0</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

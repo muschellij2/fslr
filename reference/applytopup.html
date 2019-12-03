@@ -70,7 +70,7 @@ estimated susceptibility induced distortions" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -129,9 +129,16 @@ estimated susceptibility induced distortions" />
 estimated susceptibility induced distortions</p>
     </div>
 
-    <pre class="usage"><span class='fu'>applytopup</span>(<span class='no'>infile</span>, <span class='no'>datain</span>, <span class='no'>index</span>, <span class='no'>topup_files</span>, <span class='kw'>out</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lsr"</span>, <span class='st'>"jac"</span>), <span class='kw'>interp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"spline"</span>, <span class='st'>"trilinear"</span>),
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>applytopup</span>(
+  <span class='no'>infile</span>,
+  <span class='no'>datain</span>,
+  <span class='no'>index</span>,
+  <span class='no'>topup_files</span>,
+  <span class='kw'>out</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lsr"</span>, <span class='st'>"jac"</span>),
+  <span class='kw'>interp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"spline"</span>, <span class='st'>"trilinear"</span>),
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)
 
 <span class='fu'>apply_topup</span>(<span class='no'>...</span>)
 

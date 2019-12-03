@@ -70,7 +70,7 @@ The R functions wraps fslmaths" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -131,8 +131,16 @@ The R functions wraps <code>fslmaths</code></p>
 
     <pre class="usage"><span class='fu'>fsl_sub</span>(<span class='no'>...</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".nii.gz"</span>), <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>fslsub</span>(<span class='no'>file</span>, <span class='no'>file2</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>fslsub</span>(
+  <span class='no'>file</span>,
+  <span class='no'>file2</span>,
+  <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

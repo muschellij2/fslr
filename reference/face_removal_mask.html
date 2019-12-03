@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -127,9 +127,14 @@
     <p>Face Removal Mask</p>
     </div>
 
-    <pre class="usage"><span class='fu'>face_removal_mask</span>(<span class='no'>file</span>, <span class='kw'>template</span> <span class='kw'>=</span> <span class='fu'><a href='mni_fname.html'>mni_fname</a></span>(<span class='kw'>mm</span> <span class='kw'>=</span> <span class='st'>"1"</span>),
-  <span class='kw'>face_mask</span> <span class='kw'>=</span> <span class='fu'><a href='mni_fname.html'>mni_face_fname</a></span>(<span class='kw'>mm</span> <span class='kw'>=</span> <span class='st'>"1"</span>), <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cost</span> <span class='kw'>=</span> <span class='st'>"mutualinfo"</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>face_removal_mask</span>(
+  <span class='no'>file</span>,
+  <span class='kw'>template</span> <span class='kw'>=</span> <span class='fu'><a href='mni_fname.html'>mni_fname</a></span>(<span class='kw'>mm</span> <span class='kw'>=</span> <span class='st'>"1"</span>),
+  <span class='kw'>face_mask</span> <span class='kw'>=</span> <span class='fu'><a href='mni_fname.html'>mni_face_fname</a></span>(<span class='kw'>mm</span> <span class='kw'>=</span> <span class='st'>"1"</span>),
+  <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cost</span> <span class='kw'>=</span> <span class='st'>"mutualinfo"</span>,
+  <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
 
 <span class='fu'>deface_image</span>(<span class='no'>file</span>, <span class='no'>...</span>)</pre>
 

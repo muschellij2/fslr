@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -127,12 +127,25 @@
     <p>FSL Timeseries Plot using `fsl_tsplot` (not `tsplot`)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fsl_tsplot</span>(<span class='no'>infile</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".png"</span>),
-  <span class='kw'>plot_title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ymin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ymax</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>xlabel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ylabel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>precision</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scientific_notation</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>start_position</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>end_position</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>fsl_tsplot</span>(
+  <span class='no'>infile</span>,
+  <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".png"</span>),
+  <span class='kw'>plot_title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>legend</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ymin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ymax</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>xlabel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ylabel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>precision</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>unit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>scientific_notation</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>start_position</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>end_position</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
+)
 
 <span class='fu'>fsl_tsplot.help</span>()</pre>
 

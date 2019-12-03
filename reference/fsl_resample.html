@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -127,8 +127,14 @@
     <p>Title</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fsl_resample</span>(<span class='no'>file</span>, <span class='no'>voxel_size</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>fsl_resample</span>(
+  <span class='no'>file</span>,
+  <span class='no'>voxel_size</span>,
+  <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -172,7 +178,7 @@ the output file.</p>
 <span class='fu'>pixdim</span>(<span class='no'>est2</span>)
 <span class='no'>est</span> <span class='kw'>=</span> <span class='fu'>fsl_resample</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>voxel_size</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 <span class='fu'>pixdim</span>(<span class='no'>est</span>)
-}</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/flirt -in "/usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz"  -ref /usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz -applyisoxfm 1 -out "/tmp/RtmpOwPplT/file55b52e366b57";</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/flirt -in "/usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz"  -ref /usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz -applyisoxfm 1 -out "/tmp/RtmpOwPplT/file55b55c90c050";</span></div><div class='output co'>#&gt; [1] -1  1  1  1  1  1  1  1</div><div class='input'>
+}</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/flirt -in "/usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz"  -ref /usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz -applyisoxfm 1 -out "/tmp/RtmpJrmw1A/file5769250d0d6";</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/flirt -in "/usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz"  -ref /usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz -applyisoxfm 1 -out "/tmp/RtmpJrmw1A/file576913421703";</span></div><div class='output co'>#&gt; [1] -1  1  1  1  1  1  1  1</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

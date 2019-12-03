@@ -70,7 +70,7 @@ induced distortions" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -129,13 +129,30 @@ induced distortions" />
 induced distortions</p>
     </div>
 
-    <pre class="usage"><span class='fu'>topup</span>(<span class='no'>infile</span>, <span class='no'>datain</span>, <span class='kw'>out</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>iout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>logout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>warpres</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>subsamp</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>fwhm</span> <span class='kw'>=</span> <span class='fl'>8</span>,
-  <span class='kw'>config</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>miter</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>lambda</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ssqlambda</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>regmod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bending_energy"</span>, <span class='st'>"membrane_energy"</span>), <span class='kw'>estmov</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>minmet</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>splineorder</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>2</span>), <span class='kw'>numprec</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"double"</span>,
-  <span class='st'>"float"</span>), <span class='kw'>interp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"spline"</span>, <span class='st'>"linear"</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>),
-  <span class='kw'>regrid</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>topup</span>(
+  <span class='no'>infile</span>,
+  <span class='no'>datain</span>,
+  <span class='kw'>out</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>iout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>logout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>warpres</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+  <span class='kw'>subsamp</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>fwhm</span> <span class='kw'>=</span> <span class='fl'>8</span>,
+  <span class='kw'>config</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>miter</span> <span class='kw'>=</span> <span class='fl'>5</span>,
+  <span class='kw'>lambda</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ssqlambda</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>regmod</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bending_energy"</span>, <span class='st'>"membrane_energy"</span>),
+  <span class='kw'>estmov</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>minmet</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>),
+  <span class='kw'>splineorder</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>2</span>),
+  <span class='kw'>numprec</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"double"</span>, <span class='st'>"float"</span>),
+  <span class='kw'>interp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"spline"</span>, <span class='st'>"linear"</span>),
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>),
+  <span class='kw'>regrid</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>),
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)
 
 <span class='fu'>fsl_topup</span>(<span class='no'>...</span>)</pre>
 

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -127,10 +127,23 @@
     <p>This function calls <code>fslroi</code></p>
     </div>
 
-    <pre class="usage"><span class='fu'>fslroi</span>(<span class='no'>file</span>, <span class='kw'>xmin</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>xsize</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>ymin</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>ysize</span> <span class='kw'>=</span> -<span class='fl'>1</span>,
-  <span class='kw'>zmin</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>zsize</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>tmin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tsize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>fslroi</span>(
+  <span class='no'>file</span>,
+  <span class='kw'>xmin</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>xsize</span> <span class='kw'>=</span> -<span class='fl'>1</span>,
+  <span class='kw'>ymin</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>ysize</span> <span class='kw'>=</span> -<span class='fl'>1</span>,
+  <span class='kw'>zmin</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>zsize</span> <span class='kw'>=</span> -<span class='fl'>1</span>,
+  <span class='kw'>tmin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tsize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)
 
 <span class='fu'>fsl_roi</span>(<span class='no'>...</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".nii.gz"</span>), <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 

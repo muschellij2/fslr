@@ -71,7 +71,7 @@ register EPI images (typically functional or diffusion) to structural
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -131,14 +131,26 @@ register EPI images (typically functional or diffusion) to structural
 (e.g. T1-weighted) image.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fslepi_reg</span>(<span class='no'>epi</span>, <span class='no'>t1</span>, <span class='no'>t1_brain</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fmap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fmap_mag</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fmap_mag_brain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>echo_spacing</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>phase_enc_dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"x"</span>,
-  <span class='st'>"y"</span>, <span class='st'>"z"</span>, <span class='st'>"-x"</span>, <span class='st'>"-y"</span>, <span class='st'>"-z"</span>), <span class='kw'>weight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>fslepi_reg</span>(
+  <span class='no'>epi</span>,
+  <span class='no'>t1</span>,
+  <span class='no'>t1_brain</span>,
+  <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>fmap</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fmap_mag</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fmap_mag_brain</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>echo_spacing</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>phase_enc_dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"x"</span>, <span class='st'>"y"</span>, <span class='st'>"z"</span>, <span class='st'>"-x"</span>, <span class='st'>"-y"</span>, <span class='st'>"-z"</span>),
+  <span class='kw'>weight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='no'>...</span>
+)
 
-<span class='fu'>fsl_epi_reg</span>(<span class='no'>...</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".nii.gz"</span>),
-  <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>fsl_epi_reg</span>(<span class='no'>...</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".nii.gz"</span>), <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>epi_reg</span>(<span class='no'>...</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".nii.gz"</span>), <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 

@@ -72,7 +72,7 @@ and/or perform cluster-based inference.  Wrapper for cluster" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -132,11 +132,26 @@ and/or perform cluster-based inference.  Wrapper for <code>cluster</code></h1>
 and/or perform cluster-based inference.  Wrapper for <code>cluster</code></p>
     </div>
 
-    <pre class="usage"><span class='fu'>fsl_cluster</span>(<span class='no'>file</span>, <span class='no'>threshold</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>cope_image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pthresh</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>peakdist</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>volume</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>smooth_est</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>voxel_resel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fractional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>connectivity</span> <span class='kw'>=</span> <span class='fl'>26</span>, <span class='kw'>mm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>find_minima</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>standard_image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>fsl_cluster</span>(
+  <span class='no'>file</span>,
+  <span class='no'>threshold</span>,
+  <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>cope_image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>pthresh</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>peakdist</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>volume</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>smooth_est</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>voxel_resel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>fractional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>connectivity</span> <span class='kw'>=</span> <span class='fl'>26</span>,
+  <span class='kw'>mm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>find_minima</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>standard_image</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)
 
 <span class='fu'>fslcluster</span>(<span class='no'>...</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
@@ -239,7 +254,7 @@ Passed to <code>readnii</code>.</p></td>
 <span class='no'>file</span> <span class='kw'>=</span> <span class='fu'><a href='mni_fname.html'>mni_fname</a></span>(<span class='kw'>brain</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='no'>threshold</span> <span class='kw'>=</span> <span class='fl'>6000</span>
 <span class='no'>clus</span> <span class='kw'>=</span> <span class='fu'>fsl_cluster</span>(<span class='no'>file</span>, <span class='no'>threshold</span>)
-}</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/cluster --in="/usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz"  --thresh=6000 --oindex=/tmp/RtmpOwPplT/file55b5272e6687.nii.gz --othresh=/tmp/RtmpOwPplT/file55b5feb04c.nii.gz --olmax=/tmp/RtmpOwPplT/file55b57b583d14 --olmaxim=/tmp/RtmpOwPplT/file55b52f220b26.nii.gz --osize=/tmp/RtmpOwPplT/file55b533f39f3e.nii.gz --omax=/tmp/RtmpOwPplT/file55b545eaf922.nii.gz --omean=/tmp/RtmpOwPplT/file55b51633b718.nii.gz  --minclustersize --verbose &gt; /tmp/RtmpOwPplT/file55b5781df0a ;</span></div></pre>
+}</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/cluster --in="/usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz"  --thresh=6000 --oindex=/tmp/RtmpJrmw1A/file5769211a273e.nii.gz --othresh=/tmp/RtmpJrmw1A/file576965927a8.nii.gz --olmax=/tmp/RtmpJrmw1A/file57692656db2 --olmaxim=/tmp/RtmpJrmw1A/file576969840b75.nii.gz --osize=/tmp/RtmpJrmw1A/file57691cb721a5.nii.gz --omax=/tmp/RtmpJrmw1A/file576912ef24bb.nii.gz --omean=/tmp/RtmpJrmw1A/file576912736001.nii.gz  --minclustersize --verbose &gt; /tmp/RtmpJrmw1A/file576914ca53ae ;</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

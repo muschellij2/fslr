@@ -71,7 +71,7 @@ either saves the image or returns an object of class nifti." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -133,8 +133,17 @@ either saves the image or returns an object of class nifti.</p>
 
     <pre class="usage"><span class='fu'>fsl_erode</span>(<span class='no'>...</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".nii.gz"</span>), <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>fslerode</span>(<span class='no'>file</span>, <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>kopts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>fslerode</span>(
+  <span class='no'>file</span>,
+  <span class='kw'>outfile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>retimg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>reorient</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>intern</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>kopts</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -198,8 +207,8 @@ and will return an output filename, so to be used for piping</p>
 <span class='no'>mask</span> <span class='kw'>=</span> <span class='no'>img</span> <span class='kw'>&gt;</span> <span class='fl'>.5</span>
 <span class='no'>eroded</span> <span class='kw'>=</span> <span class='fu'>fslerode</span>(<span class='no'>mask</span>, <span class='kw'>kopts</span> <span class='kw'>=</span> <span class='st'>"-kernel boxv 5"</span>, <span class='kw'>retimg</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 })
-}</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/tmp/RtmpOwPplT/file55b52383b5f5.nii.gz" -kernel boxv 5 -ero  "/tmp/RtmpOwPplT/file55b52da3bb82"</span></div><div class='output co'>#&gt;    user  system elapsed 
-#&gt;   0.424   0.018   0.444 </div></pre>
+}</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/tmp/RtmpJrmw1A/file57697c37e9f1.nii.gz" -kernel boxv 5 -ero  "/tmp/RtmpJrmw1A/file576977097925"</span></div><div class='output co'>#&gt;    user  system elapsed 
+#&gt;   0.437   0.010   0.447 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
