@@ -5,8 +5,15 @@
 \alias{fsl_xor}
 \title{Perform XOR/Exclusive Or operation on Images using FSL}
 \usage{
-fslxor(file, file2, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, ...)
+fslxor(
+  file,
+  file2,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  ...
+)
 
 fsl_xor(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 }

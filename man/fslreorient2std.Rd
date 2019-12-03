@@ -5,11 +5,22 @@
 \alias{fslreorient2std_mat}
 \title{FSL Orient to MNI}
 \usage{
-fslreorient2std(file, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, verbose = TRUE, opts = "", ...)
+fslreorient2std(
+  file,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  verbose = TRUE,
+  opts = "",
+  ...
+)
 
-fslreorient2std_mat(file, matfile = tempfile(fileext = ".mat"),
-  verbose = TRUE, ...)
+fslreorient2std_mat(
+  file,
+  matfile = tempfile(fileext = ".mat"),
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

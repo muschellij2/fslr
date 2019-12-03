@@ -5,9 +5,17 @@
 \alias{fsl_robustfov}
 \title{FSL Robust Field of View}
 \usage{
-fslrobustfov(file, brain_size = NULL, mat_name = NULL,
-  roi_name = NULL, retimg = TRUE, reorient = FALSE, intern = FALSE,
-  verbose = TRUE, ...)
+fslrobustfov(
+  file,
+  brain_size = NULL,
+  mat_name = NULL,
+  roi_name = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  verbose = TRUE,
+  ...
+)
 
 fsl_robustfov(retimg = FALSE, ...)
 }

@@ -5,9 +5,14 @@
 \alias{deface_image}
 \title{Face Removal Mask}
 \usage{
-face_removal_mask(file, template = mni_fname(mm = "1"),
-  face_mask = mni_face_fname(mm = "1"), outfile = NULL,
-  cost = "mutualinfo", retimg = FALSE)
+face_removal_mask(
+  file,
+  template = mni_fname(mm = "1"),
+  face_mask = mni_face_fname(mm = "1"),
+  outfile = NULL,
+  cost = "mutualinfo",
+  retimg = FALSE
+)
 
 deface_image(file, ...)
 }

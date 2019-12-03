@@ -4,8 +4,12 @@
 \alias{download_fsl}
 \title{Download FSL}
 \usage{
-download_fsl(os = c("macosx", "redhat5", "redhat6", "centos5", "centos6",
-  "debian", "ubuntu"), outdir = tempdir(), overwrite = TRUE, ...)
+download_fsl(
+  os = c("macosx", "redhat5", "redhat6", "centos5", "centos6", "debian", "ubuntu"),
+  outdir = tempdir(),
+  overwrite = TRUE,
+  ...
+)
 }
 \arguments{
 \item{os}{Operating system}

@@ -4,8 +4,16 @@
 \alias{fslcpgeom}
 \title{FSL Copy Geometry}
 \usage{
-fslcpgeom(file, file_with_header, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", verbose = TRUE, ...)
+fslcpgeom(
+  file,
+  file_with_header,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

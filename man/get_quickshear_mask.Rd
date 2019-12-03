@@ -8,8 +8,13 @@
 \usage{
 get_quickshear_mask(brain_mask, buffer = 10, verbose = TRUE)
 
-quickshear_deface_image(file, brain_mask = NULL, buffer = 10,
-  verbose = TRUE, ...)
+quickshear_deface_image(
+  file,
+  brain_mask = NULL,
+  buffer = 10,
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{brain_mask}{Brain mask image.  If \code{NULL}, then

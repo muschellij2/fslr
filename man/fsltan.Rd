@@ -7,8 +7,15 @@
 \usage{
 fsl_tan(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fsltan(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fsltan(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

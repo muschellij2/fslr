@@ -4,8 +4,15 @@
 \alias{fsl_anat}
 \title{FSL Anatomical Processing Script}
 \usage{
-fsl_anat(file, modality = c("T1", "T2", "PD"), outdir = NULL,
-  intern = FALSE, opts = "", verbose = TRUE, ...)
+fsl_anat(
+  file,
+  modality = c("T1", "T2", "PD"),
+  outdir = NULL,
+  intern = FALSE,
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file}{(character) image to be manipulated, should be full path}

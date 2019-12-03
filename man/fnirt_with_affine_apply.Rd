@@ -4,10 +4,21 @@
 \alias{fnirt_with_affine_apply}
 \title{Applies FLIRT then FNIRT transformations}
 \usage{
-fnirt_with_affine_apply(infile, reffile, flirt.omat = NULL,
-  flirt.outfile = NULL, fnirt.warpfile = NULL, outfile = NULL,
-  retimg = TRUE, reorient = FALSE, intern = FALSE, flirt.opts = "",
-  opts = "", verbose = TRUE, ...)
+fnirt_with_affine_apply(
+  infile,
+  reffile,
+  flirt.omat = NULL,
+  flirt.outfile = NULL,
+  fnirt.warpfile = NULL,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  flirt.opts = "",
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{infile}{(character) input filename}

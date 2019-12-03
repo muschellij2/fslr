@@ -7,8 +7,15 @@
 \usage{
 fsl_log(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fsllog(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fsllog(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

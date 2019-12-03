@@ -7,8 +7,15 @@
 \usage{
 fsl_recip(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslrecip(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fslrecip(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

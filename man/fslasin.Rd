@@ -7,8 +7,15 @@
 \usage{
 fsl_asin(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslasin(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fslasin(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

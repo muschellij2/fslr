@@ -7,8 +7,15 @@
 \usage{
 fsl_sqr(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslsqr(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fslsqr(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

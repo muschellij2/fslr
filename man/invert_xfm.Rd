@@ -8,11 +8,14 @@
 \usage{
 invert_xfm(inmat, omat = tempfile(fileext = ".mat"), verbose = TRUE)
 
-concat_xfm(inmat, inmat2, omat = tempfile(fileext = ".mat"),
-  verbose = TRUE)
+concat_xfm(inmat, inmat2, omat = tempfile(fileext = ".mat"), verbose = TRUE)
 
-fixscaleskew_xfm(inmat, inmat2, omat = tempfile(fileext = ".mat"),
-  verbose = TRUE)
+fixscaleskew_xfm(
+  inmat,
+  inmat2,
+  omat = tempfile(fileext = ".mat"),
+  verbose = TRUE
+)
 }
 \arguments{
 \item{inmat}{input matrix transformation}

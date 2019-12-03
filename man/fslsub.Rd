@@ -7,8 +7,16 @@
 \usage{
 fsl_sub(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslsub(file, file2, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fslsub(
+  file,
+  file2,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

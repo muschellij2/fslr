@@ -5,8 +5,15 @@
 \alias{fsl_or}
 \title{Perform OR/Union operation on Images using FSL}
 \usage{
-fslor(file, file2, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, ...)
+fslor(
+  file,
+  file2,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  ...
+)
 
 fsl_or(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 }

@@ -7,8 +7,17 @@
 \usage{
 fsl_erode(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslerode(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, kopts = "", opts = "", verbose = TRUE, ...)
+fslerode(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  kopts = "",
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

@@ -4,8 +4,15 @@
 \alias{fsl_smoothest}
 \title{Smoothness Estimation using \code{smoothest}}
 \usage{
-fsl_smoothest(file, residual_image, z_image, dof = NULL, opts = "",
-  verbose = TRUE, ...)
+fsl_smoothest(
+  file,
+  residual_image,
+  z_image,
+  dof = NULL,
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file}{filename of input brain mask}

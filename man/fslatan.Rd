@@ -7,8 +7,15 @@
 \usage{
 fsl_atan(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslatan(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fslatan(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

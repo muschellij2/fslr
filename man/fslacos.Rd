@@ -7,8 +7,15 @@
 \usage{
 fsl_acos(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslacos(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fslacos(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

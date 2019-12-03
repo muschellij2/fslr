@@ -4,8 +4,15 @@
 \alias{mid_sagittal_align}
 \title{Mid-Sagittal Plane Alignment}
 \usage{
-mid_sagittal_align(file, outfile = NULL, retimg = TRUE, opts = "",
-  translation = TRUE, force_rpi = TRUE, verbose = TRUE)
+mid_sagittal_align(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  opts = "",
+  translation = TRUE,
+  force_rpi = TRUE,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{file}{(character) input filename or class nifti}

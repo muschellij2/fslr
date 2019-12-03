@@ -4,9 +4,19 @@
 \alias{dtifit}
 \title{DTI Fitting Procedure from FSL}
 \usage{
-dtifit(infile, bvecs, bvals, mask = NULL, outprefix = NULL,
-  opts = "", bet.opts = "", verbose = TRUE, sse = FALSE,
-  save_tensor = FALSE, grad_image = NULL)
+dtifit(
+  infile,
+  bvecs,
+  bvals,
+  mask = NULL,
+  outprefix = NULL,
+  opts = "",
+  bet.opts = "",
+  verbose = TRUE,
+  sse = FALSE,
+  save_tensor = FALSE,
+  grad_image = NULL
+)
 }
 \arguments{
 \item{infile}{Input filename}

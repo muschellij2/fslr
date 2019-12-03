@@ -4,8 +4,14 @@
 \alias{fsl_resample}
 \title{Title}
 \usage{
-fsl_resample(file, voxel_size, outfile = NULL, retimg = TRUE,
-  reorient = FALSE, verbose = TRUE)
+fsl_resample(
+  file,
+  voxel_size,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{file}{Input file to resample}

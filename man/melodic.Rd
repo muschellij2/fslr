@@ -4,8 +4,14 @@
 \alias{melodic}
 \title{Run MELODIC ICA}
 \usage{
-melodic(file, outdir = dirname(file), intern = FALSE, opts = "",
-  verbose = TRUE, ...)
+melodic(
+  file,
+  outdir = dirname(file),
+  intern = FALSE,
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file}{(character) image to be run}

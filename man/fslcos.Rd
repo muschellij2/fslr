@@ -7,8 +7,15 @@
 \usage{
 fsl_cos(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslcos(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fslcos(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

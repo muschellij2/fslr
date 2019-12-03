@@ -1,146 +1,229 @@
 #' @title Probabilistic diffusion tractography with multiple fibre orientations
-#' @description This function wraps \code{probtrackx2} from FSL 
+#' @description This function wraps \code{probtrackx} from FSL 
 #' 
-#' @param samples Basename for samples files - e.g. 'merged'
-#' @param mask Bet binary mask file in diffusion space
-#' @param seed Seed volume or list (ascii text file) of volumes and/or surfaces
-#' @param verbose Verbose level, [0-2]
-#' @param out Output file (default='fdt_paths')
-#' @param dir Directory to put the final volumes in - code makes this directory - default='logdir'
-#' @param forcedir Use the actual directory name given - i.e. don't add + to make a new directory
-#' @param simple Track from a list of voxels (seed must be a ASCII list of coordinates)
-#' @param network Activate network mode - only keep paths going through at least one of the other seed masks
-#' @param opd Output path distribution
-#' @param pd Correct path distribution for the length of the pathways
-#' @param fopd Other mask for binning tract distribution
-#' @param os2t Output seeds to targets
-#' @param s2tastext Output seed-to-target counts as a text file (default in simple mode)
-#' @param targetmasks File containing a list of target masks - for seeds_to_targets classification
-#' @param waypoints Waypoint mask or ascii list of waypoint masks - only keep paths going through ALL the masks
-#' @param waycond Waypoint condition. Either 'AND' (default) or 'OR'
-#' @param wayorder Reject streamlines that do not hit waypoints in given order. Only valid if waycond=AND
-#' @param onewaycondition Apply waypoint conditions to each half tract separately
-#' @param avoid Reject pathways passing through locations given by this mask
-#' @param stop Stop tracking at locations given by this mask file
-#' @param omatrix1 Output matrix1 - SeedToSeed Connectivity
-#' @param distthresh1 Discards samples (in matrix1) shorter than this threshold (in mm - default=0)
-#' @param omatrix2 Output matrix2 - SeedToLowResMask
-#' @param target2 Low resolution binary brain mask for storing connectivity distribution in matrix2 mode
-#' @param omatrix3 Output matrix3 (NxN connectivity matrix)
-#' @param target3 Mask used for NxN connectivity matrix (or Nxn if lrtarget3 is set)
-#' @param lrtarget3 Column-space mask used for Nxn connectivity matrix
-#' @param distthresh3 Discards samples (in matrix3) shorter than this threshold (in mm - default=0)
-#' @param xfm Transform taking seed space to DTI space (either FLIRT matrix or FNIRT warpfield) - default is identity
-#' @param invxfm Transform taking DTI space to seed space (compulsory when using a warpfield for seeds_to_dti)
-#' @param seedref Reference vol to define seed space in simple mode - diffusion space assumed if absent
-#' @param meshspace Mesh reference space - either 'caret' (default) or 'freesurfer' or 'first' or 'vox'
-#' @param nsamples Number of samples - default=5000
-#' @param nsteps Number of steps per sample - default=2000
-#' @param steplength Steplength in mm - default=0.5
-#' @param distthresh Discards samples shorter than this threshold (in mm - default=0)
-#' @param cthr Curvature threshold - default=0.2
-#' @param fibthresh Volume fraction before subsidiary fibre orientations are considered - default=0.01
-#' @param loopcheck Perform loopchecks on paths - slower, but allows lower curvature threshold
-#' @param usef Use anisotropy to constrain tracking
-#' @param modeuler Use modified euler streamlining
-#' @param sampvox Sample random points within x mm sphere seed voxels (e.g. --sampvox=5). Default=0
-#' @param randfib Default 0. Set to 1 to randomly sample initial fibres (with f > fibthresh).  Set to 2 to sample in proportion fibres (with f>fibthresh) to f.  Set to 3 to sample ALL populations at random (even if f<fibthresh)
-#' @param fibst Force a starting fibre for tracking - default=1, i.e. first fibre orientation. Only works if randfib==0
-#' @param rseed Random seed
-#' @param ... Additional arguments
-probtrackx = function(samples = "merged",
-                      mask,
-                      seed,
-                      verbose = TRUE,
-                      out = NULL,
-                      dir = NULL,
-                      forcedir = FALSE,
-                      simple = NULL,
-                      network = FALSE,
-                      opd = NULL,
-                      pd = FALSE,
-                      fopd = NULL,
-                      os2t = FALSE,
-                      s2tastext = NULL,
-                      targetmasks = NULL,
-                      waypoints = NULL,
-                      waycond = c("AND", "OR"),
-                      wayorder = NULL,
-                      onewaycondition = FALSE,
-                      avoid = NULL,
-                      stop = NULL,
-                      omatrix1 = NULL,
-                      distthresh1 = NULL,
-                      omatrix2 = NULL,
-                      target2 = NULL,
-                      omatrix3 = NULL,
-                      target3 = NULL,
-                      lrtarget3 = NULL,
-                      distthresh3 = 0,
-                      xfm = NULL,
-                      invxfm = NULL,
-                      seedref = NULL,
-                      meshspace = c("caret", "freesurfer", "first", "vox"),
-                      nsamples = 5000,
-                      nsteps = 2000,
-                      steplength = 0.5,
-                      distthresh = 0,
-                      cthr = 0.2,
-                      fibthresh = 0.01,
-                      loopcheck = FALSE,
-                      usef = FALSE,
-                      modeuler = FALSE,
-                      sampvox = 0,
-                      randfib = 0, # max 3
-                      fibst = 1,
-                      rseed = NULL,
-                      ...
-){
-  # args = as.list(args(probtrackx))
-  # args = args[ names(args) != ""]
-  # 
-  # parse_args = function(x){
-  #   x = paste0(names(x), '=', x)
-  #   x = paste(x, collapse = " ")
-  #   x
-  # }  
-  # 
-  # nums = c("distthresh3", "nsamples", "nsteps", "steplength", "distthresh", 
-  #              "cthr", "fibthresh", "sampvox", "randfib", "fibst")
-  # chars = c("samples",
-  #           "mask",
-  #           "seed",
-  #           "out", "dir", "simple", "opd", "fopd", "s2tastext", "targetmasks", 
-  #           "waypoints", "waycond", "wayorder", "avoid", "stop", "omatrix1", 
-  #           "distthresh1", "omatrix2", "target2", "omatrix3", "target3", 
-  #           "lrtarget3", "xfm", "invxfm", "seedref", "meshspace", "rseed"
-  # )
-  # logs = c("verbose", "forcedir", "network", "pd", "os2t", "onewaycondition", 
-  #          "loopcheck", "usef", "modeuler")
-  # 
-  # vec = c("--data" = infile,
-  #         "--mask" = mask,
-  #         "--bvecs" = bvecs,
-  #         "--bvals" = bvals)
-  # vec = shQuote(vec)
-  # vec = parse_args(vec)
-  # 
-  # ####need to unname
-  # num_vec = c(
-  #   "--nfibres" = nfibres,
-  #   "--njumps" = njumps,
-  #   "--burnin" = burnin, 
-  #   "--burnin_noard" = burnin_noard, 
-  #   "--sampleevery" = sampleevery, 
-  #   "--updateproposalevery" = updateproposalevery)  
-  # num_vec = parse_num_args(num_vec)
-  # vec = paste(vec, num_vec)
-  # 
-  # 
-  # verbose = as.numeric(verbose)
-  # make_args
-  # 
+#' @param samples (nifti/character) Basename for samples files
+#' @param mask (nifti/character) Bet binary mask file in diffusion space
+#' @param seed (nifti/character) Seed volume, or voxel, or ascii file with multiple volumes, or freesurfer label file
+#' @param verbose (logical/numeric) Verbose level, [0-2]
+#' @param mode (character) Use --mode=simple for single seed voxel
+#' @param targetmasks (character) File containing a list of target masks - required for seeds_to_targets classification
+#' @param mask2 (nifti/character) Second mask in twomask_symm mode.
+#' @param waypoints (nifti/character) Waypoint mask or ascii list of waypoint masks - only keep paths going through ALL the masks
+#' @param network (logical) Activate network mode - only keep paths going through at least one seed mask (required if multiple seed masks)
+#' @param mesh (character) Freesurfer-type surface descriptor (in ascii format)
+#' @param seedref (nifti/character) Reference vol to define seed space in simple mode - diffusion space assumed if absent
+#' @param dir (logical) Directory to put the final volumes in - code makes this directory - default='logdir'
+#' @param forcedir (logical) Use the actual directory name given - i.e. don't add + to make a new directory
+#' @param opd (logical) Output path distribution
+#' @param pd (logical) Correct path distribution for the length of the pathways
+#' @param os2t (logical) Output seeds to targets
+#' @param outfile (character) Output file (default='fdt_paths')
+#' @param avoid (nifti/character) Reject pathways passing through locations given by this mask
+#' @param stop (nifti/character) Stop tracking at locations given by this mask file
+#' @param xfm (character) Transform taking seed space to DTI space (either FLIRT matrix or FNIRT warpfield) - default is identity
+#' @param invxfm (character) Transform taking DTI space to seed space (compulsory when using a warpfield for seeds_to_dti)
+#' @param nsamples (numeric) Number of samples - default=5000
+#' @param nsteps (numeric) Number of steps per sample - default=2000
+#' @param distthresh (numeric) Discards samples shorter than this threshold (in mm - default=0)
+#' @param cthr (numeric) Curvature threshold - default=0.2
+#' @param fibthresh (numeric) Volume fraction before subsidary fibre orientations are considered - default=0.01
+#' @param sampvox (logical) Sample random points within seed voxels
+#' @param steplength (numeric) Steplength in mm - default=0.5
+#' @param loopcheck (logical) Perform loopchecks on paths - slower, but allows lower curvature threshold
+#' @param usef (logical) Use anisotropy to constrain tracking
+#' @param randfib (numeric) Default 0. Set to 1 to randomly sample initial fibres (with f > fibthresh). Set to 2 to sample in proportion fibres (with f>fibthresh) to f. Set to 3 to sample ALL populations at random (even if f<fibthresh)
+#' @param fibst (numeric) Force a starting fibre for tracking - default=1, i.e. first fibre orientation. Only works if randfib==0
+#' @param modeuler (logical) Use modified euler streamlining
+#' @param rseed (numeric) Random seed
+#' @param s2tastext (logical) Output seed-to-target counts as a text file (useful when seeding from a mesh)
+#' @param opts Additional options or way to specify things instead of command
+#' line arguments
+#' 
+#' @return A filename of the output file
+#' @export
+probtrackx = function(
+  samples = "merged",
+  mask,
+  seed,
+  outfile = "fdt_paths", 
+  verbose = TRUE,
+  mode = NULL, 
+  targetmasks = NULL, 
+  mask2 = NULL, 
+  waypoints = NULL, 
+  network = FALSE, 
+  mesh = NULL, 
+  seedref = NULL, 
+  dir = FALSE, 
+  forcedir = FALSE, 
+  opd = FALSE, 
+  pd = FALSE, 
+  os2t = FALSE, 
+  avoid = NULL, 
+  stop = NULL, 
+  xfm = NULL, 
+  invxfm = NULL, 
+  nsamples = 5000, 
+  nsteps = 2000, 
+  distthresh = 0, 
+  cthr = 0.2, 
+  fibthresh = 0.01, 
+  sampvox = FALSE, 
+  steplength = 0.5, 
+  loopcheck = FALSE, 
+  usef = FALSE, 
+  randfib = c(0, 1, 2, 3), 
+  fibst = 1, 
+  modeuler = FALSE, 
+  rseed = NULL, 
+  s2tastext = FALSE,
+  opts = ""
+  ) {
   
+  warning(paste0("probtrackx has not been tested thoroughly, ",
+                 "use at your own risk!"))
+  verbose = as.numeric(verbose)
+  randfib = as.character(randfib)
+  randfib = match.arg(randfib, choices = c("0", "1", "2", "3"))
+  args = list(
+    samples = samples, 
+    mask = mask, 
+    seed = seed, 
+    verbose = verbose, 
+    mode = mode, 
+    targetmasks = targetmasks, 
+    mask2 = mask2, 
+    waypoints = waypoints, 
+    network = network, 
+    mesh = mesh, 
+    seedref = seedref, 
+    dir = dir, 
+    forcedir = forcedir, 
+    opd = opd, 
+    pd = pd, 
+    os2t = os2t, 
+    outfile = outfile, 
+    avoid = avoid, 
+    stop = stop, 
+    xfm = xfm, 
+    invxfm = invxfm, 
+    nsamples = nsamples, 
+    nsteps = nsteps, 
+    distthresh = distthresh, 
+    cthr = cthr, 
+    fibthresh = fibthresh, 
+    sampvox = sampvox, 
+    steplength = steplength, 
+    loopcheck = loopcheck, 
+    usef = usef, 
+    randfib = randfib, 
+    fibst = fibst, 
+    modeuler = modeuler, 
+    rseed = rseed, 
+    s2tastext = s2tastext)
+  types = list(
+    samples = "character", 
+    mask = "nifti/character", 
+    seed = "nifti/character", 
+    verbose = "logical/numeric", 
+    mode = "character", 
+    targetmasks = "character", 
+    mask2 = "nifti/character", 
+    waypoints = "nifti/character", 
+    network = "logical", 
+    mesh = "character", 
+    seedref = "nifti/character", 
+    dir = "logical", 
+    forcedir = "logical", 
+    opd = "logical", 
+    pd = "logical", 
+    os2t = "logical", 
+    outfile = "character", 
+    avoid = "nifti/character", 
+    stop = "nifti/character", 
+    xfm = "character", 
+    invxfm = "character", 
+    nsamples = "numeric", 
+    nsteps = "numeric", 
+    distthresh = "numeric", 
+    cthr = "numeric", 
+    fibthresh = "numeric", 
+    sampvox = "logical", 
+    steplength = "numeric", 
+    loopcheck = "logical", 
+    usef = "logical", 
+    randfib = "numeric", 
+    fibst = "numeric", 
+    modeuler = "logical", 
+    rseed = "numeric", 
+    s2tastext = "logical")
   
+  if (!all(is.character(seed))) {
+    seed = checkimg(seed)
+  }
+  if (!is.character(mask)) {
+    mask = checkimg(mask)
+  }
+  if (!is.null(mask2)) {
+    mask2 = checkimg(mask2)
+  }
+  if (is.null(outfile)) {
+    outfile = tempfile()
+  }
+  if (!is.null(waypoints) && !is.character(waypoints)) {
+    waypoints = checkimg(waypoints)
+  }
+  null_args = sapply(args, is.null)
+  args = args[!null_args]
+  
+  for (arg_name in seq(names(args))) {
+    arg = args[[arg_name]]
+    arg_type = types[[arg_name]]
+    if (arg_type == "nifti/character") {
+      arg = checkimg(arg)
+    }
+    if (grepl("character", arg_type)) {
+      arg = path.expand(arg)
+    }
+    if (!is.null(arg)) {
+      arg_length = length(arg)
+      if (arg_length > 1) {
+        stop(paste0(arg_name, " is multiple values!"))
+      }
+      #make it logical
+      if (arg_type == "logical") {
+        arg = as.logical(arg)
+      }
+      # steps = 0.5 becomes --steps=0.5
+      if (arg_type != "logical") {
+        arg = paste0("--", arg_name, "=", arg)
+      } else {
+        # just --sampvox or NULL (goes away)
+        if (arg) {
+          arg = paste0("--", arg_name)
+        } else {
+          arg = NULL
+        }
+      }
+    }
+    args[[arg_name]] = arg
+  }
+  null_args = sapply(args, is.null)
+  args = args[!null_args]
+  
+  args = paste(args, collapse = " ")
+  opts = paste(opts, collapse = " ")
+  args = paste(args, opts)
+  outfile = args$outfile
+  
+  cmd = get.fsl()
+  cmd = paste(cmd, args)
+  ext = get.imgext()
+  if (verbose > 0) {
+    message(cmd, "\n")
+  }
+  res = system(cmd, intern = FALSE)
+  outfile = paste0(outfile, ext)  
+  attr(outfile, "result") = res
+  outfile 
 }
-                      

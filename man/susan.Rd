@@ -4,10 +4,22 @@
 \alias{susan}
 \title{FSL SUSAN noise reduction}
 \usage{
-susan(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, bthresh = 0.1, sigma = 3, dimg = c(3, 2),
-  use_median = FALSE, n_usans = c(0, 1, 2), extra.scans = list(),
-  opts = "", verbose = TRUE, ...)
+susan(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  bthresh = 0.1,
+  sigma = 3,
+  dimg = c(3, 2),
+  use_median = FALSE,
+  n_usans = c(0, 1, 2),
+  extra.scans = list(),
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

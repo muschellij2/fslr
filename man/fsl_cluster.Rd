@@ -7,11 +7,26 @@
 \title{Form clusters, report information about clusters 
 and/or perform cluster-based inference.  Wrapper for \code{cluster}}
 \usage{
-fsl_cluster(file, threshold, retimg = FALSE, reorient = FALSE,
-  opts = "", cope_image = NULL, pthresh = NULL, peakdist = 0,
-  volume = FALSE, smooth_est = NULL, voxel_resel = NULL,
-  fractional = FALSE, connectivity = 26, mm = FALSE,
-  find_minima = FALSE, standard_image = NULL, verbose = TRUE, ...)
+fsl_cluster(
+  file,
+  threshold,
+  retimg = FALSE,
+  reorient = FALSE,
+  opts = "",
+  cope_image = NULL,
+  pthresh = NULL,
+  peakdist = 0,
+  volume = FALSE,
+  smooth_est = NULL,
+  voxel_resel = NULL,
+  fractional = FALSE,
+  connectivity = 26,
+  mm = FALSE,
+  find_minima = FALSE,
+  standard_image = NULL,
+  verbose = TRUE,
+  ...
+)
 
 fslcluster(..., retimg = TRUE)
 

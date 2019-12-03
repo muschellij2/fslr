@@ -4,8 +4,19 @@
 \alias{eddy}
 \title{Eddy Current Correction}
 \usage{
-eddy(infile, mask, acq_file, index_file, bvecs, bvals, outfile = NULL,
-  retimg = TRUE, opts = "", verbose = TRUE, ...)
+eddy(
+  infile,
+  mask,
+  acq_file,
+  index_file,
+  bvecs,
+  bvals,
+  outfile = NULL,
+  retimg = TRUE,
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{infile}{input filename of 4D image.}

@@ -4,10 +4,23 @@
 \alias{fslcmd}
 \title{FSL Command Wrapper}
 \usage{
-fslcmd(func, file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", verbose = TRUE, samefile = FALSE,
-  opts_after_outfile = FALSE, frontopts = "", no.outfile = FALSE,
-  trim_front = FALSE, run = TRUE, ...)
+fslcmd(
+  func,
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  verbose = TRUE,
+  samefile = FALSE,
+  opts_after_outfile = FALSE,
+  frontopts = "",
+  no.outfile = FALSE,
+  trim_front = FALSE,
+  run = TRUE,
+  ...
+)
 }
 \arguments{
 \item{func}{(character) FSL function}

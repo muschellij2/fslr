@@ -5,12 +5,25 @@
 \alias{fsl_tsplot.help}
 \title{FSL Timeseries Plot using `fsl_tsplot` (not `tsplot`)}
 \usage{
-fsl_tsplot(infile, outfile = tempfile(fileext = ".png"),
-  plot_title = NULL, legend = NULL, labels = NULL, ymin = NULL,
-  ymax = NULL, xlabel = NULL, ylabel = NULL, height = NULL,
-  width = NULL, precision = NULL, unit = NULL,
-  scientific_notation = FALSE, start_position = NULL,
-  end_position = NULL, ...)
+fsl_tsplot(
+  infile,
+  outfile = tempfile(fileext = ".png"),
+  plot_title = NULL,
+  legend = NULL,
+  labels = NULL,
+  ymin = NULL,
+  ymax = NULL,
+  xlabel = NULL,
+  ylabel = NULL,
+  height = NULL,
+  width = NULL,
+  precision = NULL,
+  unit = NULL,
+  scientific_notation = FALSE,
+  start_position = NULL,
+  end_position = NULL,
+  ...
+)
 
 fsl_tsplot.help()
 }

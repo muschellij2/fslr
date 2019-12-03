@@ -7,8 +7,15 @@
 \usage{
 fsl_edge(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fsledge(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fsledge(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

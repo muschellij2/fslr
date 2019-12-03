@@ -7,8 +7,17 @@
 \usage{
 fsl_mask(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslmask(file, mask, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", verbose = TRUE, ...)
+fslmask(
+  file,
+  mask,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

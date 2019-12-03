@@ -4,8 +4,15 @@
 \alias{run_first_all}
 \title{Run FIRST All}
 \usage{
-run_first_all(img, oprefix = tempfile(), brain_extracted = FALSE,
-  structures = NULL, affine = NULL, opts = "", verbose = TRUE)
+run_first_all(
+  img,
+  oprefix = tempfile(),
+  brain_extracted = FALSE,
+  structures = NULL,
+  affine = NULL,
+  opts = "",
+  verbose = TRUE
+)
 }
 \arguments{
 \item{img}{pecifies the input image (T1-weighted)}

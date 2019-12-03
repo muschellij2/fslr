@@ -7,8 +7,16 @@
 \usage{
 fsl_maths(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslmaths(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", verbose = TRUE, ...)
+fslmaths(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

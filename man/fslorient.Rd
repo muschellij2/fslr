@@ -4,8 +4,15 @@
 \alias{fslorient}
 \title{FSL Orient}
 \usage{
-fslorient(file, retimg = TRUE, reorient = FALSE, intern = FALSE,
-  opts = "", verbose = TRUE, ...)
+fslorient(
+  file,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

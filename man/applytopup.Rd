@@ -6,9 +6,16 @@
 \alias{fsl_applytopup}
 \title{applytopup - calling FSL applytopup}
 \usage{
-applytopup(infile, datain, index, topup_files, out = NULL,
-  method = c("lsr", "jac"), interp = c("spline", "trilinear"),
-  verbose = TRUE)
+applytopup(
+  infile,
+  datain,
+  index,
+  topup_files,
+  out = NULL,
+  method = c("lsr", "jac"),
+  interp = c("spline", "trilinear"),
+  verbose = TRUE
+)
 
 apply_topup(...)
 

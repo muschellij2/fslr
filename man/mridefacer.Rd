@@ -7,10 +7,17 @@
 \usage{
 mridefacer(file, ..., verbose = TRUE)
 
-get_mridefacer_mask(file, brain_mask = NULL, bet_opts = "-f 0.5",
-  search_radius = 90, opts = NULL, template_brain = NULL,
-  template_brain_weight = NULL, template_biometric_mask = NULL,
-  verbose = TRUE)
+get_mridefacer_mask(
+  file,
+  brain_mask = NULL,
+  bet_opts = "-f 0.5",
+  search_radius = 90,
+  opts = NULL,
+  template_brain = NULL,
+  template_brain_weight = NULL,
+  template_biometric_mask = NULL,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{file}{input file image to remove face/ears}

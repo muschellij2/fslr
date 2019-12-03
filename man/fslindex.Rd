@@ -7,8 +7,15 @@
 \usage{
 fsl_index(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslindex(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fslindex(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

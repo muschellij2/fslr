@@ -4,8 +4,15 @@
 \alias{fslsin}
 \title{Sine Transform Image using FSL}
 \usage{
-fslsin(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fslsin(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{file}{(character) input image to sine transform}

@@ -4,9 +4,18 @@
 \alias{fslfill2}
 \title{Fill image holes with dilation then erosion}
 \usage{
-fslfill2(file, outfile = NULL, kopts = "", remove.ends = TRUE,
-  refill = TRUE, retimg = TRUE, reorient = FALSE, intern = FALSE,
-  verbose = TRUE, ...)
+fslfill2(
+  file,
+  outfile = NULL,
+  kopts = "",
+  remove.ends = TRUE,
+  refill = TRUE,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file}{(character) filename of image to be filled}

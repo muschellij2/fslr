@@ -7,9 +7,17 @@
 \usage{
 fsl_bet(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslbet(infile, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", betcmd = c("bet2", "bet"),
-  verbose = TRUE, ...)
+fslbet(
+  infile,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  betcmd = c("bet2", "bet"),
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

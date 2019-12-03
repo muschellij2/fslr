@@ -4,9 +4,16 @@
 \alias{fslchfiletype}
 \title{FSL Change file type}
 \usage{
-fslchfiletype(file, filetype = "NIFTI_GZ", outfile = NULL,
-  retimg = TRUE, reorient = FALSE, intern = FALSE, verbose = TRUE,
-  ...)
+fslchfiletype(
+  file,
+  filetype = "NIFTI_GZ",
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file}{(character) image to be manipulated}

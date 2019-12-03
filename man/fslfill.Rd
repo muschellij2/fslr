@@ -7,8 +7,16 @@
 \usage{
 fsl_fill(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslfill(file, outfile = NULL, bin = TRUE, retimg = TRUE,
-  reorient = FALSE, intern = FALSE, verbose = TRUE, ...)
+fslfill(
+  file,
+  outfile = NULL,
+  bin = TRUE,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

@@ -4,9 +4,19 @@
 \alias{flirt}
 \title{Register using FLIRT}
 \usage{
-flirt(infile, reffile, omat = NULL, dof = 6, outfile = NULL,
-  retimg = TRUE, reorient = FALSE, intern = FALSE, opts = "",
-  verbose = TRUE, ...)
+flirt(
+  infile,
+  reffile,
+  omat = NULL,
+  dof = 6,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{infile}{(character) input filename}

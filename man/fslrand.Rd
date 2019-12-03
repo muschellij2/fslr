@@ -7,8 +7,15 @@
 \usage{
 fsl_rand(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
-fslrand(file, outfile = NULL, retimg = TRUE, reorient = FALSE,
-  intern = FALSE, opts = "", ...)
+fslrand(
+  file,
+  outfile = NULL,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  ...
+)
 }
 \arguments{
 \item{...}{additional arguments passed to \code{\link{readnii}}.}

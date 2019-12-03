@@ -11,10 +11,20 @@
 \alias{fslfast_nobias}
 \title{FSL FAST}
 \usage{
-fast(file, outfile = NULL, bias_correct = TRUE, retimg = TRUE,
-  reorient = FALSE, intern = FALSE, opts = "", type = c("T1", "T2",
-  "PD"), out_type = c("seg", "mixeltype", "pve_0", "pve_1", "pve_2",
-  "pveseg"), verbose = TRUE, all_images = FALSE, ...)
+fast(
+  file,
+  outfile = NULL,
+  bias_correct = TRUE,
+  retimg = TRUE,
+  reorient = FALSE,
+  intern = FALSE,
+  opts = "",
+  type = c("T1", "T2", "PD"),
+  out_type = c("seg", "mixeltype", "pve_0", "pve_1", "pve_2", "pveseg"),
+  verbose = TRUE,
+  all_images = FALSE,
+  ...
+)
 
 fast_all(..., all_images = TRUE)
 
@@ -24,8 +34,12 @@ fsl_fast(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
 fslfast(...)
 
-fsl_fast_nobias(..., bias_correct = FALSE, outfile = tempfile(fileext =
-  ".nii.gz"), retimg = FALSE)
+fsl_fast_nobias(
+  ...,
+  bias_correct = FALSE,
+  outfile = tempfile(fileext = ".nii.gz"),
+  retimg = FALSE
+)
 
 fast_nobias(..., bias_correct = FALSE)
 
