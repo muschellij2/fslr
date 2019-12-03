@@ -40,6 +40,10 @@ bvals_file = function(bvals) {
 #' different images in \code{infile} The format of this file is identical 
 #' to that used by topup (though the parameter is called \code{--datain} 
 #' there).
+#' @param topup This should only be specified if you have previously run 
+#' `topup` on your data and should be the same name that you gave as an 
+#' argument to the --out parameter when you ran topup, aka
+#' the base name for output files from topup.
 #' @param index_file A text-file that determines the relationship between 
 #' on the one hand the images in \code{infile} and on the other hand the 
 #' acquisition parameters in \code{acq_file}.
@@ -49,6 +53,7 @@ bvals_file = function(bvals) {
 #' diffusion weighting
 #' @param opts Additional options to pass to arguments 
 #' passed to \code{\link{eddy}}
+#' @param eddy_cmd The version of \code{eddy} to run.
 #'
 #' @return Result from system command currently
 #' @export
@@ -59,12 +64,15 @@ eddy = function(
   index_file,
   bvecs, 
   bvals,
+  topup = NULL,
   outfile = NULL,
   retimg = TRUE,  
   opts = "",
   verbose = TRUE,
+  eddy_cmd = c("eddy", "eddy_openmp", "eddy_cuda"),
   ...) {
   
+  eddy_cmd = match.arg(eddy_cmd)
   # interp = c("spline", "trilinear"),
   
   # interp = match.arg(interp)
@@ -78,7 +86,7 @@ eddy = function(
   mask = checkimg(mask)
   mask = path.expand(mask)
   mask = unname(mask)
-
+  
   acq_file = unname(acq_file)
   acq_file = path.expand(acq_file)
   
@@ -119,6 +127,9 @@ eddy = function(
           "--bvals" = bvals,
           "--acqp" = acq_file,
           "--out" = outfile)
+  if (!is.null(topup)) {
+    vec = c(vec, "--topup" = topup)
+  }
   vec = parse_args(vec)
   
   verbose = unname(verbose)
@@ -135,7 +146,7 @@ eddy = function(
   ##########################
   # Add frontopts
   ##########################
-  s = sprintf('%s %s', "eddy", vec)
+  s = sprintf('%s %s', eddy_cmd, vec)
   cmd <- paste0(cmd, s)
   if (verbose) {
     message(cmd, "\n")

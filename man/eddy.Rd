@@ -11,10 +11,12 @@ eddy(
   index_file,
   bvecs,
   bvals,
+  topup = NULL,
   outfile = NULL,
   retimg = TRUE,
   opts = "",
   verbose = TRUE,
+  eddy_cmd = c("eddy", "eddy_openmp", "eddy_cuda"),
   ...
 )
 }
@@ -38,6 +40,11 @@ the direction of the diffusion weighting.}
 \item{bvals}{A text file with b-values describing the "amount of" 
 diffusion weighting}
 
+\item{topup}{This should only be specified if you have previously run 
+`topup` on your data and should be the same name that you gave as an 
+argument to the --out parameter when you ran topup, aka
+the base name for output files from topup.}
+
 \item{outfile}{Output file basename}
 
 \item{retimg}{(logical) return image of class nifti}
@@ -46,6 +53,8 @@ diffusion weighting}
 passed to \code{\link{eddy}}}
 
 \item{verbose}{print diagnostic messages}
+
+\item{eddy_cmd}{The version of \code{eddy} to run.}
 
 \item{...}{Not currently used}
 }
