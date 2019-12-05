@@ -1,0 +1,25 @@
+set tool probtrackx
+set probtrack(bedpost_dir) /Users/johnmuschelli/Downloads/ExBox8/subj1_model2_3fibres.bedpostX
+set probtrack(xfm) 
+set probtrack(mode) simple
+set probtrack(exclude_yn) 0
+set probtrack(usereference_yn) 0
+set probtrack(verbose_yn) 0
+set probtrack(loopcheck_yn) 1
+set probtrack(modeuler_yn) 0
+set probtrack(curvature) 0.2
+set probtrack(nsteps) 2000
+set probtrack(steplength) 0.5
+set probtrack(nparticles) 5000
+set probtrack(fibthresh) 0.01
+set probtrack(distthresh) 0.0
+set probtrack(sampvox) 0.0
+set probtrack(oneway_yn) 1
+set probtrack(wayorder_yn) 0
+set probtrack(waycond) AND
+set probtrack(x) 0
+set probtrack(y) 0
+set probtrack(z) 0
+set probtrack(units) vox
+set probtrack(reference) /Users/johnmuschelli/Downloads/ExBox8/subj1_model2_3fibres.bedpostX/nodif_brain_mask
+set probtrack(output) /Users/johnmuschelli/Dropbox/Packages/fslr/tank

@@ -17,7 +17,7 @@
 #' @param opd (logical) Output path distribution
 #' @param pd (logical) Correct path distribution for the length of the pathways
 #' @param os2t (logical) Output seeds to targets
-#' @param outfile (character) Output file (default='fdt_paths')
+#' @param outdir (character) Output file (default='fdt_paths')
 #' @param avoid (nifti/character) Reject pathways passing through locations given by this mask
 #' @param stop (nifti/character) Stop tracking at locations given by this mask file
 #' @param xfm (character) Transform taking seed space to DTI space (either FLIRT matrix or FNIRT warpfield) - default is identity
@@ -45,7 +45,7 @@ probtrackx = function(
   samples = "merged",
   mask,
   seed,
-  outfile = "fdt_paths", 
+  outdir = "fdt_paths", 
   verbose = TRUE,
   mode = NULL, 
   targetmasks = NULL, 
@@ -102,7 +102,7 @@ probtrackx = function(
     opd = opd, 
     pd = pd, 
     os2t = os2t, 
-    outfile = outfile, 
+    outdir = outdir, 
     avoid = avoid, 
     stop = stop, 
     xfm = xfm, 
@@ -138,7 +138,7 @@ probtrackx = function(
     opd = "logical", 
     pd = "logical", 
     os2t = "logical", 
-    outfile = "character", 
+    outdir = "character", 
     avoid = "nifti/character", 
     stop = "nifti/character", 
     xfm = "character", 
@@ -167,8 +167,8 @@ probtrackx = function(
   if (!is.null(mask2)) {
     mask2 = checkimg(mask2)
   }
-  if (is.null(outfile)) {
-    outfile = tempfile()
+  if (is.null(outdir)) {
+    outdir = tempfile()
   }
   if (!is.null(waypoints) && !is.character(waypoints)) {
     waypoints = checkimg(waypoints)
@@ -214,16 +214,14 @@ probtrackx = function(
   args = paste(args, collapse = " ")
   opts = paste(opts, collapse = " ")
   args = paste(args, opts)
-  outfile = args$outfile
+  outdir = args$outdir
   
   cmd = get.fsl()
   cmd = paste(cmd, args)
-  ext = get.imgext()
   if (verbose > 0) {
     message(cmd, "\n")
   }
   res = system(cmd, intern = FALSE)
-  outfile = paste0(outfile, ext)  
-  attr(outfile, "result") = res
-  outfile 
+  attr(outdir, "result") = res
+  outdir 
 }

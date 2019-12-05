@@ -8,7 +8,7 @@ probtrackx(
   samples = "merged",
   mask,
   seed,
-  outfile = "fdt_paths",
+  outdir = "fdt_paths",
   verbose = TRUE,
   mode = NULL,
   targetmasks = NULL,
@@ -50,7 +50,7 @@ probtrackx(
 
 \item{seed}{(nifti/character) Seed volume, or voxel, or ascii file with multiple volumes, or freesurfer label file}
 
-\item{outfile}{(character) Output file (default='fdt_paths')}
+\item{outdir}{(character) Output file (default='fdt_paths')}
 
 \item{verbose}{(logical/numeric) Verbose level, [0-2]}
 
