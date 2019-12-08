@@ -14,6 +14,8 @@ incorporated. This package is very useful for structural imaging, such
 as MRI. Some of the fMRI functionality has not been ported or has
 limited capabiilty.
 
+<!-- badges: start -->
+
 [![Build
 Status](https://travis-ci.org/muschellij2/fslr.svg?branch=master)](https://travis-ci.org/muschellij2/fslr)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/fslr)](https://cran.r-project.org/package=fslr)
@@ -22,6 +24,9 @@ Status](https://travis-ci.org/muschellij2/fslr.svg?branch=master)](https://travi
 Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/fslr?branch=master&svg=true)](https://ci.appveyor.com/project/muschellij2/fslr)
 [![Coverage
 Status](https://coveralls.io/repos/github/muschellij2/fslr/badge.svg?branch=master)](https://coveralls.io/r/muschellij2/fslr?branch=master)
+[![Codacy
+Badge](https://api.codacy.com/project/badge/Grade/e07ba6cce2ea4eeaa1819e1041637914)](https://www.codacy.com/manual/muschellij2/fslr?utm_source=github.com&utm_medium=referral&utm_content=muschellij2/fslr&utm_campaign=Badge_Grade)
+<!-- badges: end -->
 
 ## Installation
 

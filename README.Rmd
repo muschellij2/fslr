@@ -19,11 +19,14 @@ The goal of fslr is to port/wrap of FSL into R.  As FSL has a fossil as it's log
 
 Much of the operations of FSL, such as fslmaths and fslstats are incorporated.  This package is very useful for structural imaging, such as MRI.  Some of the fMRI functionality has not been ported or has limited capabiilty.
 
+<!-- badges: start -->
 [![Build Status](https://travis-ci.org/muschellij2/fslr.svg?branch=master)](https://travis-ci.org/muschellij2/fslr)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/fslr)](https://cran.r-project.org/package=fslr)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/fslr)](http://cran.rstudio.com/web/packages/fslr/index.html)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/fslr?branch=master&svg=true)](https://ci.appveyor.com/project/muschellij2/fslr)
 [![Coverage Status](https://coveralls.io/repos/github/muschellij2/fslr/badge.svg?branch=master)](https://coveralls.io/r/muschellij2/fslr?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e07ba6cce2ea4eeaa1819e1041637914)](https://www.codacy.com/manual/muschellij2/fslr?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=muschellij2/fslr&amp;utm_campaign=Badge_Grade)
+<!-- badges: end -->
 
 ## Installation
 
