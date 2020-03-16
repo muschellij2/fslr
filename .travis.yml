@@ -60,3 +60,4 @@ deploy:
   - provider: script
     script: travis_wait 100 Rscript -e 'pkgdown::deploy_site_github()'
     skip_cleanup: true  
+
