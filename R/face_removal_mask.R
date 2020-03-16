@@ -9,7 +9,8 @@
 #' Set to \code{NULL} (recommended) if want to use from 
 #' \url{https://github.com/poldracklab/pydeface}. 
 #' Alternatively, use \code{\link{mni_face_fname}}.
-#' @param outfile Output 
+#' @param outfile Output file name
+#' @param dof (numeric) degrees of freedom (default 6 - rigid body)
 #' @param cost Cost function passed to \code{flirt}
 #' @param retimg (logical) return image of class nifti
 #' @param ... not used
@@ -33,6 +34,7 @@ face_removal_mask = function(
   template = mni_fname(mm = "1"), 
   face_mask = mni_face_fname(mm = "1"),
   outfile = NULL,
+  dof = 12,
   cost="mutualinfo",
   retimg = FALSE)  {
   
@@ -55,7 +57,7 @@ face_removal_mask = function(
         reffile = file, 
         outfile = tempfile(),
         opts = opts, 
-        dof = 12,
+        dof = dof,
         omat = omat,
         retimg = FALSE)
   opts = c("-interp nearestneighbour")

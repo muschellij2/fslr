@@ -19,6 +19,7 @@ limited capabiilty.
 [![Build
 Status](https://travis-ci.org/muschellij2/fslr.svg?branch=master)](https://travis-ci.org/muschellij2/fslr)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/fslr)](https://cran.r-project.org/package=fslr)
+[![](https://cranlogs.r-pkg.org/badges/fslr)](https://cran.rstudio.com/web/packages/fslr/index.html)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/fslr)](http://cran.rstudio.com/web/packages/fslr/index.html)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/fslr?branch=master&svg=true)](https://ci.appveyor.com/project/muschellij2/fslr)
@@ -80,8 +81,7 @@ export LD_LIBRARY_PATH=/usr/lib/fsl/5.0:$LD_LIBRARY_PATH
 
 in your `.bash_profile` or `.profile` to get things to work.
 
-Otherwise, you may get errors such
-    as:
+Otherwise, you may get errors such as:
 
     error while loading shared libraries: libnewimage.so: cannot open shared object file: No such file or directory
 

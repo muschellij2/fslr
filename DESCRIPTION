@@ -34,5 +34,6 @@ Suggests:
     covr
 BugReports: https://github.com/muschellij2/fslr/issues
 SystemRequirements: FSL
-RoxygenNote: 7.0.1
+NeuroDebian: fsl-complete
+RoxygenNote: 7.0.2
 Encoding: UTF-8

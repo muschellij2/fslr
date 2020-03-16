@@ -1,3 +1,0 @@
-/usr/local/fsl/bin/probtrackx2 --simple --seedref=/Users/johnmuschelli/Downloads/ExBox8/subj1_model2_3fibres.bedpostX/nodif_brain_mask -o tank -x /Users/johnmuschelli/Dropbox/Packages/fslr/tank/fdt_coordinates.txt -l --onewaycondition -c 0.2 -S 2000 --steplength=0.5 -P 5000 --fibthresh=0.01 --distthresh=0.0 --sampvox=0.0 --forcedir --opd -s /Users/johnmuschelli/Downloads/ExBox8/subj1_model2_3fibres.bedpostX/merged -m /Users/johnmuschelli/Downloads/ExBox8/subj1_model2_3fibres.bedpostX/nodif_brain_mask --dir=/Users/johnmuschelli/Dropbox/Packages/fslr/tank 
----------------------------------------------
-
