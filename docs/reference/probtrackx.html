@@ -8,21 +8,25 @@
 
 <title>Probabilistic diffusion tractography with multiple fibre orientations — probtrackx • fslr</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +34,11 @@
 
 
 
-<meta property="og:title" content="Probabilistic diffusion tractography with multiple fibre orientations — probtrackx" />
 
-<meta property="og:description" content="This function wraps probtrackx2 from FSL" />
+<meta property="og:title" content="Probabilistic diffusion tractography with multiple fibre orientations — probtrackx" />
+<meta property="og:description" content="This function wraps probtrackx from FSL" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -45,6 +50,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -63,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
       </span>
     </div>
 
@@ -71,7 +77,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -97,7 +103,6 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -107,6 +112,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -118,229 +124,213 @@
     </div>
 
     <div class="ref-description">
-    
-    <p>This function wraps <code>probtrackx2</code> from FSL</p>
-    
+    <p>This function wraps <code>probtrackx</code> from FSL</p>
     </div>
 
-    <pre class="usage"><span class='fu'>probtrackx</span>(<span class='kw'>samples</span> <span class='kw'>=</span> <span class='st'>"merged"</span>, <span class='no'>mask</span>, <span class='no'>seed</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>out</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>forcedir</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>simple</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>network</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>opd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fopd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>os2t</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>s2tastext</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>targetmasks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>waypoints</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>waycond</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"AND"</span>, <span class='st'>"OR"</span>), <span class='kw'>wayorder</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>onewaycondition</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>avoid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>omatrix1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>distthresh1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>omatrix2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>target2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>omatrix3</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>target3</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>lrtarget3</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>distthresh3</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>xfm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>invxfm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>seedref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>meshspace</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"caret"</span>, <span class='st'>"freesurfer"</span>, <span class='st'>"first"</span>, <span class='st'>"vox"</span>),
-  <span class='kw'>nsamples</span> <span class='kw'>=</span> <span class='fl'>5000</span>, <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>steplength</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>distthresh</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>cthr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>fibthresh</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>loopcheck</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>usef</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>modeuler</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sampvox</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>randfib</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>fibst</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>rseed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>probtrackx</span>(
+  <span class='kw'>samples</span> <span class='kw'>=</span> <span class='st'>"merged"</span>,
+  <span class='no'>mask</span>,
+  <span class='no'>seed</span>,
+  <span class='kw'>outdir</span> <span class='kw'>=</span> <span class='st'>"fdt_paths"</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>mode</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>targetmasks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>mask2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>waypoints</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>network</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>mesh</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>seedref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>forcedir</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>opd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>pd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>os2t</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>avoid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>stop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>xfm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>invxfm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nsamples</span> <span class='kw'>=</span> <span class='fl'>5000</span>,
+  <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>2000</span>,
+  <span class='kw'>distthresh</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>cthr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
+  <span class='kw'>fibthresh</span> <span class='kw'>=</span> <span class='fl'>0.01</span>,
+  <span class='kw'>sampvox</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>steplength</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>loopcheck</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>usef</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>randfib</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>),
+  <span class='kw'>fibst</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>modeuler</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>rseed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>s2tastext</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>samples</th>
-      <td><p>Basename for samples files - e.g. 'merged'</p></td>
+      <td><p>(nifti/character) Basename for samples files</p></td>
     </tr>
     <tr>
       <th>mask</th>
-      <td><p>Bet binary mask file in diffusion space</p></td>
+      <td><p>(nifti/character) Bet binary mask file in diffusion space</p></td>
     </tr>
     <tr>
       <th>seed</th>
-      <td><p>Seed volume or list (ascii text file) of volumes and/or surfaces</p></td>
+      <td><p>(nifti/character) Seed volume, or voxel, or ascii file with multiple volumes, or freesurfer label file</p></td>
+    </tr>
+    <tr>
+      <th>outdir</th>
+      <td><p>(character) Output file (default='fdt_paths')</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>Verbose level, [0-2]</p></td>
+      <td><p>(logical/numeric) Verbose level, [0-2]</p></td>
     </tr>
     <tr>
-      <th>out</th>
-      <td><p>Output file (default='fdt_paths')</p></td>
-    </tr>
-    <tr>
-      <th>dir</th>
-      <td><p>Directory to put the final volumes in - code makes this directory - default='logdir'</p></td>
-    </tr>
-    <tr>
-      <th>forcedir</th>
-      <td><p>Use the actual directory name given - i.e. don't add + to make a new directory</p></td>
-    </tr>
-    <tr>
-      <th>simple</th>
-      <td><p>Track from a list of voxels (seed must be a ASCII list of coordinates)</p></td>
-    </tr>
-    <tr>
-      <th>network</th>
-      <td><p>Activate network mode - only keep paths going through at least one of the other seed masks</p></td>
-    </tr>
-    <tr>
-      <th>opd</th>
-      <td><p>Output path distribution</p></td>
-    </tr>
-    <tr>
-      <th>pd</th>
-      <td><p>Correct path distribution for the length of the pathways</p></td>
-    </tr>
-    <tr>
-      <th>fopd</th>
-      <td><p>Other mask for binning tract distribution</p></td>
-    </tr>
-    <tr>
-      <th>os2t</th>
-      <td><p>Output seeds to targets</p></td>
-    </tr>
-    <tr>
-      <th>s2tastext</th>
-      <td><p>Output seed-to-target counts as a text file (default in simple mode)</p></td>
+      <th>mode</th>
+      <td><p>(character) Use --mode=simple for single seed voxel</p></td>
     </tr>
     <tr>
       <th>targetmasks</th>
-      <td><p>File containing a list of target masks - for seeds_to_targets classification</p></td>
+      <td><p>(character) File containing a list of target masks - required for seeds_to_targets classification</p></td>
+    </tr>
+    <tr>
+      <th>mask2</th>
+      <td><p>(nifti/character) Second mask in twomask_symm mode.</p></td>
     </tr>
     <tr>
       <th>waypoints</th>
-      <td><p>Waypoint mask or ascii list of waypoint masks - only keep paths going through ALL the masks</p></td>
+      <td><p>(nifti/character) Waypoint mask or ascii list of waypoint masks - only keep paths going through ALL the masks</p></td>
     </tr>
     <tr>
-      <th>waycond</th>
-      <td><p>Waypoint condition. Either 'AND' (default) or 'OR'</p></td>
+      <th>network</th>
+      <td><p>(logical) Activate network mode - only keep paths going through at least one seed mask (required if multiple seed masks)</p></td>
     </tr>
     <tr>
-      <th>wayorder</th>
-      <td><p>Reject streamlines that do not hit waypoints in given order. Only valid if waycond=AND</p></td>
-    </tr>
-    <tr>
-      <th>onewaycondition</th>
-      <td><p>Apply waypoint conditions to each half tract separately</p></td>
-    </tr>
-    <tr>
-      <th>avoid</th>
-      <td><p>Reject pathways passing through locations given by this mask</p></td>
-    </tr>
-    <tr>
-      <th>stop</th>
-      <td><p>Stop tracking at locations given by this mask file</p></td>
-    </tr>
-    <tr>
-      <th>omatrix1</th>
-      <td><p>Output matrix1 - SeedToSeed Connectivity</p></td>
-    </tr>
-    <tr>
-      <th>distthresh1</th>
-      <td><p>Discards samples (in matrix1) shorter than this threshold (in mm - default=0)</p></td>
-    </tr>
-    <tr>
-      <th>omatrix2</th>
-      <td><p>Output matrix2 - SeedToLowResMask</p></td>
-    </tr>
-    <tr>
-      <th>target2</th>
-      <td><p>Low resolution binary brain mask for storing connectivity distribution in matrix2 mode</p></td>
-    </tr>
-    <tr>
-      <th>omatrix3</th>
-      <td><p>Output matrix3 (NxN connectivity matrix)</p></td>
-    </tr>
-    <tr>
-      <th>target3</th>
-      <td><p>Mask used for NxN connectivity matrix (or Nxn if lrtarget3 is set)</p></td>
-    </tr>
-    <tr>
-      <th>lrtarget3</th>
-      <td><p>Column-space mask used for Nxn connectivity matrix</p></td>
-    </tr>
-    <tr>
-      <th>distthresh3</th>
-      <td><p>Discards samples (in matrix3) shorter than this threshold (in mm - default=0)</p></td>
-    </tr>
-    <tr>
-      <th>xfm</th>
-      <td><p>Transform taking seed space to DTI space (either FLIRT matrix or FNIRT warpfield) - default is identity</p></td>
-    </tr>
-    <tr>
-      <th>invxfm</th>
-      <td><p>Transform taking DTI space to seed space (compulsory when using a warpfield for seeds_to_dti)</p></td>
+      <th>mesh</th>
+      <td><p>(character) Freesurfer-type surface descriptor (in ascii format)</p></td>
     </tr>
     <tr>
       <th>seedref</th>
-      <td><p>Reference vol to define seed space in simple mode - diffusion space assumed if absent</p></td>
+      <td><p>(nifti/character) Reference vol to define seed space in simple mode - diffusion space assumed if absent</p></td>
     </tr>
     <tr>
-      <th>meshspace</th>
-      <td><p>Mesh reference space - either 'caret' (default) or 'freesurfer' or 'first' or 'vox'</p></td>
+      <th>dir</th>
+      <td><p>(logical) Directory to put the final volumes in - code makes this directory - default='logdir'</p></td>
+    </tr>
+    <tr>
+      <th>forcedir</th>
+      <td><p>(logical) Use the actual directory name given - i.e. don't add + to make a new directory</p></td>
+    </tr>
+    <tr>
+      <th>opd</th>
+      <td><p>(logical) Output path distribution</p></td>
+    </tr>
+    <tr>
+      <th>pd</th>
+      <td><p>(logical) Correct path distribution for the length of the pathways</p></td>
+    </tr>
+    <tr>
+      <th>os2t</th>
+      <td><p>(logical) Output seeds to targets</p></td>
+    </tr>
+    <tr>
+      <th>avoid</th>
+      <td><p>(nifti/character) Reject pathways passing through locations given by this mask</p></td>
+    </tr>
+    <tr>
+      <th>stop</th>
+      <td><p>(nifti/character) Stop tracking at locations given by this mask file</p></td>
+    </tr>
+    <tr>
+      <th>xfm</th>
+      <td><p>(character) Transform taking seed space to DTI space (either FLIRT matrix or FNIRT warpfield) - default is identity</p></td>
+    </tr>
+    <tr>
+      <th>invxfm</th>
+      <td><p>(character) Transform taking DTI space to seed space (compulsory when using a warpfield for seeds_to_dti)</p></td>
     </tr>
     <tr>
       <th>nsamples</th>
-      <td><p>Number of samples - default=5000</p></td>
+      <td><p>(numeric) Number of samples - default=5000</p></td>
     </tr>
     <tr>
       <th>nsteps</th>
-      <td><p>Number of steps per sample - default=2000</p></td>
-    </tr>
-    <tr>
-      <th>steplength</th>
-      <td><p>Steplength in mm - default=0.5</p></td>
+      <td><p>(numeric) Number of steps per sample - default=2000</p></td>
     </tr>
     <tr>
       <th>distthresh</th>
-      <td><p>Discards samples shorter than this threshold (in mm - default=0)</p></td>
+      <td><p>(numeric) Discards samples shorter than this threshold (in mm - default=0)</p></td>
     </tr>
     <tr>
       <th>cthr</th>
-      <td><p>Curvature threshold - default=0.2</p></td>
+      <td><p>(numeric) Curvature threshold - default=0.2</p></td>
     </tr>
     <tr>
       <th>fibthresh</th>
-      <td><p>Volume fraction before subsidiary fibre orientations are considered - default=0.01</p></td>
-    </tr>
-    <tr>
-      <th>loopcheck</th>
-      <td><p>Perform loopchecks on paths - slower, but allows lower curvature threshold</p></td>
-    </tr>
-    <tr>
-      <th>usef</th>
-      <td><p>Use anisotropy to constrain tracking</p></td>
-    </tr>
-    <tr>
-      <th>modeuler</th>
-      <td><p>Use modified euler streamlining</p></td>
+      <td><p>(numeric) Volume fraction before subsidary fibre orientations are considered - default=0.01</p></td>
     </tr>
     <tr>
       <th>sampvox</th>
-      <td><p>Sample random points within x mm sphere seed voxels (e.g. --sampvox=5). Default=0</p></td>
+      <td><p>(logical) Sample random points within seed voxels</p></td>
+    </tr>
+    <tr>
+      <th>steplength</th>
+      <td><p>(numeric) Steplength in mm - default=0.5</p></td>
+    </tr>
+    <tr>
+      <th>loopcheck</th>
+      <td><p>(logical) Perform loopchecks on paths - slower, but allows lower curvature threshold</p></td>
+    </tr>
+    <tr>
+      <th>usef</th>
+      <td><p>(logical) Use anisotropy to constrain tracking</p></td>
     </tr>
     <tr>
       <th>randfib</th>
-      <td><p>Default 0. Set to 1 to randomly sample initial fibres (with f &gt; fibthresh).  Set to 2 to sample in proportion fibres (with f&gt;fibthresh) to f.  Set to 3 to sample ALL populations at random (even if f&lt;fibthresh)</p></td>
+      <td><p>(numeric) Default 0. Set to 1 to randomly sample initial fibres (with f &gt; fibthresh). Set to 2 to sample in proportion fibres (with f&gt;fibthresh) to f. Set to 3 to sample ALL populations at random (even if f&lt;fibthresh)</p></td>
     </tr>
     <tr>
       <th>fibst</th>
-      <td><p>Force a starting fibre for tracking - default=1, i.e. first fibre orientation. Only works if randfib==0</p></td>
+      <td><p>(numeric) Force a starting fibre for tracking - default=1, i.e. first fibre orientation. Only works if randfib==0</p></td>
+    </tr>
+    <tr>
+      <th>modeuler</th>
+      <td><p>(logical) Use modified euler streamlining</p></td>
     </tr>
     <tr>
       <th>rseed</th>
-      <td><p>Random seed</p></td>
+      <td><p>(numeric) Random seed</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments</p></td>
+      <th>s2tastext</th>
+      <td><p>(logical) Output seed-to-target counts as a text file (useful when seeding from a mesh)</p></td>
+    </tr>
+    <tr>
+      <th>opts</th>
+      <td><p>Additional options or way to specify things instead of command
+line arguments</p></td>
     </tr>
     </table>
-    
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A filename of the output file</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      <li><a href="#value">Value</a></li>
+    </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -348,13 +338,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
