@@ -31,6 +31,23 @@
 #' \item{\code{orientation}: }{Original image orientations}
 #' }
 #' @export
+#' @examples 
+#' if (have_fsl()) {
+#' lr_fname = system.file( "nifti", "mniLR.nii.gz", package = "oro.nifti")
+#' img = readnii(lr_fname)
+#' 
+#' rl_fname = system.file( "nifti", "mniRL.nii.gz", package = "oro.nifti")
+#' rl_img = readnii(rl_fname)
+#' stopifnot(all(rl_img[nrow(rl_img):1,,] == img))
+#' 
+#' reor = rpi_orient(rl_fname)
+#' rev = reverse_rpi_orient(reor$img, convention = reor$convention,
+#' orientation = reor$orientation)
+#' stopifnot(all(rev == rl_img))
+#' 
+#' 
+#' 
+#' }
 rpi_orient = function(file, verbose = TRUE){
   L = rpi_orient_file(file = file, verbose = verbose)
   L$img = check_nifti(L$img)
@@ -58,6 +75,16 @@ rpi_orient_file = function(file, verbose = TRUE){
               retimg = FALSE,
               outfile = tfile,
               verbose = verbose)
+    ori2 = .orient_file(tfile, verbose = verbose)
+    if (all(ori2 == c("RL", "PA", "IS"))) {
+      warning(
+        paste0(
+          "NEUROLOGICAL cases with RPI after swaporient",
+          " may not reorder the rows or oro.nifti.  Please use ",
+          "RNifti::orientation")
+      )
+    }
+    
     file = tfile
   }
   outfile = tempfile(fileext = ".nii.gz")
@@ -119,7 +146,7 @@ reverse_rpi_orient_file = function(
              verbose = verbose,
              retimg = FALSE,
              outfile = outfile)
-
+  
   return(outfile)
 }
 
