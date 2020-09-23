@@ -11,23 +11,27 @@ Obtained using Sampling Techniques with Crossing Fibers — xfibres • fslr</ti
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -40,7 +44,6 @@ Obtained using Sampling Techniques with Crossing Fibers — xfibres • fslr</ti
 Obtained using Sampling Techniques with Crossing Fibers — xfibres" />
 <meta property="og:description" content="Calls xfibres from FSL to fit, also known as
 bedpostx" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -58,7 +61,7 @@ bedpostx" />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -107,7 +110,12 @@ bedpostx" />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/muschellij2/fslr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -123,7 +131,7 @@ bedpostx" />
     <div class="page-header">
     <h1>Bayesian Estimation of Diffusion Parameters 
 Obtained using Sampling Techniques with Crossing Fibers</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/muschellij2/fslr/blob/master/R/xfibres.R'><code>R/xfibres.R</code></a></small>
     <div class="hidden name"><code>xfibres.Rd</code></div>
     </div>
 
@@ -133,28 +141,28 @@ Obtained using Sampling Techniques with Crossing Fibers</h1>
     </div>
 
     <pre class="usage"><span class='fu'>xfibres</span>(
-  <span class='no'>infile</span>,
-  <span class='no'>bvecs</span>,
-  <span class='no'>bvals</span>,
-  <span class='kw'>mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nfibres</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>bet.opts</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>njumps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>burnin_noard</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sampleevery</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>updateproposalevery</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>noard</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>allard</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>nospat</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>nonlinear</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>cnonlinear</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>rician</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>f0</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>ardf0</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>
+  <span class='kw'>infile</span>,
+  <span class='kw'>bvecs</span>,
+  <span class='kw'>bvals</span>,
+  mask = <span class='kw'>NULL</span>,
+  nfibres = <span class='fl'>1</span>,
+  bet.opts = <span class='st'>""</span>,
+  verbose = <span class='fl'>TRUE</span>,
+  njumps = <span class='kw'>NULL</span>,
+  burnin = <span class='kw'>NULL</span>,
+  burnin_noard = <span class='kw'>NULL</span>,
+  sampleevery = <span class='kw'>NULL</span>,
+  updateproposalevery = <span class='kw'>NULL</span>,
+  seed = <span class='kw'>NULL</span>,
+  noard = <span class='fl'>FALSE</span>,
+  allard = <span class='fl'>FALSE</span>,
+  nospat = <span class='fl'>FALSE</span>,
+  nonlinear = <span class='fl'>FALSE</span>,
+  cnonlinear = <span class='fl'>FALSE</span>,
+  rician = <span class='fl'>FALSE</span>,
+  f0 = <span class='fl'>FALSE</span>,
+  ardf0 = <span class='fl'>FALSE</span>,
+  opts = <span class='st'>""</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -184,7 +192,7 @@ b-vectors or filename of ASCII text file</p></td>
     </tr>
     <tr>
       <th>bet.opts</th>
-      <td><p>Options for <code><a href='fslbet.html'>fslbet</a></code> if mask is not supplied</p></td>
+      <td><p>Options for <code><a href='fsl_bet.html'>fslbet</a></code> if mask is not supplied</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -259,13 +267,10 @@ There should not be any left out in the current arguments, but
     <p>Output from <code><a href='https://rdrr.io/r/base/system.html'>system</a></code></p>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -276,7 +281,7 @@ There should not be any left out in the current arguments, but
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
