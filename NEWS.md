@@ -1,3 +1,7 @@
+# fslr 2.25.0
+
+- Added `rpi*2` functionality that uses RNifti and is likely what we'd want to use.
+
 # fslr 2.24.0
 
 - Fixes bug with `getForms` (and therefore a lot of stuff) with FSL version 6.0 and greater.

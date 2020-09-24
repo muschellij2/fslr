@@ -59,6 +59,12 @@ rpi_orient = function(file, verbose = TRUE){
 #' @export
 #' @rdname rpi_orient
 rpi_orient_file = function(file, verbose = TRUE){
+  .Deprecated(
+    paste0("rpi_orient_file is going to be deprecated in the coming", 
+           " releases of fslr, and things this relies on, ", 
+           " including readrpi and rpi_orient.  Please use ",
+           "rpi_orient_file2, rpi_orient2, and readrpi2 in the future.")
+  )
   file = checkimg(file)
   L = .orient_file(file = file, verbose = verbose)
   file = L$file
