@@ -31,6 +31,8 @@
 #' \item{\code{orientation}: }{Original image orientations}
 #' }
 #' @export
+#' @note `rpi_orient2` and `rpi_orient_file2` uses `RNifti` to ensure the 
+#' reading orientation
 #' @examples 
 #' if (have_fsl()) {
 #' lr_fname = system.file( "nifti", "mniLR.nii.gz", package = "oro.nifti")
@@ -69,6 +71,20 @@ rpi_orient_file = function(file, verbose = TRUE){
     tfile = file.path(tdir,
                       basename(file))
     file.copy(file, tfile, overwrite = TRUE)
+    
+    # orient3 = substr(sorient, 1, 1)
+    # if (any(orient3 == "L")) {
+    #   ind = which(orient3 == "L")
+    #   arglist = c(a = "x", b = "y", c = "z")
+    #   arglist[ind] = paste0("-", arglist[ind])
+    #   arglist = as.list(arglist)
+    #   arglist$file = file
+    #   arglist$retimg = FALSE
+    #   arglist$outfile = tfile
+    #   arglist$verbose = verbose
+    #   do.call(fslswapdim, args = arglist)
+    # }
+    
     # changes from NEUROLOGICAL to RADIOLOGICAL
     fslorient(tfile,
               opts = "-swaporient",
@@ -97,6 +113,28 @@ rpi_orient_file = function(file, verbose = TRUE){
   L = list(img = outfile,
            convention = ori,
            orientation = sorient)
+  return(L)
+}
+
+#' @export
+#' @rdname rpi_orient
+rpi_orient_file2 = function(file, verbose = TRUE){
+  file = checkimg(file)
+  img = RNifti::readNifti(file)
+  sorient = RNifti::orientation(img)
+  RNifti::orientation(img) = "LAS"
+  outfile = tempfile(fileext = ".nii.gz")
+  RNifti::writeNifti(img, file = outfile)
+  L = list(img = outfile,
+           orientation = sorient)
+  return(L)
+}
+
+#' @export
+#' @rdname rpi_orient
+rpi_orient2 = function(file, verbose = TRUE){
+  L = rpi_orient_file(file = file, verbose = verbose)
+  L$img = check_nifti(L$img)
   return(L)
 }
 
@@ -146,6 +184,39 @@ reverse_rpi_orient_file = function(
              verbose = verbose,
              retimg = FALSE,
              outfile = outfile)
+  
+  return(outfile)
+}
+
+#' @rdname reverse_rpi_orient
+#' @note `reverse_rpi_orient2` and `reverse_rpi_orient_file2` uses `RNifti` to ensure the 
+#' reading orientation
+#' @export
+reverse_rpi_orient2 = function(
+  file, 
+  convention = c("NEUROLOGICAL", "RADIOLOGICAL"), 
+  orientation, verbose = TRUE){
+  img = reverse_rpi_orient_file2(file = file, 
+                                 orientation = orientation, 
+                                 verbose = verbose)
+  img = check_nifti(img)
+  return(img)
+}
+
+#' @rdname reverse_rpi_orient
+#' @export
+reverse_rpi_orient_file2 = function(
+  file, 
+  convention = c("NEUROLOGICAL", "RADIOLOGICAL"), 
+  orientation, verbose = TRUE){
+  
+  file = checkimg(file)
+  stopifnot(nchar(orientation) == 3)
+  
+  img = RNifti::readNifti(file)
+  RNifti::orientation(img) = orientation
+  outfile = tempfile(fileext = ".nii.gz")
+  RNifti::writeNifti(img, file = outfile)
   
   return(outfile)
 }

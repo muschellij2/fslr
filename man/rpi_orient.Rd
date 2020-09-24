@@ -3,6 +3,8 @@
 \name{rpi_orient}
 \alias{rpi_orient}
 \alias{rpi_orient_file}
+\alias{rpi_orient_file2}
+\alias{rpi_orient2}
 \alias{is_rpi}
 \alias{is.rpi}
 \title{Reorient an Image to RPI orientation}
@@ -10,6 +12,10 @@
 rpi_orient(file, verbose = TRUE)
 
 rpi_orient_file(file, verbose = TRUE)
+
+rpi_orient_file2(file, verbose = TRUE)
+
+rpi_orient2(file, verbose = TRUE)
 
 is_rpi(file, verbose = FALSE)
 
@@ -30,6 +36,10 @@ List of 3 elements
 }
 \description{
 This function uses \code{fslswapdim} to reorient an image
+}
+\note{
+`rpi_orient2` and `rpi_orient_file2` uses `RNifti` to ensure the 
+reading orientation
 }
 \examples{
 if (have_fsl()) {

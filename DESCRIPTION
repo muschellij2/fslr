@@ -2,7 +2,7 @@ Package: fslr
 Type: Package
 Title: Wrapper Functions for 'FSL' ('FMRIB' Software Library) from Functional MRI
     of the Brain ('FMRIB')
-Version: 2.24.4
+Version: 2.25.0
 Authors@R: c(person(given = "John",
            family = "Muschelli",
            email = "muschellij2@gmail.com",
@@ -20,6 +20,7 @@ Imports:
     R.utils,
     graphics,
     grDevices,
+    RNifti,
     stats, 
     utils
 Depends:
