@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.25.0</span>
       </span>
     </div>
 
@@ -180,7 +180,7 @@
                      retimg = <span class="fl">TRUE</span>, reference_no = <span class="fl">0</span>)
 }
 </pre></div>
-<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/eddy_correct "/tmp/RtmpKy0pkG/4Ddwi_b1000.nii.gz"  "/tmp/RtmpKy0pkG/file40f561a7b692" 0;</code></pre>
+<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/eddy_correct "/tmp/RtmpdoIjuA/4Ddwi_b1000.nii.gz"  "/tmp/RtmpdoIjuA/file63e5c7bc51e" 0;</code></pre>
 <p>Note, from here on forward we will use either the filename for the output of the eddy current correction or the eddy-current-corrected <code>nifti</code> object.</p>
 </div>
 <div id="running-dti-fitting-as-a-cursor" class="section level1">
@@ -194,7 +194,7 @@
                bvals = <span class="kw">b_vals</span>, mask = <span class="kw">mask_fname</span>)
 }
 </pre></div>
-<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/dtifit --data="/tmp/RtmpKy0pkG/file40f53f9b642c.nii.gz" --out="/tmp/RtmpKy0pkG/file40f57b9dbe03" --mask="/tmp/RtmpKy0pkG/brain_mask.nii.gz" --bvecs="/tmp/RtmpKy0pkG/file40f5446847d6.txt" --bvals="/tmp/RtmpKy0pkG/file40f5654856d0.txt" --verbose</code></pre>
+<pre><code>## FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/dtifit --data="/tmp/RtmpdoIjuA/file63e545ff629f.nii.gz" --out="/tmp/RtmpdoIjuA/file63e5aafe2d6" --mask="/tmp/RtmpdoIjuA/brain_mask.nii.gz" --bvecs="/tmp/RtmpdoIjuA/file63e56bedc8f9.txt" --bvals="/tmp/RtmpdoIjuA/file63e543e1349d.txt" --verbose</code></pre>
 <p>By default, the result of <code>dtifit</code> is the filenames of the resultant images. Here we will read in those images:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit">
 <span class="co">if</span> (<span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span>()) {

@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.25.0</span>
       </span>
     </div>
 
@@ -139,6 +139,10 @@
 
 <span class='fu'>rpi_orient_file</span>(<span class='kw'>file</span>, verbose = <span class='fl'>TRUE</span>)
 
+<span class='fu'>rpi_orient_file2</span>(<span class='kw'>file</span>, verbose = <span class='fl'>TRUE</span>)
+
+<span class='fu'>rpi_orient2</span>(<span class='kw'>file</span>, verbose = <span class='fl'>TRUE</span>)
+
 <span class='fu'>is_rpi</span>(<span class='kw'>file</span>, verbose = <span class='fl'>FALSE</span>)
 
 <span class='fu'>is.rpi</span>(<span class='kw'>file</span>, verbose = <span class='fl'>FALSE</span>)</pre>
@@ -164,6 +168,10 @@
 <li><p><code>orientation</code>: Original image orientations</p></li>
 </ul>
 
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>`rpi_orient2` and `rpi_orient_file2` uses `RNifti` to ensure the 
+reading orientation</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='have.fsl.html'>have_fsl</a></span>()) {
@@ -182,7 +190,7 @@ orientation = <span class='kw'>reor</span><span class='op'>$</span><span class='
 
 
 }
-</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslhd "/home/travis/R/Library/oro.nifti/nifti/mniRL.nii.gz" </span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslorient -getorient "/home/travis/R/Library/oro.nifti/nifti/mniRL.nii.gz"</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslorient -swaporient "/tmp/RtmpQGSTVW/file3d3b6f5179fe/mniRL.nii.gz"</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslhd "/tmp/RtmpQGSTVW/file3d3b6f5179fe/mniRL.nii.gz" </span></div><div class='output co'>#&gt; <span class='warning'>Warning: longer object length is not a multiple of shorter object length</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslswapdim "/tmp/RtmpQGSTVW/file3d3b6f5179fe/mniRL.nii.gz"  RL PA IS "/tmp/RtmpQGSTVW/file3d3b132c7e0b";</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslorient -swaporient "/tmp/RtmpQGSTVW/file3d3b69e698b1.nii.gz"</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslswapdim "/tmp/RtmpQGSTVW/file3d3b69e698b1.nii.gz"  LR PA IS "/tmp/RtmpQGSTVW/file3d3b68879ed1";</span></div></pre>
+</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslhd "/home/travis/R/Library/oro.nifti/nifti/mniRL.nii.gz" </span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslorient -getorient "/home/travis/R/Library/oro.nifti/nifti/mniRL.nii.gz"</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslorient -swaporient "/tmp/RtmpB03nSX/file602e3d209190/mniRL.nii.gz"</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslhd "/tmp/RtmpB03nSX/file602e3d209190/mniRL.nii.gz" </span></div><div class='output co'>#&gt; <span class='warning'>Warning: longer object length is not a multiple of shorter object length</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslswapdim "/tmp/RtmpB03nSX/file602e3d209190/mniRL.nii.gz"  RL PA IS "/tmp/RtmpB03nSX/file602e3ecd08b0";</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslorient -swaporient "/tmp/RtmpB03nSX/file602e7e589acf.nii.gz"</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslswapdim "/tmp/RtmpB03nSX/file602e7e589acf.nii.gz"  LR PA IS "/tmp/RtmpB03nSX/file602e68360ec7";</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
