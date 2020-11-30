@@ -3,8 +3,9 @@
 \name{rpi_orient}
 \alias{rpi_orient}
 \alias{rpi_orient_file}
-\alias{rpi_orient_file2}
-\alias{rpi_orient2}
+\alias{orient_rpi_file}
+\alias{orient_rpi}
+\alias{is_rpi_oriented}
 \alias{is_rpi}
 \alias{is.rpi}
 \title{Reorient an Image to RPI orientation}
@@ -13,9 +14,11 @@ rpi_orient(file, verbose = TRUE)
 
 rpi_orient_file(file, verbose = TRUE)
 
-rpi_orient_file2(file, verbose = TRUE)
+orient_rpi_file(file, verbose = TRUE)
 
-rpi_orient2(file, verbose = TRUE)
+orient_rpi(file, verbose = TRUE)
+
+is_rpi_oriented(file, verbose = FALSE)
 
 is_rpi(file, verbose = FALSE)
 
@@ -38,11 +41,10 @@ List of 3 elements
 This function uses \code{fslswapdim} to reorient an image
 }
 \note{
-`rpi_orient2` and `rpi_orient_file2` uses `RNifti` to ensure the 
+`orient_rpi` and `orient_rpi_file` uses `RNifti` to ensure the 
 reading orientation
 }
 \examples{
-if (have_fsl()) {
 lr_fname = system.file( "nifti", "mniLR.nii.gz", package = "oro.nifti")
 img = readnii(lr_fname)
 
@@ -50,12 +52,22 @@ rl_fname = system.file( "nifti", "mniRL.nii.gz", package = "oro.nifti")
 rl_img = readnii(rl_fname)
 stopifnot(all(rl_img[nrow(rl_img):1,,] == img))
 
+\dontrun{
+if (have_fsl()) {
+
+
 reor = rpi_orient(rl_fname)
 rev = reverse_rpi_orient(reor$img, convention = reor$convention,
 orientation = reor$orientation)
 stopifnot(all(rev == rl_img))
-
-
-
 }
+}
+
+
+reor = orient_rpi(rl_fname)
+stopifnot(all(img == reor$img))
+
+rev = reverse_orient_rpi(reor$img, convention = reor$convention,
+orientation = reor$orientation)
+stopifnot(all(rev == rl_img))
 }

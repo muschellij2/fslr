@@ -3,8 +3,8 @@
 \name{reverse_rpi_orient}
 \alias{reverse_rpi_orient}
 \alias{reverse_rpi_orient_file}
-\alias{reverse_rpi_orient2}
-\alias{reverse_rpi_orient_file2}
+\alias{reverse_orient_rpi}
+\alias{reverse_orient_rpi_file}
 \title{Reverse Reorientation an Image to RPI orientation}
 \usage{
 reverse_rpi_orient(
@@ -21,14 +21,14 @@ reverse_rpi_orient_file(
   verbose = TRUE
 )
 
-reverse_rpi_orient2(
+reverse_orient_rpi(
   file,
   convention = c("NEUROLOGICAL", "RADIOLOGICAL"),
   orientation,
   verbose = TRUE
 )
 
-reverse_rpi_orient_file2(
+reverse_orient_rpi_file(
   file,
   convention = c("NEUROLOGICAL", "RADIOLOGICAL"),
   orientation,
@@ -52,6 +52,6 @@ Object of class \code{nifti}
 This function uses \code{fslswapdim} to reorient an image
 }
 \note{
-`reverse_rpi_orient2` and `reverse_rpi_orient_file2` uses `RNifti` to ensure the 
+`reverse_orient_rpi` and `reverse_orient_rpi_file` uses `RNifti` to ensure the 
 reading orientation
 }

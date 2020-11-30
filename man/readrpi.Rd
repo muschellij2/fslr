@@ -2,12 +2,12 @@
 % Please edit documentation in R/readrpi.R
 \name{readrpi}
 \alias{readrpi}
-\alias{readrpi2}
+\alias{read_rpi}
 \title{Read NIfTI file reoriented to RPI}
 \usage{
 readrpi(file, ..., verbose = TRUE)
 
-readrpi2(file, ..., verbose = TRUE)
+read_rpi(file, ..., verbose = TRUE)
 }
 \arguments{
 \item{file}{file name of the NIfTI file.}
@@ -21,7 +21,7 @@ This function calls the \code{\link{readnii}} function after
 calling \code{\link{rpi_orient_file}} to force RPI orientation.
 }
 \note{
-`readrpi2` uses `RNifti` to ensure the reading orientation
+`read_rpi` uses `RNifti` to ensure the reading orientation
 }
 \examples{
 if (have.fsl()){

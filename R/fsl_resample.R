@@ -1,4 +1,4 @@
-#' Title
+#' Resample an Image to Specific Voxel Size
 #'
 #' @param file Input file to resample
 #' @param voxel_size Voxel size (in mm).  This should be a scalar number.
@@ -7,6 +7,7 @@
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
 #' Passed to \code{\link{readnii}}. 
 #' @param verbose (logical) print out command before running
+#' @param opts options to pass to \code{flirt}
 #'
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' the output file.
@@ -26,6 +27,7 @@ fsl_resample = function(
   outfile = NULL,  
   retimg = TRUE,
   reorient = FALSE,
+  opts = NULL,
   verbose = TRUE) {
   
   if (is.null(outfile) && !retimg) {
@@ -33,7 +35,6 @@ fsl_resample = function(
   }
   func = "flirt"
   file = checkimg(file)
-  opts = NULL
   voxel_size = voxel_size[1]
   
   opts = c(opts, paste0("-ref ", file))

@@ -41,15 +41,15 @@ readrpi <- function(file, ..., verbose = TRUE) {
 
 #' @export
 #' @rdname readrpi
-#' @note `readrpi2` uses `RNifti` to ensure the reading orientation
-readrpi2 <- function(file, ..., verbose = TRUE) {
+#' @note `read_rpi` uses `RNifti` to ensure the reading orientation
+read_rpi <- function(file, ..., verbose = TRUE) {
   args = list(...)
   n_args = names(args)
   if ("fname" %in% n_args) {
     stop("fname cannot be specified in readrpi!")
   }
   
-  L = rpi_orient_file2(file = file, verbose = verbose)
+  L = orient_rpi_file(file = file, verbose = verbose)
   file = L$img
   nim = readnii(fname = file, ...)
   return(nim)
