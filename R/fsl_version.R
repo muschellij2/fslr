@@ -1,6 +1,8 @@
 #' @title Find FSL Version
 #' @description Finds the FSL version from \code{FSLDIR/etc/fslversion}
 #' 
+#' @param full provide the full version, versus the numeric version
+#' 
 #' @note This will use \code{fsldir()} to get the directory
 #' @return If the version file does not exist, it will throw a warning, but 
 #' it will return an empty string.  Otherwise it will be a string of the version.
@@ -10,8 +12,8 @@
 #'  fslversion()
 #'  fsl_version()
 #' }
-fsl_version = function(){
-
+fsl_version = function(full = FALSE){
+  
   fsldir = fsldir()
   version_file = file.path(fsldir, "etc", "fslversion")
   if (!file.exists(version_file)) {
@@ -21,6 +23,10 @@ fsl_version = function(){
     suppressWarnings({
       version = readLines(version_file)
     })
+  }
+  if (!full) {
+    version = strsplit(version, ":")[[1]]
+    version = version[1]
   }
   return(version)
 }

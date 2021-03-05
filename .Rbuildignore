@@ -36,3 +36,4 @@ docs/*
 ^docs$
 ^pkgdown$
 ^R/probtrackx2\.R$
+^\.github$

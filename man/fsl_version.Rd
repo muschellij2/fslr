@@ -6,11 +6,14 @@
 \alias{fsl_version_gt5}
 \title{Find FSL Version}
 \usage{
-fsl_version()
+fsl_version(full = FALSE)
 
 fslversion()
 
 fsl_version_gt5()
+}
+\arguments{
+\item{full}{provide the full version, versus the numeric version}
 }
 \value{
 If the version file does not exist, it will throw a warning, but 
