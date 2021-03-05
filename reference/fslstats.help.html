@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -109,7 +109,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/muschellij2/fslr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -135,7 +135,7 @@
     <p>This function calls <code>fslstats</code>'s help</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fslstats.help</span>()</pre>
+    <pre class="usage"><span class='fu'>fslstats.help</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -143,10 +143,10 @@
     <p>Prints help output and returns output as character vector</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='have.fsl.html'>have.fsl</a></span>()){
- <span class='fu'>fslstats.help</span>() 
-}
-</div><div class='output co'>#&gt; <span class='message'>Usage: fslstats [preoptions] &lt;input&gt; [options]preoption -t will give a separate output line for each 3D volume of a 4D timeseriespreoption -K &lt; indexMask &gt; will generate seperate n submasks from indexMask, for indexvalues 1..n where n is the maximum index value in indexMask, and generate statistics for each submaskNote - options are applied in order, e.g. -M -l 10 -M will report the non-zero mean, apply a threshold and then report the new nonzero mean-l &lt;lthresh&gt; : set lower threshold-u &lt;uthresh&gt; : set upper threshold-r           : output &lt;robust min intensity&gt; &lt;robust max intensity&gt;-R           : output &lt;min intensity&gt; &lt;max intensity&gt;-e           : output mean entropy ; mean(-i*ln(i))-E           : output mean entropy (of nonzero voxels)-v           : output &lt;voxels&gt; &lt;volume&gt;-V           : output &lt;voxels&gt; &lt;volume&gt; (for nonzero voxels)-m           : output mean-M           : output mean (for nonzero voxels)-s           : output standard deviation-S           : output standard deviation (for nonzero voxels)-w           : output smallest ROI &lt;xmin&gt; &lt;xsize&gt; &lt;ymin&gt; &lt;ysize&gt; &lt;zmin&gt; &lt;zsize&gt; &lt;tmin&gt; &lt;tsize&gt; containing nonzero voxels-x           : output co-ordinates of maximum voxel-X           : output co-ordinates of minimum voxel-c           : output centre-of-gravity (cog) in mm coordinates-C           : output centre-of-gravity (cog) in voxel coordinates-p &lt;n&gt;       : output nth percentile (n between 0 and 100)-P &lt;n&gt;       : output nth percentile (for nonzero voxels)-a           : use absolute values of all image intensities-n           : treat NaN or Inf as zero for subsequent stats-k &lt;mask&gt;    : use the specified image (filename) for masking - overrides lower and upper thresholds-d &lt;image&gt;   : take the difference between the base image and the image specified here-h &lt;nbins&gt;   : output a histogram (for the thresholded/masked voxels only) with nbins-H &lt;nbins&gt; &lt;min&gt; &lt;max&gt;   : output a histogram (for the thresholded/masked voxels only) with nbins and histogram limits of min and maxNote - thresholds are not inclusive ie lthresh&lt;allowed&lt;uthresh</span></div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='have.fsl.html'>have.fsl</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+ <span class='fu'>fslstats.help</span><span class='op'>(</span><span class='op'>)</span> 
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

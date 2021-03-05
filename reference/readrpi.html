@@ -81,7 +81,7 @@ calling rpi_orient_file to force RPI orientation." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -110,7 +110,7 @@ calling rpi_orient_file to force RPI orientation." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/muschellij2/fslr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -137,9 +137,9 @@ calling rpi_orient_file to force RPI orientation." />
 calling <code><a href='rpi_orient.html'>rpi_orient_file</a></code> to force RPI orientation.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>readrpi</span>(<span class='kw'>file</span>, <span class='kw'>...</span>, verbose = <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>readrpi</span><span class='op'>(</span><span class='va'>file</span>, <span class='va'>...</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>readrpi2</span>(<span class='kw'>file</span>, <span class='kw'>...</span>, verbose = <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>read_rpi</span><span class='op'>(</span><span class='va'>file</span>, <span class='va'>...</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,29 +160,29 @@ calling <code><a href='rpi_orient.html'>rpi_orient_file</a></code> to force RPI 
 
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>`readrpi2` uses `RNifti` to ensure the reading orientation</p>
+    <p>`read_rpi` uses `RNifti` to ensure the reading orientation</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='have.fsl.html'>have.fsl</a></span>()){
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='fsl_version.html'>fsl_version</a></span>())
-<span class='kw'>in_ci</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() {
- <span class='fu'><a href='https://rdrr.io/r/base/nchar.html'>nzchar</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"CI"</span>))
- }
- <span class='co'>if</span> (<span class='fu'>in_ci</span>()) {
- <span class='kw'>destfile</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(fileext = <span class='st'>".nii.gz"</span>)
- <span class='kw'>url</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"https://ndownloader.figshare.com/"</span>, 
- <span class='st'>"files/18068546"</span>)
- <span class='kw'>old_url</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"https://github.com/muschellij2/"</span>, 
- <span class='st'>"Neurohacking/files/3454385/113-01-MPRAGE2.nii.gz"</span>)
- <span class='kw'>dl</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span>(<span class='kw'>url</span>,
- destfile = <span class='kw'>destfile</span>))
- <span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/class.html'>inherits</a></span>(<span class='kw'>dl</span>, <span class='st'>"try-error"</span>) <span class='op'>||</span> <span class='kw'>dl</span> != <span class='fl'>0</span>) {
- <span class='kw'>dl</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span>(<span class='kw'>old_url</span>, destfile = <span class='kw'>destfile</span>)
- }
- <span class='kw'>res</span> <span class='op'>=</span> <span class='fu'>readrpi</span>(<span class='kw'>destfile</span>)
- }
- }   
-</div><div class='output co'>#&gt; [1] "6.0.4:ddd0a010"</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslhd "/tmp/RtmpB03nSX/file602e5c0f7864.nii.gz" </span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslorient -getorient "/tmp/RtmpB03nSX/file602e5c0f7864.nii.gz"</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslswapdim "/tmp/RtmpB03nSX/file602e5c0f7864.nii.gz"  RL PA IS "/tmp/RtmpB03nSX/file602efecd565";</span></div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='have.fsl.html'>have.fsl</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='fsl_version.html'>fsl_version</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>in_ci</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>{</span>
+ <span class='fu'><a href='https://rdrr.io/r/base/nchar.html'>nzchar</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"CI"</span><span class='op'>)</span><span class='op'>)</span>
+ <span class='op'>}</span>
+ <span class='kw'>if</span> <span class='op'>(</span><span class='fu'>in_ci</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+ <span class='va'>destfile</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".nii.gz"</span><span class='op'>)</span>
+ <span class='va'>url</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"https://ndownloader.figshare.com/"</span>, 
+ <span class='st'>"files/18068546"</span><span class='op'>)</span>
+ <span class='va'>old_url</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"https://github.com/muschellij2/"</span>, 
+ <span class='st'>"Neurohacking/files/3454385/113-01-MPRAGE2.nii.gz"</span><span class='op'>)</span>
+ <span class='va'>dl</span> <span class='op'>=</span> <span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span><span class='op'>(</span><span class='va'>url</span>,
+ destfile <span class='op'>=</span> <span class='va'>destfile</span><span class='op'>)</span><span class='op'>)</span>
+ <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/class.html'>inherits</a></span><span class='op'>(</span><span class='va'>dl</span>, <span class='st'>"try-error"</span><span class='op'>)</span> <span class='op'>||</span> <span class='va'>dl</span> <span class='op'>!=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>{</span>
+ <span class='va'>dl</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span><span class='op'>(</span><span class='va'>old_url</span>, destfile <span class='op'>=</span> <span class='va'>destfile</span><span class='op'>)</span>
+ <span class='op'>}</span>
+ <span class='va'>res</span> <span class='op'>=</span> <span class='fu'>readrpi</span><span class='op'>(</span><span class='va'>destfile</span><span class='op'>)</span>
+ <span class='op'>}</span>
+ <span class='op'>}</span>   
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

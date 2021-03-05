@@ -81,7 +81,7 @@ original image with the smoothed values." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -110,7 +110,7 @@ original image with the smoothed values." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/muschellij2/fslr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -137,9 +137,9 @@ original image with the smoothed values." />
 original image with the smoothed values.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fslsmooth_in_mask</span>(<span class='kw'>file</span>, sigma = <span class='fl'>10</span>, mask = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>fslsmooth_in_mask</span><span class='op'>(</span><span class='va'>file</span>, sigma <span class='op'>=</span> <span class='fl'>10</span>, mask <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>fsl_smooth_in_mask</span>(<span class='kw'>...</span>)</pre>
+<span class='fu'>fsl_smooth_in_mask</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,19 +167,18 @@ original image with the smoothed values.</p>
     <p>Object of class <code>nifti</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='have.fsl.html'>have.fsl</a></span>()){
-<span class='fu'><a href='https://rdrr.io/r/base/system.time.html'>system.time</a></span>({
-<span class='kw'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>50</span>, <span class='fl'>50</span>, <span class='fl'>20</span>)
-<span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/prod.html'>prod</a></span>(<span class='kw'>dims</span>)), dim = <span class='kw'>dims</span>)
-<span class='kw'>img</span> <span class='op'>=</span> <span class='fu'>nifti</span>(<span class='kw'>x</span>, dim= <span class='kw'>dims</span>, 
-datatype = <span class='fu'>convert.datatype</span>()<span class='op'>$</span><span class='kw'>FLOAT32</span>, cal.min = <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span>(<span class='kw'>x</span>), 
-cal.max = <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='kw'>x</span>), pixdim = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>4</span>))
-<span class='kw'>mask</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='kw'>img</span> ) <span class='op'>&gt;</span> <span class='fl'>1</span>
-<span class='kw'>s.img</span> <span class='op'>=</span> <span class='fu'>fslsmooth_in_mask</span>(<span class='kw'>img</span>, mask = <span class='kw'>mask</span>)
-})
-}
-</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/tmp/RtmpB03nSX/file602e756fb52.nii.gz"  -mas "/tmp/RtmpB03nSX/file602e74e94a62.nii.gz"  -s 10 "/tmp/RtmpB03nSX/file602e75629925"; FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/tmp/RtmpB03nSX/file602e74e94a62.nii.gz" -s 10 "/tmp/RtmpB03nSX/file602e99dc12d.nii.gz"; FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslmaths "/tmp/RtmpB03nSX/file602e75629925" -div "/tmp/RtmpB03nSX/file602e99dc12d.nii.gz" -mas "/tmp/RtmpB03nSX/file602e74e94a62.nii.gz" "/tmp/RtmpB03nSX/file602e75629925";</span></div><div class='output co'>#&gt;    user  system elapsed 
-#&gt;   0.315   0.017   0.333 </div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='have.fsl.html'>have.fsl</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/system.time.html'>system.time</a></span><span class='op'>(</span><span class='op'>{</span>
+<span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>50</span>, <span class='fl'>50</span>, <span class='fl'>20</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/prod.html'>prod</a></span><span class='op'>(</span><span class='va'>dims</span><span class='op'>)</span><span class='op'>)</span>, dim <span class='op'>=</span> <span class='va'>dims</span><span class='op'>)</span>
+<span class='va'>img</span> <span class='op'>=</span> <span class='fu'>nifti</span><span class='op'>(</span><span class='va'>x</span>, dim<span class='op'>=</span> <span class='va'>dims</span>, 
+datatype <span class='op'>=</span> <span class='fu'>convert.datatype</span><span class='op'>(</span><span class='op'>)</span><span class='op'>$</span><span class='va'>FLOAT32</span>, cal.min <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, 
+cal.max <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, pixdim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>mask</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>img</span> <span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>1</span>
+<span class='va'>s.img</span> <span class='op'>=</span> <span class='fu'>fslsmooth_in_mask</span><span class='op'>(</span><span class='va'>img</span>, mask <span class='op'>=</span> <span class='va'>mask</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

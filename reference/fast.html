@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -109,7 +109,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/muschellij2/fslr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -135,39 +135,39 @@
     <p>This function calls <code>fast</code> from FSL</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fast</span>(
-  <span class='kw'>file</span>,
-  outfile = <span class='kw'>NULL</span>,
-  bias_correct = <span class='fl'>TRUE</span>,
-  retimg = <span class='fl'>TRUE</span>,
-  reorient = <span class='fl'>FALSE</span>,
-  intern = <span class='fl'>FALSE</span>,
-  opts = <span class='st'>""</span>,
-  type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"T1"</span>, <span class='st'>"T2"</span>, <span class='st'>"PD"</span>),
-  out_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"seg"</span>, <span class='st'>"mixeltype"</span>, <span class='st'>"pve_0"</span>, <span class='st'>"pve_1"</span>, <span class='st'>"pve_2"</span>, <span class='st'>"pveseg"</span>),
-  verbose = <span class='fl'>TRUE</span>,
-  all_images = <span class='fl'>FALSE</span>,
-  <span class='kw'>...</span>
-)
+    <pre class="usage"><span class='fu'>fast</span><span class='op'>(</span>
+  <span class='va'>file</span>,
+  outfile <span class='op'>=</span> <span class='cn'>NULL</span>,
+  bias_correct <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  retimg <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  reorient <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  intern <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  opts <span class='op'>=</span> <span class='st'>""</span>,
+  type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"T1"</span>, <span class='st'>"T2"</span>, <span class='st'>"PD"</span><span class='op'>)</span>,
+  out_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"seg"</span>, <span class='st'>"mixeltype"</span>, <span class='st'>"pve_0"</span>, <span class='st'>"pve_1"</span>, <span class='st'>"pve_2"</span>, <span class='st'>"pveseg"</span><span class='op'>)</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all_images <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
-<span class='fu'>fast_all</span>(<span class='kw'>...</span>, all_images = <span class='fl'>TRUE</span>)
+<span class='fu'>fast_all</span><span class='op'>(</span><span class='va'>...</span>, all_images <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>fast_nobias_all</span>(<span class='kw'>...</span>, bias_correct = <span class='fl'>FALSE</span>, all_images = <span class='fl'>FALSE</span>)
+<span class='fu'>fast_nobias_all</span><span class='op'>(</span><span class='va'>...</span>, bias_correct <span class='op'>=</span> <span class='cn'>FALSE</span>, all_images <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>fsl_fast</span>(<span class='kw'>...</span>, outfile = <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(fileext = <span class='st'>".nii.gz"</span>), retimg = <span class='fl'>FALSE</span>)
+<span class='fu'>fsl_fast</span><span class='op'>(</span><span class='va'>...</span>, outfile <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".nii.gz"</span><span class='op'>)</span>, retimg <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>fslfast</span>(<span class='kw'>...</span>)
+<span class='fu'>fslfast</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>fsl_fast_nobias</span>(
-  <span class='kw'>...</span>,
-  bias_correct = <span class='fl'>FALSE</span>,
-  outfile = <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(fileext = <span class='st'>".nii.gz"</span>),
-  retimg = <span class='fl'>FALSE</span>
-)
+<span class='fu'>fsl_fast_nobias</span><span class='op'>(</span>
+  <span class='va'>...</span>,
+  bias_correct <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  outfile <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".nii.gz"</span><span class='op'>)</span>,
+  retimg <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
-<span class='fu'>fast_nobias</span>(<span class='kw'>...</span>, bias_correct = <span class='fl'>FALSE</span>)
+<span class='fu'>fast_nobias</span><span class='op'>(</span><span class='va'>...</span>, bias_correct <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>fslfast_nobias</span>(<span class='kw'>...</span>, bias_correct = <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>fslfast_nobias</span><span class='op'>(</span><span class='va'>...</span>, bias_correct <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

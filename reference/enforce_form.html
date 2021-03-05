@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -109,7 +109,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/muschellij2/fslr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -135,7 +135,7 @@
     <p>Enforce Either Qform or Sform is set</p>
     </div>
 
-    <pre class="usage"><span class='fu'>enforce_form</span>(<span class='kw'>file</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>enforce_form</span><span class='op'>(</span><span class='va'>file</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,9 +157,9 @@ of class nifti</p></td>
     <p>A character filename</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='have.fsl.html'>have_fsl</a></span>()) {
-<span class='kw'>res</span> <span class='op'>=</span> <span class='fu'>enforce_form</span>(<span class='fu'><a href='mni_fname.html'>mni_fname</a></span>())
-}
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='have.fsl.html'>have_fsl</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>res</span> <span class='op'>=</span> <span class='fu'>enforce_form</span><span class='op'>(</span><span class='fu'><a href='mni_fname.html'>mni_fname</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

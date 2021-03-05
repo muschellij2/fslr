@@ -81,7 +81,7 @@ DTI Processing" />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -110,7 +110,7 @@ DTI Processing" />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/muschellij2/fslr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -137,21 +137,21 @@ DTI Processing" />
 DTI Processing</p>
     </div>
 
-    <pre class="usage"><span class='fu'>eddy</span>(
-  <span class='kw'>infile</span>,
-  <span class='kw'>mask</span>,
-  <span class='kw'>acq_file</span>,
-  <span class='kw'>index_file</span>,
-  <span class='kw'>bvecs</span>,
-  <span class='kw'>bvals</span>,
-  topup = <span class='kw'>NULL</span>,
-  outfile = <span class='kw'>NULL</span>,
-  retimg = <span class='fl'>TRUE</span>,
-  opts = <span class='st'>""</span>,
-  verbose = <span class='fl'>TRUE</span>,
-  eddy_cmd = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"eddy"</span>, <span class='st'>"eddy_openmp"</span>, <span class='st'>"eddy_cuda"</span>),
-  <span class='kw'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>eddy</span><span class='op'>(</span>
+  <span class='va'>infile</span>,
+  <span class='va'>mask</span>,
+  <span class='va'>acq_file</span>,
+  <span class='va'>index_file</span>,
+  <span class='va'>bvecs</span>,
+  <span class='va'>bvals</span>,
+  topup <span class='op'>=</span> <span class='cn'>NULL</span>,
+  outfile <span class='op'>=</span> <span class='cn'>NULL</span>,
+  retimg <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  opts <span class='op'>=</span> <span class='st'>""</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  eddy_cmd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"eddy"</span>, <span class='st'>"eddy_openmp"</span>, <span class='st'>"eddy_cuda"</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

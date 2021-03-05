@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -68,7 +68,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/muschellij2/fslr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -82,7 +82,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="fslr_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Working with Data in fslr</h1>
@@ -108,12 +108,10 @@
 <h3 class="hasAnchor">
 <a href="#printing-out-fsl-version" class="anchor"></a>Printing out FSL Version</h3>
 <p>For example, you can wrap example functions with a logical check for <code><a href="../reference/have.fsl.html">have.fsl()</a></code> to have the execute if FSL exists:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co">if</span> (<span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span>()) {
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="../reference/fsl_version.html">fsl_version</a></span>())
-}
-</pre></div>
-<pre><code>## [1] "6.0.4:ddd0a010"</code></pre>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="../reference/fsl_version.html">fsl_version</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
 </div>
 </div>
 <div id="returning-objects" class="section level2">

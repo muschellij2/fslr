@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -75,7 +75,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/muschellij2/fslr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -98,50 +98,49 @@
 <p>The goal of fslr is to port/wrap of FSL into R. As FSL has a fossil as it’s logo and it was to sound like “fossil”, that’s why we have that as our logo.</p>
 <p>Much of the operations of FSL, such as fslmaths and fslstats are incorporated. This package is very useful for structural imaging, such as MRI. Some of the fMRI functionality has not been ported or has limited capabiilty.</p>
 <!-- badges: start -->
-<p><a href="https://travis-ci.org/muschellij2/fslr"><img src="https://travis-ci.org/muschellij2/fslr.svg?branch=master" alt="Build Status"></a> <a href="https://cran.r-project.org/package=fslr"><img src="http://www.r-pkg.org/badges/version/fslr" alt="CRAN_Status_Badge"></a> <a href="https://cran.rstudio.com/web/packages/fslr/index.html"><img src="https://cranlogs.r-pkg.org/badges/fslr"></a> <a href="http://cran.rstudio.com/web/packages/fslr/index.html"><img src="http://cranlogs.r-pkg.org/badges/grand-total/fslr"></a> <a href="https://ci.appveyor.com/project/muschellij2/fslr"><img src="https://ci.appveyor.com/api/projects/status/github/muschellij2/fslr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://coveralls.io/r/muschellij2/fslr?branch=master"><img src="https://coveralls.io/repos/github/muschellij2/fslr/badge.svg?branch=master" alt="Coverage Status"></a> <a href="https://www.codacy.com/manual/muschellij2/fslr?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=muschellij2/fslr&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/e07ba6cce2ea4eeaa1819e1041637914" alt="Codacy Badge"></a> <!-- badges: end --></p>
+<p><a href="https://travis-ci.org/muschellij2/fslr"><img src="https://travis-ci.org/muschellij2/fslr.svg?branch=master" alt="Build Status"></a> <a href="https://cran.r-project.org/package=fslr"><img src="http://www.r-pkg.org/badges/version/fslr" alt="CRAN_Status_Badge"></a> <a href="https://cran.rstudio.com/web/packages/fslr/index.html"><img src="https://cranlogs.r-pkg.org/badges/fslr"></a> <a href="http://cran.rstudio.com/web/packages/fslr/index.html"><img src="http://cranlogs.r-pkg.org/badges/grand-total/fslr"></a> <a href="https://ci.appveyor.com/project/muschellij2/fslr"><img src="https://ci.appveyor.com/api/projects/status/github/muschellij2/fslr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://coveralls.io/r/muschellij2/fslr?branch=master"><img src="https://coveralls.io/repos/github/muschellij2/fslr/badge.svg?branch=master" alt="Coverage Status"></a> <a href="https://www.codacy.com/manual/muschellij2/fslr?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=muschellij2/fslr&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/e07ba6cce2ea4eeaa1819e1041637914" alt="Codacy Badge"></a> <a href="https://github.com/muschellij2/fslr/actions"><img src="https://github.com/muschellij2/fslr/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <!-- badges: end --></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install fslr from github with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># install.packages("devtools")</span>
-<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"muschellij2/fslr"</span>)
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"muschellij2/fslr"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="neurodebian-builds" class="section level2">
 <h2 class="hasAnchor">
 <a href="#neurodebian-builds" class="anchor"></a>Neurodebian builds</h2>
 <p>Neurodebian has caused some issues in the past for me. I used the following script to just shotgun copy everything. This was discussed in <a href="https://github.com/muschellij2/fslr/issues/10">issue #10</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="va">FSLDIR=</span>/usr/local/fsl</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="va">FSLSHARE=</span>/usr/share/data</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="fu">mkdir</span> -p <span class="va">${FSLDIR}</span>/bin <span class="kw">&amp;&amp;</span> <span class="fu">cp</span> /usr/lib/fsl/5.0/* <span class="va">${FSLDIR}</span>/bin/</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="fu">mkdir</span> -p <span class="va">${FSLDIR}</span>/data/standard <span class="kw">&amp;&amp;</span> <span class="fu">mkdir</span> -p <span class="va">${FSLDIR}</span>/data/atlases </a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#######################################</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co"># Setting things up like other installers</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#######################################</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/fsl-mni152-templates/* <span class="va">${FSLDIR}</span>/data/standard/</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co"># setting up atlases</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/harvard-oxford-atlases/* <span class="va">${FSLDIR}</span>/data/atlases/ </a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/juelich-histological-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/bangor-cerebellar-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/jhu-dti-whitematter-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/forstmann-subthalamic-nucleus-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/fsl-resting-connectivity-parcellation-atlases/* <span class="va">${FSLDIR}</span>/data/atlases/ </a>
-<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/mni-structural-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </a>
-<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/oxford-thalamic-connectivity-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </a>
-<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/talairach-daemon-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="va">FSLDIR=</span>/usr/local/fsl</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="va">FSLSHARE=</span>/usr/share/data</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">mkdir</span> -p <span class="va">${FSLDIR}</span>/bin <span class="kw">&amp;&amp;</span> <span class="fu">cp</span> /usr/lib/fsl/5.0/* <span class="va">${FSLDIR}</span>/bin/</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">mkdir</span> -p <span class="va">${FSLDIR}</span>/data/standard <span class="kw">&amp;&amp;</span> <span class="fu">mkdir</span> -p <span class="va">${FSLDIR}</span>/data/atlases </span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#######################################</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co"># Setting things up like other installers</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#######################################</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/fsl-mni152-templates/* <span class="va">${FSLDIR}</span>/data/standard/</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co"># setting up atlases</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/harvard-oxford-atlases/* <span class="va">${FSLDIR}</span>/data/atlases/ </span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/juelich-histological-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/bangor-cerebellar-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/jhu-dti-whitematter-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/forstmann-subthalamic-nucleus-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/fsl-resting-connectivity-parcellation-atlases/* <span class="va">${FSLDIR}</span>/data/atlases/ </span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/mni-structural-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/oxford-thalamic-connectivity-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="fu">cp</span> -R <span class="va">${FSLSHARE}</span>/talairach-daemon-atlas/* <span class="va">${FSLDIR}</span>/data/atlases/ </span></code></pre></div>
 <div id="rstudio-neurodebian-problems" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rstudio-neurodebian-problems" class="anchor"></a>RStudio Neurodebian Problems</h3>
 <p>Referenced in <a href="https://github.com/muschellij2/Neurohacking/issues/4">another issue</a>, you may have to add</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="bu">export</span> <span class="va">LD_LIBRARY_PATH=</span>/usr/lib/fsl/5.0:<span class="va">$LD_LIBRARY_PATH</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">export</span> <span class="va">LD_LIBRARY_PATH=</span>/usr/lib/fsl/5.0:<span class="va">$LD_LIBRARY_PATH</span></span></code></pre></div>
 <p>in your <code>.bash_profile</code> or <code>.profile</code> to get things to work.</p>
 <p>Otherwise, you may get errors such as:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">error <span class="cf">while</span> loading shared libraries<span class="op">:</span><span class="st"> </span>libnewimage.so<span class="op">:</span><span class="st"> </span>cannot open shared object file<span class="op">:</span><span class="st"> </span>No such file or directory</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>error <span class="cf">while</span> loading shared libraries<span class="op">:</span><span class="st"> </span>libnewimage.so<span class="op">:</span><span class="st"> </span>cannot open shared object file<span class="op">:</span><span class="st"> </span>No such file or directory</span></code></pre></div>
 <p>fossil icon by <a href="https://thenounproject.com/aliceralph/">Alice Ralph</a></p>
 </div>
 </div>

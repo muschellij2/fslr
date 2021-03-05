@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -109,7 +109,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/muschellij2/fslr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -135,15 +135,15 @@
     <p>Smoothness Estimation using <code>smoothest</code></p>
     </div>
 
-    <pre class="usage"><span class='fu'>fsl_smoothest</span>(
-  <span class='kw'>file</span>,
-  <span class='kw'>residual_image</span>,
-  <span class='kw'>z_image</span>,
-  dof = <span class='kw'>NULL</span>,
-  opts = <span class='st'>""</span>,
-  verbose = <span class='fl'>TRUE</span>,
-  <span class='kw'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>fsl_smoothest</span><span class='op'>(</span>
+  <span class='va'>file</span>,
+  <span class='va'>residual_image</span>,
+  <span class='va'>z_image</span>,
+  dof <span class='op'>=</span> <span class='cn'>NULL</span>,
+  opts <span class='op'>=</span> <span class='st'>""</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -185,14 +185,14 @@
     <p>An output of smoothness estimate</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='have.fsl.html'>have_fsl</a></span>()) {
-<span class='kw'>file</span> <span class='op'>=</span> <span class='fu'><a href='mni_fname.html'>mni_fname</a></span>(mm = <span class='fl'>2</span>, brain = <span class='fl'>TRUE</span>, mask = <span class='fl'>TRUE</span>)
-<span class='kw'>img</span> <span class='op'>=</span> <span class='fu'><a href='mni_img.html'>mni_img</a></span>(mm = <span class='fl'>2</span>, brain = <span class='fl'>TRUE</span>, mask = <span class='fl'>FALSE</span>)
-<span class='kw'>mask</span> <span class='op'>=</span> <span class='fu'><a href='mni_img.html'>mni_img</a></span>(mm = <span class='fl'>2</span>, brain = <span class='fl'>TRUE</span>, mask = <span class='fl'>TRUE</span>)
-<span class='kw'>img</span> <span class='op'>=</span> <span class='fu'>zscore_img</span>(img = <span class='kw'>img</span>, mask = <span class='kw'>mask</span>)
-<span class='kw'>est</span> <span class='op'>=</span> <span class='fu'>fsl_smoothest</span>(file = <span class='kw'>file</span>, z_image = <span class='kw'>img</span>)
-}
-</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/smoothest --mask="/usr/local/fsl/data/standard/MNI152_T1_2mm_brain_mask.nii.gz"   --zstat='/tmp/RtmpB03nSX/file602e2e58e02.nii.gz' --verbose ;</span></div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='have.fsl.html'>have_fsl</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>file</span> <span class='op'>=</span> <span class='fu'><a href='mni_fname.html'>mni_fname</a></span><span class='op'>(</span>mm <span class='op'>=</span> <span class='fl'>2</span>, brain <span class='op'>=</span> <span class='cn'>TRUE</span>, mask <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>img</span> <span class='op'>=</span> <span class='fu'><a href='mni_img.html'>mni_img</a></span><span class='op'>(</span>mm <span class='op'>=</span> <span class='fl'>2</span>, brain <span class='op'>=</span> <span class='cn'>TRUE</span>, mask <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>mask</span> <span class='op'>=</span> <span class='fu'><a href='mni_img.html'>mni_img</a></span><span class='op'>(</span>mm <span class='op'>=</span> <span class='fl'>2</span>, brain <span class='op'>=</span> <span class='cn'>TRUE</span>, mask <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>img</span> <span class='op'>=</span> <span class='fu'>zscore_img</span><span class='op'>(</span>img <span class='op'>=</span> <span class='va'>img</span>, mask <span class='op'>=</span> <span class='va'>mask</span><span class='op'>)</span>
+<span class='va'>est</span> <span class='op'>=</span> <span class='fu'>fsl_smoothest</span><span class='op'>(</span>file <span class='op'>=</span> <span class='va'>file</span>, z_image <span class='op'>=</span> <span class='va'>img</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -109,7 +109,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/muschellij2/fslr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -135,16 +135,16 @@
     <p>Convert a Transformation</p>
     </div>
 
-    <pre class="usage"><span class='fu'>invert_xfm</span>(<span class='kw'>inmat</span>, omat = <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(fileext = <span class='st'>".mat"</span>), verbose = <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>invert_xfm</span><span class='op'>(</span><span class='va'>inmat</span>, omat <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".mat"</span><span class='op'>)</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>concat_xfm</span>(<span class='kw'>inmat</span>, <span class='kw'>inmat2</span>, omat = <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(fileext = <span class='st'>".mat"</span>), verbose = <span class='fl'>TRUE</span>)
+<span class='fu'>concat_xfm</span><span class='op'>(</span><span class='va'>inmat</span>, <span class='va'>inmat2</span>, omat <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".mat"</span><span class='op'>)</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>fixscaleskew_xfm</span>(
-  <span class='kw'>inmat</span>,
-  <span class='kw'>inmat2</span>,
-  omat = <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(fileext = <span class='st'>".mat"</span>),
-  verbose = <span class='fl'>TRUE</span>
-)</pre>
+<span class='fu'>fixscaleskew_xfm</span><span class='op'>(</span>
+  <span class='va'>inmat</span>,
+  <span class='va'>inmat2</span>,
+  omat <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".mat"</span><span class='op'>)</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,18 +173,18 @@ to first</p></td>
     <p>A filename of the output matrix file</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='have.fsl.html'>have_fsl</a></span>()) {
-<span class='kw'>img</span> <span class='op'>=</span> <span class='fu'><a href='mni_fname.html'>mni_fname</a></span>()
-<span class='kw'>mat</span> <span class='op'>=</span> <span class='fu'><a href='fslreorient2std.html'>fslreorient2std_mat</a></span>(<span class='kw'>img</span>)
-<span class='kw'>inverted</span> <span class='op'>=</span> <span class='fu'>invert_xfm</span>(<span class='kw'>mat</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='kw'>inverted</span>)
-<span class='kw'>catted</span> <span class='op'>=</span> <span class='fu'>concat_xfm</span>(<span class='kw'>mat</span>, <span class='kw'>mat</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='kw'>catted</span>)
-<span class='kw'>fixed</span> <span class='op'>=</span> <span class='fu'>fixscaleskew_xfm</span>(<span class='kw'>mat</span>, <span class='kw'>mat</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='kw'>fixed</span>)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='have.fsl.html'>have_fsl</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>img</span> <span class='op'>=</span> <span class='fu'><a href='mni_fname.html'>mni_fname</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>mat</span> <span class='op'>=</span> <span class='fu'><a href='fslreorient2std.html'>fslreorient2std_mat</a></span><span class='op'>(</span><span class='va'>img</span><span class='op'>)</span>
+<span class='va'>inverted</span> <span class='op'>=</span> <span class='fu'>invert_xfm</span><span class='op'>(</span><span class='va'>mat</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='va'>inverted</span><span class='op'>)</span>
+<span class='va'>catted</span> <span class='op'>=</span> <span class='fu'>concat_xfm</span><span class='op'>(</span><span class='va'>mat</span>, <span class='va'>mat</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='va'>catted</span><span class='op'>)</span>
+<span class='va'>fixed</span> <span class='op'>=</span> <span class='fu'>fixscaleskew_xfm</span><span class='op'>(</span><span class='va'>mat</span>, <span class='va'>mat</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='va'>fixed</span><span class='op'>)</span>
 
-}
-</div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/fslreorient2std "/usr/local/fsl/data/standard/MNI152_T1_1mm.nii.gz"   &gt; /tmp/RtmpB03nSX/file602e67540321.mat ;</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/convert_xfm -omat /tmp/RtmpB03nSX/file602e58d87375.mat -inverse "/tmp/RtmpB03nSX/file602e67540321.mat"   ;</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/convert_xfm -omat /tmp/RtmpB03nSX/file602e788622c6.mat -concat /tmp/RtmpB03nSX/file602e67540321.mat "/tmp/RtmpB03nSX/file602e67540321.mat"   ;</span></div><div class='output co'>#&gt; <span class='message'>FSLDIR='/usr/local/fsl'; PATH=${FSLDIR}/bin:${PATH};export PATH FSLDIR; sh "${FSLDIR}/etc/fslconf/fsl.sh"; FSLOUTPUTTYPE=NIFTI_GZ; export FSLOUTPUTTYPE; ${FSLDIR}/bin/convert_xfm -omat /tmp/RtmpB03nSX/file602e7ce915c1.mat -fixscaleskew /tmp/RtmpB03nSX/file602e67540321.mat "/tmp/RtmpB03nSX/file602e67540321.mat"   ;</span></div><div class='output co'>#&gt; [1] "1  0  0  0  " "0  1  0  0  " "0  0  1  0  " "0  0  0  1  "</div></pre>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
