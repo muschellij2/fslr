@@ -25,7 +25,7 @@ Imports:
     utils
 Depends:
     oro.nifti (>= 0.5.0),
-    neurobase,
+    neurobase (>= 1.32.0),
     R (>= 3.2.0)
 License: GPL-3
 VignetteBuilder: knitr

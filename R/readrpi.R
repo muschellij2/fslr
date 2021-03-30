@@ -38,19 +38,3 @@ readrpi <- function(file, ..., verbose = TRUE) {
   nim = readnii(fname = file, ...)
   return(nim)
 }
-
-#' @export
-#' @rdname readrpi
-#' @note `read_rpi` uses `RNifti` to ensure the reading orientation
-read_rpi <- function(file, ..., verbose = TRUE) {
-  args = list(...)
-  n_args = names(args)
-  if ("fname" %in% n_args) {
-    stop("fname cannot be specified in readrpi!")
-  }
-  
-  L = orient_rpi_file(file = file, verbose = verbose)
-  file = L$img
-  nim = readnii(fname = file, ...)
-  return(nim)
-}

@@ -3,9 +3,6 @@
 \name{rpi_orient}
 \alias{rpi_orient}
 \alias{rpi_orient_file}
-\alias{orient_rpi_file}
-\alias{orient_rpi}
-\alias{is_rpi_oriented}
 \alias{is_rpi}
 \alias{is.rpi}
 \title{Reorient an Image to RPI orientation}
@@ -13,12 +10,6 @@
 rpi_orient(file, verbose = TRUE)
 
 rpi_orient_file(file, verbose = TRUE)
-
-orient_rpi_file(file, verbose = TRUE)
-
-orient_rpi(file, verbose = TRUE)
-
-is_rpi_oriented(file, verbose = FALSE)
 
 is_rpi(file, verbose = FALSE)
 
