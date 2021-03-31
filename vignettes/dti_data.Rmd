@@ -27,7 +27,7 @@ First, we download the data into a temporary directory the unzip it:
 ```{r}
 tdir = tempdir()
 tfile = file.path(tdir, "example_dwi.zip")
-download.file("http://cmic.cs.ucl.ac.uk/camino//uploads/Tutorials/example_dwi.zip",destfile = tfile)
+download.file("http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip",destfile = tfile, mode = "wb")
 out = unzip(zipfile = tfile, exdir = tdir, overwrite = TRUE)
 ```
 

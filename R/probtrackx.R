@@ -26,7 +26,7 @@
 #' @param nsteps (numeric) Number of steps per sample - default=2000
 #' @param distthresh (numeric) Discards samples shorter than this threshold (in mm - default=0)
 #' @param cthr (numeric) Curvature threshold - default=0.2
-#' @param fibthresh (numeric) Volume fraction before subsidary fibre orientations are considered - default=0.01
+#' @param fibthresh (numeric) Volume fraction before subsidiary fibre orientations are considered - default=0.01
 #' @param sampvox (logical) Sample random points within seed voxels
 #' @param steplength (numeric) Steplength in mm - default=0.5
 #' @param loopcheck (logical) Perform loopchecks on paths - slower, but allows lower curvature threshold

@@ -15,7 +15,7 @@ run_first_all(
 )
 }
 \arguments{
-\item{img}{pecifies the input image (T1-weighted)}
+\item{img}{specifies the input image (T1-weighted)}
 
 \item{oprefix}{specifies the output image basename (extensions will be added to this)}
 

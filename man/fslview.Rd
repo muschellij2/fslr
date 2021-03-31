@@ -29,5 +29,5 @@ in the FSL viewer
 }
 \note{
 As of FSL version 5.0.10, this is deprecated:
-https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/WhatsNew
+\url{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/WhatsNew}
 }

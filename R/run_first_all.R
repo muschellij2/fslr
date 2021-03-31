@@ -1,7 +1,7 @@
 #' @title Run FIRST All
 #' @description Wrapper for \code{run_first_all} from FSL for FIRST analysis 
 #' segmentation of subcortical structures
-#' @param img pecifies the input image (T1-weighted)
+#' @param img specifies the input image (T1-weighted)
 #' @param oprefix specifies the output image basename (extensions will be added to this)
 #' @param brain_extracted specifies that the input image has been brain extracted
 #' @param structures a restricted set of structures to be segmented 

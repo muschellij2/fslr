@@ -9,7 +9,7 @@
 #' @return character or logical depending on intern
 #' @importFrom utils compareVersion
 #' @note As of FSL version 5.0.10, this is deprecated:
-#' https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/WhatsNew
+#' \url{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/WhatsNew}
 #' @export
 fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
   cmd <- get.fsl()

@@ -5,7 +5,7 @@
 #' @aliases sizeof_hdr,character-method
 #' @import oro.nifti
 #' @export
-#' @description sizeof_hdr method for character types
+#' @description `sizeof_hdr` method for character types
 #' @param object is a filename to pass to \link{fslval}
 #' 
 setMethod("sizeof_hdr", "character", function(object) { 

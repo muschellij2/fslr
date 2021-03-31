@@ -14,7 +14,7 @@
 #' @param width plot width in pixels (default 600)
 #' @param unit scaling units for x-axis (default 1...length of infile)
 #' @param precision precision of x-axis labels
-#' @param scientific_notation switch on sientific notation
+#' @param scientific_notation switch on scientific notation
 #' @param start_position  Position of first column to plot
 #' @param end_position Position of final column to plot
 #' @param ... additional options to pass to \code{\link{fslcmd}}

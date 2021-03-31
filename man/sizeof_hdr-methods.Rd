@@ -12,5 +12,5 @@
 \item{object}{is a filename to pass to \link{fslval}}
 }
 \description{
-sizeof_hdr method for character types
+`sizeof_hdr` method for character types
 }

@@ -55,7 +55,7 @@ fsl_tsplot.help()
 
 \item{unit}{scaling units for x-axis (default 1...length of infile)}
 
-\item{scientific_notation}{switch on sientific notation}
+\item{scientific_notation}{switch on scientific notation}
 
 \item{start_position}{Position of first column to plot}
 

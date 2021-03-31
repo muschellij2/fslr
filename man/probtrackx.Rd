@@ -94,7 +94,7 @@ probtrackx(
 
 \item{cthr}{(numeric) Curvature threshold - default=0.2}
 
-\item{fibthresh}{(numeric) Volume fraction before subsidary fibre orientations are considered - default=0.01}
+\item{fibthresh}{(numeric) Volume fraction before subsidiary fibre orientations are considered - default=0.01}
 
 \item{sampvox}{(logical) Sample random points within seed voxels}
 

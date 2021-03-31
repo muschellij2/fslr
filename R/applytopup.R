@@ -5,7 +5,7 @@
 #' @param infile list of names of input image (to be corrected)
 #' @param datain name of text file with PE directions/times
 #' @param topup_files name of field/movements (from topup)
-#' @param index list of indicies into --datain of 
+#' @param index list of indices into --datain of 
 #' the input image (to be corrected)
 #' @param method Use jacobian modulation (jac) or 
 #' least-squares resampling (lsr), default=lsr.
