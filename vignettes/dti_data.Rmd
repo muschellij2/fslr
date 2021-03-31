@@ -15,7 +15,7 @@ library(knitr)
 Much of this work has been adapted by the FSL guide for DTI: [http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide](http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide).  We will show you a few steps that have been implemented in `fslr`: `eddy_correct` and `dtifit`.  Although `xfibres` has been adapted for `fslr`, which is the backend for `bedpostx` from FSL, it takes a long time to run and the results are not seen in this vignette, though code is given to illustrate how it would be run.
 
 # Data Location
-The data located in this tutorial is located at [http://cmic.cs.ucl.ac.uk/camino//uploads/Tutorials/example_dwi.zip](http://cmic.cs.ucl.ac.uk/camino//uploads/Tutorials/example_dwi.zip).  It contains 3 files:
+The data located in this tutorial is located at [http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip](http://cmic.cs.ucl.ac.uk/camino//uploads/Tutorials/example_dwi.zip).  It contains 3 files:
 
 1.  `4Ddwi_b1000.nii.gz` - a 4D image of the DWI data.
 2.  `brain_mask.nii.gz` - A brain mask of the DTI data
