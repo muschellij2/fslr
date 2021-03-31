@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.25.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.25.1</span>
       </span>
     </div>
 
@@ -120,7 +120,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tdir</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">tfile</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">tdir</span>, <span class="st">"example_dwi.zip"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"http://cmic.cs.ucl.ac.uk/camino//uploads/Tutorials/example_dwi.zip"</span>,destfile <span class="op">=</span> <span class="va">tfile</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip"</span>,destfile <span class="op">=</span> <span class="va">tfile</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span>
 <span class="va">out</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html">unzip</a></span><span class="op">(</span>zipfile <span class="op">=</span> <span class="va">tfile</span>, exdir <span class="op">=</span> <span class="va">tdir</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <div id="making-b-vectors-and-b-values" class="section level2">
 <h2 class="hasAnchor">

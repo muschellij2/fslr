@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.25.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.25.1</span>
       </span>
     </div>
 
@@ -139,12 +139,6 @@
 
 <span class='fu'>rpi_orient_file</span><span class='op'>(</span><span class='va'>file</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>orient_rpi_file</span><span class='op'>(</span><span class='va'>file</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='fu'>orient_rpi</span><span class='op'>(</span><span class='va'>file</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='fu'>is_rpi_oriented</span><span class='op'>(</span><span class='va'>file</span>, verbose <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
 <span class='fu'>is_rpi</span><span class='op'>(</span><span class='va'>file</span>, verbose <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='fu'>is.rpi</span><span class='op'>(</span><span class='va'>file</span>, verbose <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -198,7 +192,7 @@ orientation <span class='op'>=</span> <span class='va'>reor</span><span class='o
 <span class='va'>reor</span> <span class='op'>=</span> <span class='fu'>orient_rpi</span><span class='op'>(</span><span class='va'>rl_fname</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='va'>img</span> <span class='op'>==</span> <span class='va'>reor</span><span class='op'>$</span><span class='va'>img</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>rev</span> <span class='op'>=</span> <span class='fu'><a href='reverse_rpi_orient.html'>reverse_orient_rpi</a></span><span class='op'>(</span><span class='va'>reor</span><span class='op'>$</span><span class='va'>img</span>, convention <span class='op'>=</span> <span class='va'>reor</span><span class='op'>$</span><span class='va'>convention</span>,
+<span class='va'>rev</span> <span class='op'>=</span> <span class='fu'>reverse_orient_rpi</span><span class='op'>(</span><span class='va'>reor</span><span class='op'>$</span><span class='va'>img</span>, convention <span class='op'>=</span> <span class='va'>reor</span><span class='op'>$</span><span class='va'>convention</span>,
 orientation <span class='op'>=</span> <span class='va'>reor</span><span class='op'>$</span><span class='va'>orientation</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='va'>rev</span> <span class='op'>==</span> <span class='va'>rl_img</span><span class='op'>)</span><span class='op'>)</span>
 </div></pre>
