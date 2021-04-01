@@ -98,12 +98,12 @@
 <div id="resources-and-goals" class="section level1">
 <h1 class="hasAnchor">
 <a href="#resources-and-goals" class="anchor"></a>Resources and Goals</h1>
-<p>Much of this work has been adapted by the FSL guide for DTI: <a href="http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide">http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide</a>. We will show you a few steps that have been implemented in <code>fslr</code>: <code>eddy_correct</code> and <code>dtifit</code>. Although <code>xfibres</code> has been adapted for <code>fslr</code>, which is the backend for <code>bedpostx</code> from FSL, it takes a long time to run and the results are not seen in this vignette, though code is given to illustrate how it would be run.</p>
+<p>Much of this work has been adapted by the FSL guide for DTI: <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide</a>. We will show you a few steps that have been implemented in <code>fslr</code>: <code>eddy_correct</code> and <code>dtifit</code>. Although <code>xfibres</code> has been adapted for <code>fslr</code>, which is the backend for <code>bedpostx</code> from FSL, it takes a long time to run and the results are not seen in this vignette, though code is given to illustrate how it would be run.</p>
 </div>
 <div id="data-location" class="section level1">
 <h1 class="hasAnchor">
 <a href="#data-location" class="anchor"></a>Data Location</h1>
-<p>The data located in this tutorial is located at <a href="http://cmic.cs.ucl.ac.uk/camino//uploads/Tutorials/example_dwi.zip">http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip</a>. It contains 3 files:</p>
+<p>The data located in this tutorial is located at <a href="https://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip">https://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip</a>. It contains 3 files:</p>
 <ol style="list-style-type: decimal">
 <li>
 <code>4Ddwi_b1000.nii.gz</code> - a 4D image of the DWI data.</li>
@@ -173,7 +173,7 @@
   <span class="va">ret</span> <span class="op">=</span> <span class="fu"><a href="../reference/eddy_correct.html">eddy_correct</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">img</span>, outfile <span class="op">=</span> <span class="va">outfile</span>, 
                      retimg <span class="op">=</span> <span class="cn">TRUE</span>, reference_no <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<pre><code>## eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpNEOLL7/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpNEOLL7/file15d7e4feef684" 0;</code></pre>
+<pre><code>## eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpsx0MiI/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpsx0MiI/file15e33505bb6" 0;</code></pre>
 <p>Note, from here on forward we will use either the filename for the output of the eddy current correction or the eddy-current-corrected <code>nifti</code> object.</p>
 </div>
 <div id="running-dti-fitting-as-a-cursor" class="section level1">
@@ -186,7 +186,7 @@
   <span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="../reference/dtifit.html">dtifit</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">ret</span>, bvecs <span class="op">=</span> <span class="va">b_vecs</span>, 
                bvals <span class="op">=</span> <span class="va">b_vals</span>, mask <span class="op">=</span> <span class="va">mask_fname</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<pre><code>## dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpNEOLL7/file15d7e40aba167.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpNEOLL7/file15d7e43f1925c" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpNEOLL7/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpNEOLL7/file15d7e28bff8dd.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpNEOLL7/file15d7e536b8a11.txt" --verbose</code></pre>
+<pre><code>## dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpsx0MiI/file15e14517fc7.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpsx0MiI/file15e729bec3c" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpsx0MiI/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpsx0MiI/file15e5ab291ec.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpsx0MiI/file15e18a4b79.txt" --verbose</code></pre>
 <p>By default, the result of <code>dtifit</code> is the filenames of the resultant images. Here we will read in those images:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
@@ -226,7 +226,7 @@
 <div id="fitting-bedpostx" class="section level1">
 <h1 class="hasAnchor">
 <a href="#fitting-bedpostx" class="anchor"></a>Fitting bedpostx</h1>
-<p>According to <a href="http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide">http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide</a>, the <code>bedpostx</code> function from FSL stands for “Bayesian Estimation of Diffusion Parameters Obtained using Sampling Techniques. The X stands for modelling Crossing Fibres”. It also states “bedpostx takes about 15 hours to run”. We have implemented <code>xfibres</code>, the function <code>bedpostx</code> calls. Running it with the default options, the command would be:</p>
+<p>According to <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide</a>, the <code>bedpostx</code> function from FSL stands for “Bayesian Estimation of Diffusion Parameters Obtained using Sampling Techniques. The X stands for modelling Crossing Fibres”. It also states “bedpostx takes about 15 hours to run”. We have implemented <code>xfibres</code>, the function <code>bedpostx</code> calls. Running it with the default options, the command would be:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/xfibres.html">xfibres</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">outfile</span>, 
         bvecs <span class="op">=</span> <span class="va">b_vecs</span>,

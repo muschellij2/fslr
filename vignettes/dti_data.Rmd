@@ -12,10 +12,10 @@ library(knitr)
 ```
 
 # Resources and Goals
-Much of this work has been adapted by the FSL guide for DTI: [http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide](http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide).  We will show you a few steps that have been implemented in `fslr`: `eddy_correct` and `dtifit`.  Although `xfibres` has been adapted for `fslr`, which is the backend for `bedpostx` from FSL, it takes a long time to run and the results are not seen in this vignette, though code is given to illustrate how it would be run.
+Much of this work has been adapted by the FSL guide for DTI: [https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide).  We will show you a few steps that have been implemented in `fslr`: `eddy_correct` and `dtifit`.  Although `xfibres` has been adapted for `fslr`, which is the backend for `bedpostx` from FSL, it takes a long time to run and the results are not seen in this vignette, though code is given to illustrate how it would be run.
 
 # Data Location
-The data located in this tutorial is located at [http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip](http://cmic.cs.ucl.ac.uk/camino//uploads/Tutorials/example_dwi.zip).  It contains 3 files:
+The data located in this tutorial is located at [https://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip](https://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip).  It contains 3 files:
 
 1.  `4Ddwi_b1000.nii.gz` - a 4D image of the DWI data.
 2.  `brain_mask.nii.gz` - A brain mask of the DTI data
@@ -132,7 +132,7 @@ if (have.fsl()) {
 
 # Fitting bedpostx
 
-According to [http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide](http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide), the `bedpostx` function from FSL stands for "Bayesian Estimation of Diffusion Parameters Obtained using Sampling Techniques. The X stands for modelling Crossing Fibres".  It also states "bedpostx takes about 15 hours to run".  We have implemented `xfibres`, the function `bedpostx` calls.  Running it with the default options, the command would be:
+According to [https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide), the `bedpostx` function from FSL stands for "Bayesian Estimation of Diffusion Parameters Obtained using Sampling Techniques. The X stands for modelling Crossing Fibres".  It also states "bedpostx takes about 15 hours to run".  We have implemented `xfibres`, the function `bedpostx` calls.  Running it with the default options, the command would be:
 
 ```{r, eval = FALSE}
 xfibres(infile = outfile, 
