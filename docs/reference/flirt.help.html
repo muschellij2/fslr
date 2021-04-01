@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="FLIRT help — flirt.help" />
 <meta property="og:description" content="This function calls flirt's help" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.25.1</span>
       </span>
     </div>
 
@@ -77,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -104,7 +107,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/muschellij2/fslr/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -119,7 +127,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>FLIRT help</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/muschellij2/fslr/blob/master/R/fslhd.R'><code>R/fslhd.R</code></a></small>
     <div class="hidden name"><code>flirt.help.Rd</code></div>
     </div>
 
@@ -127,7 +135,7 @@
     <p>This function calls <code>flirt</code>'s help</p>
     </div>
 
-    <pre class="usage"><span class='fu'>flirt.help</span>()</pre>
+    <pre class="usage"><span class='fu'>flirt.help</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -135,17 +143,15 @@
     <p>Prints help output and returns output as character vector</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='have.fsl.html'>have.fsl</a></span>()){
- <span class='fu'>flirt.help</span>()
-}</div><div class='output co'>#&gt; <span class='message'>FLIRT version 6.0Usage: flirt [options] -in &lt;inputvol&gt; -ref &lt;refvol&gt; -out &lt;outputvol&gt;       flirt [options] -in &lt;inputvol&gt; -ref &lt;refvol&gt; -omat &lt;outputmatrix&gt;       flirt [options] -in &lt;inputvol&gt; -ref &lt;refvol&gt; -applyxfm -init &lt;matrix&gt; -out &lt;outputvol&gt;  Available options are:        -in  &lt;inputvol&gt;                    (no default)        -ref &lt;refvol&gt;                      (no default)        -init &lt;matrix-filname&gt;             (input 4x4 affine matrix)        -omat &lt;matrix-filename&gt;            (output in 4x4 ascii format)        -out, -o &lt;outputvol&gt;               (default is none)        -datatype {char,short,int,float,double}                    (force output data type)        -cost {mutualinfo,corratio,normcorr,normmi,leastsq,labeldiff,bbr}        (default is corratio)        -searchcost {mutualinfo,corratio,normcorr,normmi,leastsq,labeldiff,bbr}  (default is corratio)        -usesqform                         (initialise using appropriate sform or qform)        -displayinit                       (display initial matrix)        -anglerep {quaternion,euler}       (default is euler)        -interp {trilinear,nearestneighbour,sinc,spline}  (final interpolation: def - trilinear)        -sincwidth &lt;full-width in voxels&gt;  (default is 7)        -sincwindow {rectangular,hanning,blackman}        -bins &lt;number of histogram bins&gt;   (default is 256)        -dof  &lt;number of transform dofs&gt;   (default is 12)        -noresample                        (do not change input sampling)        -forcescaling                      (force rescaling even for low-res images)        -minsampling &lt;vox_dim&gt;             (set minimum voxel dimension for sampling (in mm))        -applyxfm                          (applies transform (no optimisation) - requires -init)        -applyisoxfm &lt;scale&gt;               (as applyxfm but forces isotropic resampling)        -paddingsize &lt;number of voxels&gt;    (for applyxfm: interpolates outside image by size)        -searchrx &lt;min_angle&gt; &lt;max_angle&gt;  (angles in degrees: default is -90 90)        -searchry &lt;min_angle&gt; &lt;max_angle&gt;  (angles in degrees: default is -90 90)        -searchrz &lt;min_angle&gt; &lt;max_angle&gt;  (angles in degrees: default is -90 90)        -nosearch                          (sets all angular search ranges to 0 0)        -coarsesearch &lt;delta_angle&gt;        (angle in degrees: default is 60)        -finesearch &lt;delta_angle&gt;          (angle in degrees: default is 18)        -schedule &lt;schedule-file&gt;          (replaces default schedule)        -refweight &lt;volume&gt;                (use weights for reference volume)        -inweight &lt;volume&gt;                 (use weights for input volume)        -wmseg &lt;volume&gt;                    (white matter segmentation volume needed by BBR cost function)        -wmcoords &lt;text matrix&gt;            (white matter boundary coordinates for BBR cost function)        -wmnorms &lt;text matrix&gt;             (white matter boundary normals for BBR cost function)        -fieldmap &lt;volume&gt;                 (fieldmap image in rads/s - must be already registered to the reference image)        -fieldmapmask &lt;volume&gt;             (mask for fieldmap image)        -pedir &lt;index&gt;                     (phase encode direction of EPI - 1/2/3=x/y/z &amp; -1/-2/-3=-x/-y/-z)        -echospacing &lt;value&gt;               (value of EPI echo spacing - units of seconds)        -bbrtype &lt;value&gt;                   (type of bbr cost function: signed [default], global_abs, local_abs)        -bbrslope &lt;value&gt;                  (value of bbr slope)        -setbackground &lt;value&gt;             (use specified background value for points outside FOV)        -noclamp                           (do not use intensity clamping)        -noresampblur                      (do not use blurring on downsampling)        -2D                                (use 2D rigid body mode - ignores dof)        -verbose &lt;num&gt;                     (0 is least and default)        -v                                 (same as -verbose 1)        -i                                 (pauses at each stage: default is off)        -version                           (prints version number)        -help</span></div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='have.fsl.html'>have.fsl</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+ <span class='fu'>flirt.help</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span> 
+</div><div class='output co'>#&gt; <span class='message'>FLIRT version 6.0Usage: flirt [options] -in &lt;inputvol&gt; -ref &lt;refvol&gt; -out &lt;outputvol&gt;       flirt [options] -in &lt;inputvol&gt; -ref &lt;refvol&gt; -omat &lt;outputmatrix&gt;       flirt [options] -in &lt;inputvol&gt; -ref &lt;refvol&gt; -applyxfm -init &lt;matrix&gt; -out &lt;outputvol&gt;  Available options are:        -in  &lt;inputvol&gt;                    (no default)        -ref &lt;refvol&gt;                      (no default)        -init &lt;matrix-filname&gt;             (input 4x4 affine matrix)        -omat &lt;matrix-filename&gt;            (output in 4x4 ascii format)        -out, -o &lt;outputvol&gt;               (default is none)        -datatype {char,short,int,float,double}                    (force output data type)        -cost {mutualinfo,corratio,normcorr,normmi,leastsq,labeldiff,bbr}        (default is corratio)        -searchcost {mutualinfo,corratio,normcorr,normmi,leastsq,labeldiff,bbr}  (default is corratio)        -usesqform                         (initialise using appropriate sform or qform)        -displayinit                       (display initial matrix)        -anglerep {quaternion,euler}       (default is euler)        -interp {trilinear,nearestneighbour,sinc,spline}  (final interpolation: def - trilinear)        -sincwidth &lt;full-width in voxels&gt;  (default is 7)        -sincwindow {rectangular,hanning,blackman}        -bins &lt;number of histogram bins&gt;   (default is 256)        -dof  &lt;number of transform dofs&gt;   (default is 12)        -noresample                        (do not change input sampling)        -forcescaling                      (force rescaling even for low-res images)        -minsampling &lt;vox_dim&gt;             (set minimum voxel dimension for sampling (in mm))        -applyxfm                          (applies transform (no optimisation) - requires -init)        -applyisoxfm &lt;scale&gt;               (as applyxfm but forces isotropic resampling)        -paddingsize &lt;number of voxels&gt;    (for applyxfm: interpolates outside image by size)        -searchrx &lt;min_angle&gt; &lt;max_angle&gt;  (angles in degrees: default is -90 90)        -searchry &lt;min_angle&gt; &lt;max_angle&gt;  (angles in degrees: default is -90 90)        -searchrz &lt;min_angle&gt; &lt;max_angle&gt;  (angles in degrees: default is -90 90)        -nosearch                          (sets all angular search ranges to 0 0)        -coarsesearch &lt;delta_angle&gt;        (angle in degrees: default is 60)        -finesearch &lt;delta_angle&gt;          (angle in degrees: default is 18)        -schedule &lt;schedule-file&gt;          (replaces default schedule)        -refweight &lt;volume&gt;                (use weights for reference volume)        -inweight &lt;volume&gt;                 (use weights for input volume)        -wmseg &lt;volume&gt;                    (white matter segmentation volume needed by BBR cost function)        -wmcoords &lt;text matrix&gt;            (white matter boundary coordinates for BBR cost function)        -wmnorms &lt;text matrix&gt;             (white matter boundary normals for BBR cost function)        -fieldmap &lt;volume&gt;                 (fieldmap image in rads/s - must be already registered to the reference image)        -fieldmapmask &lt;volume&gt;             (mask for fieldmap image)        -pedir &lt;index&gt;                     (phase encode direction of EPI - 1/2/3=x/y/z &amp; -1/-2/-3=-x/-y/-z)        -echospacing &lt;value&gt;               (value of EPI echo spacing - units of seconds)        -bbrtype &lt;value&gt;                   (type of bbr cost function: signed [default], global_abs, local_abs)        -bbrslope &lt;value&gt;                  (value of bbr slope)        -setbackground &lt;value&gt;             (use specified background value for points outside FOV)        -noclamp                           (do not use intensity clamping)        -noresampblur                      (do not use blurring on downsampling)        -2D                                (use 2D rigid body mode - ignores dof)        -verbose &lt;num&gt;                     (0 is least and default)        -v                                 (same as -verbose 1)        -i                                 (pauses at each stage: default is off)        -version                           (prints version number)        -help</span></div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -156,7 +162,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

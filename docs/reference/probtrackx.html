@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="Probabilistic diffusion tractography with multiple fibre orientations — probtrackx" />
 <meta property="og:description" content="This function wraps probtrackx from FSL" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.24.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.25.1</span>
       </span>
     </div>
 
@@ -77,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -104,7 +107,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/muschellij2/fslr/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -119,7 +127,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Probabilistic diffusion tractography with multiple fibre orientations</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/muschellij2/fslr/blob/master/R/probtrackx.R'><code>R/probtrackx.R</code></a></small>
     <div class="hidden name"><code>probtrackx.Rd</code></div>
     </div>
 
@@ -127,44 +135,44 @@
     <p>This function wraps <code>probtrackx</code> from FSL</p>
     </div>
 
-    <pre class="usage"><span class='fu'>probtrackx</span>(
-  <span class='kw'>samples</span> <span class='kw'>=</span> <span class='st'>"merged"</span>,
-  <span class='no'>mask</span>,
-  <span class='no'>seed</span>,
-  <span class='kw'>outdir</span> <span class='kw'>=</span> <span class='st'>"fdt_paths"</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>mode</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>targetmasks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>mask2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>waypoints</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>network</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>mesh</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>seedref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>forcedir</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>opd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>pd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>os2t</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>avoid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>stop</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>xfm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>invxfm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nsamples</span> <span class='kw'>=</span> <span class='fl'>5000</span>,
-  <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>2000</span>,
-  <span class='kw'>distthresh</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>cthr</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
-  <span class='kw'>fibthresh</span> <span class='kw'>=</span> <span class='fl'>0.01</span>,
-  <span class='kw'>sampvox</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>steplength</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>loopcheck</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>usef</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>randfib</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>),
-  <span class='kw'>fibst</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>modeuler</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>rseed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>s2tastext</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>opts</span> <span class='kw'>=</span> <span class='st'>""</span>
-)</pre>
+    <pre class="usage"><span class='fu'>probtrackx</span><span class='op'>(</span>
+  samples <span class='op'>=</span> <span class='st'>"merged"</span>,
+  <span class='va'>mask</span>,
+  <span class='va'>seed</span>,
+  outdir <span class='op'>=</span> <span class='st'>"fdt_paths"</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  mode <span class='op'>=</span> <span class='cn'>NULL</span>,
+  targetmasks <span class='op'>=</span> <span class='cn'>NULL</span>,
+  mask2 <span class='op'>=</span> <span class='cn'>NULL</span>,
+  waypoints <span class='op'>=</span> <span class='cn'>NULL</span>,
+  network <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  mesh <span class='op'>=</span> <span class='cn'>NULL</span>,
+  seedref <span class='op'>=</span> <span class='cn'>NULL</span>,
+  dir <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  forcedir <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  opd <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  pd <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  os2t <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  avoid <span class='op'>=</span> <span class='cn'>NULL</span>,
+  stop <span class='op'>=</span> <span class='cn'>NULL</span>,
+  xfm <span class='op'>=</span> <span class='cn'>NULL</span>,
+  invxfm <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nsamples <span class='op'>=</span> <span class='fl'>5000</span>,
+  nsteps <span class='op'>=</span> <span class='fl'>2000</span>,
+  distthresh <span class='op'>=</span> <span class='fl'>0</span>,
+  cthr <span class='op'>=</span> <span class='fl'>0.2</span>,
+  fibthresh <span class='op'>=</span> <span class='fl'>0.01</span>,
+  sampvox <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  steplength <span class='op'>=</span> <span class='fl'>0.5</span>,
+  loopcheck <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  usef <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  randfib <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>,
+  fibst <span class='op'>=</span> <span class='fl'>1</span>,
+  modeuler <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  rseed <span class='op'>=</span> <span class='cn'>NULL</span>,
+  s2tastext <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  opts <span class='op'>=</span> <span class='st'>""</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -271,7 +279,7 @@
     </tr>
     <tr>
       <th>fibthresh</th>
-      <td><p>(numeric) Volume fraction before subsidary fibre orientations are considered - default=0.01</p></td>
+      <td><p>(numeric) Volume fraction before subsidiary fibre orientations are considered - default=0.01</p></td>
     </tr>
     <tr>
       <th>sampvox</th>
@@ -321,13 +329,10 @@ line arguments</p></td>
     <p>A filename of the output file</p>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -338,7 +343,7 @@ line arguments</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
