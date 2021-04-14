@@ -173,7 +173,7 @@
   <span class="va">ret</span> <span class="op">=</span> <span class="fu"><a href="../reference/eddy_correct.html">eddy_correct</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">img</span>, outfile <span class="op">=</span> <span class="va">outfile</span>, 
                      retimg <span class="op">=</span> <span class="cn">TRUE</span>, reference_no <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<pre><code>## eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpsx0MiI/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpsx0MiI/file15e33505bb6" 0;</code></pre>
+<pre><code>## eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpb1Qxye/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpb1Qxye/file126274abf6656" 0;</code></pre>
 <p>Note, from here on forward we will use either the filename for the output of the eddy current correction or the eddy-current-corrected <code>nifti</code> object.</p>
 </div>
 <div id="running-dti-fitting-as-a-cursor" class="section level1">
@@ -186,7 +186,7 @@
   <span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="../reference/dtifit.html">dtifit</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">ret</span>, bvecs <span class="op">=</span> <span class="va">b_vecs</span>, 
                bvals <span class="op">=</span> <span class="va">b_vals</span>, mask <span class="op">=</span> <span class="va">mask_fname</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<pre><code>## dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpsx0MiI/file15e14517fc7.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpsx0MiI/file15e729bec3c" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpsx0MiI/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpsx0MiI/file15e5ab291ec.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpsx0MiI/file15e18a4b79.txt" --verbose</code></pre>
+<pre><code>## dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpb1Qxye/file126273117da2b.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpb1Qxye/file1262714f4563b" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpb1Qxye/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpb1Qxye/file126273549463c.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpb1Qxye/file126275da22878.txt" --verbose</code></pre>
 <p>By default, the result of <code>dtifit</code> is the filenames of the resultant images. Here we will read in those images:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>

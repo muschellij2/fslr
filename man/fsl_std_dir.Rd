@@ -2,9 +2,15 @@
 % Please edit documentation in R/fsl_data_dir.R
 \name{fsl_std_dir}
 \alias{fsl_std_dir}
+\alias{fsl_std_file}
 \title{Get FSL's Standard Data Directory}
 \usage{
 fsl_std_dir()
+
+fsl_std_file(file = NULL)
+}
+\arguments{
+\item{file}{A file from the standard data file}
 }
 \value{
 Character path

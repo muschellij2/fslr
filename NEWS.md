@@ -1,7 +1,7 @@
 # fslr 2.25.1
 
 - Moved `orient_rpi*` functionality to `neurobase` rather than `fslr` due to dependencies.
-
+- Added `fsl_std_file`.
 
 # fslr 2.25.0
 
