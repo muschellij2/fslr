@@ -99,7 +99,7 @@
 <div class="section level2">
 <h2 id="data-location">Data Location<a class="anchor" aria-label="anchor" href="#data-location"></a>
 </h2>
-<p>The data located in this tutorial is located at <a href="https://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip" class="external-link">https://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip</a>. It contains 3 files:</p>
+<p>The data located in this tutorial is located at <a href="http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip" class="external-link">http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip</a>. It contains 3 files:</p>
 <ol style="list-style-type: decimal">
 <li>
 <code>4Ddwi_b1000.nii.gz</code> - a 4D image of the DWI data.</li>
@@ -116,7 +116,10 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tdir</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">tfile</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">tdir</span>, <span class="st">"example_dwi.zip"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip"</span>,destfile <span class="op">=</span> <span class="va">tfile</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span></span>
+<span><span class="va">result</span> <span class="op">=</span> <span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip"</span>,destfile <span class="op">=</span> <span class="va">tfile</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span><span class="op">}</span>, silent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">result</span>, <span class="st">"try-error"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://github.com/muschellij2/fslr/raw/master/inst/extdata/example_dwi.zip"</span>, destfile <span class="op">=</span> <span class="va">tfile</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
 <span><span class="va">out</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span>zipfile <span class="op">=</span> <span class="va">tfile</span>, exdir <span class="op">=</span> <span class="va">tdir</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="making-b-vectors-and-b-values">Making b-vectors and b-values<a class="anchor" aria-label="anchor" href="#making-b-vectors-and-b-values"></a>
@@ -168,7 +171,7 @@
 <span>  <span class="va">ret</span> <span class="op">=</span> <span class="fu"><a href="../reference/eddy_correct.html">eddy_correct</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">img</span>, outfile <span class="op">=</span> <span class="va">outfile</span>, </span>
 <span>                     retimg <span class="op">=</span> <span class="cn">TRUE</span>, reference_no <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<pre><code><span><span class="co">## eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpGBPmAk/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGBPmAk/file53377f093773" 0;</span></span></code></pre>
+<pre><code><span><span class="co">## eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmprYb5j3/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmprYb5j3/file8d44581afab0" 0;</span></span></code></pre>
 <p>Note, from here on forward we will use either the filename for the output of the eddy current correction or the eddy-current-corrected <code>nifti</code> object.</p>
 </div>
 <div class="section level2">
@@ -181,7 +184,7 @@
 <span>  <span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="../reference/dtifit.html">dtifit</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">ret</span>, bvecs <span class="op">=</span> <span class="va">b_vecs</span>, </span>
 <span>               bvals <span class="op">=</span> <span class="va">b_vals</span>, mask <span class="op">=</span> <span class="va">mask_fname</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<pre><code><span><span class="co">## dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpGBPmAk/file533749150619.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGBPmAk/file533734378cb" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpGBPmAk/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGBPmAk/file533742af5919.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGBPmAk/file53376029a83.txt" --verbose</span></span></code></pre>
+<pre><code><span><span class="co">## dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmprYb5j3/file8d4428e8b4b3.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmprYb5j3/file8d4445af68c0" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmprYb5j3/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmprYb5j3/file8d447f0638fd.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmprYb5j3/file8d447187ab31.txt" --verbose</span></span></code></pre>
 <p>By default, the result of <code>dtifit</code> is the filenames of the resultant images. Here we will read in those images:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
