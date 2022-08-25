@@ -1,3 +1,7 @@
+# fslr 2.25.2
+
+- Pushing back to CRAN after `neurobase` is back on.
+
 # fslr 2.25.1
 
 - Moved `orient_rpi*` functionality to `neurobase` rather than `fslr` due to dependencies.
