@@ -3,7 +3,7 @@
 
 # fslr
 
-<img src="sticker.png" width="100">
+<img src="man/figures/sticker.png" width="100">
 
 The goal of fslr is to port/wrap of FSL into R. As FSL has a fossil as
 it’s logo and it was to sound like “fossil”, that’s why we have that as
@@ -18,7 +18,7 @@ limited capabiilty.
 
 [![Build
 Status](https://travis-ci.org/muschellij2/fslr.svg?branch=master)](https://travis-ci.org/muschellij2/fslr)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/fslr)](https://cran.r-project.org/package=fslr)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/fslr)](https://cran.r-project.org/package=fslr)
 [![](https://cranlogs.r-pkg.org/badges/fslr)](https://cran.rstudio.com/web/packages/fslr/index.html)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/fslr)](http://cran.rstudio.com/web/packages/fslr/index.html)
 [![AppVeyor Build

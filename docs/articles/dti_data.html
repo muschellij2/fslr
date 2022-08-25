@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.25.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.25.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/fslr.html">Get started</a>
 </li>
@@ -50,7 +46,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,7 +63,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/muschellij2/fslr/">
+  <a href="https://github.com/muschellij2/fslr/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -82,28 +78,28 @@
 
       
 
-      </header><script src="dti_data_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>DTI Data in fslr</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/muschellij2/fslr/blob/master/vignettes/dti_data.Rmd"><code>vignettes/dti_data.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/muschellij2/fslr/blob/HEAD/vignettes/dti_data.Rmd" class="external-link"><code>vignettes/dti_data.Rmd</code></a></small>
       <div class="hidden name"><code>dti_data.Rmd</code></div>
 
     </div>
 
     
     
-<div id="resources-and-goals" class="section level1">
-<h1 class="hasAnchor">
-<a href="#resources-and-goals" class="anchor"></a>Resources and Goals</h1>
-<p>Much of this work has been adapted by the FSL guide for DTI: <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide</a>. We will show you a few steps that have been implemented in <code>fslr</code>: <code>eddy_correct</code> and <code>dtifit</code>. Although <code>xfibres</code> has been adapted for <code>fslr</code>, which is the backend for <code>bedpostx</code> from FSL, it takes a long time to run and the results are not seen in this vignette, though code is given to illustrate how it would be run.</p>
+<div class="section level2">
+<h2 id="resources-and-goals">Resources and Goals<a class="anchor" aria-label="anchor" href="#resources-and-goals"></a>
+</h2>
+<p>Much of this work has been adapted by the FSL guide for DTI: <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide" class="external-link">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide</a>. We will show you a few steps that have been implemented in <code>fslr</code>: <code>eddy_correct</code> and <code>dtifit</code>. Although <code>xfibres</code> has been adapted for <code>fslr</code>, which is the backend for <code>bedpostx</code> from FSL, it takes a long time to run and the results are not seen in this vignette, though code is given to illustrate how it would be run.</p>
 </div>
-<div id="data-location" class="section level1">
-<h1 class="hasAnchor">
-<a href="#data-location" class="anchor"></a>Data Location</h1>
-<p>The data located in this tutorial is located at <a href="https://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip">https://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip</a>. It contains 3 files:</p>
+<div class="section level2">
+<h2 id="data-location">Data Location<a class="anchor" aria-label="anchor" href="#data-location"></a>
+</h2>
+<p>The data located in this tutorial is located at <a href="https://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip" class="external-link">https://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip</a>. It contains 3 files:</p>
 <ol style="list-style-type: decimal">
 <li>
 <code>4Ddwi_b1000.nii.gz</code> - a 4D image of the DWI data.</li>
@@ -113,125 +109,124 @@
 <code>grad_dirs.txt</code> - a 3 column text file with the b-vectors as the first 3 columns. The b-values are either 0 or 1000 depending on the b-vector.</li>
 </ol>
 </div>
-<div id="reading-in-the-data" class="section level1">
-<h1 class="hasAnchor">
-<a href="#reading-in-the-data" class="anchor"></a>Reading in the Data</h1>
+<div class="section level2">
+<h2 id="reading-in-the-data">Reading in the Data<a class="anchor" aria-label="anchor" href="#reading-in-the-data"></a>
+</h2>
 <p>First, we download the data into a temporary directory the unzip it:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tdir</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">tfile</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">tdir</span>, <span class="st">"example_dwi.zip"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip"</span>,destfile <span class="op">=</span> <span class="va">tfile</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span>
-<span class="va">out</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html">unzip</a></span><span class="op">(</span>zipfile <span class="op">=</span> <span class="va">tfile</span>, exdir <span class="op">=</span> <span class="va">tdir</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<div id="making-b-vectors-and-b-values" class="section level2">
-<h2 class="hasAnchor">
-<a href="#making-b-vectors-and-b-values" class="anchor"></a>Making b-vectors and b-values</h2>
+<code class="sourceCode R"><span><span class="va">tdir</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">tfile</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">tdir</span>, <span class="st">"example_dwi.zip"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip"</span>,destfile <span class="op">=</span> <span class="va">tfile</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span></span>
+<span><span class="va">out</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span>zipfile <span class="op">=</span> <span class="va">tfile</span>, exdir <span class="op">=</span> <span class="va">tdir</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="making-b-vectors-and-b-values">Making b-vectors and b-values<a class="anchor" aria-label="anchor" href="#making-b-vectors-and-b-values"></a>
+</h3>
 <p>As <code>dtifit</code> requires the b-values and b-vectors to be separated, and this data has b-values of <span class="math inline">\(1000\)</span> when the b-vectors is not zero. <strong>This is very important and you must know where your b-values and b-vectors are when doing your analyses and what units they are in.</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">fslr</span><span class="op">)</span></code></pre></div>
-<pre><code>## Loading required package: oro.nifti</code></pre>
-<pre><code>## oro.nifti 0.11.0</code></pre>
-<pre><code>## Loading required package: neurobase</code></pre>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">fslr</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Loading required package: oro.nifti</span></span></code></pre>
+<pre><code><span><span class="co">## oro.nifti 0.11.4</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: neurobase</span></span></code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">b_data_file</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"[.]txt$"</span>, <span class="va">out</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">b_vecs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim2</a></span><span class="op">(</span><span class="va">b_data_file</span>, header <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="va">b_vecs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">b_vecs</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">b_vecs</span><span class="op">)</span> <span class="op">=</span> <span class="st">"numeric"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">b_data_file</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"[.]txt$"</span>, <span class="va">out</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">b_vecs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.delim2</a></span><span class="op">(</span><span class="va">b_data_file</span>, header <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">b_vecs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">b_vecs</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">b_vecs</span><span class="op">)</span> <span class="op">=</span> <span class="st">"numeric"</span></span></code></pre></div>
 <p>We will read in the information of the b-values and b-vectors from the 1 file and separate them. Here, the b-values are all 1000, except for places where the b-vector is all zero.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">b_vals</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">b_vecs</span><span class="op">)</span><span class="op">)</span>
-<span class="va">all_zero</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">b_vecs</span>  <span class="op">==</span> <span class="fl">0</span>, <span class="fl">1</span>, <span class="va">all</span><span class="op">)</span>
-<span class="va">b_vals</span><span class="op">[</span><span class="va">all_zero</span><span class="op">]</span> <span class="op">=</span> <span class="fl">0</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">b_vals</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">b_vecs</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">all_zero</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">b_vecs</span>  <span class="op">==</span> <span class="fl">0</span>, <span class="fl">1</span>, <span class="va">all</span><span class="op">)</span></span>
+<span><span class="va">b_vals</span><span class="op">[</span><span class="va">all_zero</span><span class="op">]</span> <span class="op">=</span> <span class="fl">0</span></span></code></pre></div>
 </div>
-<div id="checking-our-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#checking-our-data" class="anchor"></a>Checking our data</h2>
+<div class="section level3">
+<h3 id="checking-our-data">Checking our data<a class="anchor" aria-label="anchor" href="#checking-our-data"></a>
+</h3>
 <p>Here we ensure that the number of b-values/b-vectors is the same as the number of time points in the 4D image.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">img</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"4Ddwi_b1000"</span>, <span class="va">out</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">nim</span> <span class="op">=</span> <span class="fu">readnii</span><span class="op">(</span><span class="va">img</span><span class="op">)</span>
-<span class="va">n_timepoints</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">nim</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">b_vecs</span><span class="op">)</span> <span class="op">==</span> <span class="va">n_timepoints</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">img</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"4Ddwi_b1000"</span>, <span class="va">out</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">nim</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/neurobase/man/readNIfTI2.html" class="external-link">readnii</a></span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span>
+<span><span class="va">n_timepoints</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">nim</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">b_vecs</span><span class="op">)</span> <span class="op">==</span> <span class="va">n_timepoints</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="printing-out-fsl-version" class="section level2">
-<h2 class="hasAnchor">
-<a href="#printing-out-fsl-version" class="anchor"></a>Printing out FSL Version</h2>
+<div class="section level3">
+<h3 id="printing-out-fsl-version">Printing out FSL Version<a class="anchor" aria-label="anchor" href="#printing-out-fsl-version"></a>
+</h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="../reference/fsl_version.html">fsl_version</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
-<pre><code>## [1] "6.0.4"</code></pre>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="../reference/fsl_version.html">fsl_version</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "6.0.4"</span></span></code></pre>
 </div>
 </div>
-<div id="running-eddy_correct" class="section level1">
-<h1 class="hasAnchor">
-<a href="#running-eddy_correct" class="anchor"></a>Running <code>eddy_correct</code>
-</h1>
+<div class="section level2">
+<h2 id="running-eddy_correct">Running <code>eddy_correct</code><a class="anchor" aria-label="anchor" href="#running-eddy_correct"></a>
+</h2>
 <p>Here, we will run an eddy current correction using FSL’s <code>eddy_correct</code> through <code>fslr</code>. We will save the result in a temporary file (<code>outfile</code>), but also return the result as a <code>nifti</code> object <code>ret</code>, as <code>retimg = TRUE</code>. We will use the first volume as the reference as is the default in FSL. <em>Note</em> FSL is zero-indexed so the first volume is the zero-ith index:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">outfile</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".nii.gz"</span><span class="op">)</span>
-  <span class="va">ret</span> <span class="op">=</span> <span class="fu"><a href="../reference/eddy_correct.html">eddy_correct</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">img</span>, outfile <span class="op">=</span> <span class="va">outfile</span>, 
-                     retimg <span class="op">=</span> <span class="cn">TRUE</span>, reference_no <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
-<pre><code>## eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpb1Qxye/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpb1Qxye/file126274abf6656" 0;</code></pre>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">outfile</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".nii.gz"</span><span class="op">)</span></span>
+<span>  <span class="va">ret</span> <span class="op">=</span> <span class="fu"><a href="../reference/eddy_correct.html">eddy_correct</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">img</span>, outfile <span class="op">=</span> <span class="va">outfile</span>, </span>
+<span>                     retimg <span class="op">=</span> <span class="cn">TRUE</span>, reference_no <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<pre><code><span><span class="co">## eddy_correct "/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpGBPmAk/4Ddwi_b1000.nii.gz"  "/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGBPmAk/file53377f093773" 0;</span></span></code></pre>
 <p>Note, from here on forward we will use either the filename for the output of the eddy current correction or the eddy-current-corrected <code>nifti</code> object.</p>
 </div>
-<div id="running-dti-fitting-as-a-cursor" class="section level1">
-<h1 class="hasAnchor">
-<a href="#running-dti-fitting-as-a-cursor" class="anchor"></a>Running DTI Fitting as a cursor</h1>
+<div class="section level2">
+<h2 id="running-dti-fitting-as-a-cursor">Running DTI Fitting as a cursor<a class="anchor" aria-label="anchor" href="#running-dti-fitting-as-a-cursor"></a>
+</h2>
 <p>Now that we have eddy current corrected our data, we can pass that result into <code>dtifit</code> to get FA maps and such:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">mask_fname</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"mask"</span>, <span class="va">out</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-  <span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="../reference/dtifit.html">dtifit</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">ret</span>, bvecs <span class="op">=</span> <span class="va">b_vecs</span>, 
-               bvals <span class="op">=</span> <span class="va">b_vals</span>, mask <span class="op">=</span> <span class="va">mask_fname</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
-<pre><code>## dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpb1Qxye/file126273117da2b.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpb1Qxye/file1262714f4563b" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/Rtmpb1Qxye/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpb1Qxye/file126273549463c.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//Rtmpb1Qxye/file126275da22878.txt" --verbose</code></pre>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">mask_fname</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"mask"</span>, <span class="va">out</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="../reference/dtifit.html">dtifit</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">ret</span>, bvecs <span class="op">=</span> <span class="va">b_vecs</span>, </span>
+<span>               bvals <span class="op">=</span> <span class="va">b_vals</span>, mask <span class="op">=</span> <span class="va">mask_fname</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<pre><code><span><span class="co">## dtifit --data="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpGBPmAk/file533749150619.nii.gz" --out="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGBPmAk/file533734378cb" --mask="/private/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T/RtmpGBPmAk/brain_mask.nii.gz" --bvecs="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGBPmAk/file533742af5919.txt" --bvals="/var/folders/1s/wrtqcpxn685_zk570bnx9_rr0000gr/T//RtmpGBPmAk/file53376029a83.txt" --verbose</span></span></code></pre>
 <p>By default, the result of <code>dtifit</code> is the filenames of the resultant images. Here we will read in those images:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">res_imgs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">readnii</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
-<div id="plotting-an-fa-map" class="section level2">
-<h2 class="hasAnchor">
-<a href="#plotting-an-fa-map" class="anchor"></a>Plotting an FA map</h2>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">res_imgs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">readnii</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="plotting-an-fa-map">Plotting an FA map<a class="anchor" aria-label="anchor" href="#plotting-an-fa-map"></a>
+</h3>
 <p>Using the <code>ortho2</code> function, you can plot the fractional anisotropy (FA) map</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu">ortho2</span><span class="op">(</span><span class="va">res_imgs</span><span class="op">$</span><span class="va">FA</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/neurobase/man/ortho2.html" class="external-link">ortho2</a></span><span class="op">(</span><span class="va">res_imgs</span><span class="op">$</span><span class="va">FA</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p><img src="dti_data_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 <p>and the mean diffusivity (MD) map:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu">ortho2</span><span class="op">(</span><span class="va">res_imgs</span><span class="op">$</span><span class="va">MD</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/neurobase/man/ortho2.html" class="external-link">ortho2</a></span><span class="op">(</span><span class="va">res_imgs</span><span class="op">$</span><span class="va">MD</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p><img src="dti_data_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <p>or both at the same time using the <code>double_ortho</code> function:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu">double_ortho</span><span class="op">(</span><span class="va">res_imgs</span><span class="op">$</span><span class="va">FA</span>, <span class="va">res_imgs</span><span class="op">$</span><span class="va">MD</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/neurobase/man/double_ortho.html" class="external-link">double_ortho</a></span><span class="op">(</span><span class="va">res_imgs</span><span class="op">$</span><span class="va">FA</span>, <span class="va">res_imgs</span><span class="op">$</span><span class="va">MD</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p><img src="dti_data_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 <p>You can look at a scatterplot of the FA vs MD values of all values inside the mask using the following code:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">mask</span> <span class="op">=</span> <span class="fu">readnii</span><span class="op">(</span><span class="va">mask_fname</span><span class="op">)</span>
-  <span class="va">df</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>FA <span class="op">=</span> <span class="va">res_imgs</span><span class="op">$</span><span class="va">FA</span><span class="op">[</span> <span class="va">mask</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span>, MD <span class="op">=</span> <span class="va">res_imgs</span><span class="op">$</span><span class="va">MD</span><span class="op">[</span> <span class="va">mask</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span> <span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">mask</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/neurobase/man/readNIfTI2.html" class="external-link">readnii</a></span><span class="op">(</span><span class="va">mask_fname</span><span class="op">)</span></span>
+<span>  <span class="va">df</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>FA <span class="op">=</span> <span class="va">res_imgs</span><span class="op">$</span><span class="va">FA</span><span class="op">[</span> <span class="va">mask</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span>, MD <span class="op">=</span> <span class="va">res_imgs</span><span class="op">$</span><span class="va">MD</span><span class="op">[</span> <span class="va">mask</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span> <span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p><img src="dti_data_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
 </div>
-<div id="fitting-bedpostx" class="section level1">
-<h1 class="hasAnchor">
-<a href="#fitting-bedpostx" class="anchor"></a>Fitting bedpostx</h1>
-<p>According to <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide</a>, the <code>bedpostx</code> function from FSL stands for “Bayesian Estimation of Diffusion Parameters Obtained using Sampling Techniques. The X stands for modelling Crossing Fibres”. It also states “bedpostx takes about 15 hours to run”. We have implemented <code>xfibres</code>, the function <code>bedpostx</code> calls. Running it with the default options, the command would be:</p>
+<div class="section level2">
+<h2 id="fitting-bedpostx">Fitting bedpostx<a class="anchor" aria-label="anchor" href="#fitting-bedpostx"></a>
+</h2>
+<p>According to <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide" class="external-link">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide</a>, the <code>bedpostx</code> function from FSL stands for “Bayesian Estimation of Diffusion Parameters Obtained using Sampling Techniques. The X stands for modelling Crossing Fibres”. It also states “bedpostx takes about 15 hours to run”. We have implemented <code>xfibres</code>, the function <code>bedpostx</code> calls. Running it with the default options, the command would be:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/xfibres.html">xfibres</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">outfile</span>, 
-        bvecs <span class="op">=</span> <span class="va">b_vecs</span>,
-        bvals <span class="op">=</span> <span class="va">b_vals</span>,
-        mask <span class="op">=</span> <span class="va">mask_fname</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/xfibres.html">xfibres</a></span><span class="op">(</span>infile <span class="op">=</span> <span class="va">outfile</span>, </span>
+<span>        bvecs <span class="op">=</span> <span class="va">b_vecs</span>,</span>
+<span>        bvals <span class="op">=</span> <span class="va">b_vals</span>,</span>
+<span>        mask <span class="op">=</span> <span class="va">mask_fname</span><span class="op">)</span></span></code></pre></div>
 <p>We are currently implementing <code>probtracx2</code> and an overall wrapper for all these functions to work as a pipeline.</p>
 </div>
   </div>
@@ -247,11 +242,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by John Muschelli.</p>
+  <p></p>
+<p>Developed by John Muschelli.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -259,6 +256,8 @@
 
   
 
+
+  
 
   </body>
 </html>

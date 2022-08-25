@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 ```
 # fslr
 
-<img src="sticker.png" width="100">
+<img src="man/figures/sticker.png" width="100">
 
 The goal of fslr is to port/wrap of FSL into R.  As FSL has a fossil as it's logo and it was to sound like "fossil", that's why we have that as our logo.
 
