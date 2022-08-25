@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fslr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.25.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.25.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/fslr.html">Get started</a>
 </li>
@@ -50,7 +46,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,7 +63,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/muschellij2/fslr/">
+  <a href="https://github.com/muschellij2/fslr/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -88,42 +84,42 @@
       <h1 data-toc-skip>Working with Data in fslr</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/muschellij2/fslr/blob/master/vignettes/fslr.Rmd"><code>vignettes/fslr.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/muschellij2/fslr/blob/HEAD/vignettes/fslr.Rmd" class="external-link"><code>vignettes/fslr.Rmd</code></a></small>
       <div class="hidden name"><code>fslr.Rmd</code></div>
 
     </div>
 
     
     
-<div id="reading-in-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#reading-in-data" class="anchor"></a>Reading in Data</h2>
-<p><code>fslr</code> implicitly is partnered with the <code>nifti</code> format from <code>oro.nifti</code>. All functions use the <code>system</code> command to implement the FSL functions. All functions will check to see whether the file passed in a character path to a filename. If the object is a <code>nifti</code> object, the programs will create a temporary file using <code><a href="https://rdrr.io/r/base/tempfile.html">tempfile()</a></code> and then return the name of this file with the <code>checkimg</code> command. If a character path is passed to the <code>file</code> argument into an <code>fslr</code> command, then this will run in FSL assuming that file exists.</p>
+<div class="section level2">
+<h2 id="reading-in-data">Reading in Data<a class="anchor" aria-label="anchor" href="#reading-in-data"></a>
+</h2>
+<p><code>fslr</code> implicitly is partnered with the <code>nifti</code> format from <code>oro.nifti</code>. All functions use the <code>system</code> command to implement the FSL functions. All functions will check to see whether the file passed in a character path to a filename. If the object is a <code>nifti</code> object, the programs will create a temporary file using <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile()</a></code> and then return the name of this file with the <code>checkimg</code> command. If a character path is passed to the <code>file</code> argument into an <code>fslr</code> command, then this will run in FSL assuming that file exists.</p>
 </div>
-<div id="checking-if-fsl-exists" class="section level2">
-<h2 class="hasAnchor">
-<a href="#checking-if-fsl-exists" class="anchor"></a>Checking if FSL exists</h2>
-<p>If <code>R</code> is run using a GUI, then <code>fsl.path</code> must be set using <code><a href="https://rdrr.io/r/base/options.html">options(fsl.path='/path/to/fsl')</a></code>. <code><a href="../reference/have.fsl.html">have.fsl()</a></code> checks to see if FSL is in the PATH or the options are correctly set and returns <code>TRUE</code> and returns <code>FALSE</code> otherwise.</p>
-<div id="printing-out-fsl-version" class="section level3">
-<h3 class="hasAnchor">
-<a href="#printing-out-fsl-version" class="anchor"></a>Printing out FSL Version</h3>
+<div class="section level2">
+<h2 id="checking-if-fsl-exists">Checking if FSL exists<a class="anchor" aria-label="anchor" href="#checking-if-fsl-exists"></a>
+</h2>
+<p>If <code>R</code> is run using a GUI, then <code>fsl.path</code> must be set using <code>options(fsl.path='/path/to/fsl')</code>. <code><a href="../reference/have.fsl.html">have.fsl()</a></code> checks to see if FSL is in the PATH or the options are correctly set and returns <code>TRUE</code> and returns <code>FALSE</code> otherwise.</p>
+<div class="section level3">
+<h3 id="printing-out-fsl-version">Printing out FSL Version<a class="anchor" aria-label="anchor" href="#printing-out-fsl-version"></a>
+</h3>
 <p>For example, you can wrap example functions with a logical check for <code><a href="../reference/have.fsl.html">have.fsl()</a></code> to have the execute if FSL exists:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="../reference/fsl_version.html">fsl_version</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/have.fsl.html">have.fsl</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="../reference/fsl_version.html">fsl_version</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
 </div>
-<div id="returning-objects" class="section level2">
-<h2 class="hasAnchor">
-<a href="#returning-objects" class="anchor"></a>Returning Objects</h2>
+<div class="section level2">
+<h2 id="returning-objects">Returning Objects<a class="anchor" aria-label="anchor" href="#returning-objects"></a>
+</h2>
 <p>In functions where an image is the end result, the <code>outfile</code> and <code>retimg</code> arguments are present. If <code>outfile</code> is specified, the user wants a file to be saved to disk. If <code>outfile</code> is not specified, a temporary file (using <code>tempfile</code>) will be created for the result and deleted at the end of the <code>R</code> session. If <code>retimg=TRUE</code>, then the user specified that an object of class <code>nifti</code> will be returned to <code>R</code>. If both <code>retimg=TRUE</code> and <code>outfile</code> is specified, the image will be written to disk, read into <code>R</code> and the <code>nifti</code> object will be returned. If <code>retimg=FALSE</code> and <code>outfile</code> is not specified, the function will fail as <code>fslr</code> would be calculating an image and no result would be able to be obtained since the <code>outfile</code> is deleted.</p>
 </div>
-<div id="main-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#main-functions" class="anchor"></a>Main functions</h2>
+<div class="section level2">
+<h2 id="main-functions">Main functions<a class="anchor" aria-label="anchor" href="#main-functions"></a>
+</h2>
 <p>The main functions implemented are <code>fslmaths</code> and <code>fslstats</code>. <code>fslmaths</code> usually returns images as the result and <code>fslstats</code> usually returns a vector of information.</p>
-<p>Functions functions such as <code>fslmask</code>, <code>fslerode</code>, <code>fslsmooth</code>, and <code>fslfill</code> are implemented wrappers for ease of use, but are essentially calling <code>fslmaths</code> with specific options. Functions such as <code>fslrange</code> is an example of a wrapper for <code>fslstats</code>. As <code>fslstats</code> outputs are variable in their format, the results are returned simply as a character vector which needs to be parsed. <a href="https://github.com/muschellij2/fslr">This GitHub repository</a> will be used for development and issues.</p>
+<p>Functions functions such as <code>fslmask</code>, <code>fslerode</code>, <code>fslsmooth</code>, and <code>fslfill</code> are implemented wrappers for ease of use, but are essentially calling <code>fslmaths</code> with specific options. Functions such as <code>fslrange</code> is an example of a wrapper for <code>fslstats</code>. As <code>fslstats</code> outputs are variable in their format, the results are returned simply as a character vector which needs to be parsed. <a href="https://github.com/muschellij2/fslr" class="external-link">This GitHub repository</a> will be used for development and issues.</p>
 </div>
   </div>
 
@@ -138,11 +134,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by John Muschelli.</p>
+  <p></p>
+<p>Developed by John Muschelli.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -150,6 +148,8 @@
 
   
 
+
+  
 
   </body>
 </html>
