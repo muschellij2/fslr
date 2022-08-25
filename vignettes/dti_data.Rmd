@@ -27,7 +27,10 @@ First, we download the data into a temporary directory the unzip it:
 ```{r}
 tdir = tempdir()
 tfile = file.path(tdir, "example_dwi.zip")
-download.file("http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip",destfile = tfile, mode = "wb")
+result = try({download.file("http://camino.cs.ucl.ac.uk/uploads/Tutorials/example_dwi.zip",destfile = tfile, mode = "wb")}, silent = TRUE)
+if (inherits(result, "try-error")) {
+  download.file("https://github.com/muschellij2/fslr/raw/master/inst/extdata/example_dwi.zip", destfile = tfile, mode = "wb")
+}
 out = unzip(zipfile = tfile, exdir = tdir, overwrite = TRUE)
 ```
 
