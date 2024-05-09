@@ -23,9 +23,9 @@ is.rpi(file, verbose = FALSE)
 \value{
 List of 3 elements
 \itemize{
-\item{\code{img}: }{Reoriented image of class \code{nifti}}
-\item{\code{convention}: }{Convention (Neurological/Radiological) of original image}
-\item{\code{orientation}: }{Original image orientations}
+\item \code{img}: Reoriented image of class \code{nifti}
+\item \code{convention}: Convention (Neurological/Radiological) of original image
+\item \code{orientation}: Original image orientations
 }
 }
 \description{

@@ -1,3 +1,7 @@
+# fslr 2.25.3
+
+- Updated docs for `neurobase`
+
 # fslr 2.25.2
 
 - Pushing back to CRAN after `neurobase` is back on.

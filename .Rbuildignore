@@ -38,3 +38,4 @@ docs/*
 ^R/probtrackx2\.R$
 ^\.github$
 ^inst/extdata/example_dwi\.zip$
+^CRAN-SUBMISSION$

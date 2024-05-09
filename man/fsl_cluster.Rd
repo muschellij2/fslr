@@ -73,14 +73,14 @@ Passed to \code{\link{readnii}}.}
 \value{
 A list of filenames of outputs and tables:
 \itemize{
-\item{\code{opvals}}{filename for image output of log pvals}
-\item{\code{oindex}}{filename for output of cluster index (in size order)}
-\item{\code{othresh}}{filename for output of thresholded image}
-\item{\code{olmax}}{filename for output of local maxima text file}
-\item{\code{olmaxim}}{filename for output of local maxima volume}
-\item{\code{osize}}{filename for output of size image}
-\item{\code{omax}}{filename for output of max image}
-\item{\code{omean}}{filename for output of mean image}
+\item \code{opvals} filename for image output of log pvals
+\item \code{oindex} filename for output of cluster index (in size order)
+\item \code{othresh} filename for output of thresholded image
+\item \code{olmax} filename for output of local maxima text file
+\item \code{olmaxim} filename for output of local maxima volume
+\item \code{osize} filename for output of size image
+\item \code{omax} filename for output of max image
+\item \code{omean} filename for output of mean image
 }
 }
 \description{
