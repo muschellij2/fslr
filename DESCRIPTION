@@ -2,7 +2,7 @@ Package: fslr
 Type: Package
 Title: Wrapper Functions for 'FSL' ('FMRIB' Software Library) from Functional MRI
     of the Brain ('FMRIB')
-Version: 2.25.3
+Version: 2.26.0
 Authors@R: c(person(given = "John",
            family = "Muschelli",
            email = "muschellij2@gmail.com",
@@ -35,4 +35,4 @@ Suggests:
 BugReports: https://github.com/muschellij2/fslr/issues
 SystemRequirements: FSL
 Encoding: UTF-8
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2

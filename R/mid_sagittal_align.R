@@ -15,14 +15,29 @@
 #'
 #' @return Filename of output or nifti depending on \code{retimg}
 #' @export
+#' @examples
+#' if (have.fsl()){
+#'   mnifile = file.path(fsldir(), "data", "standard",
+#'                       "MNI152_T1_2mm.nii.gz")
+#'   aligned = mid_sagittal_align(mnifile)
+#'   thresh = readnii(mnifile) > 0
+#'   file_mat = attr(aligned, "half_transform")
+#'   force_rpi = attr(aligned, "force_rpi")
+#'   flipped_thresh = apply_mid_sagittal_align(
+#'     file = thresh, 
+#'     file_mat = file_mat,
+#'     apply_opts = "-interp nearestneighbour",
+#'     force_rpi = force_rpi
+#'   )
+#' }
 mid_sagittal_align = function(
-  file, 
-  outfile = NULL,
-  retimg = TRUE,
-  opts = "",
-  translation = TRUE,
-  force_rpi = TRUE,
-  verbose = TRUE) {
+    file, 
+    outfile = NULL,
+    retimg = TRUE,
+    opts = "",
+    translation = TRUE,
+    force_rpi = TRUE,
+    verbose = TRUE) {
   
   outfile = check_outfile(outfile = outfile, retimg = retimg)
   if (force_rpi) {
@@ -83,7 +98,60 @@ mid_sagittal_align = function(
   }
   
   attr(centered, "half_transform") = new_omat
+  attr(centered, "force_rpi") = force_rpi
   attr(centered, "full_transform") = omat
+  return(centered)
+  
+}
+
+
+#' @export
+#' @rdname mid_sagittal_align
+#' @param apply_opts options to pass to [fslr::flirt_apply]
+#' @param file_mat file name of mat file for half transform from [mid_sagittal_align]
+apply_mid_sagittal_align = function(
+    file, 
+    file_mat,
+    outfile = NULL,
+    retimg = TRUE,
+    apply_opts = "",
+    force_rpi = TRUE,
+    verbose = TRUE) {
+  
+  outfile = check_outfile(outfile = outfile, retimg = retimg)
+  if (force_rpi) {
+    rp = rpi_orient_file(file, verbose = verbose)
+    img = rp$img
+  } else {
+    img = checkimg(file)
+  }
+  
+  flip_lr = function(x){
+    fsl_swapdim(file = x, a = "-x")
+  }
+  
+  flipped = flip_lr(img)
+  
+  tfile = tempfile(fileext = ".nii.gz")
+  flirt_apply(
+    infile = img, 
+    reffile = flipped, 
+    initmat = file_mat,
+    verbose = verbose,
+    opts = apply_opts,
+    retimg = FALSE,
+    outfile = tfile)
+  if (force_rpi) {
+    centered = reverse_rpi_orient_file(
+      file = tfile, 
+      orientation = rp$orientation,
+      convention = rp$convention)
+  } else {
+    centered = tfile
+  }
+  if (retimg) {
+    centered = readnii(centered)
+  }
   return(centered)
   
 }

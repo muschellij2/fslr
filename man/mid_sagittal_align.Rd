@@ -2,6 +2,7 @@
 % Please edit documentation in R/mid_sagittal_align.R
 \name{mid_sagittal_align}
 \alias{mid_sagittal_align}
+\alias{apply_mid_sagittal_align}
 \title{Mid-Sagittal Plane Alignment}
 \usage{
 mid_sagittal_align(
@@ -10,6 +11,16 @@ mid_sagittal_align(
   retimg = TRUE,
   opts = "",
   translation = TRUE,
+  force_rpi = TRUE,
+  verbose = TRUE
+)
+
+apply_mid_sagittal_align(
+  file,
+  file_mat,
+  outfile = NULL,
+  retimg = TRUE,
+  apply_opts = "",
   force_rpi = TRUE,
   verbose = TRUE
 )
@@ -30,6 +41,10 @@ preserved (TRUE) or set to zero (FALSE)}
 run?}
 
 \item{verbose}{(logical) print diagnostic messages}
+
+\item{file_mat}{file name of mat file for half transform from [mid_sagittal_align]}
+
+\item{apply_opts}{options to pass to [fslr::flirt_apply]}
 }
 \value{
 Filename of output or nifti depending on \code{retimg}
@@ -38,4 +53,20 @@ Filename of output or nifti depending on \code{retimg}
 This function takes in an image, flips the image over the
 left/right plane, registers that flipped image to the original image,
 then applies the half transformation
+}
+\examples{
+if (have.fsl()){
+  mnifile = file.path(fsldir(), "data", "standard",
+                      "MNI152_T1_2mm.nii.gz")
+  aligned = mid_sagittal_align(mnifile)
+  thresh = readnii(mnifile) > 0
+  file_mat = attr(aligned, "half_transform")
+  force_rpi = attr(aligned, "force_rpi")
+  apply_mid_sagittal_align(
+    file = thresh, 
+    file_mat = file_mat,
+    apply_opts = "-interp nearestneighbour",
+    force_rpi = force_rpi
+  )
+}
 }
