@@ -7,8 +7,6 @@
 \usage{
 mid_sagittal_align(
   file,
-  outfile = NULL,
-  retimg = TRUE,
   opts = "",
   translation = TRUE,
   force_rpi = TRUE,
@@ -18,8 +16,6 @@ mid_sagittal_align(
 apply_mid_sagittal_align(
   file,
   file_mat,
-  outfile = NULL,
-  retimg = TRUE,
   apply_opts = "",
   force_rpi = TRUE,
   verbose = TRUE
@@ -27,10 +23,6 @@ apply_mid_sagittal_align(
 }
 \arguments{
 \item{file}{(character) input filename or class nifti}
-
-\item{outfile}{(character) output filename}
-
-\item{retimg}{(logical) return image of class nifti}
 
 \item{opts}{(character) options passed to \code{\link{flirt}}}
 

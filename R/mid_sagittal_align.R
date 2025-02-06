@@ -4,8 +4,6 @@
 #' then applies the half transformation
 #'
 #' @param file (character) input filename or class nifti
-#' @param outfile (character) output filename
-#' @param retimg (logical) return image of class nifti
 #' @param opts (character) options passed to \code{\link{flirt}}
 #' @param verbose (logical) print diagnostic messages
 #' @param translation (logical) should the translation parameters be
@@ -32,13 +30,13 @@
 #' }
 mid_sagittal_align = function(
     file, 
-    outfile = NULL,
-    retimg = TRUE,
     opts = "",
     translation = TRUE,
     force_rpi = TRUE,
     verbose = TRUE) {
   
+  outfile = NULL
+  retimg = TRUE
   outfile = check_outfile(outfile = outfile, retimg = retimg)
   if (force_rpi) {
     rp = rpi_orient_file(file, verbose = verbose)
@@ -112,11 +110,11 @@ mid_sagittal_align = function(
 apply_mid_sagittal_align = function(
     file, 
     file_mat,
-    outfile = NULL,
-    retimg = TRUE,
     apply_opts = "",
     force_rpi = TRUE,
     verbose = TRUE) {
+  outfile = NULL
+  retimg = TRUE
   
   outfile = check_outfile(outfile = outfile, retimg = retimg)
   if (force_rpi) {

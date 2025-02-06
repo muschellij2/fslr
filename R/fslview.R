@@ -63,11 +63,14 @@ fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
 #'   in_ci <- function() {
 #'    nzchar(Sys.getenv("CI"))
 #'   }
-#'  if (!in_ci()) {
+#'  if (!in_ci() && package_version(fslversion()) < package_version("6.0")) {
 #'    fslview.help()
 #'  }
 #' }   
 fslview.help = function(){
+  if (package_version(fslversion()) > package_version("6.0")) {
+    stop("fslview not included in FSL > 6.0")
+  }
   fslview_cmd = "fslview"
   fslver = fsl_version()
   ################################## 

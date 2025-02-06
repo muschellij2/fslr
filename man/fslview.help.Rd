@@ -19,7 +19,7 @@ if (have.fsl()){
   in_ci <- function() {
    nzchar(Sys.getenv("CI"))
   }
- if (!in_ci()) {
+ if (!in_ci() && package_version(fslversion()) < package_version("6.0")) {
    fslview.help()
  }
 }   
