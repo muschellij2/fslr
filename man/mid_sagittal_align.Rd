@@ -62,7 +62,7 @@ if (have.fsl()){
   thresh = readnii(mnifile) > 0
   file_mat = attr(aligned, "half_transform")
   force_rpi = attr(aligned, "force_rpi")
-  apply_mid_sagittal_align(
+  flipped_thresh = apply_mid_sagittal_align(
     file = thresh, 
     file_mat = file_mat,
     apply_opts = "-interp nearestneighbour",

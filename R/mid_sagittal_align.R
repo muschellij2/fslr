@@ -54,13 +54,13 @@ mid_sagittal_align = function(
   flipped = flip_lr(img)
   
   omat = tempfile(fileext = ".mat")
-  tfile = tempfile(fileext = ".nii.gz")
   flirt(infile = img, 
         reffile = flipped,
-        omat = omat, dof = 6,
+        omat = omat, 
+        dof = 6,
         opts = opts,
         retimg = FALSE, 
-        outfile = tfile,
+        outfile = outfile,
         verbose = verbose)  
   
   parsed = fsl_avscale(file = omat, parsed = TRUE)
@@ -84,14 +84,14 @@ mid_sagittal_align = function(
     initmat = new_omat,
     verbose = verbose,
     retimg = FALSE,
-    outfile = tfile)
+    outfile = outfile)
   if (force_rpi) {
     centered = reverse_rpi_orient_file(
-      file = tfile, 
+      file = outfile, 
       orientation = rp$orientation,
       convention = rp$convention)
   } else {
-    centered = tfile
+    centered = outfile
   }
   if (retimg) {
     centered = readnii(centered)
@@ -132,7 +132,6 @@ apply_mid_sagittal_align = function(
   
   flipped = flip_lr(img)
   
-  tfile = tempfile(fileext = ".nii.gz")
   flirt_apply(
     infile = img, 
     reffile = flipped, 
@@ -140,14 +139,14 @@ apply_mid_sagittal_align = function(
     verbose = verbose,
     opts = apply_opts,
     retimg = FALSE,
-    outfile = tfile)
+    outfile = outfile)
   if (force_rpi) {
     centered = reverse_rpi_orient_file(
-      file = tfile, 
+      file = outfile, 
       orientation = rp$orientation,
       convention = rp$convention)
   } else {
-    centered = tfile
+    centered = outfile
   }
   if (retimg) {
     centered = readnii(centered)
