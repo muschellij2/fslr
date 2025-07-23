@@ -19,7 +19,7 @@ fslfill(
 )
 }
 \arguments{
-\item{...}{additional arguments passed to \code{\link{readnii}}.}
+\item{...}{additional arguments passed to \code{\link[neurobase]{readnii}}.}
 
 \item{outfile}{(character) name of resultant filled file}
 
@@ -30,7 +30,7 @@ fslfill(
 \item{bin}{(logical) binarize the image before filling}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{intern}{(logical) pass to \code{\link{system}}}
 

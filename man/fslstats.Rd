@@ -16,7 +16,7 @@ fslstats(file, opts = "", verbose = TRUE, ts = FALSE, ...)
 \item{ts}{(logical) is the series a timeseries (4D), invoking \code{-t} 
 option}
 
-\item{...}{options passed to \code{\link{checkimg}}}
+\item{...}{options passed to \code{\link[neurobase]{checkimg}}}
 }
 \value{
 Result of fslstats command

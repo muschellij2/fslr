@@ -22,7 +22,7 @@ fslsmooth(
 )
 }
 \arguments{
-\item{...}{additional arguments passed to \code{\link{readnii}}.}
+\item{...}{additional arguments passed to \code{\link[neurobase]{readnii}}.}
 
 \item{outfile}{(character) resultant smoothed image name (optional)
 if not give, will be the stub of the filename then _sigma}
@@ -43,7 +43,7 @@ will be divided by the smoothed mask.}
 division.}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 

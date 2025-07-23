@@ -29,7 +29,7 @@ susan(
 \item{retimg}{(logical) return image of class nifti}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 

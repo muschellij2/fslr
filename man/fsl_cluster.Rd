@@ -40,7 +40,7 @@ read_cluster_table(file)
 \item{retimg}{(logical) return image of class nifti}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{opts}{(character) operations to be passed to \code{cluster}}
 

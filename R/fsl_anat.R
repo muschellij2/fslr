@@ -7,7 +7,7 @@
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fsl_anat}
 #' @param verbose (logical) print out command before running
-#' @param ... options passed to \code{\link{checkimg}}
+#' @param ... options passed to \code{\link[neurobase]{checkimg}}
 #' @return Result from system command, depends if intern is TRUE or FALSE.
 #' @export
 fsl_anat = function(

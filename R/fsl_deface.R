@@ -5,7 +5,7 @@
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented 
 #' when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fsl_deface}
 #' @param deface_cropped apply the defacing to the cropped image instead of the original image

@@ -8,12 +8,12 @@
 #' @param outfile (character) resultant dilated image name 
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param kopts (character) options for kernel
 #' @param opts (character) additional options to be passed to fslmaths
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.  If 
 #' retimg is TRUE, then the image will be returned. 
 #' @import oro.nifti

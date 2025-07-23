@@ -5,7 +5,7 @@
 #' @param threshold threshold for input volume
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param opts (character) operations to be passed to \code{cluster}  
 #' @param cope_image filename of input cope volume
 #' @param pthresh p-threshold

@@ -19,7 +19,7 @@ fslsub(
 )
 }
 \arguments{
-\item{...}{additional arguments passed to \code{\link{readnii}}.}
+\item{...}{additional arguments passed to \code{\link[neurobase]{readnii}}.}
 
 \item{outfile}{(character) resultant image name (optional)}
 
@@ -31,7 +31,7 @@ fslsub(
 
 \item{reorient}{(logical) If retimg, should file be reoriented 
 when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 

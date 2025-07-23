@@ -26,7 +26,7 @@ fsl_split(..., retimg = FALSE)
 \item{retimg}{(logical) return image of class nifti}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{verbose}{(logical) print out command before running}
 

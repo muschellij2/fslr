@@ -6,7 +6,7 @@
 #' @param output_basename (character) prefix to have for output
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param verbose (logical) print out command before running 
 #' @return List of output files 
 #' @export

@@ -9,12 +9,12 @@ readrpi(file, ..., verbose = TRUE)
 \arguments{
 \item{file}{file name of the NIfTI file.}
 
-\item{...}{Arguments to pass to \code{\link{readnii}}}
+\item{...}{Arguments to pass to \code{\link[neurobase]{readnii}}}
 
 \item{verbose}{print diagnostics, passed to \code{\link{rpi_orient_file}}}
 }
 \description{
-This function calls the \code{\link{readnii}} function after
+This function calls the \code{\link[neurobase]{readnii}} function after
 calling \code{\link{rpi_orient_file}} to force RPI orientation.
 }
 \examples{

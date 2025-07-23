@@ -28,11 +28,11 @@ fsl_xor(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 
 \item{reorient}{(logical) If retimg, should file be reoriented 
 when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 
-\item{...}{additional arguments passed to \code{\link{readnii}}.}
+\item{...}{additional arguments passed to \code{\link[neurobase]{readnii}}.}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,

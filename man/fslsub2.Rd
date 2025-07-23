@@ -18,7 +18,7 @@ fslsub2(
 )
 }
 \arguments{
-\item{...}{additional arguments passed to \code{\link{readnii}}.}
+\item{...}{additional arguments passed to \code{\link[neurobase]{readnii}}.}
 
 \item{outfile}{(character) name of resultant subsampled file}
 
@@ -27,7 +27,7 @@ fslsub2(
 \item{file}{(character) filename of image to be subsampled}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{intern}{(logical) pass to \code{\link{system}}}
 

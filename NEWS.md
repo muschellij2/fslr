@@ -1,3 +1,7 @@
+# fslr 2.27.0
+
+- Updated docs for link issue for CRAN.
+
 # fslr 2.25.3
 
 - Updated docs for `neurobase`

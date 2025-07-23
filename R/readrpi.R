@@ -1,9 +1,9 @@
 #' @title Read NIfTI file reoriented to RPI
 #' 
-#' @description  This function calls the \code{\link{readnii}} function after
+#' @description  This function calls the \code{\link[neurobase]{readnii}} function after
 #' calling \code{\link{rpi_orient_file}} to force RPI orientation.
 #' @param file file name of the NIfTI file. 
-#' @param ... Arguments to pass to \code{\link{readnii}}
+#' @param ... Arguments to pass to \code{\link[neurobase]{readnii}}
 #' @param verbose print diagnostics, passed to \code{\link{rpi_orient_file}}
 #' @export
 #' @examples 

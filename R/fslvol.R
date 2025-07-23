@@ -1,6 +1,6 @@
 #' @title FSL Volume in mL (or cubic centimeters)
 #' @description This function wraps \code{\link{fslsum}} and 
-#' \code{\link{voxdim}}
+#' \code{\link[oro.nifti]{voxdim}}
 #' @param file (character) filename of image to be checked
 #' @param ... options passed to \code{\link{fslsum}}
 #' @return Numeric value of volume in mL

@@ -5,7 +5,7 @@
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param tr (numeric) Repeat time in seconds
 #' @param direction (character) Direction of acquisition
@@ -14,7 +14,7 @@
 #' @param acq_order (character) Order of acquisition, either contiguous 
 #' or interleaved
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export

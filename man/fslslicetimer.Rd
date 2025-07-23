@@ -29,7 +29,7 @@ fsl_slicetimer(..., outfile = tempfile(fileext = ".nii.gz"), retimg = FALSE)
 \item{retimg}{(logical) return image of class nifti}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 
@@ -45,7 +45,7 @@ or interleaved}
 
 \item{verbose}{(logical) print out command before running}
 
-\item{...}{additional arguments passed to \code{\link{readnii}}.}
+\item{...}{additional arguments passed to \code{\link[neurobase]{readnii}}.}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,

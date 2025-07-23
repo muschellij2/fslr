@@ -7,11 +7,11 @@
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}. 
+#' Passed to \code{\link[neurobase]{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) additional options to FLIRT
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 flirt_apply = function(infile, 

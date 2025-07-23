@@ -4,12 +4,12 @@
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If \code{retimg}, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{mcflirt}.  Cannot use 
 #' \code{-o} or \code{-verbose}, as output file should be specified in \code{outfile}.
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' it will have additional attributes in the \code{additional_files} field.
 #' @export

@@ -13,7 +13,7 @@ fslhd(file, opts = "", verbose = TRUE, ...)
 
 \item{verbose}{(logical) print out command before running}
 
-\item{...}{options passed to \code{\link{checkimg}}}
+\item{...}{options passed to \code{\link[neurobase]{checkimg}}}
 }
 \value{
 Character of information from fslhd

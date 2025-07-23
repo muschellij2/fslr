@@ -31,13 +31,13 @@ fslfill2(
 \item{retimg}{(logical) return image of class nifti}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{intern}{(logical) pass to \code{\link{system}}}
 
 \item{verbose}{(logical) print out command before running}
 
-\item{...}{additional arguments passed to \code{\link{readnii}}.}
+\item{...}{additional arguments passed to \code{\link[neurobase]{readnii}}.}
 }
 \value{
 character or logical depending on intern

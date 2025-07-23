@@ -16,7 +16,7 @@ Numeric value of volume in mL
 }
 \description{
 This function wraps \code{\link{fslsum}} and 
-\code{\link{voxdim}}
+\code{\link[oro.nifti]{voxdim}}
 }
 \note{
 This may be approximate due to rounding

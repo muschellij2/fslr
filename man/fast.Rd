@@ -57,7 +57,7 @@ sent using \code{opts}, but this is the most commonly one changed.}
 \item{retimg}{(logical) return image of class nifti}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 
@@ -72,7 +72,7 @@ example, output filename is \code{paste0(outfile, "_", out_type)}}
 
 \item{all_images}{If \code{retimg}}
 
-\item{...}{additional arguments passed to \code{\link{readnii}}.}
+\item{...}{additional arguments passed to \code{\link[neurobase]{readnii}}.}
 }
 \value{
 If \code{retimg} then object of class nifti.  Otherwise,

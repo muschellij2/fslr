@@ -197,11 +197,11 @@ fslstats.help = function(){
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fslmaths}
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -235,7 +235,7 @@ fslmaths = function(
 #' @param verbose (logical) print out command before running
 #' @param ts (logical) is the series a timeseries (4D), invoking \code{-t} 
 #' option 
-#' @param ... options passed to \code{\link{checkimg}}
+#' @param ... options passed to \code{\link[neurobase]{checkimg}}
 #' @return Result of fslstats command
 #' @export
 #' @examples
@@ -283,10 +283,10 @@ fslstats <- function(file, opts="", verbose = TRUE, ts = FALSE, ...){
 #' if not give, will be the stub of the filename then _sigma
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.
 #' @examples
 #' if (have.fsl()){
@@ -369,11 +369,11 @@ fslsmooth <- function(
 #' @param outfile (character) resultant masked image name
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) additional options to be passed to fslmask
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.
 #' @examples 
 #' if (have.fsl()){
@@ -423,12 +423,12 @@ fslmask <- function(file, mask, outfile=NULL,
 #' @param outfile (character) resultant eroded image name 
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param kopts (character) options for kernel
 #' @param opts (character) additional options to be passed to fslmaths
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return Result from system command, depends if intern is TRUE or FALSE.  If 
 #' retimg is TRUE, then the image will be returned. 
 #' @import oro.nifti
@@ -481,7 +481,7 @@ fslerode <- function(file, outfile=NULL,
 #' @param file (character) image filename or character of class nifti
 #' @param keyword (character) keyword to be taken from fslhd
 #' @param verbose (logical) print out command before running 
-#' @param ... options passed to \code{\link{checkimg}}
+#' @param ... options passed to \code{\link[neurobase]{checkimg}}
 #' @return Character of information from fslhd field specified in keyword
 #' @export
 #' @examples
@@ -518,7 +518,7 @@ fslval.help = function(){
 #' @param file (character) image filename or character of class nifti
 #' @param opts (character) additional options to be passed to fslhd
 #' @param verbose (logical) print out command before running 
-#' @param ... options passed to \code{\link{checkimg}}
+#' @param ... options passed to \code{\link[neurobase]{checkimg}}
 #' @return Character of information from fslhd
 #' 
 #' @import R.utils
@@ -608,7 +608,7 @@ fslhd.parse <- function(hd){
 #' matrix
 #' @param file (character) filename of image to pass to header
 #' @param verbose (logical) passed to \code{\link{fslhd}}
-#' @param ... options passed to \code{\link{checkimg}}
+#' @param ... options passed to \code{\link[neurobase]{checkimg}}
 #' @return list with elements of sform and qform and their respective codes
 #' @export
 #' @examples
@@ -686,7 +686,7 @@ checkout <- function(hd){
 #' @title Wrapper for getForms with filename
 #' @description Checking the q/s-forms for a header
 #' @param file (character) filename of image to be checked
-#' @param ... options passed to \code{\link{checkimg}}
+#' @param ... options passed to \code{\link[neurobase]{checkimg}}
 #' @return result of \code{\link{checkout}}
 #' @export
 #' @examples
@@ -723,7 +723,7 @@ check_sform_file <- function(file, value=0, ...){
 #' @param verbose (logical) print out command before running
 #' @param ts (logical) is the series a timeseries (4D), invoking \code{-t} 
 #' option
-#' @param ... options passed to \code{\link{checkimg}}
+#' @param ... options passed to \code{\link[neurobase]{checkimg}}
 #' @return numeric vector of length 2
 #' @export
 #' @examples
@@ -754,10 +754,10 @@ fslrange <- function(file, robust = FALSE, verbose = TRUE, ts = FALSE, ...){
 #' @param bin (logical) binarize the image before filling
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param verbose (logical) print out command before running 
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 #' @examples
@@ -811,11 +811,11 @@ fslfill = function(file, outfile = NULL, bin=TRUE,
 #' @param uthresh (numeric) upper threshold (anything above set to 0)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}. 
+#' Passed to \code{\link[neurobase]{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) additional options to be passed to fslmaths 
 #' @param verbose (logical) print out command before running 
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 #' @examples
@@ -868,10 +868,10 @@ fslthresh = function(file, outfile = NULL,
 #' @param outfile (character) name of resultant subsampled file
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}. 
+#' Passed to \code{\link[neurobase]{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param verbose (logical) print out command before running 
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 #' @examples
@@ -923,10 +923,10 @@ fslsub2 = function(file,
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param verbose (logical) print out command before running 
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 fslmerge = function(infiles, 
@@ -984,11 +984,11 @@ fslmerge.help = function(){
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}. 
+#' Passed to \code{\link[neurobase]{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) additional options to FLIRT
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 flirt = function(infile, 
@@ -1059,7 +1059,7 @@ flirt.help = function(){
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) options for melodic
 #' @param verbose (logical) print out command before running
-#' @param ... arguments passed to \code{\link{checkimg}}
+#' @param ... arguments passed to \code{\link[neurobase]{checkimg}}
 #' @return character or logical depending on intern
 #' @export
 melodic = function(file, 
@@ -1124,12 +1124,12 @@ fslhelp = function(func_name, help.arg = "--help", extra.args = ""){
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}. 
+#' Passed to \code{\link[neurobase]{readnii}}. 
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) additional options to \code{bet}
 #' @param betcmd (character) Use \code{bet} or \code{bet2} function
 #' @param verbose (logical) print out command before running 
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return character or logical depending on intern
 #' @export
 fslbet = function(infile, 
@@ -1219,11 +1219,11 @@ fslcog = function(img, mm = TRUE, verbose = TRUE, ts = FALSE){
 #' @param file (character) image to be manipulated
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If \code{retimg}, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fslorient}
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -1281,11 +1281,11 @@ fslorient.help = function(){
 #' @param file (character) image to be manipulated
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If \code{retimg}, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param verbose (logical) print out command before running
 #' @param opts additional options to pass to \code{\link{fslreorient2std}}
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -1358,13 +1358,13 @@ fslreorient2std.help = function(){
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param a (character) Option for x domain in \code{fslswapdim}
 #' @param b (character) Option for y domain in \code{fslswapdim}
 #' @param c (character) Option for z domain in \code{fslswapdim}
 #' @param verbose (logical) print out command before running
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -1416,7 +1416,7 @@ fslswapdim.help = function(){
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{func} 
 #' @param verbose (logical) print out command before running
@@ -1428,7 +1428,7 @@ fslswapdim.help = function(){
 #' the FSL function?
 #' @param trim_front trim the whitespace from the front of the command.
 #' @param run (logical) Should the command just be printed (if \code{FALSE})?
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export

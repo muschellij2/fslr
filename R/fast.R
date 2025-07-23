@@ -7,7 +7,7 @@
 #' sent using \code{opts}, but this is the most commonly one changed.
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fast}
 #' @param out_type (character) Suffix to grab from outfile.  For 
@@ -15,7 +15,7 @@
 #' @param verbose (logical) print out command before running
 #' @param type type of image T1, T2, or PD.
 #' @param all_images If \code{retimg} 
-#' @param ... additional arguments passed to \code{\link{readnii}}.
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}.
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export
@@ -118,12 +118,12 @@ fast.help = function(){
 #' @param outfile (character) resultant image name (optional)
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}.
+#' Passed to \code{\link[neurobase]{readnii}}.
 #' @param intern (logical) to be passed to \code{\link{system}}
 #' @param opts (character) operations to be passed to \code{fast}
 #' @param verbose (logical) print out command before running
 #' @param remove.seg (logical) Should segmentation from FAST be removed? 
-#' @param ... additional arguments passed to \code{\link{readnii}}. 
+#' @param ... additional arguments passed to \code{\link[neurobase]{readnii}}. 
 #' @return If \code{retimg} then object of class nifti.  Otherwise,
 #' Result from system command, depends if intern is TRUE or FALSE.
 #' @export

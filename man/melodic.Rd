@@ -25,7 +25,7 @@ melodic(
 
 \item{verbose}{(logical) print out command before running}
 
-\item{...}{arguments passed to \code{\link{checkimg}}}
+\item{...}{arguments passed to \code{\link[neurobase]{checkimg}}}
 }
 \value{
 character or logical depending on intern

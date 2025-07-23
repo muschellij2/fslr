@@ -28,7 +28,7 @@ fslreorient2std_mat(
 \item{retimg}{(logical) return image of class nifti}
 
 \item{reorient}{(logical) If \code{retimg}, should file be reoriented when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{intern}{(logical) to be passed to \code{\link{system}}}
 
@@ -36,7 +36,7 @@ Passed to \code{\link{readnii}}.}
 
 \item{opts}{additional options to pass to \code{\link{fslreorient2std}}}
 
-\item{...}{additional arguments passed to \code{\link{readnii}}.}
+\item{...}{additional arguments passed to \code{\link[neurobase]{readnii}}.}
 
 \item{matfile}{Output file for the matrix for reorientation}
 }

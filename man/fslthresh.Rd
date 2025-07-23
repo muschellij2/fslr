@@ -21,7 +21,7 @@ fslthresh(
 )
 }
 \arguments{
-\item{...}{additional arguments passed to \code{\link{readnii}}.}
+\item{...}{additional arguments passed to \code{\link[neurobase]{readnii}}.}
 
 \item{outfile}{(character) name of resultant thresholded file}
 
@@ -34,7 +34,7 @@ fslthresh(
 \item{uthresh}{(numeric) upper threshold (anything above set to 0)}
 
 \item{reorient}{(logical) If retimg, should file be reoriented when read in?
-Passed to \code{\link{readnii}}.}
+Passed to \code{\link[neurobase]{readnii}}.}
 
 \item{intern}{(logical) pass to \code{\link{system}}}
 

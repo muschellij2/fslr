@@ -5,7 +5,7 @@
 #' @param intern (logical) pass to \code{\link{system}}
 #' @param opts (character) options for FSLView
 #' @param verbose (logical) print out command before running
-#' @param ... options passed to \code{\link{checkimg}}
+#' @param ... options passed to \code{\link[neurobase]{checkimg}}
 #' @return character or logical depending on intern
 #' @importFrom utils compareVersion
 #' @note As of FSL version 5.0.10, this is deprecated:

@@ -28,7 +28,7 @@ default to \code{dirname(file)}}
 
 \item{verbose}{(logical) print out command before running}
 
-\item{...}{options passed to \code{\link{checkimg}}}
+\item{...}{options passed to \code{\link[neurobase]{checkimg}}}
 }
 \value{
 Result from system command, depends if intern is TRUE or FALSE.

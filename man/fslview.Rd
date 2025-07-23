@@ -18,7 +18,7 @@ fsleyes(file, intern = TRUE, opts = "", verbose = TRUE, ...)
 
 \item{verbose}{(logical) print out command before running}
 
-\item{...}{options passed to \code{\link{checkimg}}}
+\item{...}{options passed to \code{\link[neurobase]{checkimg}}}
 }
 \value{
 character or logical depending on intern

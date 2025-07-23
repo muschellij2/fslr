@@ -5,7 +5,7 @@
 #' @param outfile (character) output filename
 #' @param retimg (logical) return image of class nifti
 #' @param reorient (logical) If retimg, should file be reoriented when read in?
-#' Passed to \code{\link{readnii}}. 
+#' Passed to \code{\link[neurobase]{readnii}}. 
 #' @param verbose (logical) print out command before running
 #' @param opts options to pass to \code{flirt}
 #'

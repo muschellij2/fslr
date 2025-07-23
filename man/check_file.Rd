@@ -9,7 +9,7 @@ check_file(file, ...)
 \arguments{
 \item{file}{(character) filename of image to be checked}
 
-\item{...}{options passed to \code{\link{checkimg}}}
+\item{...}{options passed to \code{\link[neurobase]{checkimg}}}
 }
 \value{
 result of \code{\link{checkout}}

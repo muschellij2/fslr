@@ -11,7 +11,7 @@ getForms(file, verbose = FALSE, ...)
 
 \item{verbose}{(logical) passed to \code{\link{fslhd}}}
 
-\item{...}{options passed to \code{\link{checkimg}}}
+\item{...}{options passed to \code{\link[neurobase]{checkimg}}}
 }
 \value{
 list with elements of sform and qform and their respective codes
