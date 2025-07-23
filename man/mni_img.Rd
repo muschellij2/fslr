@@ -10,7 +10,7 @@ mni_img(...)
 \item{...}{Arguments passed to \code{\link{mni_fname}}}
 }
 \value{
-Object of class \code{\link{nifti}}
+Object of class \code{\link[oro.nifti]{nifti}}
 }
 \description{
 Simple wrapper for reading in the MNI image constructed from 

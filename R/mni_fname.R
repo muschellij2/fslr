@@ -32,7 +32,7 @@ mni_fname = function(mm = c("1", "0.5", "2"),
 #' @description Simple wrapper for reading in the MNI image constructed from 
 #' \code{\link{mni_fname}}
 #' @param ... Arguments passed to \code{\link{mni_fname}}
-#' @return Object of class \code{\link{nifti}}
+#' @return Object of class \code{\link[oro.nifti]{nifti}}
 #' @export
 mni_img = function(...){
   fname = mni_fname(...)
