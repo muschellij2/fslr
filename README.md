@@ -28,6 +28,7 @@ Status](https://coveralls.io/repos/github/muschellij2/fslr/badge.svg?branch=mast
 [![Codacy
 Badge](https://api.codacy.com/project/badge/Grade/e07ba6cce2ea4eeaa1819e1041637914)](https://www.codacy.com/manual/muschellij2/fslr?utm_source=github.com&utm_medium=referral&utm_content=muschellij2/fslr&utm_campaign=Badge_Grade)
 [![R-CMD-check](https://github.com/muschellij2/fslr/workflows/R-CMD-check/badge.svg)](https://github.com/muschellij2/fslr/actions)
+[![R-CMD-check](https://github.com/muschellij2/fslr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/muschellij2/fslr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Installation
