@@ -39,3 +39,4 @@ docs/*
 ^\.github$
 ^inst/extdata/example_dwi\.zip$
 ^CRAN-SUBMISSION$
+^revdep$
