@@ -1,3 +1,7 @@
+# fslr 2.27.1
+
+- Added `fsl_standard_space_roi`.
+
 # fslr 2.27.0
 
 - Updated docs for link issue for CRAN.
