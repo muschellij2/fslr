@@ -40,3 +40,5 @@ docs/*
 ^inst/extdata/example_dwi\.zip$
 ^CRAN-SUBMISSION$
 ^revdep$
+^\.positai$
+^\.claude$
